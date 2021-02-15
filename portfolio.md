@@ -10,36 +10,40 @@ order: 1
 <span style=
 "font-size:170%;
 font-weight:bold">
-김현우
+김기림
 </span>
 </center>
 
 <center>MAJOR : AI EENGINEERING</center>
 
-<center>Korean University</center>
+<center>Kookmin University</center>
 
-<center>145, Anam-ro, Seongbuk-gu, Seoul, Republic of Korea</center>
+<center>92, Arirang-ro, Seongbuk-gu, Seoul, Republic of Korea</center>
 
 ## Personal Data
 ---
-> 1995.11.4 대한민국,서울특별시,동작구 출생
+> 1993.05.25 대한민국,서울특별시
 
-> 연락처: khw11044@gmail.com
+> 연락처: kirimrlfla@naver.com
 
-> Github : <a href="https://github.com/khw11044">https://github.com/khw11044</a>
+> Github : <a href="https://github.com/kirkim">https://github.com/kirkim</a>
 
 
 ## Education
 ---
-> Mar.2015 ~ Feb.2021 한성대학교
+> Mar.2012 ~ Feb.2018 국민대학교
 >
-> IT 융합공학부 (DIVISION OF IT CONVERGENCE ENGINEERING)
+> 신소재공학과 (Materials Science and Engineering)
 
-> Feb.2021 ~ 현재 : 고려대학교
+> Feb.2018 ~ Oct.2020
 >
-> 인공지능 대학원 (이성한 교수님 연구실)
+> 전기관련 공기업 준비(전기기사, 전기공사기사)
 
+> Jan.2021 ~ 현재 : 42 SEOUL Innovation Academy
+>
+> 카뎃
 
+<!--
 ## Research Interest
 ---
 
@@ -119,7 +123,7 @@ Hansung Univ – ETRI
 【출원번호】: 10-2020-0080646
 
 【출원인】: 김현우, 김태현, 제진명
-
+-->
 
 
 
