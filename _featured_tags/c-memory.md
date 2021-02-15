@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: VISION
-slug: vision
-category: class
+title: Memory
+slug: memory
+category: c
 menu: false
 order: 2
 ---

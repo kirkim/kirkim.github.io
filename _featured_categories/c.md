@@ -1,10 +1,10 @@
 ---
 layout: list
-title: Class
-slug: class
+title: C
+slug: c
 menu: true
 submenu: true
 order: 4
 description: >
-  수업  
+  C언어
 ---

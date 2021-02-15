@@ -2,10 +2,10 @@
 # To use this file, rename it to `resume.yml` and delete `resume.json`.
 ---
   basics:
-    name: "Hyunwoo Kim"
+    name: "Kirim Kim"
     label: "Programmer"
     picture: assets/img/me.jpg
-    email: "khw11044@gmail.com"
+    email: "kirimrlfla@naver.com"
     phone: ""
     website: "https://blog.naver.com/khw11044"
     summary: |

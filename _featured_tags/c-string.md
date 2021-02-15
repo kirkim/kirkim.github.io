@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: NLP
-slug: nlp
-category: class
+title: String
+slug: string
+category: c
 menu: false
 order: 1
 ---
