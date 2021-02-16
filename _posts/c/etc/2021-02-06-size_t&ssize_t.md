@@ -2,17 +2,14 @@
 layout: post
 title:  "[C]size_t & ssize_t"
 subtitle:   ""
-date: 2021-02-06 11:45:51 +0900
+date: 2021-02-06 03:45:51 +0900
 categories: c
 tags: etc
 comments: true
-related_posts:
-    - category/_posts/study/2020-12-26-making-blog-02.md
-    - category/_posts/study/2020-12-26-making-blog-03.md
 ---
 
-* * *
 이번장에서는 **size_t**와 **ssize_t**자료형에 대해알아보도록 하겠습니다. <br />
+
  'size_t'의 영어로된 정의를 살펴보면 "The datatype size_t is unsigned integral type."로 되어있습니다. 그렇기 때문에 'size_t'는 'unsigned int'라고 잘못 생각할 수도 있습니다. <br /> size_t와 ssize_t를 알아보기 전에 **int**, **long**자료형에 대해 알아보겠습니다.
 
 * * *

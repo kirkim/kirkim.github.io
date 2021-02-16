@@ -2,16 +2,14 @@
 layout: post
 title:  "[C]C언어 빌드과정"
 subtitle:   ""
-date: 2021-02-11 11:45:51 +0900
+date: 2021-02-11 03:45:51 +0900
 categories: c
 tags: etc
 comments: true
-related_posts:
-    - category/_posts/study/2020-12-26-making-blog-02.md
-    - category/_posts/study/2020-12-26-making-blog-03.md
 ---
 
-* * *
+이번장에서는 C언어 빌드 단계(4단계)에 대해 간단히 알아보도록 하겠습니다.
+
 <h3>C언어의 빌드 단계(4단계)</h3>
 1. 전처리(preprocessing)
 2. 컴파일(compilation)

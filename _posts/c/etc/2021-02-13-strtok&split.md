@@ -5,13 +5,9 @@ subtitle:   ""
 date: 2021-02-13 11:45:51 +0900
 categories: c
 tags: etc
-comments: true
-related_posts:
-    - category/_posts/study/2020-12-26-making-blog-02.md
-    - category/_posts/study/2020-12-26-making-blog-03.md
+comments: true 
 ---
 
-* * *
 * **strtok함수**는 구분문자를 경계로 문자열을 토큰화하는 함수입니다..
 
 * * *

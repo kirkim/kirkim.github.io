@@ -6,12 +6,8 @@ date: 2021-02-12 11:45:51 +0900
 categories: c
 tags: string
 comments: true
-related_posts:
-    - category/_posts/study/2020-12-26-making-blog-02.md
-    - category/_posts/study/2020-12-26-making-blog-03.md
 ---
 
-* * *
 **strstr함수**는 문자열을 찾는 함수입니다.<br />
 **strnstr함수**는 정해진 길이안에서 문자열을 찾는 함수입니다.
 
@@ -25,6 +21,7 @@ char *strstr(const char *str, const char *substr)
 ```c
 char *strnstr(const char *str, const char *substr, size_t len)
 ```
+
 * * *
 <h3>2. 헤더파일, 반환값</h3>
 * **반환값** : 

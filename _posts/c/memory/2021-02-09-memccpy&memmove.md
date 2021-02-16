@@ -2,18 +2,15 @@
 layout: post
 title:  "[C]memccpy & memmove"
 subtitle:   ""
-date: 2021-02-09 10:45:51 +0900
+date: 2021-02-09 02:45:51 +0900
 categories: c
 tags: memory
 comments: true
-related_posts:
-    - category/_posts/study/2020-12-26-making-blog-02.md
-    - category/_posts/study/2020-12-26-making-blog-03.md
 ---
 
-* * *
 **memccpy함수**는 메모리값을 원하는 크기안에서 원하는 문자까지 복사하는 함수입니다.<br />
-**memmove함수**
+**memmove함수**는 메모리값을 원하는 크기만큼 복사하는 함수입니다.(주소가 겹칠때 유용)
+
 * * *
 <h3>1. 함수원형</h3>
 <h4 align="middle">&#60;memccpy&#62;</h4>

@@ -6,12 +6,8 @@ date: 2021-02-05 11:45:51 +0900
 categories: c
 tags: string
 comments: true
-related_posts:
-    - category/_posts/study/2020-12-26-making-blog-02.md
-    - category/_posts/study/2020-12-26-making-blog-03.md
 ---
 
-* * *
 **strncpy함수**와 **strlcpy함수** 모두 문자열(dst)에 원하는 길이만큼 소스(src)를 복사하는 함수입니다.<br />
 
 * * *

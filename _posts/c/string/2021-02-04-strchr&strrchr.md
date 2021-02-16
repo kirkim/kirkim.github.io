@@ -6,14 +6,11 @@ date: 2021-02-04 12:45:51 +0900
 categories: c
 tags: string
 comments: true
-related_posts:
-    - category/_posts/study/2020-12-26-making-blog-02.md
-    - category/_posts/study/2020-12-26-making-blog-03.md
 ---
 
-* * *
 **strchr**함수는 문자열에서 찾고자하는 문자를 앞에서부터 찾는 함수입니다.
 **strrchr**함수는 문자열에서 찾고자하는 문자를 뒤에서부터 찾는 함수입니다.
+
 * * *
 <h3>1. 함수원형</h3>
 <h4 align="middle">&#60;strchr&#62;</h4>

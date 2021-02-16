@@ -6,12 +6,8 @@ date: 2021-02-06 11:45:51 +0900
 categories: c
 tags: string
 comments: true
-related_posts:
-    - category/_posts/study/2020-12-26-making-blog-02.md
-    - category/_posts/study/2020-12-26-making-blog-03.md
 ---
 
-* * *
 **strcmp함수**는 두문자열을 비교하는 함수입니다.<br />
 **strncmp함수**는 두문자열을 원하는 길이까지만 비교하는 함수입니다.
 

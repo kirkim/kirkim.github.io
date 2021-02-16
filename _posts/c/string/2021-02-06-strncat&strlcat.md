@@ -6,12 +6,8 @@ date: 2021-02-06 13:45:51 +0900
 categories: c
 tags: string
 comments: true
-related_posts:
-    - category/_posts/study/2020-12-26-making-blog-02.md
-    - category/_posts/study/2020-12-26-making-blog-03.md
 ---
 
-* * *
 **strncat함수**는 원하는 길이(len)만큼의 소스(src)를 문자열(dst)에 붙이는 함수입니다.<br />
 **strlcat함수**는 소스(src)를 문자열(dst)에 붙여 원하는 길이(len)를 만드는 함수입니다.
 
