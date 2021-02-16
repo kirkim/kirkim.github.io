@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: ETC
-slug: etc
+title: 입출력
+slug: inout
 category: c
 menu: false
-order: 4
+order: 3
 ---
