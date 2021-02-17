@@ -12,17 +12,17 @@ comments: true
 **strlcat함수**는 소스(src)를 문자열(dst)에 붙여 원하는 길이(len)를 만드는 함수입니다.
 
 * * *
-<h3>1. 함수원형</h3>
-<h4 align="middle">&#60;strncat&#62;</h4>
+<h2>1. 함수원형</h2>
+<h4 align="middle">&#60; strncat &#62;</h4>
 ```c
 char *strncat(char *dst, const char *src, size_t len)
 ```
-<h4 align="middle">&#60;strlcat&#62;</h4>
+<h4 align="middle">&#60; strlcat &#62;</h4>
 ```c
 size_t strlcat(char *dst, const char *src, size_t len)
 ```
 * * *
-<h3>2. 헤더파일, 반환값</h3>
+<h2>2. 헤더파일, 반환값</h2>
 * **반환값** : 
     * **strncat**: 복사된 문자열(char*)
     * **strlcat**: 
@@ -35,8 +35,8 @@ size_t strlcat(char *dst, const char *src, size_t len)
 * **헤더파일** : \<string.h\>
 
 * * *
-<h3>3. 함수구현</h3>
-<h4 align="left">&#60;strncat&#62;</h4>
+<h2>3. 함수구현</h2>
+<h4 align="left">&#60; strncat &#62;</h4>
 ```c
 char* strncat(char *dst, const char *src, size_t len)
 {
@@ -52,8 +52,8 @@ char* strncat(char *dst, const char *src, size_t len)
 }
 ```
 ___
-<h4 align="left">&#60;strlcat&#62;</h4>
-<h4 align="middle">&#60;(1)strlcat&#62;</h4>
+<h4 align="left">&#60; strlcat &#62;</h4>
+<h4 align="middle">&#60; strlcat(1) &#62;</h4>
 ```c
 size_t strlcat(char *dst, const char *src, size_t len)
 {
@@ -81,7 +81,7 @@ size_t strlcat(char *dst, const char *src, size_t len)
         return (src_len + dst_len);
 }
 ```
-<h4 align="middle">&#60;(2)strlcat-내장함수사용(strlen)&#62;</h4>
+<h4 align="middle">&#60; strlcat(2)-내장함수사용(strlen) &#62;</h4>
 ```c
 size_t	strlcat(char *dst, const char *src, size_t len)
 {
@@ -104,7 +104,7 @@ size_t	strlcat(char *dst, const char *src, size_t len)
 }
 ```
 * * *
-<h3>4. 특징 & 주의사항</h3>
+<h2>4. 특징 & 주의사항</h2>
 
 ||strncat|strlcat|
 |:--:|:--:|:--:|

@@ -34,7 +34,7 @@ int sscanf(char* restrict src, const char* restrict format, ...);
 
 * * *
 <h2>3. 함수사용</h2>
-<h5>1.&#60; sscanf함수 &#62;</h5>
+<h5>&#60; sscanf함수 &#62;</h5>
 ```c
 int main(void)
 {
@@ -57,6 +57,7 @@ num: 3
 1. %c를 제외하고 모든 데이터는 한단어씩(공백문자로 구분) 또는 가능할때까지 읽습니다.
 2. %s는 거의 모든문자를 다 읽을 수 있습니다.(공백 문자) 하지만 배열의 크기보다 큰 문자열이 들어오면 버퍼오버플로우가 일어납니다. **(아래 해결방법)**
 3. 서식자에 맞지않는 데이터가 들어오면 오류가 납니다. **(아래 자세한 내용)**
+4. `scanf함수`의 경우 stdin(입력스트림)의 형식으로 입력을 받습니다.
 
 * * *
 
@@ -97,6 +98,7 @@ int main(void)
 <br /><br />
 <h3>(2)&#60; 서식자와 맞지않는 데이터가 들어온 경우(특징3) &#62;</h3>
 
+<h5 align="middle">&#60; sscanf함수 &#62;</h5>
 ```c
 int main(void)
 {
@@ -110,13 +112,40 @@ int main(void)
 /*---출력---*/
 1234 0
 ```
+* sscanf함수의 경우 서식자와 맞지않는 경우 `putword`문자열의 내용을 수정하면 됩니다.
+* 하지만 다음보여줄 scanf함수코드의 경우 stdin(입력스트림)을 이용하는데 버퍼가 비워지지않는한 단독적으로 수정할 수 없습니다.
+<h5 align="middle">&#60; scanf함수 &#62;</h5>
+```c
+int main(void)
+{
+	int num1=0, num2 =0;
+    
+    while (1)
+    {        
+        scanf("%d %d", &num1, &num2);
+            printf("%d %d\n", num1, num2);
+    }
+}
+```
 <img src="/assets/img/c/sscanf_img1.jpg" width="80%">
-* num에 '1234'가 입력된 뒤 문자'p'지점에서 인식을 못하고 무한루프가 일어나게 됩니다.
-* 컴파일러에 따라서 함수를 종료 시킵니다.
+* num에 '1234'가 입력된 뒤 문자'p'지점에서 인식을 못하고 stdin(입력스트림)버퍼가 남아있게 됩니다.
+(대부분의 컴파일러가 인식을하지못하면 버퍼를 남겨둔채 scanf함수를 종료시킵니다.[인식문제로 무한루프에 빠지지는 않음])
+* 하지만 위의코드처럼 while문을 통해 여러번 입력을 받는 케이스라면 stdin의 버퍼가 남아 있으므로 무한루프에 빠지게 됩니다.
+* `fflush함수`로 스트림을 강제로 비워줄 수 있지만 fflush함수는 운영체제에 따라 동작방식이 다르기 때문에 사용하지 않는 것이 좋습니다.
+* 이러한 문제는 다음으로 보여줄 코드(fgets + sscanf조합)로 해결할 수 있습니다.
 <br /><br />
-<h3>(3)&#60; fgets + sscanf 조합[1]: 버퍼오버플로우 해결 &#62;</h3>
-* scanf, sscanf함수의 메모리 통제를 잘하지 못하면 버퍼오버플로우가 날 위험이 있습니다.
-* 또한 서식자를 잘못사용하면 무한루프에 빠질 위험이 있습니다.
+<h3>(3)&#60; fgets + sscanf 조합 이점[1]: 무한루프 해결 &#62;</h3>
+fgets + sscanf조합을 사용하면 무한루프를 해결할 수 있습니다.
+<h5 align="middle">&#60; scanf단독사용(안좋은 케이스) &#62;</h5>
+<img src="/assets/img/c/sscanf_img2.jpg" width="100%">
+<h5 align="middle">&#60; fgets + sscanf함수를 조합 &#62;</h5>
+<img src="/assets/img/c/sscanf_img3.jpg" width="100%">
+* 기존 `scanf함수`를 단독으로 사용했을 때는 재때 stdin(입력스트림)의 버퍼를 처리해주지 못하고 남아 있게되서 while문 무한루프에 빠지게 됬습니다.
+* 하지만 `fgets + sscanf함수`조합으로 사용할 경우 fgets함수에서 모든 버퍼를 다 처리해주기 때문에 무한루프에 빠지지 않습니다.<br />stdin의 크기가 BUFFER의 크기보다 크더라도 (BUFFER - 1)크기만큼 순차적으로 처리하게 됩니다.(fgets함수특성상 마지막에 '\0'을 넣어주기 때문에 최대 BUFFER - 1 씩 처리합니다.)
+<br /><br />
+<h3>(4)&#60; fgets + sscanf 조합 이점[2]: 버퍼오버플로우 해결 &#62;</h3>
+* scanf, sscanf함수의 메모리 통제를 잘하지 못하면 버퍼오버플로우가 날 위험이 있습니다.<br />scanf함수는 모든문자를 읽어들일 수 있어 강력해보이지만 버퍼를 생각하지않고 닥치는데로 읽어드리는 함수이기 때문에 위험합니다.
+* fgets + sscanf 조합의 코드를 잘 사용하면 버퍼오버플로우로부터 자유로워질 수 있습니다.
 <h5 align="middle">&#60; fgets + sscanf함수를 조합해서 사용 &#62;</h5>
 ```c
 #define BUFFER (4096)
@@ -136,30 +165,10 @@ int main(void)
 			clearerr(stdin);
 			break;
 		}
-		if (sscanf(temp, "%s", result) == 1)
-			printf("%s\n", word);
+		if (sscanf(temp, "%s", result) == 1) //temp와 result의 크기가 같으므로 버퍼오버플로우가 일어나지 않는다
+			printf("%s\n", result);
 	}
 }
 ```
 * `temp`와 `result`의 BUFFER의 크기를 동일하게하고 사용하면 버퍼 오버플로우가 절대 발생하지 않습니다.
-* 실제 업계에서도 많이 사용하는 조합이라고 합니다.
-* fgets함수의 NULL포인터 예외처리는 임시로 해둔 것이지 상황에 맞게 처리하면될 것같습니다. `fprintf(stderr, "error")`와 같이 처리해도 됩니다.
-<br /><br />
-<h3>(4)&#60; fgets + sscanf 조합[2]: 무한루프 해결 &#62;</h3>
-fgets + sscanf조합을 사용하면 sscanf함수에서 서식자오류로 무한루프에 빠질 위험에 빠지더라도 fgets함수를 다시 만나기 때문에 무한루프(while문)에 빠질 위험이 없어지게 됩니다.
-<h5 align="middle">&#60; scanf단독사용(안좋은 케이스) &#62;</h5>
-<img src="/assets/img/c/sscanf_img2.jpg" width="100%">
-<h5 align="middle">&#60; fgets + sscanf함수를 조합 &#62;</h5>
-<img src="/assets/img/c/sscanf_img3.jpg" width="100%">
-
-```c
-char result[] = "123p123";
-int num = 0;
-int num2 = 0;
-
-while (TRUE)
-{
-	scanf("%d %d", &num, &num2);
-	printf("%d %n", num, num2);
-}
-```
+* fgets함수의 NULL포인터 예외처리는 임시로 해둔 것이지 상황에 맞게 처리하면될 것같습니다. `fprintf(stderr, "error")`와 같이 처리해도 될 것 같습니다.

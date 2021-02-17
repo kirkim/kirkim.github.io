@@ -11,17 +11,17 @@ comments: true
 **strncpy함수**와 **strlcpy함수** 모두 문자열(dst)에 원하는 길이만큼 소스(src)를 복사하는 함수입니다.<br />
 
 * * *
-<h3>1. 함수원형</h3>
-<h4 align="middle">&#60;strncpy&#62;</h4>
+<h2>1. 함수원형</h2>
+<h4 align="middle">&#60; strncpy &#62;</h4>
 ```c
 char *strncpy(char *dst, const char *src, size_t len)
 ```
-<h4 align="middle">&#60;strlcpy&#62;</h4>
+<h4 align="middle">&#60; strlcpy &#62;</h4>
 ```c
 size_t strlcpy(char *dst, const char *src, size_t len)
 ```
 * * *
-<h3>2. 헤더파일, 반환값</h3>
+<h2>2. 헤더파일, 반환값</h2>
 * **반환값** : 
     * **strncpy**: 복사된 문자열(char*)
     * **strlcpy**: src문자열의 길이(size_t)
@@ -29,8 +29,8 @@ size_t strlcpy(char *dst, const char *src, size_t len)
 * **헤더파일** : \<string.h\>
 
 * * *
-<h3>3. 함수구현</h3>
-<h4 align="middle">&#60;strncpy&#62;</h4>
+<h2>3. 함수구현</h2>
+<h4 align="middle">&#60; strncpy &#62;</h4>
 ```c
 char* strncpy(char *dst, const char *src, size_t len)
 {
@@ -44,7 +44,7 @@ char* strncpy(char *dst, const char *src, size_t len)
     return (dst);
 }
 ```
-<h4 align="middle">&#60;strlcpy&#62;</h4>
+<h4 align="middle">&#60; strlcpy &#62;</h4>
 ```c
 size_t strlcpy(char *dst, const char *src, size_t len)
 {
@@ -65,7 +65,7 @@ size_t strlcpy(char *dst, const char *src, size_t len)
 }
 ```
 * * *
-<h3>4. 특징 & 주의사항</h3>
+<h2>4. 특징 & 주의사항</h2>
 
 ||strncpy|strlcpy|
 |:--:|:--:|:--:|
