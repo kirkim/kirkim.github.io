@@ -26,6 +26,7 @@ int sscanf(char* restrict src, const char* restrict format, ...);
 <h2>2. 헤더파일, 반환값</h2>
 * **헤더파일**: \<stdio.h\>
 * **반환값**:
+
   ||성공|실패|
   |:--:|:--:|:--:|
   |scanf|읽어들인 것의 개수|0(아무것도 못읽었을 경우)|
@@ -46,6 +47,9 @@ int main(void)
 	printf("string: %s\n", string);
 	printf("num: %d\n", num);
 }
+/*---출력---*/
+string: hello
+num: 3
 ```
 
 * * *
@@ -142,8 +146,20 @@ int main(void)
 * fgets함수의 NULL포인터 예외처리는 임시로 해둔 것이지 상황에 맞게 처리하면될 것같습니다. `fprintf(stderr, "error")`와 같이 처리해도 됩니다.
 <br /><br />
 <h3>(4)&#60; fgets + sscanf 조합[2]: 무한루프 해결 &#62;</h3>
-fgets + sscanf조합을 사용하면 sscanf함수에서 서식자오류로 무한루프에 빠질 위험에 빠지더라도 fgets함수를 다시 만나기 때문에 무한루프에 빠질 위험이 없어지게 됩니다.
-<h5 align="middle">&#60; sscanf단독사용(안좋은 케이스) &#62;</h5>
+fgets + sscanf조합을 사용하면 sscanf함수에서 서식자오류로 무한루프에 빠질 위험에 빠지더라도 fgets함수를 다시 만나기 때문에 무한루프(while문)에 빠질 위험이 없어지게 됩니다.
+<h5 align="middle">&#60; scanf단독사용(안좋은 케이스) &#62;</h5>
 <img src="/assets/img/c/sscanf_img2.jpg" width="100%">
 <h5 align="middle">&#60; fgets + sscanf함수를 조합 &#62;</h5>
 <img src="/assets/img/c/sscanf_img3.jpg" width="100%">
+
+```c
+char result[] = "123p123";
+int num = 0;
+int num2 = 0;
+
+while (TRUE)
+{
+	scanf("%d %d", &num, &num2);
+	printf("%d %n", num, num2);
+}
+```
