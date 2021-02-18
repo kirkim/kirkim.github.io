@@ -104,7 +104,7 @@ after sample: fg
 <img src="/assets/img/c/gets_img1.jpg" width="90%">
 * 위의 코드처럼 다른메모리에 침범을 하게 됩니다.(보안상의 위험성이 크다)
 * BUFFER의 크기를 조정한다고해서 해결할 문제가 아닙니다. (언제가는 버퍼오버플로우가 생김)
-* gets함수는 절대로 사용하지 않는 것이 좋습니다.
+* 이러한 이유 때문에 **gets함수는 절대로 사용하지 않는 것이 좋습니다.**
 <br /><br />
 <h3>(2)&#60; '\n'도 읽어들이는 fgets함수 &#62;</h3>
 <img src="/assets/img/c/gets_img2.jpg" width="90%">
@@ -129,7 +129,7 @@ hello
 ```
 * fgets함수에서 stdin(입력스트림)형식으로 입력을 완료하기 위해서는 개행문자(\n)을 입력해야 합니다. 이때 `fgets함수`는 `'\n'`까지 읽어드립니다.
 * 이때 `puts함수`는 자동으로 '\n'을 문자끝에 출력해줍니다. 그렇기 때문에 fgets + puts 조합으로 사용할시 '\n'이 두번적용됩니다.
-* 결과적으로 `fgets함수`는 `printf계열의 함수`와 사용하는 것이 어울립니다.
+* 결과적으로 `fgets함수는 printf계열의 함수와 사용`하는 것이 어울립니다.
 <br /><br />
 <h3>(3)&#60; sscanf + fgets조합의 입력코드 &#62;</h3>
 ```c
@@ -155,5 +155,5 @@ int main(void)
 	}
 }
 ```
-* 위험할 수 있는 `scanf입력함수`를 대체할 수 있는 코드조합입니다.
-* `fgets함수`와 `sscanf`함수의 단점을 보안했으며 매우 효과적인 코드조합입니다.**[( 자세한 내용은 scanf관련 POST에 있습니다 )](https://kirkim.github.io/c/2021/02/15/scanf&sscanf.html)**
+* 위험할 수 있는 `scanf함수`를 대체할 수 있는 코드조합입니다.
+* `fgets함수`와 `sscanf`함수의 단점을 서로 보완했으며 매우 효과적인 코드조합입니다.**[( 자세한 내용은 scanf관련 POST에 있습니다 )](https://kirkim.github.io/c/2021/02/15/scanf&sscanf.html)**

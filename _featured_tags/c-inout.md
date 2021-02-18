@@ -1,6 +1,6 @@
 ---
 layout: tag-blog
-title: 입출력
+title: 입출력함수
 slug: inout
 category: c
 menu: false

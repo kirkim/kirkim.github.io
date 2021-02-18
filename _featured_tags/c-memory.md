@@ -1,6 +1,6 @@
 ---
 layout: tag-blog
-title: Memory
+title: Memory함수
 slug: memory
 category: c
 menu: false

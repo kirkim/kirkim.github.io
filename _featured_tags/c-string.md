@@ -1,6 +1,6 @@
 ---
 layout: tag-blog
-title: String
+title: String함수
 slug: string
 category: c
 menu: false
