@@ -127,7 +127,7 @@ int main(void)
     }
 }
 ```
-<img src="/assets/img/c/sscanf_img1.jpg" width="80%">
+<img src="/assets/img/c/sscanf_img1.jpg" alt="sscanf_img1" width="80%">
 * num에 '1234'가 입력된 뒤 문자'p'지점에서 인식을 못하고 stdin(입력스트림)버퍼가 남아있게 됩니다.
 (대부분의 컴파일러가 인식을하지못하면 버퍼를 남겨둔채 scanf함수를 종료시킵니다.[인식문제로 무한루프에 빠지지는 않음])
 * 하지만 위의코드처럼 while문을 통해 여러번 입력을 받는 케이스라면 stdin의 버퍼가 남아 있으므로 무한루프에 빠지게 됩니다.
@@ -137,9 +137,9 @@ int main(void)
 <h3>(3)&#60; fgets + sscanf 조합 이점[1]: 무한루프 해결 &#62;</h3>
 fgets + sscanf조합을 사용하면 무한루프를 해결할 수 있습니다.
 <h5 align="middle">&#60; scanf단독사용(안좋은 케이스) &#62;</h5>
-<img src="/assets/img/c/sscanf_img2.jpg" width="100%">
+<img src="/assets/img/c/sscanf_img2.jpg" alt="sscanf_img2" width="100%">
 <h5 align="middle">&#60; fgets + sscanf함수를 조합 &#62;</h5>
-<img src="/assets/img/c/sscanf_img3.jpg" width="100%">
+<img src="/assets/img/c/sscanf_img3.jpg" alt="sscanf_img3" width="100%">
 * 기존 `scanf함수`를 단독으로 사용했을 때는 재때 stdin(입력스트림)의 버퍼를 처리해주지 못하고 남아 있게되서 while문 무한루프에 빠지게 됬습니다.
 * 하지만 `fgets + sscanf함수`조합으로 사용할 경우 fgets함수에서 모든 버퍼를 다 처리해주기 때문에 무한루프에 빠지지 않습니다.<br />stdin의 크기가 BUFFER의 크기보다 크더라도 (BUFFER - 1)크기만큼 순차적으로 처리하게 됩니다.(fgets함수특성상 마지막에 '\0'을 넣어주기 때문에 최대 BUFFER - 1 씩 처리합니다.)
 <br /><br />

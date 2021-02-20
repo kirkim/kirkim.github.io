@@ -11,13 +11,15 @@ comments: true
 이번장에서는 C언어 빌드 단계(4단계)에 대해 간단히 알아보도록 하겠습니다.
 
 <h2>C언어의 빌드 단계(4단계)</h2>
-1. 전처리(preprocessing)
-2. 컴파일(compilation)
-3. 어셈블(assembling)
-4. 링크(linking)
-<!-- 나중에 이미지 추가-->
+1. &nbsp;&nbsp;**전처리**(preprocessing)
+2. &nbsp;&nbsp;**컴파일**(compilation)
+3. &nbsp;&nbsp;**어셈블**(assembling)
+4. &nbsp;&nbsp;**링크**(linking)
 
-※ 크게 컴파일(1,2,3단계)와 링크 단계로 보기도 합니다.
+<img src="/assets/img/c/c_build_img.jpg" alt="c_build" width="80%">
+
+<br />
+※ 크게 **컴파일단계**(1,2,3단계)와 **링크단계**로 보기도 합니다.
 * * *
 <h2>1. 전처리 단계</h2>
 * **입력:** C언어 코드(.c)<br />**출력:** 트랜슬레이션 유닛(translation unit)
