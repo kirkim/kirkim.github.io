@@ -52,7 +52,7 @@ int main(void)
 7: (null)
 ```
 
-![strtok_img](/assets/strtok_img.jpg)
+![strtok_img](https://kirkim.github.io/assets/img/c/strtok_img.jpg)
 * 처음 strtok함수를 호출시 문자열(str)을 넣어야 됩니다.
 * 그 다음부터 strtok함수는 프로그램 종료시까지 그 다음 토큰의 위치를 기억하고 있게 됩니다.
 * 문자열(str)의 다음 토큰을 구하려면 NULL을 넣어주면됩니다.
