@@ -2,7 +2,7 @@
 layout: post
 title:  "[C]strstr & strnstr"
 subtitle:   ""
-date: 2021-02-12 11:45:51 +0900
+date: 2021-02-12 03:45:51 +0900
 categories: c
 tags: string
 comments: true
