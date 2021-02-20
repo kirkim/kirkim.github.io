@@ -26,7 +26,7 @@ size_t strlcpy(char *dst, const char *src, size_t len)
     * **strncpy**: 복사된 문자열(char*)
     * **strlcpy**: src문자열의 길이(size_t)
 
-* **헤더파일** : \<string.h\>
+* **헤더파일** : &lt;string.h&gt;
 
 * * *
 <h2>3. 함수구현</h2>

@@ -19,7 +19,7 @@ char *strtok(char *str, const char *delim)
 
 * * *
 <h2>2. 헤더파일, 반환값</h2>
-* **헤더파일**: \<string.h\>
+* **헤더파일**: &lt;string.h&gt;
 * **반환값**: 토큰화된 문자열, NULL(더이상 토큰이 없을 시)
 
 * * *

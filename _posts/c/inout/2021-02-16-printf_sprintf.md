@@ -24,7 +24,7 @@ int sprintf(char* restrict dst, const char* restrict format, ...);
 
 * * *
 <h2>2. 헤더파일, 반환값</h2>
-* **헤더파일**: \<stdio.h\>
+* **헤더파일**: &lt;stdio.h&gt;
 * **반환값**:
 
   ||성공|실패|

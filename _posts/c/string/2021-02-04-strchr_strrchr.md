@@ -28,7 +28,7 @@ char *strrchr(const char *s, int character);
     * 문자를 찾았을시 그 문자위치의 주소값을 가진 문자열 포인터(char*)
     * 문자를 못찾을시 0 반환
 
-* **헤더파일** : \<string.h\>
+* **헤더파일** : &lt;tring.h&gt;
 
 * * *
 <h2>3. 함수구현</h2>

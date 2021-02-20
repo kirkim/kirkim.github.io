@@ -34,7 +34,7 @@ char *strnstr(const char *str, const char *substr, size_t len)
     |**NULL포인터를 입력받을경우**|segmentation fault|segmentation fault|
     |**len값이 음수일 경우**||strstr함수와같이 동작|
 
-* **헤더파일** : \<string.h\>
+* **헤더파일** : &lt;string.h&gt;
 
 * * *
 <h2>3. 함수구현</h2>

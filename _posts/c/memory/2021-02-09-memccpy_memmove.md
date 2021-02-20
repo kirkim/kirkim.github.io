@@ -32,7 +32,7 @@ void *memmove(void *dst, const void *src, size_t size)
     |**dst, src모두 NULL포인터일 때**|segmentation fault|NULL포인터(0)|
     |**dst, src둘중하나가 NULL포인터일 때**|segmentation fault|segmentation fault|
 
-* **헤더파일**: \<string.h\>
+* **헤더파일**: &lt;string.h&gt;
 
 * * *
 <h2>3. 함수구현</h2>

@@ -31,7 +31,7 @@ int strncmp(const char* str1, const char* str2, size_t len)
     |**str1 == str2**|0|
     |**str1 < str2**|-1 or 음수|
 
-* **헤더파일**: \<string.h\>
+* **헤더파일**: &lt;string.h&gt;
 
 * * *
 <h2>3. 함수구현</h2>
