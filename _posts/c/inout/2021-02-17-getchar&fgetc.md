@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]getchar & fgetc"
+title:  "[C]getchar &amp; fgetc"
 subtitle:   ""
 date: 2021-02-17 03:45:51 +0900
 categories: c

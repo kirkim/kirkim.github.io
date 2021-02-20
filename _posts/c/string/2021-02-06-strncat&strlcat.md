@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]strncat & strlcat"
+title:  "[C]strncat &amp; strlcat"
 subtitle:   ""
 date: 2021-02-06 13:45:51 +0900
 categories: c

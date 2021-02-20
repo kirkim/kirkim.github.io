@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]strtok & split"
+title:  "[C]strtok &amp; split"
 subtitle:   ""
 date: 2021-02-13 11:45:51 +0900
 categories: c

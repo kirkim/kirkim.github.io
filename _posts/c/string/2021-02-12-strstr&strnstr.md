@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]strstr & strnstr"
+title:  "[C]strstr &amp; strnstr"
 subtitle:   ""
 date: 2021-02-12 11:45:51 +0900
 categories: c

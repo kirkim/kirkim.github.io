@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]memccpy & memmove"
+title:  "[C]memccpy &amp; memmove"
 subtitle:   ""
 date: 2021-02-09 02:45:51 +0900
 categories: c

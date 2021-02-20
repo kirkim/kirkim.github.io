@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]strncpy & strlcpy"
+title:  "[C]strncpy &amp; strlcpy"
 subtitle:   ""
 date: 2021-02-05 11:45:51 +0900
 categories: c

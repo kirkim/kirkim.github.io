@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]gets & fgets"
+title:  "[C]gets &amp; fgets"
 subtitle:   ""
 date: 2021-02-17 04:45:51 +0900
 categories: c
