@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]printf &amp; sprintf"
+title:  "[C]printf & sprintf"
 subtitle:   ""
 date: 2021-02-16 02:45:51 +0900
 categories: c

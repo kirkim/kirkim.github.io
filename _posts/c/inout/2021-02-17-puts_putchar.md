@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]puts,fputs &amp; putchar,fputc"
+title:  "[C]puts,fputs & putchar,fputc"
 subtitle:   ""
 date: 2021-02-17 02:45:51 +0900
 categories: c

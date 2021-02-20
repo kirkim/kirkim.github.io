@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]gets &amp; fgets"
+title:  "[C]gets & fgets"
 subtitle:   ""
 date: 2021-02-17 04:45:51 +0900
 categories: c
@@ -156,4 +156,4 @@ int main(void)
 }
 ```
 * 위험할 수 있는 `scanf함수`를 대체할 수 있는 코드조합입니다.
-* `fgets함수`와 `sscanf`함수의 단점을 서로 보완했으며 매우 효과적인 코드조합입니다.**[( 자세한 내용은 scanf관련 POST에 있습니다 )](https://kirkim.github.io/c/2021/02/15/scanf&sscanf.html)**
+* `fgets함수`와 `sscanf`함수의 단점을 서로 보완했으며 매우 효과적인 코드조합입니다.**[( 자세한 내용은 scanf관련 POST에 있습니다 )](https://kirkim.github.io/c/2021/02/15/scanf_sscanf.html)**

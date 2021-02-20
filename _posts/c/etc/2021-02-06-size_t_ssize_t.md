@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]size_t &amp; ssize_t"
+title:  "[C]size_t & ssize_t"
 subtitle:   ""
 date: 2021-02-06 03:45:51 +0900
 categories: c

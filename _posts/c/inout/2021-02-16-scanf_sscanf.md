@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]scanf &amp; sscanf"
+title:  "[C]scanf & sscanf"
 subtitle:   ""
 date: 2021-02-16 03:45:51 +0900
 categories: c

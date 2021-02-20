@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]strcmp &amp; strncmp"
+title:  "[C]strcmp & strncmp"
 subtitle:   ""
 date: 2021-02-06 11:45:51 +0900
 categories: c
