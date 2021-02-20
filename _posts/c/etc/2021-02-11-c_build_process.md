@@ -16,7 +16,7 @@ comments: true
 3. &nbsp;&nbsp;**어셈블**(assembling)
 4. &nbsp;&nbsp;**링크**(linking)
 
-<img src="/assets/img/c/c_build_img.jpg" alt="c_build" width="80%">
+<img src="https://kirkim.github.io/assets/img/c/c_build_img.jpg" alt="c_build" width="80%">
 
 <br />
 ※ 크게 **컴파일단계**(1,2,3단계)와 **링크단계**로 보기도 합니다.

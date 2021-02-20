@@ -101,13 +101,13 @@ before sample: hello
 result: abcdefg
 after sample: fg
 ```
-<img src="/assets/img/c/gets_img1.jpg" width="90%">
+<img src="https://kirkim.github.io/assets/img/c/gets_img1.jpg" width="90%">
 * 위의 코드처럼 다른메모리에 침범을 하게 됩니다.(보안상의 위험성이 크다)
 * BUFFER의 크기를 조정한다고해서 해결할 문제가 아닙니다. (언제가는 버퍼오버플로우가 생김)
 * 이러한 이유 때문에 **gets함수는 절대로 사용하지 않는 것이 좋습니다.**
 <br /><br />
 <h3>(2)&#60; '\n'도 읽어들이는 fgets함수 &#62;</h3>
-<img src="/assets/img/c/gets_img2.jpg" width="90%">
+<img src="https://kirkim.github.io/assets/img/c/gets_img2.jpg" width="90%">
 이 처럼 fgets함수는 새 줄을 만나서 끝났을 떄랑 아닐 떄를 구분해야 하기 때문에 '\n'문자까지도 읽어 드립니다. (새 줄을 만나지 않아도 반환될 수 있음)
 ```c
 int main(void)
