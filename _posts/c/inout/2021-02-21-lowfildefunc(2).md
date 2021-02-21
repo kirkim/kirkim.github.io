@@ -8,7 +8,10 @@ tags: inout
 comments: true
 ---
 
+이번 포스트에서는 **read함수**, **write함수**, **lseek함수**를 알아볼 예정입니다.
+
 <h2>5️⃣ read함수</h2>
+
 <h4 align="middle">&#60;함수원형 &#62;</h4>
 ```c
 ssize_t read(int fides, void *buf, size_t nbytes);
@@ -17,12 +20,6 @@ ssize_t read(int fides, void *buf, size_t nbytes);
 
 * **read함수**는 파일에서 nbytes값의 크기만큼 바이트를 읽어서 buf에 저장합니다.
 * 오류가 발생하면 -1을 반환하고 성공할 시 읽어온 바이트 수를 리턴합니다.
-
-<h4 align="middle">&#60;함수원형 &#62;</h4>
-```c
-ssize_t read(int fides, void *buf, size_t nbytes);
-//윈도우에선 int형
-```
 <br />
 <h3 align="left">&#60; open함수 예시 &#62;</h3>
 ```c

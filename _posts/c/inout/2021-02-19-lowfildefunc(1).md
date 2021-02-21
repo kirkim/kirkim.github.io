@@ -8,6 +8,8 @@ tags: inout
 comments: true
 ---
 
+이번 포스트는 **저수준 파일입출력 함수**에 관한 포스트입니다.
+
 <h2 align="left">&#60; 목차 &#62;</h2>
 **1️. &nbsp;&nbsp;저수준,고수준 파일 입출력함수 비교**<br />
 **2️.&nbsp;&nbsp;파일 기술자 (fd, FILE Descriptor, 파일 디스크립터)**<br />
