@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]저수준 파일입출력 함수(1)[fd(파일디스크립터), fopen, fclose]"
+title:  "[C]저수준 파일입출력 함수(1)[fd(파일 기술자), open, close]"
 subtitle:   ""
 date: 2021-02-19 03:45:51 +0900
 categories: c
