@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]저수준 파일입출력 함수(1)[fd(파일디스크립터), fopen]"
+title:  "[C]저수준 파일입출력 함수(1)[fd(파일디스크립터), fopen, fclose]"
 subtitle:   ""
 date: 2021-02-19 03:45:51 +0900
 categories: c
@@ -9,10 +9,10 @@ comments: true
 ---
 
 <h2 align="left">&#60; 목차 &#62;</h2>
-**1. &nbsp;&nbsp;저수준,고수준 파일 입출력함수 비교**<br />
-**2. &nbsp;&nbsp;파일 기술자 (fd, FILE Descriptor, 파일 디스크립터)**<br />
-**3. &nbsp;&nbsp;open함수**<br />
-**4. &nbsp;&nbsp;close함수**<br />
+**1️⃣ &nbsp;&nbsp;저수준,고수준 파일 입출력함수 비교**<br />
+**2️⃣ &nbsp;&nbsp;파일 기술자 (fd, FILE Descriptor, 파일 디스크립터)**<br />
+**3️⃣ &nbsp;&nbsp;open함수**<br />
+**4️⃣ &nbsp;&nbsp;close함수**<br />
 
 * * *
 * 저수준 파일입출력 함수는 유닉스 기반의 고전입출력함수로 리눅스기준 `<unistd.h>`헤더파일에 선언되어 있습니다.
