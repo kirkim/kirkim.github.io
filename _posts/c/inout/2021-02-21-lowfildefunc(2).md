@@ -7,3 +7,5 @@ categories: c
 tags: inout
 comments: true
 ---
+
+<h2>5️⃣ close함수</h2>

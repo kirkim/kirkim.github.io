@@ -14,7 +14,7 @@ comments: true
 * **fputc함수**는 스트림에 문자를 쓰는 함수입니다.
 
 * * *
-<h2>1. 함수원형</h2>
+<h2>1️⃣ 함수원형</h2>
 <h4 align="middle">&#60; puts &#62;</h4>
 ```c
 int puts(const char* str);
@@ -33,7 +33,7 @@ int fputc(int character, FILE* stream);
 ```
 
 * * *
-<h2>2. 헤더파일, 반환값</h2>
+<h2>2️⃣ 헤더파일, 반환값</h2>
 * **헤더파일**: &lt;stdio.h&gt;
 * **반환값**:
 
@@ -45,7 +45,7 @@ int fputc(int character, FILE* stream);
   |fputc|쓰인문자|EOF(-1)|
   
 * * *
-<h2>3. 함수사용</h2>
+<h2>3️⃣ 함수사용</h2>
 <h5>&#60; puts, putchar &#62;</h5>
 ```c
 int main(void)
@@ -82,7 +82,7 @@ helloc
 * fputs함수는 puts함수처럼 개행문자를 넣어주지는 않습니다.
 
 * * *
-<h2>4. 특징 & 주의사항</h2>
+<h2>4️⃣ 특징 & 주의사항</h2>
 1. `puts함수`는 자동으로 마지막에'\n'문자도 넣어 줍니다.
 2. `fputc`의 스트림으로 `stdout`스트림을 넣으면 `putchar`함수와 같이 동작합니다.
 3. `fputs`의 스트림으로 `stdout`스트림을 넣으면 `puts`함수와 같이 동작하지만 개행문자`'\n'`을 넣어주지 않습니다.

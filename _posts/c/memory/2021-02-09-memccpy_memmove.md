@@ -12,7 +12,7 @@ comments: true
 **memmove함수**는 메모리값을 원하는 크기만큼 복사하는 함수입니다.(주소가 겹칠때 유용)
 
 * * *
-<h2>1. 함수원형</h2>
+<h2>1️⃣ 함수원형</h2>
 <h4 align="middle">&#60; memccpy &#62;</h4>
 ```c
 void *memccpy(void *dst, const void *src, int c, size_t size)
@@ -22,7 +22,7 @@ void *memccpy(void *dst, const void *src, int c, size_t size)
 void *memmove(void *dst, const void *src, size_t size)
 ```
 * * *
-<h2>2. 헤더파일, 반환값</h2>
+<h2>2️⃣ 헤더파일, 반환값</h2>
 * **반환값**:
 
     |조건|memccpy|memmove|
@@ -35,7 +35,7 @@ void *memmove(void *dst, const void *src, size_t size)
 * **헤더파일**: &lt;string.h&gt;
 
 * * *
-<h2>3. 함수구현</h2>
+<h2>3️⃣ 함수구현</h2>
 <h4 align="middle">&#60; memccpy &#62;</h4>
 ```c
 void *memccpy(void *dst, const void *src, int c, size_t size)
@@ -83,7 +83,7 @@ void *memmove(void *dst, const void *src, size_t size)
 }
 ```
 * * *
-<h2>4. 특징 & 주의사항</h2>
+<h2>4️⃣ 특징 & 주의사항</h2>
 <h4 align="left">&#60; memccpy &#62;</h4>
 1. 찾고자하는 문자를 못찾을시 0을 반환하지만 복사는 이뤄집니다.
 2. size값을 dst, src의 크기보다 작게 잡아줘야 합니다.(컴파일러에 따라 경고메시지출력)
@@ -92,7 +92,7 @@ void *memmove(void *dst, const void *src, size_t size)
 1. 첫번째인자(dst), 두번째인자(src) 둘다 NULL포인터이면 예상과 달리 대부분의 컴파일러에서 경고메시지 없이 NULL포인터를 반환하면서 정상컴파일이 되었습니다.
 2. size값을 dst, src의 크기보다 작게 잡아줘야 합니다.(컴파일러에 따라 경고메시지출력)
 * * *
-<h2>5. 코드예시(특이케이스)</h2>
+<h2>5️⃣ 코드예시(특이케이스)</h2>
 <br />
 **1. &#60; memccpy에서 1byte크기가 아닌 자료형을 사용할 경우 &#62;**
 ```c
