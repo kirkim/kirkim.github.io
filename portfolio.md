@@ -25,7 +25,7 @@ font-weight:bold">
 > 1993.05.25 대한민국,서울특별시
 
 > 연락처: kirimrlfla@naver.com
-<a href="https://modoocode.com/" target="blank">
+
 > Github : <a href="https://github.com/kirkim" target="blank">https://github.com/kirkim</a>
 
 

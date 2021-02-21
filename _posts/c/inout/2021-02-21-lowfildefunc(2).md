@@ -9,6 +9,12 @@ comments: true
 ---
 
 <h2>5️⃣ read함수</h2>
+<h4 align="middle">&#60;함수원형 &#62;</h4>
+```c
+ssize_t read(int fides, void *buf, size_t nbytes);
+//윈도우에선 int형
+```
+
 * **read함수**는 파일에서 nbytes값의 크기만큼 바이트를 읽어서 buf에 저장합니다.
 * 오류가 발생하면 -1을 반환하고 성공할 시 읽어온 바이트 수를 리턴합니다.
 
@@ -67,14 +73,15 @@ n2 = 5, buf2 = jklmn
 위의 코드를 보면 알듯이 read함수는 호출때마다 읽어온 크기만큼 오프셋이 이동하여 다음 읽어올 위치를 가르키고 있습니다. (프로그램이 종료하거나 EOF를 만나면 초기화)
 
 * * *
-<h2>5️6️⃣ write함수</h2>
-* **write함수**는 buf에서 nbytes값의 크기만큼 바이트를 읽어서 파일 기술자(fd)에 작성합니다.
-* 오류가 발생하면 -1을 반환하고 성공할 시 쓰기를 수행한 바이트 수를 리턴합니다.
+<h2>6️⃣ write함수</h2>
 <h4 align="middle">&#60;함수원형 &#62;</h4>
 ```c
 ssize_t write(int fildes, const void* buf, size_t nbytes);
 //윈도우에선 int형
 ```
+* **write함수**는 buf에서 nbytes값의 크기만큼 바이트를 읽어서 파일 기술자(fd)에 작성합니다.
+* 오류가 발생하면 -1을 반환하고 성공할 시 쓰기를 수행한 바이트 수를 리턴합니다.
+
 <br />
 <h3 align="left">&#60; 표준입력을 이용한 write함수의 간단한 예 &#62;</h3>
 ```c
@@ -88,10 +95,20 @@ int main(void)
 ```
 
 * * *
-<h2>5️7️⃣ lseek함수</h2>
-* **lseek함수**는 열린 파일 지정자(fd)로 부터 offset만큼 위치를 변경합니다.<br />이 때 whence의 값을 기준으로 offset을 계산합니다.
-* 실패했을 경우 -1을 리턴하고 성공했을 경우 파일의 시작으로 부터 떨어진 byte만큼의 offset을 리턴합니다.
+<h2>7️⃣ lseek함수</h2>
+<h4 align="middle">&#60;함수원형 &#62;</h4>
 ```c
 off_t lseek(int fildes, off_t offset, int whence);
 //윈도우에선 long형
 ```
+<h4 align="middle">&#60; whence &#62;</h4>
+
+|값|설명|
+|:--:|:--:|
+|SEEK_SET|파일의 시작 기준|
+|SEEK_CUR|현재 위치 기준|
+|SEEK_END|파일의 끝 기준|
+
+* **lseek함수**는 열린 파일 지정자(fd)로 부터 offset만큼 위치를 변경합니다.<br />이 때 whence의 값을 기준으로 offset을 계산합니다.
+* 실패했을 경우 -1을 리턴하고 성공했을 경우 파일의 시작으로 부터 떨어진 byte만큼의 offset을 리턴합니다.
+* 고수준파일 입출력함수에서 배운 `fseek함수`와 `파일스트림(stream)`을 받는지 `파일디스크립터(fd)`를 받는지의 차이만 있을뿐 동작하는 방식과 쓰임은 비슷합니다.

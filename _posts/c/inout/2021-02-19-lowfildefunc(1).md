@@ -13,6 +13,9 @@ comments: true
 **2️.&nbsp;&nbsp;파일 기술자 (fd, FILE Descriptor, 파일 디스크립터)**<br />
 **3. &nbsp;&nbsp;open함수**<br />
 **4. &nbsp;&nbsp;close함수**<br />
+**5. &nbsp;&nbsp;read함수**<br />
+**6. &nbsp;&nbsp;write함수**<br />
+**7. &nbsp;&nbsp;lseek함수**<br />
 
 * * *
 * 저수준 파일입출력 함수는 유닉스 기반의 고전입출력함수로 리눅스기준 `<unistd.h>`헤더파일에 선언되어 있습니다.
