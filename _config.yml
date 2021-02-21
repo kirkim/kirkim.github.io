@@ -2,7 +2,7 @@
 #  User configuration
 # -----------------------------------------------------------------------------
 
-title:               기림이의 프로그래밍
+title:               기림이의<br />프로그래밍
 
 # The unique resource location of your page.
 # Set to `https://<username>.github.io` when hosting on GitHub Pages
@@ -51,7 +51,7 @@ disqus: True
 disqus_shortname:    xxxx
 
 # This text will appear in the footer of every page. Markdown enabled.
-copyright:           '&copy; 2020.12. by kirim'
+copyright:           '&copy; 2021.02. by kirim'
 
 # Format of the permalinks
 permalink:           

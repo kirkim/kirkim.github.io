@@ -20,6 +20,13 @@ vvs:
     srcset:
       1x:            /assets/img/me.png
       2x:            /assets/img/me.png # 모바일
+  
+  picture_sidebar:
+    src:             /assets/img/me_sidebar.png
+    # srcset is optional, but can be used to provide higher res versions for retina displays
+    srcset:
+      1x:            /assets/img/me_sidebar.png
+      2x:            /assets/img/me_sidebar.png # 모바일
 
   # Social media icons in sidebar
   # Comment/uncommet to show/hide
