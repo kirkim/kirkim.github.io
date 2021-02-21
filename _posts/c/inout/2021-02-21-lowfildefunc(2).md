@@ -8,8 +8,9 @@ tags: inout
 comments: true
 ---
 
-이번 포스트에서는 **read함수**, **write함수**, **lseek함수**를 알아볼 예정입니다.
+이 포스트는 **read함수**, **write함수**, **lseek함수**에 관한 내용입니다.
 
+* * *
 <h2>5️⃣ read함수</h2>
 
 <h4 align="middle">&#60;함수원형 &#62;</h4>
