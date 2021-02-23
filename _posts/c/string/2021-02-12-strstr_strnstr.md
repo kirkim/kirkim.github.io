@@ -87,7 +87,7 @@ char *k_strnstr(const char *str, const char *substr, size_t len)
 ```
 
 * * *
-<h2>4️⃣ 특징 & 주의사항</h2>
+<h2>4️⃣ 특징 &amp; 주의사항</h2>
 1. strstr, strnstr함수 모두 const char*로 받은 것을 char*로 반환해주는 부분이 애매하긴 합니다. stdup, substr과 같은 함수를 직접구현해서 사용하면 strstr,strnstr함수로 찾은 문자열을 새로운 메모리에 복사해서 사용할 수 있습니다. **(자세한 내용 아래 5번항목)**
 2. strnstr함수는 윈도우에서는 정의되어 있지 않습니다.(리눅스엔 있음)
 3. stnstr함수는 문자열끝('\0')을 내부적으로 확인하기 때문에 len의 값에 대해 안전합니다.<br />len이 음수이면 어떠한 경고도 출력하지않고 버퍼오버플로우된채로 컴파일됩니다.(strstr함수와같이 동작)

@@ -83,7 +83,7 @@ void *memmove(void *dst, const void *src, size_t size)
 }
 ```
 * * *
-<h2>4️⃣ 특징 & 주의사항</h2>
+<h2>4️⃣ 특징 &amp; 주의사항</h2>
 <h4 align="left">&#60; memccpy &#62;</h4>
 1. 찾고자하는 문자를 못찾을시 0을 반환하지만 복사는 이뤄집니다.
 2. size값을 dst, src의 크기보다 작게 잡아줘야 합니다.(컴파일러에 따라 경고메시지출력)

@@ -104,7 +104,7 @@ size_t	strlcat(char *dst, const char *src, size_t len)
 }
 ```
 * * *
-<h2>4️⃣ 특징 & 주의사항</h2>
+<h2>4️⃣ 특징 &amp; 주의사항</h2>
 
 ||strncat|strlcat|
 |:--:|:--:|:--:|

@@ -65,6 +65,6 @@ int strncmp(const char* str1, const char* str2, size_t len)
 }
 ```
 * * *
-<h2>4️⃣ 특징 & 주의사항</h2>
+<h2>4️⃣ 특징 &amp; 주의사항</h2>
 
 * 자료형이 size_t인 len의 값이 **음수**가 되면 버퍼오버플로우(size_t는 unsigned형으로 선언되어 있기 때문)가 일어납니다. 컴파일러에 따라서 경고메시지를 출력해주기도 합니다. 하지만 대부분의 컴파일러에서 오버플로우난 상태로 함수가 실행됩니다. 결국 음수값의 len값을 가진 strncmp함수는 strcmp함수와 같게 됩니다.
