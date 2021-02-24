@@ -1,10 +1,10 @@
 ---
 layout: list
-title: Study
-slug: study
+title: 42Seoul
+slug: 42seoul
 menu: true
 submenu: true
 order: 5
 description: >
-  기타 공부
+  42Seoul enovation academy
 ---
