@@ -97,3 +97,8 @@ char	*ft_strndup(const char *str, ssize_t offst)
 	return (result - cnt);
 }
 ```
+
+* * *
+<br /><br />
+<h2><span style="color:#084B8A;">이전포스트 &gt;</span><a href="https://kirkim.github.io/42seoul/2021/02/26/gnl_header.html" target="blank"> [getnextline](1)헤더파일 만들기</a></h2>
+<h2><span style="color:#084B8A;">다음포스트 &gt;</span><a href="https://kirkim.github.io/42seoul/2021/02/26/gnl_func.html" target="blank"> [getnextline](3)본함수 구현</a></h2>

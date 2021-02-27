@@ -236,4 +236,4 @@ $> gcc libft.a //main.c가 포함된 라이브러리
 
 * * *
 <br /><br />
-<h2><span style="color:#084B8A;">이전포스트 &gt;</span><a href="https://kirkim.github.io/42seoul/2021/02/24/list_func.html" target="blank"> [libft](3)리스트 함수</a></h2>
+<h2><span style="color:#084B8A;">이전포스트 &gt;</span><a href="https://kirkim.github.io/42seoul/2021/02/24/libft_list_func.html" target="blank"> [libft](3)리스트 함수</a></h2>

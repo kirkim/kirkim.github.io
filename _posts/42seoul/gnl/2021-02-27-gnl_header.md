@@ -57,5 +57,4 @@ char    *ft_strndup(const char *str, ssize_t offst);
 
 * * *
 <br /><br />
-<h2><span style="color:#084B8A;">이전포스트 &gt;</span><a href="https://kirkim.github.io/c/2021/02/18/lowfildefunc(1).html" target="blank"> get_next_line(2)</a></h2>
-<h2>다음포스트 &gt;<a href="https://kirkim.github.io/c/2021/02/18/lowfildefunc(1).html" target="blank"> get_next_line(2)</a></h2>
+<h2><span style="color:#084B8A;">다음포스트 &gt;</span><a href="https://kirkim.github.io/42seoul/2021/02/26/gnl_util_func.html" target="blank"> [getnextline](2)Util함수 구현</a></h2>
