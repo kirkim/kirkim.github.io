@@ -108,7 +108,7 @@ gcc -c -o ft_strljoin.o ft_strljoin.c
 3. **&lt;clean&gt;:** &nbsp;&nbsp;생성된 **오브젝트 파일**을 **삭제**해주는 타겟입니다.
 4. **&lt;fclean&gt;:** &nbsp;&nbsp;생성된 **오브젝트 파일**과 **라이브러리 파일**을 **삭제**해주는 타겟입니다.
 5. **&lt;re&gt;:** &nbsp;&nbsp;**fclean**타겟과 **all**타겟을 순차적으로 진행해줍니다.
-* **&lt;.PHONY&gt;:** &nbsp;&nbsp;이 규칙은 공백으로 구분된 재료들의 이름을 **파일명**대신 **타겟**으로 인식하게 합니다.**(기본적으로 타겟과 동일한 이름을 가진 파일을 만들어서는 안됩니다.)**
+6. **&lt;.PHONY&gt;:** &nbsp;&nbsp;이 규칙은 공백으로 구분된 재료들의 이름을 **파일명**대신 **타겟**으로 인식하게 합니다.**(기본적으로 타겟과 동일한 이름을 가진 파일을 만들어서는 안됩니다.)**
 
 * * *
 <h2>4️⃣ 최종 libft의 Makefile</h2>
@@ -203,7 +203,7 @@ bonus : $(OBJS) $(OBJS_BONUS)
 
 * * *
 <h2>5️⃣ libft의 make명령어</h2>
-1. **make:** &nbsp;&nbsp;처음 명령어 실행시 모든.c파일의 오브젝트파일(.o)이 생성됬으며 그 오브젝트파일(.o)을 아카이브(.a)파일로 묶어 주었습니다. **만약 특정 .c파일을 수정**하게 되면 수정한 .c파일만을 새롱누 오브젝트파일(.o)로 수정하여 기존 오브젝트파일과 묶어 주었습니다.
+* **make:** &nbsp;&nbsp;처음 명령어 실행시 모든.c파일의 오브젝트파일(.o)이 생성됬으며 그 오브젝트파일(.o)을 아카이브(.a)파일로 묶어 주었습니다. **만약 특정 .c파일을 수정**하게 되면 수정한 .c파일만을 새롱누 오브젝트파일(.o)로 수정하여 기존 오브젝트파일과 묶어 주었습니다.
 <h4 align="middle">&#60;memcpy.c파일을 수정하고 make명령어를 실행했을때(터미널)&#62;</h4>
 ```c
 $>make
@@ -220,8 +220,8 @@ $>make
 
 make: Nothing to be done for `all'.
 ```
-2. **기타명령어:** &nbsp;&nbsp;`make clean`, `make fclean`, `make re`, `make bonus`명령어는 수정없이 중복실행하여도 특별한 오류출력없이 명령을 수행했습니다.
-3. 최종적으로 만들어준 **libft.a**라이브러리에 담긴 함수를 사용한 **main.c**파일을 다음과 같이 컴파일하여 사용할 수 있게 됩니다.
+* **기타명령어:** &nbsp;&nbsp;`make clean`, `make fclean`, `make re`, `make bonus`명령어는 수정없이 중복실행하여도 특별한 오류출력없이 명령을 수행했습니다.
+* 최종적으로 만들어준 **libft.a**라이브러리에 담긴 함수를 사용한 **main.c**파일을 다음과 같이 컴파일하여 사용할 수 있게 됩니다.
 ```c
 $> gcc main.c libft.a
 ```
@@ -231,5 +231,9 @@ $> gcc libft.a //main.c가 포함된 라이브러리
 ```
 
 * * *
-<h2>6️⃣ Makefile구현을 마무리하며</h2>
+<h2>6️⃣ Makefile을 마무리하며</h2>
 **Makefile**에 대한 내용은 이것보다 훨씬 많을 것입니다. 하지만 이번에 libft과제에서 사용한 Makefile의 규칙들이 가장 기본적이면서도 중요한 규칙일 것이라고 생각합니다.
+
+* * *
+<br /><br />
+<h2><span style="color:#084B8A;">이전포스트 &gt;</span><a href="https://kirkim.github.io/42seoul/2021/02/24/list_func.html" target="blank"> [libft](3)리스트 함수</a></h2>

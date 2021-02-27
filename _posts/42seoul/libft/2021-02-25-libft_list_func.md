@@ -183,3 +183,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (result);
 }
 ```
+
+* * *
+<br /><br />
+<h2><span style="color:#084B8A;">이전포스트 &gt;</span><a href="https://kirkim.github.io/42seoul/2021/02/24/func.html" target="blank"> [libft](2)내장함수 구현</a></h2>
+<h2><span style="color:#084B8A;">다음포스트 &gt;</span><a href="https://kirkim.github.io/42seoul/2021/02/25/makefile.html" target="blank"> [libft](4)Makefile</a></h2>

@@ -10,6 +10,7 @@ order: 2
 안녕하세요. 2021년부터 42seoul에서 개발자가 되기 위해서 개발공부를 하고 있는 김기림입니다.
 
 * * *
+<!--
 ## 🦄 학습에 도움된 강의 🦄
 1️⃣ **POCU아카데미** -"김포프강사님" - **C 언매니지드 프로그래밍**<a href="https://pocu.academy/ko" target="blank">( 링크 )</a><br />
 
@@ -20,3 +21,4 @@ order: 2
 4️⃣ **생활코딩**<a href="https://opentutorials.org/course/1" target="blank">( 링크 )</a><br />
 
 5️⃣ **모두의 코드** 블로그 <a href="https://modoocode.com/" target="blank">( 링크 )</a><br />
+-->

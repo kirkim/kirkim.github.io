@@ -22,7 +22,7 @@ font-weight:bold">
 
 ## Personal Data
 ---
-> 1993.05.25 대한민국,서울특별시
+> 대한민국,서울특별시
 
 > 연락처: kirimrlfla@naver.com
 
@@ -42,6 +42,7 @@ font-weight:bold">
 > Jan.2021 ~ 현재 : 42 SEOUL Innovation Academy
 >
 > 카뎃
+
 
 <!--
 ## Research Interest

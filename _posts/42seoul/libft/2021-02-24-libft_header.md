@@ -189,3 +189,7 @@ int		ft_lstsize(t_list *lst);
 #endif
 ```
 이렇게 최종적으로 구현한 libft헤더파일은 `#include "libft.h"`를 통해 호출할 수 있게 됩니다.
+
+* * *
+<br /><br />
+<h2><span style="color:#084B8A;">다음포스트 &gt;</span><a href="https://kirkim.github.io/42seoul/2021/02/24/func.html" target="blank"> [libft](2)내장함수 구현</a></h2>

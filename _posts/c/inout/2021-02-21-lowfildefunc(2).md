@@ -110,3 +110,7 @@ off_t lseek(int fildes, off_t offset, int whence);
 * **lseek함수**는 열린 파일 지정자(fd)로 부터 offset만큼 위치를 변경합니다.<br />이 때 whence의 값을 기준으로 offset을 계산합니다.
 * 실패했을 경우 -1을 리턴하고 성공했을 경우 파일의 시작으로 부터 떨어진 byte만큼의 offset을 리턴합니다.
 * 고수준파일 입출력함수에서 배운 `fseek함수`와 `파일스트림(stream)`을 받는지 `파일디스크립터(fd)`를 받는지의 차이만 있을뿐 동작하는 방식과 쓰임은 비슷합니다.
+
+* * *
+<br /><br />
+<h2><span style="color:#084B8A;">이전포스트 &gt;</span><a href="https://kirkim.github.io/c/2021/02/18/lowfildefunc(1).html" target="blank"> [C]저수준 파일입출력 함수(1)[fd(파일 기술자), open, close]</a></h2>

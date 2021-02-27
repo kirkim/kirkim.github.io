@@ -151,3 +151,7 @@ int close(int fd);
 ```
 * 파일 입출력 작업을 모두 완료하면 **반드시** 파일을 닫아야 합니다.
 * 성공적으로 닫으면 0을 반환하고 실패시 -1을 반환합니다.<br />(오류코드를 외부 변수 errno에 저장합니다.)
+
+* * *
+<br /><br />
+<h2><span style="color:#084B8A;">다음포스트 &gt;</span><a href="https://kirkim.github.io/c/2021/02/20/lowfildefunc(2).html" target="blank"> [C]저수준 파일입출력 함수(2)[read, write, lseek]</a></h2>
