@@ -25,7 +25,7 @@ comments: true
 <h3 align="left">1. &#60; ft_strlen &#62;</h3>
 <a href="https://kirkim.github.io/c/2021/02/04/strlen.html" target="blank"> strlen함수</a>포스트를 참고하시면 됩니다.
 ```c
-size_t	ft_strlen(const char *str)
+size_t ft_strlen(const char *str)
 {
 	size_t	len;
 
@@ -60,7 +60,7 @@ void *ft_memcpy(void *dst, const void *src, size_t size)
 <h3 align="left">3. &#60; ft_strjoin &#62;</h3>
 
 ```c
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len1;
 	size_t	len2;
@@ -80,7 +80,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 <h3 align="left">4. &#60; ft_strndup &#62;</h3>
 
 ```c
-char	*ft_strndup(const char *str, ssize_t offst)
+char *ft_strndup(const char *str, ssize_t offst)
 {
 	char	*result;
 	ssize_t	cnt;

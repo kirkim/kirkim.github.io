@@ -24,7 +24,7 @@ comments: true
 * **strdup함수**는 **문자열**을 새로운 메모리를 할당하여 그곳에 복사하는 함수입니다.
 <h4 align="middle">&#60; 함수구현 &#62;</h4>
 ```c
-char	*ft_strdup(const char *str)
+char *ft_strdup(const char *str)
 {
 	size_t	str_len;
 	char	*result;
@@ -44,7 +44,7 @@ char	*ft_strdup(const char *str)
 * **strjoin함수**는 두개의 문자열을 불여 새로운 메모리를 할당한 곳에 복사하는 함수입니다.
 <h4 align="middle">&#60; 함수구현 &#62;</h4>
 ```c
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len1;
 	size_t	len2;
@@ -69,7 +69,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 * **substr함수**는 **문자열**의 **원하는 곳**부터 **원하는 길이**만큼을 새로운 메모리를 할당한 곳에 복사하는 함수입니다.
 <h4 align="middle">&#60; 함수구현 &#62;</h4>
 ```c
-char	*ft_substr(char const *str, unsigned int start, size_t len)
+char *ft_substr(char const *str, unsigned int start, size_t len)
 {
 	char	*result;
 	size_t	s_len;
@@ -97,7 +97,8 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 <h2>4️⃣ strtrim </h2>
 * **strtrim**함수는 **문자열**의 앞뒤에 **지정한 문자들(set)**을 **제거**하는 함수입니다.
 <h4 align="middle">&#60; 함수구현 &#62;</h4>
-char	*ft_strtrim(char const *s1, char const *set)
+```c
+char *ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;
@@ -116,6 +117,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	result = ft_substr(s1, start, end - start); //위에서구한 start, end값으로 원하는 문자열복사
 	return (result);
 }
+```
 
 * * *
 <h2>5️⃣ split </h2>
@@ -123,7 +125,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 <h4 align="middle">&#60; 함수구현 &#62;</h4>
 ```c
 /* 토큰화시킨 문자열(단어)의 갯수를 구하는 함수*/
-static size_t	ft_cntword(const char *str, char c)
+static size_t ft_cntword(const char *str, char c)
 {
 	size_t	cnt;
 	size_t	flag;
@@ -145,7 +147,7 @@ static size_t	ft_cntword(const char *str, char c)
 }
 
 /* 현재토큰문자의 길이를 구하는 함수 */
-static size_t	ft_wordlen(char const *s, char c)
+static size_t ft_wordlen(char const *s, char c)
 {
 	size_t len;
 
@@ -159,7 +161,7 @@ static size_t	ft_wordlen(char const *s, char c)
 }
 
 /* strdup함수에 길이수(num)인자를 포함시킨 함수 */
-static char		*ft_strndup(const char *s, size_t num)
+static char *ft_strndup(const char *s, size_t num)
 {
 	char	*word;
     char    *temp;
@@ -174,7 +176,7 @@ static char		*ft_strndup(const char *s, size_t num)
 }
 
 /* 2차원배열의 동적메모리를 해제하는 함수 */
-static void		ft_free_str(char **s, int i)
+static void ft_free_str(char **s, int i)
 {
 	while (i--)
     {
@@ -185,7 +187,7 @@ static void		ft_free_str(char **s, int i)
     s = NULL;
 }
 
-char			**ft_split(char const *s, char c)
+char **ft_split(char const *s, char c)
 {
 	size_t	nb;
 	size_t	wordlen;
@@ -212,7 +214,7 @@ char			**ft_split(char const *s, char c)
 		nb++;
 	}
     /* split함수를 사용하는 입장에서 토큰화할 단어수를 알 수 없기 때문에 아랫줄처럼 
-    NULL포인터로 마지막 토큰문자열임을 알려주는 NULL포인터를 만들어 주는 것이 좋다*/
+    NULL포인터로 마지막 토큰문자열임을 알려주는 NULL포인터를 만들어 주는 것이 좋습니다*/
 	result[cnt] = NULL;
 	return (result);
 }
