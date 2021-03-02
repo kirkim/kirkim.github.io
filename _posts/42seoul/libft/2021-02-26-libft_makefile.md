@@ -95,15 +95,15 @@ $(NAME) : $(OBJS)
 ```
 `$<`는 **첫재료**를 뜻하고 `$@`는 **타겟**을 가리킵니다. `%`는 **동일한 이름**으로 매칭시켜줍니다.
 예를 들어 `ft_strlcpy.o`와`ft_strjoin.o`파일이 필요하다면 Makefile은 %.o 타겟을 찾아내고 다음과 같이 명령어를 수행할 것입니다.
-```c
-gcc -Wall -Wextra -Werror -c ft_strlcpy.c -o ft_strlcpy.o
+<kkr>
+gcc -Wall -Wextra -Werror -c ft_strlcpy.c -o ft_strlcpy.o<br />
 gcc -Wall -Wextra -Werror -c ft_strjoin.c -o ft_strjoin.o
-```
+</kkr>
 하지만 요즘 make프로그램은 `%.o: %.c`와 같은 규칙을 작성해주지 않아도 다음과 같이 기본적인 옵션으로 오브젝트파일(.o)을 만드는 명령어를 수행시켜줍니다.
-```c
-gcc -c -o ft_strlcpy.o ft_strlcpy.c
+<kkr>
+gcc -c -o ft_strlcpy.o ft_strlcpy.c<br />
 gcc -c -o ft_strljoin.o ft_strljoin.c
-```
+</kkr>
 
 3. **&lt;clean&gt;:** &nbsp;&nbsp;생성된 **오브젝트 파일**을 **삭제**해주는 타겟입니다.
 4. **&lt;fclean&gt;:** &nbsp;&nbsp;생성된 **오브젝트 파일**과 **라이브러리 파일**을 **삭제**해주는 타겟입니다.
@@ -205,30 +205,29 @@ bonus : $(OBJS) $(OBJS_BONUS)
 <h2>5️⃣ libft의 make명령어</h2>
 * **make:** &nbsp;&nbsp;처음 명령어 실행시 모든.c파일의 오브젝트파일(.o)이 생성됬으며 그 오브젝트파일(.o)을 아카이브(.a)파일로 묶어 주었습니다. **만약 특정 .c파일을 수정**하게 되면 수정한 .c파일만을 새롱누 오브젝트파일(.o)로 수정하여 기존 오브젝트파일과 묶어 주었습니다.
 <h4 align="middle">&#60;memcpy.c파일을 수정하고 make명령어를 실행했을때(터미널)&#62;</h4>
-```c
-$>make
+<kkr>
+$>make<br /><br />
+gcc -c -o ft_memcpy.o ft_memcpy.c<br />
+ar crs libft.a ft_strlen.o ft_strlcpy.o ft_strlcat.o<br />
+<span style="color: #b5ebb3f6;"> /*<br /> .o 파일 생략<br /> */</span><br />
+ft_itoa.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o<br />
+</kkr>
 
-gcc -c -o ft_memcpy.o ft_memcpy.c
-ar crs libft.a ft_strlen.o ft_strlcpy.o ft_strlcat.o
-/* .o 파일 생략 */
-ft_itoa.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o
-```
 <br />
 <h4 align="middle">&#60;수정할 파일이 없을때 make명령어 실행(터미널)&#62;</h4>
-```c
-$>make
-
+<kkr>
+$>make<br /><br />
 make: Nothing to be done for `all'.
-```
+</kkr>
 * **기타명령어:** &nbsp;&nbsp;`make clean`, `make fclean`, `make re`, `make bonus`명령어는 수정없이 중복실행하여도 특별한 오류출력없이 명령을 수행했습니다.
 * 최종적으로 만들어준 **libft.a**라이브러리에 담긴 함수를 사용한 **main.c**파일을 다음과 같이 컴파일하여 사용할 수 있게 됩니다.
-```c
+<kkr>
 $> gcc main.c libft.a
-```
+</kkr>
 **main함수파일(main.c)** 또한 라이브러리에 함께 묶어서 사용할 수 있습니다.
-```c
-$> gcc libft.a //main.c가 포함된 라이브러리
-```
+<kkr>
+$> gcc libft.a <span style="color: #b5ebb3f6;"> // main.c가 포함된 라이브러리</span>
+</kkr>
 
 * * *
 <h2>6️⃣ Makefile을 마무리하며</h2>
