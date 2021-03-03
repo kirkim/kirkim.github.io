@@ -41,7 +41,7 @@ int main(void)
 
     mode = 0644;             // mode(권한옵션)을 8진수로 저장
 
-    if(!(fd = _open("test.txt",O_RDONLY, mode)))
+    if(!(fd = open("test.txt",O_RDONLY, mode)))
     {
         perror("Open");
         exit(1);
