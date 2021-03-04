@@ -34,7 +34,7 @@ int sscanf(char* restrict src, const char* restrict format, ...);
 
 * * *
 <h2>3️⃣ 함수사용</h2>
-<h5>&#60; sscanf함수 &#62;</h5>
+<h3 style="color:#0e435c;">&lt; sscanf함수 &gt;</h3>
 ```c
 int main(void)
 {

@@ -35,7 +35,7 @@ char *fgets(char *str, int num, FILE *stream);
   
 * * *
 <h2>3️⃣ 함수사용</h2>
-<h5>&#60; gets &#62;</h5>
+<h3 style="color:#0e435c;">(1) gets</h3>
 ```c
 #define BUFFER 256
 
@@ -48,7 +48,17 @@ int main(void)
 	printf("%s\n", result);
 }
 ```
-<h5>&#60; fgets &#62;</h5>
+
+* * *
+<h3 style="color:#0e435c;">(2) fgets</h3>
+<h5 align="middle">&lt; test.txt내용 &gt;</h5>
+<kkr>
+Hello my name is kirim!<br />
+nice to meet you!
+</kkr>
+
+<h5 align="middle">&lt; fgets &gt;</h5>
+
 ```c
 #define BUFFER 20
 
@@ -62,9 +72,6 @@ int main(void)
 	result = fgets(string, BUFFER, stream);
 	printf("%s\n", result);
 }
-/*---test.txt내용---*/
-Hello my name is kirim!
-nice to meet you!
 /*---출력---*/
 Hello my name is ki
 ```

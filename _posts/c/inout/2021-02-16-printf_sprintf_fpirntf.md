@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[C]printf & sprintf"
+title:  "[C]printf & sprintf & fprintf"
 subtitle:   ""
 date: 2021-02-16 02:45:51 +0900
 categories: c
@@ -10,6 +10,7 @@ comments: true
 
 * **printf함수**는 데이터를 stdout(콘솔출력)으로 형식에 맞추어 출력하는 함수입니다.
 * **sprintf함수**는 데이터를 str(문자열 버퍼)에 형식에 맞추어 쓰는 함수입니다.
+* **fprintf함수**는 데이터를 형식에 맞추어 스트림에 쓰는 함수입니다.
 
 * * *
 <h2>1️⃣ 함수원형</h2>
@@ -21,6 +22,10 @@ int printf(const char* restrict format, ...);
 ```c
 int sprintf(char* restrict dst, const char* restrict format, ...);
 ```
+<h4 align="middle">&#60; fprintf &#62;</h4>
+```c
+int fprintf(FILE* stream, const char *format, ...);
+```
 
 * * *
 <h2>2️⃣ 헤더파일, 반환값</h2>
@@ -31,10 +36,11 @@ int sprintf(char* restrict dst, const char* restrict format, ...);
   |:--:|:--:|:--:|
   |printf|출력된문자 수(NULL문자 포함)|음수|
   |sprintf|쓰여진 문자개수(NULL문자 미포함)|음수|
-  
+  |fprintf|스트림에 쓰인 총 문자의 갯수|음수|
+
 * * *
 <h2>3️⃣ 함수사용</h2>
-<h5>&#60; sprintf함수 &#62;</h5>
+<h3 style="color:#0e435c;">(1) sprintf함수 </h3>
 ```c
 int main(void)
 {
@@ -49,6 +55,26 @@ int main(void)
 /*---출력---*/
 getdata: hello 3
 ```
+
+* * *
+<h3 style="color:#0e435c;">(2) fprintf함수</h3>
+```c
+int main(void)
+{
+        FILE *stream;
+        char string[] = "Hello!\nmy name is kirim";
+        int num = 1;
+
+        stream = fopen("test.txt", "wb");
+        fprintf(stream, "%d: %s", num, string);
+        fclose(stream);
+}
+```
+<h5 align="middle">&#60; 작성된 test.txt &#62;</h5>
+<kkr>
+1: Hello!<br />
+my name is kirim
+</kkr>
 
 * * *
 <h2>4️⃣ 특징 &amp; 주의사항</h2>

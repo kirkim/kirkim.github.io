@@ -35,7 +35,7 @@ int fgetc(FILE* stream);
   
 * * *
 <h2>3️⃣ 함수사용</h2>
-<h5>&#60; getchar &#62;</h5>
+<h3 style="color:#0e435c;">(1) getchar</h3>
 ```c
 int main(void)
 {
@@ -63,7 +63,14 @@ int main(void)
 ```
 * 일반적으로 EOF입력은 `Ctrl + Z`로 가능하며 리눅스에서는 `Ctrl + D`입니다.
 
-<h5>&#60; fgetc &#62;</h5>
+* * *
+<h3 style="color:#0e435c;">(2) fgetc</h3>
+<h5 align="middle">&#60; test.txt내용 &#62;</h5>
+<kkr>
+Hello my name is kirim!<br />
+nice to meet you!
+</kkr>
+<h5 align="middle">&#60; fgetc &#62;</h5>
 ```c
 int main(void)
 {
@@ -80,9 +87,6 @@ int main(void)
 
     fclose(stream);
 }
-/*---test.txt내용---*/
-Hello my name is kirim!
-nice to meet you!
 /*---출력---*/
 Hello my name is kirim!
 nice to meet you!

@@ -46,7 +46,7 @@ int fputc(int character, FILE* stream);
   
 * * *
 <h2>3️⃣ 함수사용</h2>
-<h5>&#60; puts, putchar &#62;</h5>
+<h3 style="color:#0e435c;">(1) puts, putchar</h3>
 ```c
 int main(void)
 {
@@ -61,7 +61,9 @@ int main(void)
 hello     //puts함수는 개행문자 자동포함 
 cc        //putchar함수는 개행문자포함x
 ```
-<h5>&#60; fputs, fputc &#62;</h5>
+
+* * *
+<h3 style="color:#0e435c;">(2) fputs, fputc</h3>
 ```c
 int main(void)
 {
@@ -76,9 +78,12 @@ int main(void)
 
 	fclose(stream);
 }
-/*---test.txt내용---*/
-helloc
 ```
+<h5 align="middle">&lt; test.txt내용 &gt;</h5>
+<kkr>
+helloc
+</kkr>
+
 * fputs함수는 puts함수처럼 개행문자를 넣어주지는 않습니다.
 
 * * *
