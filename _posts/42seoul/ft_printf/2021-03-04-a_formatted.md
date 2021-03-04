@@ -2,7 +2,7 @@
 layout: post
 title:  "[ft_printf]서식"
 subtitle:   ""
-date: 2021-03-02 02:45:51 +0900
+date: 2021-03-04 02:45:51 +0900
 categories: 42seoul
 tags: ft_printf
 comments: true 
