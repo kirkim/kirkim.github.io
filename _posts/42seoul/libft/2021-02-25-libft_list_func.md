@@ -24,7 +24,8 @@ typedef struct	s_list
 * `void *cotent;`는 각 노드가 저장할 **데이터요소**입니다.
 * `struct s_list *next;`는 **다음 노드의 주소를 저장할 포인터**로 이 포인터가 각노드의 연결고리 역할을 하게 됩니다.
 
-<!--이미지-->
+<h4><span style="color:#084B8A;">자세한내용 &gt;</span><a href="https://kirkim.github.io/c/2021/03/04/linked_list.html" target="blank">[C]연결리스트(linked list)</a></h4>
+
 * * *
 <h2> 1️⃣lstnew </h2>
 * **lstnew함수**는 **첫 노드를 생성**하는 함수입니다.
