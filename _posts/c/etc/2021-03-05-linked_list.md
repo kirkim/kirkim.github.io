@@ -93,7 +93,7 @@ typedef struct node
         *head = new_node;
     }
     ```
-    <img src="https://kirkim.github.io/assets/img/c/linked_list_img3.jpg" alt="linked_list_img3" width="80%">
+    <img src="https://kirkim.github.io/assets/img/c/linked_list_img3.jpg" alt="linked_list_img3" width="100%">
     <h3 align="left" style="color:#0e435c;">(2) 맨뒤에 노드를 추가하는 함수</h3>
     ```c
     void add_back_malloc(node_t **head, int val)
@@ -111,7 +111,7 @@ typedef struct node
         temp->next = new_node;
     }
     ```
-    <img src="https://kirkim.github.io/assets/img/c/linked_list_img4.jpg" alt="linked_list_img4" width="80%">
+    <img src="https://kirkim.github.io/assets/img/c/linked_list_img4.jpg" alt="linked_list_img4" width="100%">
 * **헤드노드**는 항상 첫번째 노드를 가리키고 있어야 하므로 **임시노드포인터(temp)**를 사용하는 것이 좋습니다.
 * 함수 내부에서 **malloc함수**를 사용하기 때문에 함수명에 **_malloc**을 붙여줬습니다.
 
@@ -141,7 +141,7 @@ typedef struct node
         }
     }
     ```
-    <img src="https://kirkim.github.io/assets/img/c/linked_list_img5.jpg" alt="linked_list_img5" width="80%">
+    <img src="https://kirkim.github.io/assets/img/c/linked_list_img5.jpg" alt="linked_list_img5" width="100%">
     * 위의 함수는 <b style="color:#dd1144;">특정 데이터(value)</b>값을 이용하여 **노드**를 찾은 뒤 삭제하고 **앞뒤 노드를 이어주는 함수**입니다.
     * 위의 함수를 사용하기 위해서는 **각각의 노드**를 구분할 수 있는 **데이터(value)**가 있어야 합니다.
 
@@ -162,3 +162,22 @@ typedef struct node
     }
     ```
     * 위의 함수는 **전체 연결리스트**를 해제 시켜주는 함수 입니다. 연결 리스트사용이 끝나면 위와 같은 함수로 반드시 <b style="color:#dd1144;">메모리 해제</b>를 해줘야 합니다.
+
+<br /><br />
+
+* * *
+<h2>6️⃣ 기타</h2>
+<h3 align="left" style="color:#0e435c;"> (1) 헤드노드를 받을때 왜 이중 포인터로 받을까?</h3>
+* 위에서 헤드 선언법이 두가지로 나뉘었습니다. 그중 **첫번째**방법은 **헤드노드** 또한 **노드구조체로** 동적할당을 했고 **노드구조체의 next포인터**로 다음 첫 노드를 가리켰기 때문에 사실상 **이중포인터** 개념으로 주고 받을 수 있었습니다.
+* 하지만 **두번째**방법으로 **헤드노드**자체를 지정할 경우 내부에 포인터 요소가 없기 때문에 ***head**포인터의 주소를 받기위해 **이중포인터**로 받아야 합니다.
+* 결론적으로 **값**에의한 복사가 아닌 **참조형**으로 복사해야 합니다. 하지만 일반 포인터를 사용하면 **헤드 포인터**에 저장된 **주소**를 변경할 수 없습니다. 즉, **주소를 저장하는 포인터의 주소**를 받기위해 **이중포인터**로 받아와야 합니다.
+
+* * *
+<h3 align="left" style="color:#0e435c;"> (2) 연결 리스트의 용도(출처:pocu아카데미)</h3>
+* **연결 리스트**는 **크기**를 미리 재한할 필요가 없고 **삽입/삭제**가 비교적 자유롭기 때문에 **배열**의 한계를 뛰어넘기위해 사용하던 자료구조입니다.
+* 하지만 오늘날 어플리케이션 프로그램에서 사용빈도는 많이 줄었다고 합니다.
+    * C#에서 **list**도 **연결리스트**가 아닌 **동적 할당 배열**입니다.
+    * **최신 하드웨어**의 특징상 오히려 **배열**이 보장하는 훌륭한 메모리 지역성이 성능에 유리한 경우가 많습니다.
+* 하지만 **커널 모드**프로그래밍(예: 드라이버)에서는 여전히 많이 사용합니다.
+    * 메모리 지역성을 해치지 않으면서도 충분히 큰 메모리(예: 4kb)를 미리 할당하여사용
+    * 필요에 따라 그 메모리를 쪼개 연결 리스트의 노드로 사용가능(예: 메모리 풀)
