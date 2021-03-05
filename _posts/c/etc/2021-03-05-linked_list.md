@@ -57,6 +57,8 @@ typedef struct node
     }
     ```
     <img src="https://kirkim.github.io/assets/img/c/linked_list_img1.jpg" alt="linked_list_img1" width="80%">
+
+    * * *
     <h3 align="left" style="color:#0e435c;">(2) 첫번째노드 자체를 head로 지정하는 방법</h3>
     ```c
     void first_node(node_t **phead, node_t *first_node)
@@ -94,6 +96,8 @@ typedef struct node
     }
     ```
     <img src="https://kirkim.github.io/assets/img/c/linked_list_img3.jpg" alt="linked_list_img3" width="100%">
+
+    * * *
     <h3 align="left" style="color:#0e435c;">(2) 맨뒤에 노드를 추가하는 함수</h3>
     ```c
     void add_back_malloc(node_t **head, int val)
@@ -144,7 +148,8 @@ typedef struct node
     <img src="https://kirkim.github.io/assets/img/c/linked_list_img5.jpg" alt="linked_list_img5" width="100%">
     * 위의 함수는 <b style="color:#dd1144;">특정 데이터(value)</b>값을 이용하여 **노드**를 찾은 뒤 삭제하고 **앞뒤 노드를 이어주는 함수**입니다.
     * 위의 함수를 사용하기 위해서는 **각각의 노드**를 구분할 수 있는 **데이터(value)**가 있어야 합니다.
-
+    
+    * * *
     <h3 align="left" style="color:#0e435c;"> (2) 전체 연결리스트 해제</h3>
     ```c
     void del_all_node(node_t* head)
