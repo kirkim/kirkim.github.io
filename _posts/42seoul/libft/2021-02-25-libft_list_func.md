@@ -31,6 +31,7 @@ typedef struct	s_list
 * **lstnew함수**는 **첫 노드를 생성**하는 함수입니다.
 
 <h4 align="middle">&#60; 함수구현 &#62;</h4>
+```c
 t_list *ft_lstnew(void *content)
 {
 	t_list	*result;
@@ -41,6 +42,7 @@ t_list *ft_lstnew(void *content)
 	result->next = NULL;
 	return (result);
 }
+```
 
 * * *
 <h2> 2️⃣ lstadd_front</h2>
