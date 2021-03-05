@@ -93,6 +93,7 @@ typedef struct node
         *head = new_node;
     }
     ```
+    <img src="https://kirkim.github.io/assets/img/c/linked_list_img3.jpg" alt="linked_list_img3" width="80%">
     <h3 align="left" style="color:#0e435c;">(2) 맨뒤에 노드를 추가하는 함수</h3>
     ```c
     void add_back_malloc(node_t **head, int val)
@@ -110,6 +111,7 @@ typedef struct node
         temp->next = new_node;
     }
     ```
+    <img src="https://kirkim.github.io/assets/img/c/linked_list_img4.jpg" alt="linked_list_img4" width="80%">
 * **헤드노드**는 항상 첫번째 노드를 가리키고 있어야 하므로 **임시노드포인터(temp)**를 사용하는 것이 좋습니다.
 * 함수 내부에서 **malloc함수**를 사용하기 때문에 함수명에 **_malloc**을 붙여줬습니다.
 
@@ -120,7 +122,7 @@ typedef struct node
 * **각노드**들은 **메모리 동적 할당**이 되어 있기 때문에 **메모리 누수(memory leak)**이 일어나지 않게 하기 위해서 사용한 후에 반드시 메모리해제가 필요합니다.
     <h3 align="left" style="color:#0e435c;"> (1) 특정 노드 삭제</h3>
     ```c
-    void remove(node_t **head, int n)
+    void remove_node(node_t **head, int n)
     {
         node_t **temp;
 
@@ -139,6 +141,7 @@ typedef struct node
         }
     }
     ```
+    <img src="https://kirkim.github.io/assets/img/c/linked_list_img5.jpg" alt="linked_list_img5" width="80%">
     * 위의 함수는 <b style="color:#dd1144;">특정 데이터(value)</b>값을 이용하여 **노드**를 찾은 뒤 삭제하고 **앞뒤 노드를 이어주는 함수**입니다.
     * 위의 함수를 사용하기 위해서는 **각각의 노드**를 구분할 수 있는 **데이터(value)**가 있어야 합니다.
 
