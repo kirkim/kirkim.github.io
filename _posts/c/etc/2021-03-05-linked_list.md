@@ -171,7 +171,53 @@ typedef struct node
 <br /><br />
 
 * * *
-<h2>6️⃣ 기타</h2>
+<h2>6️⃣ 노드 출력 함수</h2>
+* **전체 노드**의 **데이터**를 출력하는 함수를 구현해봤습니다.
+    <h3 align="left" style="color:#0e435c;"> (1) 노드 출력 함수</h3>
+    ```c
+    void print_node(const node_t *head)
+    {
+        const node_t *temp;
+
+        temp = head;
+        while (temp != NULL)
+        {
+            printf("%d\n", temp->value);
+            temp = temp->next;
+        }
+    }
+    ```
+
+    * * *
+    <h3 align="left" style="color:#0e435c;"> (2) 간단한 main함수 구현</h3>
+    ```c
+    int main(void)
+    {
+        node_t *head;
+        head = NULL;
+
+        add_front_malloc(&head, 1);
+        add_front_malloc(&head, 2);
+        add_front_malloc(&head, 3);
+        add_back_malloc(&head, 7);
+        remove_node(&head, 2);
+        print_node(head);
+        del_all_node(head);
+
+        return (0);
+    }
+    ```
+    <kkr>
+    <span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
+    3<br />
+    1<br />
+    7
+    </kkr>
+
+<br /><br />
+
+* * *
+<h2>7️⃣ 기타</h2>
 <h3 align="left" style="color:#0e435c;"> (1) 헤드노드를 받을때 왜 이중 포인터로 받을까?</h3>
 * 위에서 헤드 선언법이 두가지로 나뉘었습니다. 그중 **첫번째**방법은 **헤드노드** 또한 **노드구조체로** 동적할당을 했고 **노드구조체의 next포인터**로 다음 첫 노드를 가리켰기 때문에 사실상 **이중포인터** 개념으로 주고 받을 수 있었습니다.
 * 하지만 **두번째**방법으로 **헤드노드**자체를 지정할 경우 내부에 포인터 요소가 없기 때문에 ***head**포인터의 주소를 받기위해 **이중포인터**로 받아야 합니다.

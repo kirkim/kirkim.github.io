@@ -15,9 +15,9 @@ comments: true
 ```c
 typedef struct	s_list
 {
-	void			*content;
+	void		*content;
 	struct s_list	*next;
-}				t_list;
+}			t_list;
 ```
 * 연결 리스트의 노드는 구조체의 형태를 띠고 있습니다.
 * 노드 구조체를 `t_list`라고 자료형 이름을 지정하였습니다.

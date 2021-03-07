@@ -251,7 +251,7 @@ input[type="checkbox"]:checked ~ ul{
 
 kkr {
   display: block;
-  padding: 16px;
+  padding: 9px;
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
