@@ -58,6 +58,7 @@ printf("%d\n", num);
 printf("%5d\n", num);
 ```
 <kkr>
+<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 65<br />
 &nbsp;&nbsp;&nbsp;65
 </kkr>
@@ -73,6 +74,7 @@ int num = 65;
 printf("%-5d\n", num);
 ```
 <kkr>
+<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 65
 </kkr>
 
@@ -85,6 +87,7 @@ printf("%05d\n", num);
 printf("%-05d\n", num);
 ```
 <kkr>
+<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 00065<br />
 65
 </kkr>
@@ -99,6 +102,7 @@ printf("%+5d\n", num);
 printf("%+05d\n", num);
 ```
 <kkr>
+<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 &#43;65<br />
 &nbsp;&nbsp;+65<br />
 &#43;0065
@@ -114,6 +118,7 @@ printf("% 05d\n", num);
 printf("% +05d\n", num);
 ```
 <kkr>
+<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 &nbsp;65<br />
 &nbsp;0065<br />
 &#43;0065
@@ -135,6 +140,7 @@ printf("%#x\n", num);
 printf("%#X\n", num);
 ```
 <kkr>
+<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 0101<br />
 0x41<br />
 0X41
@@ -156,6 +162,7 @@ printf("%7.3f\n", num);
 printf("%2.3f\n", num);
 ```
 <kkr>
+<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 6.500000<br />
 &nbsp;&nbsp;6.500<br />
 6.500
@@ -175,6 +182,7 @@ printf("%s\n", string);
 printf("%4.8s\n", string);
 ```
 <kkr>
+<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 good<br />
 &nbsp;&nbsp;good<br />
 Hi, I'm kirim!<br />
