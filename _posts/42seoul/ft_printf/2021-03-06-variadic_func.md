@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[ft_printf]가변 인자 함수(variadic function)"
+title:  "[ft_printf](2)가변 인자 함수(variadic function)"
 subtitle:   ""
 date: 2021-03-06 02:45:51 +0900
 categories: 42seoul
