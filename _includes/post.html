@@ -14,11 +14,7 @@
       {% include tag-list.html tags=post.categories meta=site.featured_categories start_with="in " separator=" / " %}
       {% include tag-list.html tags=post.tags meta=site.featured_tags start_with="on " separator=", " %}
     </p>
-    <div style="text-align: center;">
-      <a href="https://hits.seeyoufarm.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}">
-        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2F{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}&count_bg=%230698D1&title_bg=%233C4B56&icon=tapas.svg&icon_color=%2305ABE5&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=false"/>
-      </a>
-    </div>
+
     {% include message.html text=post.description %}
   </header>
   {% for tag_slug in post.tags %}
