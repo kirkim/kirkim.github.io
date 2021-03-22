@@ -24,6 +24,7 @@ comments: true
 <h2>2️⃣ 함수 구현</h2>
 <h3 align="left">1. &#60; ft_strlen &#62;</h3>
 <a href="https://kirkim.github.io/c/2021/02/04/strlen.html" target="blank"> strlen함수</a>포스트를 참고하시면 됩니다.
+
 ```c
 size_t ft_strlen(const char *str)
 {
