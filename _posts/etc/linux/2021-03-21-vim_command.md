@@ -12,8 +12,8 @@ comments: true
 
 * * *
 <h2>1️⃣ 사용 모드 전환</h2>
-
-<!--<img src="https://kirkim.github.io/assets/img/etc/vim_image1.jpg" alt="vim_image1" width="100%">-->
+<h3 align="middle" style="color:#0e435c;">&lt; vim 모드 &gt;</h3>
+<img src="https://kirkim.github.io/assets/img/etc/vim_image1.png" alt="vim_image1" width="100%">
 
 * **Vim**의 터미널에서 사용하는 편집기중 하나로 키보드로만 편집이 가능한 **편집기**입니다. 그렇다보니 각종 **명령어**들을 잘 알 필요가 잇습니다.
 * **입력 모드**, **명령 모드**, **비주얼 모드**끼리의 **전환**이 불가능하기 때문에 항상 `esc`키를 이용하여 **일반 모드**를 거쳐서 **전환**해야 합니다.
