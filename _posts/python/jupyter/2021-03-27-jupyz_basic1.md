@@ -21,7 +21,7 @@ comments: true
 <h3 style="color:#0e435c;">(1) 동작방식</h3>
 
 * 다른 콘솔프로그램들은 코드들이 위에서부터 순차적으로 실행이 되지만 **주피터 노트북**에서는 **각각의 칸(cells)**들이 독립적으로 동작합니다.
-* 하지만 **각각의 독립된 코드**들은 `Ctrl + Enter`키로 실행시킴과 동시에 **코드의 순번**이 매겨지게 됩니다.<b style="font-size:90%"> (순번이 낮을 수록 먼저 실행된다는 뜻)</b>
+* 하지만 **각각의 독립된 코드**들은 `Ctrl + Enter`키로 실행시킴과 동시에 **코드의 순번**이 매겨지게 됩니다.<b style="font-size:90%"> (순번이 낮을 수록 먼저 실행됩니다.)</b>
 * 독립적인 칸들은 왼쪽의 `In [ ]`의 괄호안의 숫자가 순번을 의미합니다.
 <h4 align="middle" style="color:#0e435c;">&lt; 실행되지않은 cell은 무시 &gt;</h4>
 <img src="https://kirkim.github.io/assets/img/python/jupyter/jupy_char2.png" alt="jupyter_character" width="80%">
@@ -32,7 +32,9 @@ comments: true
 <h3 style="color:#0e435c;">(2) 마크다운 기능</h3>
 
 * 중간중간 **마크다운**기능을 이용할 수 있습니다.<br /><br />
-<img src="https://kirkim.github.io/assets/img/python/jupyter/jupy_char0.png" alt="jupyter_character" width="85%">
+<img src="https://kirkim.github.io/assets/img/python/jupyter/jupy_char0.png" alt="jupyter_character" width="85%"><br />
+<a href="https://dillinger.io/" target="blank"> [마크다운연습 1] Dillinger</a><br />
+<a href="https://stackedit.io/app#" target="blank"> [마크다운연습 2] Stackedit</a><br />
 
 * * *
 <h3 style="color:#0e435c;">(3) 가시적인 출력</h3>
@@ -40,6 +42,21 @@ comments: true
 * **데이터 사이언스**에 많이 사용되는 툴이다보니 좀 더 **가시적**으로 출력해줍니다.
 * `print`함수의 이용없이 소스가담긴 **변수**명을 직접 입력해주면 **'주피터 노트북'**방식으로 출력해줍니다.<br /><br />
 <img src="https://kirkim.github.io/assets/img/python/jupyter/jupy_char1.png" alt="jupyter_character" width="80%">
+
+* * *
+<h2>2️⃣ Numpy</h2>
+
+* **Numpy**는 **numerical(숫자와 관련한) python**의 줄임말로 **파이썬**에서 복잡한 수치계산을 할 수 있게 도와줍니다.
+
+<h3 style="color:#0e435c;">(1) array(배열)</h3>
+<h4 align="middle" style="color:#0e435c;">&lt; array타입 &gt;</h4>
+<img src="https://kirkim.github.io/assets/img/python/jupyter/array1.png" alt="jupyter_character" width="80%">
+
+* `ndarray`는 <b>n-dimension-array</b>의 약자로 <b>"n차원 배열"</b>을 뜻합니다.
+<h4 align="middle" style="color:#0e435c;">&lt; 1차원배열 &gt;</h4>
+<img src="https://kirkim.github.io/assets/img/python/jupyter/array2.png" alt="jupyter_character" width="80%">
+<h4 align="middle" style="color:#0e435c;">&lt; 2차원배열 &gt;</h4>
+<img src="https://kirkim.github.io/assets/img/python/jupyter/array3.png" alt="jupyter_character" width="80%">
 
 * * *
 <h3 style="color:#0e435c;">(4) 파이참에서 사용</h3>
