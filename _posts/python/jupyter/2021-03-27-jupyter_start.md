@@ -12,6 +12,10 @@ comments: true
 
 * * *
 <h2>1️⃣ Jupyter Notebook 다운로드</h2>
+
+* <b>'주피터 노트북'</b>을 다운받고 사용하는 방법은 여러가지가 있지만 **아나콘다**를 이용하여 다운받고 사용하는 방법에 대해서 알아보겠습니다.
+
+* * *
 <h3 style="color:#0e435c;">(1) 아나콘다 다운로드</h3>
 
 * 다운로드링크에서 아나콘다 install 파일을 받은 뒤 설치를 진행합니다.<br />
@@ -19,7 +23,7 @@ comments: true
 
 * * *
 
-* `PATH`(경로)를 자동으로 설정해주는 옵션을 체크하고 설치하면 됩니다.<b style="font-size:90%"> (따로 `PATH`를 지정해줘도 되지만 번거롭기 때문입니다.)</b><br /><br />
+* `PATH`(경로)를 자동으로 설정해주는 옵션을 체크하고 설치하면 됩니다.<b style="font-size:90%"> (직접 `PATH`를 지정해줘도 되지만 번거롭기 때문입니다.)</b><br /><br />
 <img src="https://kirkim.github.io/assets/img/python/jupyter/download1.png" alt="anaconda_download_PATH_option" width="100%">
 
 * * *
@@ -47,7 +51,7 @@ comments: true
 <br /><br />
 
 * * *
-<h2>2️⃣ Jupyter Notebook 파일만들기</h2>
+<h2>2️⃣ 코드를 구현할 파일 만들기</h2>
 
 * 적절한 폴더로 들어간 뒤 `New`항목에서 `python3` 기반의 notebook파일을 만들어 줍니다.<br /><br />
 <img src="https://kirkim.github.io/assets/img/python/jupyter/jupyter3.png" alt="jupyter_web" width="100%">
