@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Python]Jupyter Notebook"
+title:  "[Python]Jupyter Notebook특징 및 numpy모듈 사용하기"
 subtitle:   ""
 date: 2021-03-27 03:45:51 +0900
 categories: python
@@ -8,7 +8,7 @@ tags: jupyternotebook
 comments: true
 ---
 
-이번 포스트는 **Jupyter notebook**에 관한 내용입니다.
+이번 포스트는 **Jupyter notebook특징 및 numpy모듈 사용하기**에 관한 내용입니다.
 
 * * *
 <h2>1️⃣ Jupyter Notebook특징</h2>
@@ -33,8 +33,8 @@ comments: true
 
 * 중간중간 **마크다운**기능을 이용할 수 있습니다.<br /><br />
 <img src="https://kirkim.github.io/assets/img/python/jupyter/jupy_char0.png" alt="jupyter_character" width="85%"><br />
-<a href="https://dillinger.io/" target="blank"> [마크다운연습 1] Dillinger</a><br />
-<a href="https://stackedit.io/app#" target="blank"> [마크다운연습 2] Stackedit</a><br />
+<a href="https://dillinger.io/" target="blank"> [마크다운연습 사이트 1] Dillinger</a><br />
+<a href="https://stackedit.io/app#" target="blank"> [마크다운연습 사이트 2] Stackedit</a><br />
 
 * * *
 <h3 style="color:#0e435c;">(3) 가시적인 출력</h3>
@@ -44,22 +44,25 @@ comments: true
 <img src="https://kirkim.github.io/assets/img/python/jupyter/jupy_char1.png" alt="jupyter_character" width="80%">
 
 * * *
-<h2>2️⃣ Numpy</h2>
+<h2>2️⃣ numpy모듈 이용하기</h2>
 
 * **Numpy**는 **numerical(숫자와 관련한) python**의 줄임말로 **파이썬**에서 복잡한 수치계산을 할 수 있게 도와줍니다.
 
-<h3 style="color:#0e435c;">(1) array(배열)</h3>
+* * *
+<h3 style="color:#0e435c;">(1) n차원 배열만들기(array메소드)</h3>
 <h4 align="middle" style="color:#0e435c;">&lt; array타입 &gt;</h4>
 <img src="https://kirkim.github.io/assets/img/python/jupyter/array1.png" alt="jupyter_character" width="80%">
 
 * `ndarray`는 <b>n-dimension-array</b>의 약자로 <b>"n차원 배열"</b>을 뜻합니다.
+
+* * *
 <h4 align="middle" style="color:#0e435c;">&lt; 1차원배열 &gt;</h4>
 <img src="https://kirkim.github.io/assets/img/python/jupyter/array2.png" alt="jupyter_character" width="80%">
 <h4 align="middle" style="color:#0e435c;">&lt; 2차원배열 &gt;</h4>
 <img src="https://kirkim.github.io/assets/img/python/jupyter/array3.png" alt="jupyter_character" width="80%">
 
 * * *
-<h3 style="color:#0e435c;">(4) 파이참에서 사용</h3>
+<h3 style="color:#0e435c;">(2) 파이참에서 기타 모듈 사용</h3>
 
 * 위의 **주피터 노트북**에서는 **파이썬 커널**로 생성한 파일입니다.
 * **주피터 노트북**을 설치하면 자동으로 설치되는 `numpy`나 `pandas` 모듈들을 **파이참**과 같은 파이썬관련 유명한 툴에서도 사용가능합니다.
@@ -73,3 +76,65 @@ pip install numpy<br />
 pip install pandas<br />
 </kkr>
 
+* * *
+<h3 style="color:#0e435c;">(3) full, zeros, ones 메소드</h3>
+<br />
+
+```python
+import numpy
+
+array1 = numpy.full(7, 3)
+array2 = numpy.zeros(7, dtype=int)
+array3 = numpy.ones(7, dtype=int)
+
+print(array1)
+print(array2)
+print(array3)
+```
+<kkr>
+<span style="color: #999988; font-style: italic;">&#35;-------출력-------&#35;</span><br />
+[3 3 3 3 3 3 3]<br />
+[0 0 0 0 0 0 0]<br />
+[1 1 1 1 1 1 1]<br />
+</kkr>
+
+* * *
+<h3 style="color:#0e435c;">(4) arrange 메소드</h3>
+<br />
+
+```python
+import numpy
+
+array1 = numpy.arange(7)  # 범위(0 ~ 6)
+array2 = numpy.arange(1, 7)  # 범위(1 ~ 6)
+array3 = numpy.arange(3, 13, 3)  # 범위(3 ~ 12), 간격 3
+
+print(array1)
+print(array2)
+print(array3)
+```
+<kkr>
+<span style="color: #999988; font-style: italic;">&#35;-------출력-------&#35;</span><br />
+[0 1 2 3 4 5 6]<br />
+[1 2 3 4 5 6]<br />
+[3 6 9]<br />
+</kkr>
+
+* * *
+<h3 style="color:#0e435c;">(5) random 메소드</h3>
+<br />
+
+```python
+import numpy
+
+array1 = numpy.random.random(5)
+array2 = numpy.random.random(5)
+
+print(array1)
+print(array2)
+```
+<kkr>
+<span style="color: #999988; font-style: italic;">&#35;-------출력-------&#35;</span><br />
+[0.17794199 0.4335636  0.978274   0.72053257 0.48554927]<br />
+[0.70218865 0.27184869 0.08784331 0.41759282 0.36796319]<br />
+</kkr>
