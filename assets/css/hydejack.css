@@ -259,3 +259,15 @@ kkr {
   border-radius: 3px;
   color: #ffffff;
 }
+
+.guide {
+  background-color: #eee;
+  border-radius: 20px;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+rd {
+  color: #dd1144;
+}
