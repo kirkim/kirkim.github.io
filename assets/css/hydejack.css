@@ -270,8 +270,37 @@ kkr {
 
 rd {
   color: #dd1144;
+  font-weight: bold;
 }
 
 wt {
   color: #ffffff;
+  font-weight: bold;
+}
+
+dec {
+  background-color: #0a2835;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 95%;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+dec1 {
+  background-color: #0a2835;
+  color: #ffffff;
+  padding: 3px;
+  border-radius: 8px;
+  font-size: 95%;
+  font-weight: bold;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+rmk {
+  color: #999988;
+  font-style: italic;
 }
