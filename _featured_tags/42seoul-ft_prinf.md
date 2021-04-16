@@ -1,6 +1,6 @@
 ---
 layout: tag-blog
-title: Ft_printf
+title: ft_printf
 slug: ft_printf
 category: 42seoul
 menu: false
