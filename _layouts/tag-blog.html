@@ -4,8 +4,20 @@ layout: base
 
 {% assign posts = site.tags[page.slug] | where: "categories", page.category %}
 
+{% if page.title.size > 0 %}
+  <header>
+    <h1 class="page-title">&#91; {{ page.title }} &#93;</h1>
+  </header>
+  <hr class="sr-only"/>
+{% endif %}
+<br />
 {% for post in posts %}
-  {% include post.html post=post link_title=true excerpt=true %}
+<li class="h4">
+  <a href="{{ post.url | relative_url }}" data-flip="title">
+    <span>{{ post.title }}</span>
+  </a>
+  <small><time datetime="{ post.date | date_to_string }}">
+    {{ post.date | date_to_string }}
+  </time></small>
+</li>
 {% endfor %}
-
-{% include pagination.html %}
