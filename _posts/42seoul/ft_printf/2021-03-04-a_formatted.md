@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[ft_printf](1)서식"
+title:  "[ft_printf]서식"
 subtitle:   ""
 date: 2021-03-04 02:45:51 +0900
 categories: 42seoul
@@ -23,7 +23,7 @@ comments: true
 
 * * *
 <h2>2️⃣ 서식 문자열 형식</h2>
-<span style="background-color: #0a2835; padding: 7px; font-size: 85%">&nbsp;&nbsp;&nbsp;<b style="color:#ffffff;">&#37;</b><b style="color:#8fcaf1;">&#91;플래그&#93;</b><b style="color:#b5ebb3f6;">&#91;너비&#93;</b><b style="color:#f5c118;">&#91; &#46;숫자 정밀도 &#124; &#46;문자열 최소&#47;최대 출력 개수&#93;</b><b style="color:#cc60b5;">&#91;길이&#93;</b><b style="color:#ffffff;">서식 지정자</b>&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+<h4 style="background-color: #000000;"><b style="color:#ffffff;">&#37;</b><b style="color:#8fcaf1;">&#91;플래그&#93;</b><b style="color:#b5ebb3f6;">&#91;너비&#93;</b><b style="color:#f5c118;">&#91; &#46;숫자 정밀도 &#124; &#46;문자열 최소&#47;최대 출력 개수&#93;</b><b style="color:#cc60b5;">&#91;길이&#93;</b><b style="color:#ffffff;">서식 지정자</b></h4>
 * 일반적으로 `%`뒤에 최대 4개까지 지정자를 지정할 수 있습니다.
 * **서식 지정자**는 필수로 작성해야하고 나머지는 선택사항입니다.
 * 반드시 위의 순서에 맞춰서 지정자를 작성해야 합니다.
@@ -58,7 +58,6 @@ printf("%d\n", num);
 printf("%5d\n", num);
 ```
 <kkr>
-<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 65<br />
 &nbsp;&nbsp;&nbsp;65
 </kkr>
@@ -74,7 +73,6 @@ int num = 65;
 printf("%-5d\n", num);
 ```
 <kkr>
-<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 65
 </kkr>
 
@@ -87,7 +85,6 @@ printf("%05d\n", num);
 printf("%-05d\n", num);
 ```
 <kkr>
-<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 00065<br />
 65
 </kkr>
@@ -102,7 +99,6 @@ printf("%+5d\n", num);
 printf("%+05d\n", num);
 ```
 <kkr>
-<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 &#43;65<br />
 &nbsp;&nbsp;+65<br />
 &#43;0065
@@ -118,7 +114,6 @@ printf("% 05d\n", num);
 printf("% +05d\n", num);
 ```
 <kkr>
-<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 &nbsp;65<br />
 &nbsp;0065<br />
 &#43;0065
@@ -140,7 +135,6 @@ printf("%#x\n", num);
 printf("%#X\n", num);
 ```
 <kkr>
-<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 0101<br />
 0x41<br />
 0X41
@@ -154,7 +148,6 @@ printf("%#X\n", num);
 * 원래 숫자의 너비(소수점 포함)보다 <b style="color:#4e86ff;">최소 너비</b>가 크면 **왼쪽**을 공백으로 채웁니다.
 * 원래 숫자의 소수점 아랫자리 수보다 <b style="color:#dd1144;">소수점 아랫자리 수</b>가 크면 **오른쪽**을 0으로 채웁니다.
 * **기본 소수점 아랫자리 수: 6** (기존'f'서식자와 동일)
-
 ```c
 float num = 6.5;
 printf("%f\n", num);
@@ -162,7 +155,6 @@ printf("%7.3f\n", num);
 printf("%2.3f\n", num);
 ```
 <kkr>
-<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 6.500000<br />
 &nbsp;&nbsp;6.500<br />
 6.500
@@ -173,7 +165,6 @@ printf("%2.3f\n", num);
 * 서식 지정자 **&#39; s &#39;**와 함께 사용합니다.
 * 출력할 문자열의 길이가 <b style="color:#4e86ff;">최소 너비</b>보다 작으면 **왼쪽**을 공백으로 채웁니다.
 * 출력할 문자열의 길이가 <b  style="color:#f8913d;">최대 너비</b>보다 크면 문자열을 자릅니다.(뒷 부분부터)
-
 ```c
 char string[] = "Hi, I'm kirim!";
 printf("%s\n", "good");
@@ -182,7 +173,6 @@ printf("%s\n", string);
 printf("%4.8s\n", string);
 ```
 <kkr>
-<span style="color: #999988; font-style: italic;">/*---출력---*/</span><br />
 good<br />
 &nbsp;&nbsp;good<br />
 Hi, I'm kirim!<br />

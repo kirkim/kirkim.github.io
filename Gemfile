@@ -8,3 +8,4 @@ gem "jekyll-redirect-from", "~> 0.12"
 gem "classifier-reborn"
 gem 'wdm', '>= 0.1.0'
 gem 'jekyll-admin', group: :jekyll_plugins
+gem "kramdown-parser-gfm"
