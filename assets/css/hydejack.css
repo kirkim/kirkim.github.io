@@ -304,3 +304,15 @@ rmk {
   color: #999988;
   font-style: italic;
 }
+
+.explain-cover {
+  display: inline-block;
+}
+.explain-left {
+  width: 48%;
+  float: left;
+}
+.explain-right {
+  width: 48%;
+  float: right;
+}
