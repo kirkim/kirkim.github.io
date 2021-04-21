@@ -86,4 +86,26 @@ int main(void)
 <h2 style="color:#0e435c;">(2) 매크로함수를 여러줄 작성하기</h2>
 
 * `\`를 이용하면 **매크로**를 여러 줄로 작성할 수 있습니다.
-<img src="https://kirkim.github.io/assets/img/c/mecro_func1.png" alt="mecro_function_example" width="100%" style="margin-top:3%">
+<img src="https://kirkim.github.io/assets/img/c/mecro_func1.png" alt="mecro_function_example" width="90%" style="margin-top:3%">
+    <kkr>
+        <rmk>/* 출력 */</rmk><br />
+        3^4 = 81<br />
+    </kkr>
+<br />
+
+* * *
+<h2 style="color:#0e435c;">(3) 매크로함수 활용</h2>
+
+* `__builtin_trap();`코드를 이용한 나만의 `어서트`매크로를 만들 수 있습니다.
+* `assert()`함수의 경우 <rd>실패시</rd><b>호출 스택(call stack)의 현재 위치</b>가 assert()함수 속입니다.
+* 반면 `__builtin_trap();`은 문제가 생긴 부분에서 멈추기 때문에 위치를 정확히 알 수 있습니다. 즉, <b>호출 스택의 현재 위치</b>가 어서트에 실패한 코드의 현 위치입니다. 그렇기 때문에 `assert()`함수보다 <rd>디버깅</rd>이 편합니다.
+* 또한 `stderr`출력을 이용하여 사람이 읽기 편하게 설명할 수 있습니다.
+
+<img src="https://kirkim.github.io/assets/img/c/mecro_func2.png" alt="mecro_function_example" width="90%" style="margin-top:3%">
+    <kkr>
+        <rmk>/* 출력 */</rmk><br />
+        invalid level(test.c: 13)<br />
+    </kkr>
+
+* 하지만 `__builtin_trap();`(맥os)대신 `__asm { int 3};`일 수도 있고 또 다를 수도 있습니다.
+* <b>플랫폼</b>마다 사용하는 어셈블리 명령어가 달라집니다. <b style="font-size:90%">(C언어가 <b>크로스 플랫폼</b>이라는 주장은 <b>어셈블리어 코드(.s)</b>로 바뀌기 전까지임을 기억해야 합니다.)</b>
