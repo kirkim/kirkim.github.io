@@ -173,7 +173,7 @@ int main(void)
 * 이미 <b>정해진 데이터</b>라면 일리리 구조체를 만들어서 실행중에 출력하는 것은 비효율적입니다.
 * 그렇기 때문에 <rd>전처리기튜플</rd>을 만들어줘서 데이터를 한번에 대입시키는 방법을 쓰면 속도면에서 효율적입니다.
 <h3 align="middle" style="color:#0e435c;">&lt; 전처리기튜플 예시 &gt;</h3>
-<img src="https://kirkim.github.io/assets/img/c/mecro_func3.png" alt="mecro_tuple" width="90%" style="margin-top:3%">
+<img src="https://kirkim.github.io/assets/img/c/mecro_func3.png" alt="mecro_tuple" width="100%" style="margin-top:3%">
 <kkr>
     <rmk>/* 출력 */</rmk><br />
     0: 철수, 24살<br />
