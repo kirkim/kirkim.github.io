@@ -24,7 +24,7 @@ font-weight:bold">
 ---
 > 대한민국,서울특별시
 
-> 연락처: kirimrlfla@naver.com
+> 연락처: kirim6317@gmail.com
 
 > Github : <a href="https://github.com/kirkim" target="blank">https://github.com/kirkim</a>
 
