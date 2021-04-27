@@ -149,26 +149,3 @@ int main(void)
     20<br />
     81<br />
 </kkr>
-
-<pre class="prettyprint linenums lang-c">
-#ifndef TEST_H
-# define TEST_H
-
-#include &lt;stdio.h&gt;
-
-inline int multi(int a, int b)
-{
-    return a * b;
-}
-
-int power(int a, int b);
-
-#endif
-
-int main(void)
-{
-    printf("hello!\n");
-}
-</pre>
-<?prettify linenums=40?>
-<pre>lots of code</pre>
