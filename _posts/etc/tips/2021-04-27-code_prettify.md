@@ -68,7 +68,7 @@ comments: true
 </pre>
 ```
 
-* `<pre class="prettyprint"></pre>`가 기본 사용문법입니다.
+* `<pre class="prettyprint"></pre>`사이에 출력할 코드를 작성해 주면 됩니다.
 * `linenums`는 코드블럭옆에 순번을 출력해줍니다.
 * `lung-` + `사용할 언어`로 사용언어를 지정할 수 있습니다.
 <h2 style="color:#0e435c;">(6) 사용시 주의사항</h2>
