@@ -77,3 +77,23 @@ comments: true
     1. <b><rd>&lt;</rd></b>: `&lt;`
     2. <b><rd>&gt;</rd></b>: `&gt;`
     3. <b><rd>&amp;</rd></b>: `&amp;`
+
+* * *
+<h1>3️⃣ code-prettify 로딩오류..<b style="font-size:65%">(작성일기준 7일 뒤 추가된 내용)</b></h1>
+<h2 style="color:#0e435c;">(1) 사건발생</h2>
+
+* 이글을 작성한 이후의 포스트들에 <b>구글 code-prettify</b>를 적용시켜서 사용했습니다.
+* 작성된 포스트를 검토하는 중 다음과 같은 현상을 발견했습니다.
+<img src="https://kirkim.github.io/assets/img/etc/tips/codeblock7.png" alt="prettify-code error" width="100%" style="margin-top:3%">
+
+* 다시 <rd>새로고침 버튼</rd>을 누르자 정상적으로 코드블럭이 출력되었습니다.
+* 하지만 매번 코드블럭이 들어간 포스트에 <b>새로고침 버튼</b>을 눌러달라고 할 수는 없습니다..
+<h2 style="color:#0e435c;">(2) 이유</h2>
+
+* 웹 프로그램에서 자바 스크립트는 굉장히 유용한 도구이지만 <rd>사이트 속도와 로딩을 지연</rd> 시킨다고 합니다.
+* 그래서 속도 최적화를 위해서는 <rd>자바 스크립트 사용을 자제</rd>하는게 좋다고 합니다.
+<h2 style="color:#0e435c;">(3) 결론</h2>
+
+* 제가 사용하는 <b>지킬 블로그</b>에서는 위와같이 <rd>자바스크립트형태의 코드블럭의 로딩지연</rd>이 나타났기 때문에 기존의 <rd>'Syntax-highlighting Code Block'</rd>사용하기로 했습니다.
+* <b><rd>'Syntax-highlighting Code Block'</rd></b>는 프론트 엔드에서 자바 스크립트를 이용해 구현하는 대신 백엔드에서 <rd>php</rd>를 이용하기 때문에 속도가 빠르다고 합니다.
+* 하지만 아직도 <b>code-prettify</b>를 사용하는 곳이 많고 자신의 사이트에서 잘 동작한다면 사용해도 무방할 것 같습니다. (일단 제 블로그는 pass..)
