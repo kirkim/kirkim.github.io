@@ -19,16 +19,32 @@ comments: true
 <img src="https://kirkim.github.io/assets/img/etc/tips/vspath2.png" alt="includepath_error2" width="100%" style="margin-top:3%">
 
 * 이처럼 `SDL.h`헤더를 가진 <re>SDL2</re>폴더도 있는데 vscode는 왜 못찾을까?
+<br /><br />
 
 * * *
-<h2>2️⃣ 해결법</h2>
+<h2>2️⃣ includePath 오류 해결법</h2>
 
-* mac린이 입장에서는 <rd>homebrew로 파일을 설치</rd>하면 알아서 컴파일러에 헤더파일경로를 추가해준다고 착각한 것이 문제였습니다. (어쩌면 있을수도있지만 찾지는 못했습니다)
+* 맥린이 입장에서는 <rd>homebrew로 파일을 설치</rd>하면 알아서 컴파일러에 헤더파일경로를 추가해준다고 착각한 것이 문제였습니다. (어쩌면 있을수도있지만 찾지는 못했습니다)
 * 다음과 같이 <rd>.json파일</rd>의 include경로에 <rd>homebrew의 헤더파일 경로</rd>를 적어줬습니다.
 <img src="https://kirkim.github.io/assets/img/etc/tips/vspath3.png" alt="soulution_error1" width="100%" style="margin-top:3%">
 
-* `json`파일이 보이지 않는다면 다음과 같은 방법으로도 추가할 수 있습니다.
+* `json`파일이 보이지 않는다면 다음과 같은 방법으로도 경로를 추가할 수 있습니다. (노란전구 클릭)
 <img src="https://kirkim.github.io/assets/img/etc/tips/vspath4.png" alt="soulution_error2" width="100%" style="margin-top:3%">
-<img src="https://kirkim.github.io/assets/img/etc/tips/vspath5.png" alt="soulution_error2" width="100%" style="margin-top:3%">
+<img src="https://kirkim.github.io/assets/img/etc/tips/vspath5.png" alt="soulution_error3" width="100%" style="margin-top:3%">
 
-* 다른 좋은 방법도 있겠지만 저처럼 삽질을 했을 사람들에게 도움이 되길 빌겠습니다.
+* 다음과 같이 정상적으로 헤더파일을 찾아서 내장함수의 설명이 정상적으로 출력됩니다.
+<img src="https://kirkim.github.io/assets/img/etc/tips/vspath6.png" alt="soulution_error4" width="100%" style="margin-top:3%">
+<br /><br />
+
+* * *
+<h2>3️⃣ 컴파일하기</h2>
+
+* 위의처럼 Vscode에 경로를 가르쳐줘도 <b>컴파일을 할때는<b> <rd>또다시 컴파일러에게 경로를 가르쳐줘야 합니다.</rd>
+<img src="https://kirkim.github.io/assets/img/etc/tips/vspath7.png" alt="soulution_error4" width="100%" style="margin-top:3%">
+
+* 다음과 같은 컴파일 옵션을 추가해주어 경로를 가르쳐줘야 합니다.
+    <img src="https://kirkim.github.io/assets/img/etc/tips/vspath8.png" alt="soulution_error4" width="100%" style="margin-top:3%">
+
+    * `-I`: include할 헤더파일의 주소
+    * `-L`: 라이브러리를 찾을 디렉토리
+    * `-l`: 컴파일할때 링크할 라이브러리이름
