@@ -32,7 +32,7 @@ comments: true
 <img src="https://kirkim.github.io/assets/img/etc/tips/vspath4.png" alt="soulution_error2" width="100%" style="margin-top:3%">
 <img src="https://kirkim.github.io/assets/img/etc/tips/vspath5.png" alt="soulution_error3" width="100%" style="margin-top:3%">
 
-* 다음과 같이 정상적으로 헤더파일을 찾아서 내장함수의 설명이 정상적으로 출력됩니다.
+* 다음과 같이 정상적으로 헤더파일(SDL.h)을 읽어서 함수(SDL내장)의 설명이 정상적으로 출력됨을 볼 수 있습니다.
 <img src="https://kirkim.github.io/assets/img/etc/tips/vspath6.png" alt="soulution_error4" width="100%" style="margin-top:3%">
 <br /><br />
 
@@ -42,7 +42,7 @@ comments: true
 * 위의처럼 Vscode에 경로를 가르쳐줘도 <b>컴파일을 할때는<b> <rd>또다시 컴파일러에게 경로를 가르쳐줘야 합니다.</rd>
 <img src="https://kirkim.github.io/assets/img/etc/tips/vspath7.png" alt="soulution_error4" width="100%" style="margin-top:3%">
 
-* 다음과 같은 컴파일 옵션을 추가해주어 경로를 가르쳐줘야 합니다.
+* 다음과 같은 컴파일 옵션을 추가해주어 경로를 가르쳐줘야 합니다.<b style="font-size:90%">(homebrew의 경우 위치는 /opt/homebrew폴더안에서 잘 찾아보면 됩니다.)</b>
     <img src="https://kirkim.github.io/assets/img/etc/tips/vspath8.png" alt="soulution_error4" width="100%" style="margin-top:3%">
 
     * `-I`: include할 헤더파일의 주소
