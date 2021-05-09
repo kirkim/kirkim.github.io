@@ -34,7 +34,7 @@ comments: true
 <h1>2️⃣ Docker</h1>
 
 * <b><rd>Docker</rd></b>는 새로운 환경에서의 개발환경구축에 있어서 큰도움을 줍니다. 또한 환경에 구애받지않고 원하는 웹사이트를 접속할 수 있도록 도와줍니다.
-* VMWARE, virtual machine 등등 가상머신과도 같은 기능을 하지만 훨씬 효율적인 기능을 합니다.
+* 어떻게 보면 VMWARE, virtual machine 등등 가상머신과 비슷한 기능을하지만 도커는 좀 더 특별합니다.(아래 영상 참고)
 * 다음의 영상을 보면 도커의 기능에 대해 쉽게할 수 있습니다.<br >
 <h3 style="color:#0e435c;">(1) Docker 기본영상</h3>
 <a href="https://www.youtube.com/watch?v=chnCcGCTyBg" target="blank">&gt;&gt;&gt;노마드 코더 - Docker 5분설명</a><br>
@@ -73,12 +73,12 @@ docker run -it --name kir_debian -p 127.0.0.1:80:5000 debian:buster
 * `--name`: 컨테이너의 이름을 설정합니다.
 * `-p [호스트의 포트]:[컨테이너의 포트]`: 호스트의 포트를 컨테이너포트로 포팅해주는 옵션입니다. 자세한 설명은 다음의 링크에서 '-p옵션'부분의 설명을 참고하시면 됩니다.<a href="https://docs.docker.com/network/links/#connect-using-network-port-mapping" target="blank">docker docs </a>
 <kkr>
-root@6d6ea18beb98:/#<br />
+root@2c420019a010:/#<br />
 </kkr>
 
-* 위와같이 사용자이름이 바뀐 것으로 <rd>현재열린터미널이 방금생성한 컨테이너 그자체로 설정됬음</rd>을 확인할 수 있습니다.
+* 위와같이 사용자이름이 바뀐 것으로 <rd>현재열린터미널이 방금생성한 컨테이너 그자체로 설정됐음</rd>을 확인할 수 있습니다.
 <kkr>
-root@6d6ea18beb98:/# ls<br />
+root@2c420019a010:/# ls<br />
 bin  boot  dev	etc  home  lib	media  mnt  opt  proc  root  run  sbin	srv  sys  tmp  usr  var<br />
 </kkr>
 
@@ -95,10 +95,84 @@ $>docker ps<br />
 * 추가로 `-a`옵션을 주면 <b>닫혀있는 컨테이너</b>까지 포함한 목록을 보여주게 됩니다.
 * 다음의 명령어로 컨테이너를 조작 할 수 있습니다.
 <kkr>
-docker kill 컨테이너이름<rmk>// 열린 컨테이너 종료</rmk><br />
-docker start 컨테이너이름<rmk>// 중지된 컨테이너 시작</rmk><br />
+docker kill 컨테이너이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<rmk>// 열린 컨테이너 종료</rmk><br />
+docker start 컨테이너이름&nbsp;&nbsp;&nbsp;<rmk>// 중지된 컨테이너 시작</rmk><br />
 docker restart 컨테이너이름<rmk>//열린 컨테이너 재시작</rmk><br />
-docker attach 컨테이너이름<rmk>//열린 컨테이너 접속</rmk><br />
-docker rm 컨테이너이름<rmk>//컨테이너 제거</rmk><br />
+docker attach 컨테이너이름<rmk>//열린 컨테이너 재접속</rmk><br />
+docker rm 컨테이너이름&nbsp;&nbsp;&nbsp;&nbsp;<rmk>//컨테이너 제거</rmk><br />
+</kkr>
+<br /><br />
+
+* * *
+<h1> 4️⃣ nginx</h1>
+
+* <b><rd>nginx</rd></b>는 웹서버 중 하나로 가볍고 빠른 웹서버입니다.<br />
+참고하면 좋을 영상: <a href="https://www.youtube.com/watch?v=VfluK3D-fmQ" target="blank">생활코딩 - NGINX소개</a>
+<h2 style="color:#0e435c;">(1) debian(데비안)에 nginx 설치</h2>
+<kkr>
+apt-get -y update <rmk>// 설치가능패키지리스트 업데이트</rmk><br />
+apt-get -y upgrade <rmk>// 패키지리스트참고하여 최신 버전 업그레이드</rmk><br />
+apt-get -y install nginx <rmk>//nginx 설치</rmk><br />
 </kkr>
 
+* `-y`는 설치확인을 스킵해주는 용도입니다.
+<h2 style="color:#0e435c;">(2) nginx 연결</h2>
+
+* `nginx`를 입력하거나 `service nginx start`를 입력하여 연결합니다.
+
+|설명|Nginx명령어|service명령어|
+|:--:|:--:|:--:|
+|시작|nginx|service nginx start|
+|중지|nginx -s stop|service nginx stop|
+|재시작|nginx -s reload|service nginx restart 혹은 reload(약간다름)|
+
+* 어떤 명령어를 사용하든 상관없지만 <b>service</b>명령어가 좀 더 가시적입니다.
+<kkr>
+root@id#> service nginx start<br />
+[ <b style="color:#009926;">ok</b> ] Starting nginx: nginx.<br />
+root@id#> service nginx status<br />
+[ <b style="color:#009926;">ok</b> ] nginx is running.<br />
+</kkr>
+
+* localhost에 접속하여 다음과 같은 화면이 뜨면 성공
+<img src="https://kirkim.github.io/assets/img/server/server4.png" width="100%" alt="conect_localhost">
+<br /><br />
+
+* * *
+<h1>5️⃣ SSL</h1>
+
+* SSL에 대한 내용은 다음의 <b>'생활코딩'</b>님의 영상을 통해서 쉽게 알 수 있습니다.
+1. <a href="https://www.youtube.com/watch?v=0cfUVrQW_yg" target="blank">생활코딩 - https와ssl이란무엇인가</a>
+2. <a href="https://www.youtube.com/watch?v=8R0FUF_t_zk" target="blank">생활코딩 - ssl 통신과정</a>
+
+* 기존에 도커 컨테이너를 생성했을 때 `-p 80:80`옵션을 사용하여 80번포트만 배정했었는데 ssl인증서를 통한 https를 사용하기 위해 `-p 443:443`옵션을 사용하여 443포트도 배정해주어 컨테이너를 다시생성해 주었습니다. 그 이유에 대해서는 아래 링크의 사이트에서 자세히 알 수 있습니다.<br />
+<a href="https://johngrib.github.io/wiki/why-http-80-https-443/" target="blank">http의 기본 포트가 80, https의 기본 포트가 443인 이유는 무엇일까?</a>
+
+* 무료인증서의 종류가 몇가지 있지만 비교적 인터넷에 정보가 많은 `openssl`인증서를 사용했습니다.
+* 다음 명령어로 `openssl`을 인스톨해줍니다.
+<kkr>
+apt-get -y install openssl<br />
+</kkr>
+
+* `openssl`을 이용하는 방법은 다음 사이트를 참고했습니다.<br />
+<a href="https://blog.hangadac.com/2017/07/31/%ED%99%88%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95%EA%B8%B0-ssl-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%97%B0%EC%8A%B5/" target="blank">[홈서버 구축기] SSL 인증서 만들기</a><br />
+<a href="https://namjackson.tistory.com/24" target="blank">[[SSL]HTTPS통신을 위한 SSL인증서 발급하기(OpenSSL)</a><br />
+
+* 이번에 이용할 인증서를 만드는 순서를 간단하게 말한다면 다음과 같습니다.
+    1. 개인키를 만든다
+    2. CSR(인증서명요청.Certificate Signing Request)를 만들어 개인키를 넣는다.
+    3. CSR을 명시적으로 넣어 인증서를 생성
+* 먼저 <rd>개인키</rd>를 생성합니다.
+<img src="https://kirkim.github.io/assets/img/server/server5.png" width="100%" alt="ssl1">
+
+* <b><rd>개인키</b></rd>를 이용하여 <rd>공개키</rd>도 생성할 수 있습니다.
+<img src="https://kirkim.github.io/assets/img/server/server6.png" width="100%" alt="ssl2">
+
+* <b><rd>개인키(private.key)</rd></b>를 이용하여 .csr파일(Certificate Signing Request,인증 서명 요청)파일을 생성합니다.(정보입력창이 자동 생성)
+<img src="https://kirkim.github.io/assets/img/server/server7.png" width="100%" alt="ssl3">
+
+* <b><rd>.csr파일</rd></b>을 <rd>.crt확장자 파일</rd>로 만들어줍니다.
+<img src="https://kirkim.github.io/assets/img/server/server8.png" width="100%" alt="ssl3">
+
+* <b>공개키와 crt파일을 적절한 위치로 옮겨준 뒤 권환을 다음과 같이 바꿔줍니다.
+<img src="https://kirkim.github.io/assets/img/server/server9.png" width="100%" alt="ssl3">
