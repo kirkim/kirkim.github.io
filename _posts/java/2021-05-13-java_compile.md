@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Java]커맨드로 컴파일하기(cannot find symbol문제 해결하기)"
+title:  "[Java] 커맨드로 컴파일하기(cannot find symbol문제 해결하기)"
 subtitle:   ""
 date: 2021-05-13 02:45:51 +0900
 categories: java
