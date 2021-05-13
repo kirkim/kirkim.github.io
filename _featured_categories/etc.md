@@ -4,7 +4,7 @@ title: etc
 slug: etc
 menu: true
 submenu: false
-order: 8
+order: 9
 description: >
   기타, 이것저것
 ---
