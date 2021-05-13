@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "[Java]"
+title:  "[Java]커맨드로 컴파일하기(cannot find symbol문제 해결하기)"
 subtitle:   ""
 date: 2021-05-13 02:45:51 +0900
 categories: java
-tags: basic
+tags: etc
 comments: true
 ---
 
@@ -84,7 +84,7 @@ comments: true
 
 * `main.java`파일과 `test.java`파일 두개를 `java`명령어를 이용하여 동시에 컴파일해보았습니다.
 * 하지만 심볼을 찾지못해서 컴파일이 되지않았습니다.
-<img src="https://kirkim.github.io/assets/img/java/compile/compile9.png" alt="compile9">
+<img src="https://kirkim.github.io/assets/img/java/compile/compile9.png" width="90%" alt="compile9">
 <h3 style="color:#0e435c;">[2] 오류케이스2</h3>
 
 * `import`는 페키지명을 포함하여 되어있는데 페키지안에서 컴파일 했기때문에 위치를 못찾은 것이 원인이지 않을까하고 생각이 들었습니다.
@@ -133,16 +133,14 @@ comments: true
 * * *
 <h1>3️⃣ 깔끔하게 파일 정리하기</h1>
 
-* **클래스파일**은 클래스파일끼리 **소스파일**은 소스파일끼리 묶어두는 것이 깔끔합니다.
+* <b><rd>클래스파일</rd></b>은 클래스파일끼리 <rd>소스파일</rd>은 소스파일끼리 묶어두는 것이 깔끔합니다.
 <div class="explain-cover">
     <div class="explain-left" style="padding-top:1%">
         <h4 align="middle" style="color:#0e435c;">&lt; 클래스폴더에서 컴파일진행 &gt;</h4>
         <img src="https://kirkim.github.io/assets/img/java/compile/compile17.png" alt="compile17">
-        
-        * <b><rd>'-d'</rd></b>옵션을 사용하여 class폴더를 지정해주면 <b>패키지까지</b> 자동으로 생성하여 클래스파일을 생성해 줍니다.
+        <b><rd>'-d'</rd></b>옵션을 사용하여 class폴더를 지정해주면 <b>패키지까지</b> 자동으로 생성하여 클래스파일을 생성해 줍니다.
     </div>
     <div class="explain-right" style="padding-top:1%">
-        <h4 align="middle" style="color:#0e435c;">&lt;  &gt;</h4>
         <img src="https://kirkim.github.io/assets/img/java/compile/compile18.png" alt="compile18">
     </div>
 </div>
