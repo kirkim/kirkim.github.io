@@ -162,17 +162,21 @@ apt-get -y install openssl<br />
     1. 개인키를 만든다
     2. CSR(인증서명요청.Certificate Signing Request)를 만들어 개인키를 넣는다.
     3. CSR을 명시적으로 넣어 인증서를 생성
-* 먼저 <rd>개인키</rd>를 생성합니다.
-<img src="https://kirkim.github.io/assets/img/server/server5.png" width="100%" alt="ssl1">
+* 위의 순서를 바탕으로 다음과 같이 진행했습니다.
+    1. 먼저 <rd>개인키</rd>를 생성합니다.
+    <img src="https://kirkim.github.io/assets/img/server/server5.png" width="100%" alt="ssl1">
 
-* <b><rd>개인키</b></rd>를 이용하여 <rd>공개키</rd>도 생성할 수 있습니다.
-<img src="https://kirkim.github.io/assets/img/server/server6.png" width="100%" alt="ssl2">
+    2. <b><rd>개인키</b></rd>를 이용하여 <rd>공개키</rd>도 생성할 수 있습니다.
+    <img src="https://kirkim.github.io/assets/img/server/server6.png" width="100%" alt="ssl2">
 
-* <b><rd>개인키(private.key)</rd></b>를 이용하여 .csr파일(Certificate Signing Request,인증 서명 요청)파일을 생성합니다.(정보입력창이 자동 생성)
-<img src="https://kirkim.github.io/assets/img/server/server7.png" width="100%" alt="ssl3">
+    3. <b><rd>개인키(private.key)</rd></b>를 이용하여 .csr파일(Certificate Signing Request,인증 서명 요청)파일을 생성합니다.(정보입력창이 자동 생성)
+    <img src="https://kirkim.github.io/assets/img/server/server7.png" width="100%" alt="ssl3">
 
-* <b><rd>.csr파일</rd></b>을 <rd>.crt확장자 파일</rd>로 만들어줍니다.
-<img src="https://kirkim.github.io/assets/img/server/server8.png" width="100%" alt="ssl3">
+    4. <b><rd>.csr파일</rd></b>을 <rd>.crt확장자 파일</rd>로 만들어줍니다.
+    <img src="https://kirkim.github.io/assets/img/server/server8.png" width="100%" alt="ssl3">
 
-* <b>공개키와 crt파일을 적절한 위치로 옮겨준 뒤 권환을 다음과 같이 바꿔줍니다.
-<img src="https://kirkim.github.io/assets/img/server/server9.png" width="100%" alt="ssl3">
+    5. <b>공개키와 crt파일을 적절한 위치로 옮겨준 뒤 권환을 다음과 같이 바꿔줍니다.
+    <img src="https://kirkim.github.io/assets/img/server/server9.png" width="100%" alt="ssl3">
+
+* 이번에 인증서를 처음 생성해보기 때문에 하나하나의 과정을 거쳐보았습니다. 그러나 훨씬 더 간단하게 생성하는 방법도 있습니다.
+* 인증서의 종류, 생성방법들이 다양하기 때문에 상황에 따라서 인증서를 적절히 선택하고 자신에게 편한 방법을 찾아서 생성하는 것이 좋을 것 같습니다.
