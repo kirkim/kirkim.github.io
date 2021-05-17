@@ -216,7 +216,33 @@ server {<br />
 <br /><br />
 
 * * *
-<h1>6️⃣ php-fpm 설치</h1>
+<h1>6️⃣ autoindex추가하기</h1>
+
+* 다시 다음파일에 들어가서 내용을 추가해줍니다.
+<kkr>
+vim etc/nginx/sites-available/default<br />
+<br />
+server_name _;<br />
+<br />
+location / {
+&nbsp;&nbsp;&nbsp;&nbsp;<rmk># First attempt to serve request as file, then</rmk><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<rmk># as directory, then fall back to displaying a 404.</rmk><br />
+&nbsp;&nbsp;&nbsp;&nbsp;autoindex on; // <rmk>// 추가</rmk><br />
+&nbsp;&nbsp;&nbsp;&nbsp;try_files $uri $uri/ =404;<br />
+}<br />
+</kkr>
+
+* 그리고 `val/www/html/`경로에 임시로 만들어져있던 `index.nginx-debian.html`파일을 삭제해 줍니다.
+* `default`파일에 `index`항목에서도 제거해줍니다.
+<kkr>
+index index.html index.htm index.nginx-debian.html<rmk> //index.nginx-debian.html 지워줍니다.</rmk><br />
+</kkr>
+
+* `service nginx reload`로 재로드 후 <a href="https://localhost/">localhost주소</a>에 접속하면 <rd>autoindex</rd>된 화면을 볼 수 있습니다.
+<br /><br />
+
+* * *
+<h1>7️⃣ php-fpm 설치</h1>
 
 * 다음의 명령어를 입력하여 `php-fpm`을 설치해준 뒤 nginx에 경로를 가르쳐 줍니다.
 <kkr>
@@ -227,7 +253,7 @@ vim /etc/nginx/sites-available/default<br />
 
 * 주석처리되어 있느부분에서 필요한부분의 주석을 제거해주면 됩니다.
 <kkr>
-index index.html index.htm index.nginx-debian.html index.php;
+index index.html index.htm index.php;
 </kkr>
 
 * 그리고 위쪽에 `index`항목에 `index.php`을 추가해 줍니다.
@@ -238,7 +264,7 @@ apt-get -y install mariadb-server php-mysql<br />
 <br /><br />
 
 * * *
-<h1>7️⃣ phpmyadmin 설치</h1>
+<h1>8️⃣ phpmyadmin 설치</h1>
 <h4><a href="https://yeosong1.github.io/ftserver-%ED%92%80%EC%9D%B4%EA%B8%B0%EB%A1%9D#-%EB%8F%84%EC%BB%A4-x-%EB%8D%B0%EB%B9%84%EC%95%88-%EB%B2%84%EC%8A%A4%ED%84%B0-x-nginx-x-php-fpm%EC%97%90--mariadbmysql-%EC%84%A4%EC%B9%98" target="blank">(참고: yeosong1위키블로그)</a></h4>
 
 * <b>debian</b>에서 <rd>phpmyadmin</rd>을 설치하기 위해서는 왭에서 다운을 받아야되는데 그 도구로 `wget`을 사용합니다.
@@ -281,7 +307,6 @@ MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS wordpress;<br />
 </kkr>
 
 * 다음처럼 데이터베이스에 추가된 것을 확인할 수 있습니다.
-<kkr>
 
 <img src="https://kirkim.github.io/assets/img/server/server14.png" width="100%" alt="mysql">
 
@@ -302,4 +327,37 @@ MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS wordpress;<br />
 <br /><br />
 
 * * *
-<h1>8️⃣ Wordpress 설치</h1>
+<h1>9️⃣ Wordpress 설치</h1>
+
+* `Wordpress`또한 `wget`툴을 이용하여 설치해줍니다.
+<kkr>
+wget https://wordpress.org/latest.tar.gz<br/>
+tar -xvf latest.tar.gz<br/>
+mv wordpress/ var/www/html/<br/>
+chown -R www-data:www-data /var/www/html/wordpress<br/>
+</kkr>
+
+* `wordpress config`샘플파일을 복사하여 내용을 수정해 줍니다.
+<kkr>
+cp var/www/html/wordpress/wp-config-sample.php var/www/html/wordpress/wp-config.php<br />
+vim var/www/html/wordpress/wp-config.php<br />
+<br />
+<rmk>// ** MySQL settings - You can get this info from your web host ** //</rmk><br />
+<rmk>/** The name of the database for WordPress */</rmk><br />
+define( 'DB_NAME', 'wordpress' );<rmk> // "wordpress"입력</rmk><br />
+<br />
+<rmk>/** MySQL database username */</rmk><br />
+define( 'DB_USER', 'root' );<rmk> // 위에서 지정한 아이디 "root"입력</rmk><br />
+<br />
+<rmk>/** MySQL database password */</rmk><br />
+define( 'DB_PASSWORD', '****' );<rmk> // 위에서 지정한 phpMyAdmin 암호입력</rmk><br />
+</kkr>
+<div class="explain-cover">
+    <div class="explain-left" style="padding-top:1%">
+        ▪️ <b><rd>service nginx reload</rd></b>로 재로드 후 다음<a href="https://localhost/wordpress" target="blank">https://localhost/wordpress</a>에 들어가서 다음의 화면이 정상출력되면 됩니다.
+    </div>
+    <div class="explain-right" style="padding-top:1%">
+        <h4 align="middle" style="color:#0e435c;">&lt; Wordpress홈 화면 &gt;</h4>
+        <img src="https://kirkim.github.io/assets/img/server/server17.png" width="100%" alt="mysql">
+    </div>
+</div>
