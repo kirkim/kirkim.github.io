@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Java] "
+title:  "[Java] getter, setter 메소드"
 subtitle:   ""
 date: 2021-05-15 02:45:51 +0900
 categories: java

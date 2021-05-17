@@ -65,7 +65,7 @@ docker images<br />
 <img src="https://kirkim.github.io/assets/img/server/server1.png" width="100%" alt="image_list">
 <h2 style="color:#0e435c;">(2) 데비안 버스터 이미지를 사용한 컨테이너접속하기</h2>
 <kkr>
-docker run -it --name kir_debian -p 127.0.0.1:80:5000 debian:buster
+docker run -it --name kir_debian -p 80:80 -p 443:443 debian:buster
 </kkr>
 
 * `run`: 새로운 컨테이너를 생성합니다.
@@ -73,12 +73,12 @@ docker run -it --name kir_debian -p 127.0.0.1:80:5000 debian:buster
 * `--name`: 컨테이너의 이름을 설정합니다.
 * `-p [호스트의 포트]:[컨테이너의 포트]`: 호스트의 포트를 컨테이너포트로 포팅해주는 옵션입니다. 자세한 설명은 다음의 링크에서 '-p옵션'부분의 설명을 참고하시면 됩니다.<a href="https://docs.docker.com/network/links/#connect-using-network-port-mapping" target="blank">docker docs </a>
 <kkr>
-root@2c420019a010:/#<br />
+root@0d7f2430dcf0:/#<br />
 </kkr>
 
 * 위와같이 사용자이름이 바뀐 것으로 <rd>현재열린터미널이 방금생성한 컨테이너 그자체로 설정됐음</rd>을 확인할 수 있습니다.
 <kkr>
-root@2c420019a010:/# ls<br />
+root@id#> ls<br />
 bin  boot  dev	etc  home  lib	media  mnt  opt  proc  root  run  sbin	srv  sys  tmp  usr  var<br />
 </kkr>
 
@@ -166,7 +166,7 @@ apt-get -y install openssl<br />
     1. 먼저 <rd>개인키</rd>를 생성합니다.
     <img src="https://kirkim.github.io/assets/img/server/server5.png" width="100%" alt="ssl1">
 
-    2. <b><rd>개인키</b></rd>를 이용하여 <rd>공개키</rd>도 생성할 수 있습니다.
+    2. <b><rd>개인키</rd></b>를 이용하여 <rd>공개키</rd>도 생성할 수 있습니다.
     <img src="https://kirkim.github.io/assets/img/server/server6.png" width="100%" alt="ssl2">
 
     3. <b><rd>개인키(private.key)</rd></b>를 이용하여 .csr파일(Certificate Signing Request,인증 서명 요청)파일을 생성합니다.(정보입력창이 자동 생성)
@@ -180,3 +180,126 @@ apt-get -y install openssl<br />
 
 * 이번에 인증서를 처음 생성해보기 때문에 하나하나의 과정을 거쳐보았습니다. 그러나 훨씬 더 간단하게 생성하는 방법도 있습니다.
 * 인증서의 종류, 생성방법들이 다양하기 때문에 상황에 따라서 인증서를 적절히 선택하고 자신에게 편한 방법을 찾아서 생성하는 것이 좋을 것 같습니다.
+<br />
+
+* <b>생성한 ssl인증서</b>를 nginx에 경로를 카르쳐줘야 합니다.
+<kkr>
+apt-get -y install vim<br />
+vim etc/nginx/sites-available/default<br />
+</kkr>
+<br />
+<kkr>
+server {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listen 80 default_server;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listen [::]:80;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 301 https://$host$request_uri;
+}<br />
+<br />
+server {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listen 443;<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ssl on;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ssl_certificate /etc/ssl/certs/private.crt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ssl_certificate_key /etc/ssl/private/private.key;<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root /var/www/html;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. . .<br />
+</kkr>
+
+* `service nginx reload`를 해준 뒤 `localhost`주소로 들어가면 다음과 같이 바꼈음을 확인할 수 있습니다.
+<img src="https://kirkim.github.io/assets/img/server/server10.png" width="100%" alt="ssl4">
+
+* 위의 사이트위에서 `thisisunsafe`를 입력하시면 경고를 무시하고 사이트를 출력해줍니다.
+* 인증서가 사이트에 정상적으로 등록되었음을 확인할 수 있습니다.
+<img src="https://kirkim.github.io/assets/img/server/server11.png" width="100%" alt="ssl5">
+<img src="https://kirkim.github.io/assets/img/server/server12.png" width="100%" alt="ssl6">
+<br /><br />
+
+* * *
+<h1>6️⃣ php-fpm 설치</h1>
+
+* 다음의 명령어를 입력하여 `php-fpm`을 설치해준 뒤 nginx에 경로를 가르쳐 줍니다.
+<kkr>
+apt-get -y install php-fpm<br />
+vim /etc/nginx/sites-available/default<br />
+</kkr>
+<img src="https://kirkim.github.io/assets/img/server/server13.png" width="100%" alt="php1">
+
+* 주석처리되어 있느부분에서 필요한부분의 주석을 제거해주면 됩니다.
+<kkr>
+index index.html index.htm index.nginx-debian.html index.php;
+</kkr>
+
+* 그리고 위쪽에 `index`항목에 `index.php`을 추가해 줍니다.
+* 다음의 명령어로 `mariaDB`를 설치해줍니다.(<a href="https://dololak.tistory.com/766" taget="blank">사이트: mariaDB란?)</a>
+<kkr>
+apt-get -y install mariadb-server php-mysql<br />
+</kkr>
+<br /><br />
+
+* * *
+<h1>7️⃣ phpmyadmin 설치</h1>
+<h4><a href="https://yeosong1.github.io/ftserver-%ED%92%80%EC%9D%B4%EA%B8%B0%EB%A1%9D#-%EB%8F%84%EC%BB%A4-x-%EB%8D%B0%EB%B9%84%EC%95%88-%EB%B2%84%EC%8A%A4%ED%84%B0-x-nginx-x-php-fpm%EC%97%90--mariadbmysql-%EC%84%A4%EC%B9%98" target="blank">(참고: yeosong1위키블로그)</a></h4>
+
+* <b>debian</b>에서 <rd>phpmyadmin</rd>을 설치하기 위해서는 왭에서 다운을 받아야되는데 그 도구로 `wget`을 사용합니다.
+<kkr>
+apt-get install -y wget<br />
+wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz<br />
+</kkr>
+
+* 압축을 풀고 `/var/www/html/`에 위치시킵니다.
+<kkr>
+tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz<br />
+mv phpMyAdmin-5.0.2-all-languages phpmyadmin<br />
+mv phpmyadmin /var/www/html/<br />
+</kkr>
+
+* 다음의 `php config`샘플 파일표본을 그대로 복사하여 수정해줍니다.
+<kkr>
+cp -rp var/www/html/phpmyadmin/config.sample.inc.php var/www/html/phpmyadmin/config.inc.php<br /> 
+vim var/www/html/phpmyadmin/config.inc.php<br />
+</kkr>
+
+* <b>다음의 사이트</b>에서 암호를 생성하여 <b>다음 부분</b>에 붙여넣습니다.<a href="https://phpsolved.com/phpmyadmin-blowfish-secret-generator/?g=5cecac771c51c">
+<kkr>
+$cfg['blowfish_secret'] = ' <rd>이 부분에 복붙</rd> '; <rmk>/* YOU MUST FILL IN THIS FOR COOKIE AUTH! */</rmk><br />
+</kkr>
+
+* 다음으로 `nginx`리로드 후 `create_tables.sql`테이블을 이용해서 `phpMyAdmin`테이블을 생성합니다.
+<kkr>
+service nginx reload<br />
+service mysql start<br />
+mysql < var/www/html/phpmyadmin/sql/create_tables.sql -u root --skip-password<br />
+mysqladmin -u root -p password<rmk> // 첫질문엔터(기존패스워드 없음) 후 새로운암호설정</rmk>
+</kkr>
+
+* 그 후 `mysql`에 들어가서 워드프레스용 DB를 생성합니다.
+<kkr>
+root@id#> mysql<rmk> // mysql로 접속</rmk><br />
+MariaDB [(none)]><rmk> // MariaDB(mysql)에 접속된 모습</rmk><br />
+MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS wordpress;<br />
+</kkr>
+
+* 다음처럼 데이터베이스에 추가된 것을 확인할 수 있습니다.
+<kkr>
+
+<img src="https://kirkim.github.io/assets/img/server/server14.png" width="100%" alt="mysql">
+
+* `service nginx reload`, `services mysql start`, `service php7.3-fpm restart`를 하여 재로드해준다음 다음의 사이트에 접속하여 `phpMYAdmin`이 잘 접속되나 확인합니다.<br />
+<a href="https://localhost/phpmyadmin/" target="blank">https://localhost/phpmyadmin/</a><br />
+
+> 사용자명: root, 암호: (위에서 설정한 암호)
+<div class="explain-cover">
+    <div class="explain-left" style="padding-top:1%">
+        <h4 align="middle" style="color:#0e435c;">&lt; phpMyAdmin로그인화면 &gt;</h4>
+        <img src="https://kirkim.github.io/assets/img/server/server15.png" width="80%" alt="mysql">
+    </div>
+    <div class="explain-right" style="padding-top:1%">
+        <h4 align="middle" style="color:#0e435c;">&lt; phpMyAdmin홈 화면 &gt;</h4>
+        <img src="https://kirkim.github.io/assets/img/server/server16.png" width="100%" alt="mysql">
+    </div>
+</div>
+<br /><br />
+
+* * *
+<h1>8️⃣ Wordpress 설치</h1>
