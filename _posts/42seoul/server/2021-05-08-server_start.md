@@ -192,7 +192,7 @@ vim etc/nginx/sites-available/default<br />
 server {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listen 80 default_server;<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listen [::]:80;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 301 https://$host$request_uri;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 301 https://$host$request_uri;<br />
 }<br />
 <br />
 server {<br />
@@ -211,8 +211,14 @@ server {<br />
 
 * 위의 사이트위에서 `thisisunsafe`를 입력하시면 경고를 무시하고 사이트를 출력해줍니다.
 * 인증서가 사이트에 정상적으로 등록되었음을 확인할 수 있습니다.
-<img src="https://kirkim.github.io/assets/img/server/server11.png" width="100%" alt="ssl5">
-<img src="https://kirkim.github.io/assets/img/server/server12.png" width="100%" alt="ssl6">
+<div class="explain-cover">
+    <div class="explain-left" style="padding-top:1%">
+        <img src="https://kirkim.github.io/assets/img/server/server11.png" width="100%" alt="ssl5">
+    </div>
+    <div class="explain-right" style="padding-top:1%">
+        <img src="https://kirkim.github.io/assets/img/server/server12.png" width="100%" alt="ssl6">
+    </div>
+</div>
 <br /><br />
 
 * * *
@@ -222,9 +228,10 @@ server {<br />
 <kkr>
 vim etc/nginx/sites-available/default<br />
 <br />
+<rmk>/* default */</rmk><br />
 server_name _;<br />
 <br />
-location / {
+location / {<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<rmk># First attempt to serve request as file, then</rmk><br />
 &nbsp;&nbsp;&nbsp;&nbsp;<rmk># as directory, then fall back to displaying a 404.</rmk><br />
 &nbsp;&nbsp;&nbsp;&nbsp;autoindex on; // <rmk>// 추가</rmk><br />
@@ -270,23 +277,27 @@ apt-get -y install mariadb-server php-mysql<br />
 * <b>debian</b>에서 <rd>phpmyadmin</rd>을 설치하기 위해서는 왭에서 다운을 받아야되는데 그 도구로 `wget`을 사용합니다.
 <kkr>
 apt-get install -y wget<br />
+<br />
 wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz<br />
 </kkr>
 
 * 압축을 풀고 `/var/www/html/`에 위치시킵니다.
 <kkr>
 tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz<br />
+<br />
 mv phpMyAdmin-5.0.2-all-languages phpmyadmin<br />
+<br />
 mv phpmyadmin /var/www/html/<br />
 </kkr>
 
 * 다음의 `php config`샘플 파일표본을 그대로 복사하여 수정해줍니다.
 <kkr>
 cp -rp var/www/html/phpmyadmin/config.sample.inc.php var/www/html/phpmyadmin/config.inc.php<br /> 
+<br />
 vim var/www/html/phpmyadmin/config.inc.php<br />
 </kkr>
 
-* <b>다음의 사이트</b>에서 암호를 생성하여 <b>다음 부분</b>에 붙여넣습니다.<a href="https://phpsolved.com/phpmyadmin-blowfish-secret-generator/?g=5cecac771c51c">
+* <b>다음의 사이트</b>에서 암호를 생성하여 <b>다음 부분</b>에 붙여넣습니다.<a href="https://phpsolved.com/phpmyadmin-blowfish-secret-generator/?g=5cecac771c51c" target="blank">암호생성사이트</a>
 <kkr>
 $cfg['blowfish_secret'] = ' <rd>이 부분에 복붙</rd> '; <rmk>/* YOU MUST FILL IN THIS FOR COOKIE AUTH! */</rmk><br />
 </kkr>
@@ -308,9 +319,10 @@ MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS wordpress;<br />
 
 * 다음처럼 데이터베이스에 추가된 것을 확인할 수 있습니다.
 
-<img src="https://kirkim.github.io/assets/img/server/server14.png" width="100%" alt="mysql">
+<img src="https://kirkim.github.io/assets/img/server/server14.png" width="80%" alt="mysql">
 
-* `service nginx reload`, `services mysql start`, `service php7.3-fpm restart`를 하여 재로드해준다음 다음의 사이트에 접속하여 `phpMYAdmin`이 잘 접속되나 확인합니다.<br />
+* `exit`을 입력하거나 `ctrl + c`키를 눌러서 mysql모드에서 나옵니다.
+* `service nginx reload`, `service mysql restart`, `service php7.3-fpm start`를 하여 재로드해준다음 다음의 사이트에 접속하여 `phpMYAdmin`이 잘 접속되나 확인합니다.<br />
 <a href="https://localhost/phpmyadmin/" target="blank">https://localhost/phpmyadmin/</a><br />
 
 > 사용자명: root, 암호: (위에서 설정한 암호)
@@ -354,6 +366,7 @@ define( 'DB_PASSWORD', '****' );<rmk> // 위에서 지정한 phpMyAdmin 암호�
 </kkr>
 <div class="explain-cover">
     <div class="explain-left" style="padding-top:1%">
+        <br />
         ▪️ <b><rd>service nginx reload</rd></b>로 재로드 후 다음<a href="https://localhost/wordpress" target="blank">https://localhost/wordpress</a>에 들어가서 다음의 화면이 정상출력되면 됩니다.
     </div>
     <div class="explain-right" style="padding-top:1%">
@@ -361,3 +374,30 @@ define( 'DB_PASSWORD', '****' );<rmk> // 위에서 지정한 phpMyAdmin 암호�
         <img src="https://kirkim.github.io/assets/img/server/server17.png" width="100%" alt="mysql">
     </div>
 </div>
+<br /><br />
+
+* * *
+<h1>1️⃣0️⃣ </h1>
+
+* `https`로 정상출력되는지 확인하기위해 `curl`을 다운받습니다.
+* `CURL`란? 클라이언트에서 커맨드 라인이나 소스코드로 쉽게 웹 브라우저처럼 활동할 수 있도록 해주는 커맨드
+<kkr>
+apt-get install -y curl<br />
+</kkr>
+<h2 style="color:#0e435c;">(1) 도커컨테이너 외부에서 curl 사용</h2>
+<h3 algin="middle" style="color:#0e435c;">&lt; http &gt;</h3>
+
+* `http`로는 접속이 됩니다.
+<img src="https://kirkim.github.io/assets/img/server/server18.png" width="100%" alt="curl1">
+<h3 algin="middle" style="color:#0e435c;">&lt; https &gt;</h3>
+
+* `https`로 접속하면 오류가 뜹니다.
+<img src="https://kirkim.github.io/assets/img/server/server19.png" width="100%" alt="curl2">
+<h2 style="color:#0e435c;">(2) 도커컨테이너 안에서 curl 사용</h2>
+
+* 컴테이너 안에서는 `https`로 접속이 가능했습니다.
+<img src="https://kirkim.github.io/assets/img/server/server20.png" width="100%" alt="curl3">
+<h3 style="color:#0e435c;">&lt; 주의할 점 &gt;</h3>
+
+* 인증서의 <rd>사용자명</rd>과 컨테이너의 웹페이지의 <rd>localhost</rd>명이 다르면 다음과 같이 `https`에 접속을 못하고 오류가 출력됩니다.
+<img src="https://kirkim.github.io/assets/img/server/server21.png" width="100%" alt="curl4">
