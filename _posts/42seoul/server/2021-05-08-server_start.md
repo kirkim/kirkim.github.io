@@ -385,19 +385,19 @@ define( 'DB_PASSWORD', '****' );<rmk> // 위에서 지정한 phpMyAdmin 암호�
 apt-get install -y curl<br />
 </kkr>
 <h2 style="color:#0e435c;">(1) 도커컨테이너 외부에서 curl 사용</h2>
-<h3 algin="middle" style="color:#0e435c;">&lt; http &gt;</h3>
+<h3 align="middle" style="color:#0e435c;">&lt; http &gt;</h3>
 
 * `http`로는 접속이 됩니다.
 <img src="https://kirkim.github.io/assets/img/server/server18.png" width="100%" alt="curl1">
-<h3 algin="middle" style="color:#0e435c;">&lt; https &gt;</h3>
+<h3 align="middle" style="color:#0e435c;">&lt; https &gt;</h3>
 
 * `https`로 접속하면 오류가 뜹니다.
 <img src="https://kirkim.github.io/assets/img/server/server19.png" width="100%" alt="curl2">
 <h2 style="color:#0e435c;">(2) 도커컨테이너 안에서 curl 사용</h2>
 
 * 컴테이너 안에서는 `https`로 접속이 가능했습니다.
-<img src="https://kirkim.github.io/assets/img/server/server20.png" width="100%" alt="curl3">
-<h3 style="color:#0e435c;">&lt; 주의할 점 &gt;</h3>
+<img src="https://kirkim.github.io/assets/img/server/server20.png" width="80%" alt="curl3">
+<h3 align="middle" style="color:#0e435c;">&lt; 주의할 점 &gt;</h3>
 
 * 인증서의 <rd>사용자명</rd>과 컨테이너의 웹페이지의 <rd>localhost</rd>명이 다르면 다음과 같이 `https`에 접속을 못하고 오류가 출력됩니다.
 <img src="https://kirkim.github.io/assets/img/server/server21.png" width="100%" alt="curl4">
