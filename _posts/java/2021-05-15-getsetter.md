@@ -161,3 +161,25 @@ sum: 60 mean: 20<br />
 Error<br />
 sum: 60 mean: 20<br />
 </kkr>
+
+<br><br>
+
+* * *
+<h1>3️⃣ 고찰</h1>
+
+* **setter**를 사용할바에 **멤버변수 자체를 public**으로 만들면 되지 않을까 생각할 수 있지만 객체지향의 기준으로 생각해본다면 **객체자체가 자기자신을 관리하는 것**이 더 올바르기 때문에 **setter**를 사용하는 것이 **캡슐화**적으로도 맞다고 생각합니다. 또한 위의 예시처럼 **getter, setter**를 만들어 활용할 수 있습니다.
+* 하지만 완벽한 캡슐화를 위해서는 되도록 **setter**는 고민하고 삽입하는 것이 좋을 것 같다고 생각합니다.
+* **getter**는 마음대로 삽입해도 된다고 생각합니다. 하지만 <rd>immutable(불변) 클래스</rd>를 제외한 클래스의 getter사용도 조심해야됩니다.
+<h2 align="middle" style="color:#0e435c;">&lt; 안좋은 getter예시 &gt;</h2>
+
+```java
+public static void main(String[] args) {
+    Test test = new Test();
+    ArrayList<Integer> sample = new ArrayList<>();
+
+    sample = test.getIntegers; // getter로 ArrayList개체를 받음
+    sample.add(3);      // 수정이 가능하다.
+}
+```
+
+* 위처럼 **클래스**를 반환하는 getter를 만들경우 수정이가능하기 때문에 잘 사용 해야 합니다.<b style="font-size:85%"(단, **String**은 **immutable클래스**이기 때문에 가능하다.)</b>
