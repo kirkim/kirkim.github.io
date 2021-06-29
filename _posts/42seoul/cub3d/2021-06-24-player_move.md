@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[cub3d]player 움직임 구현하기(삽질의 과정)"
+title:  "[cub3d](6)player 움직임 구현하기(삽질의 과정)"
 subtitle:   ""
 date: 2021-06-24 02:45:51 +0900
 categories: 42seoul
