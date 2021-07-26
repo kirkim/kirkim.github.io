@@ -102,7 +102,7 @@ if (god->key.mouse_on == TRUE)
 
 * 위처럼 **1, 2틱**정도가 0.00이아니라 다른 값으로 튀는 것을 볼 수 있습니다. <b style="font-size:85%">(아마 마우스포인터를 윈도우 중앙에 고정시켜주는 함수가 `후순위`에 배치되서인듯하지만 `1.349634`로 튀는 원인을 찾을 수 없을 뿐더러 `앞순위`로 보내면 정상적으로 작동하지 않았습니다.)</b>
 * **단순한 해결방법**으로 `3`번키를 누르고 최초 `5틱`을 지연시키는 방법을 사용했습니다.
-<h3 align="middle" style="color:#0e435c;">&lt; 딜레이조건을 넣어준 뒤 코드 &gt;</h3>
+<h3 align="middle" style="color:#0e435c;">&lt; 지연조건을 넣어준 뒤 코드 &gt;</h3>
 
 ```c
 /* x좌표 */
@@ -128,9 +128,9 @@ if (god->key.mouse_on == TRUE)
 * * *
 <h1>4️⃣ leak(메모리 누수) 검사</h1>
 * 컴퓨터가 발달해서인지 프로그램을 `exit()`함수로 종료 시켜주면 자동으로 **메모리 해제**를 해줍니다. <b style="font-size:85%">(그래도 프로그램 사용중에 사용하지않는 메모리는 free해주는 습관이 좋을듯합니다.)</b>
-* 하지만 이번에 `leak(메모리 누수) 검사`는 게임실행 중에 생기는 누수를 없애주는 것 입니다.
+* 이번에 `leak(메모리 누수) 검사`는 게임실행 중에 생기는 누수를 없애줄 계획입니다.
 * `vargrind`라는 프로그램을 이용해도 되지만 현재 **m1맥북**에는 잘 작동하지(?)않는 다고 합니다.<b style="font-size:85%"> (`brew`를 사용해서 다운을 받아봐쓴ㄴ데 결국 포기)</b>
-<h2 style="color:#0e435c;">(1) leaks이용하여 검사하기</h2>
+<h2 style="color:#0e435c;">(1) leaks 커맨드 이용하여 검사하기</h2>
 
 * `leaks`커맨드 명령어를 이용하여 **메모리 누수**를 검사할 수 있습니다.
 * **터미널을 2개**열고 <rd>실행 중</rd>에 `leaks 프로그램명`을 입력해야 합니다.
@@ -247,8 +247,9 @@ while ((gnl_ret = get_next_line(fd, &line)) > 0)
 }
 ```
 <kkr>
-/* 로직 변경 후 leak검사 결과 */
+<rmk>/* 로직 변경 후 leak검사 결과 */</rmk><br>
+<br>
 leaks Report Version: 4.0<br>
 Process 13623: 18369 nodes malloced for 26343 KB<br>
-Process 13623: 0 leaks for 0 total leaked bytes.<br>
+<b><rd>Process 13623: 0 leaks for 0 total leaked bytes.</rd></b><br>
 </kkr>
