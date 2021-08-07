@@ -55,12 +55,18 @@ comments: true
 * `write`
 * `malloc`
 * `free`
+* `dup`
 * `dup2`
 * `execve`
 * `fork`
 * `perror`
 * `strerror`
 * `exit`
+* `pipe`
+* `access`
+* `unlink`
+* `waitpid`
+* `wait`
 <br><br>
 
 * * *
