@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[pipex]pipex 개요"
+title:  "[pipex](1)pipex 개요"
 subtitle:   ""
 date: 2021-08-05 02:45:51 +0900
 categories: 42seoul
