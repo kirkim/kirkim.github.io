@@ -30,6 +30,11 @@ comments: true
 
 * * *
 <h1>2️⃣ pipe() 함수</h1>
+<kfunc>
+<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;unistd.h&gt;</b><br>
+int&nbsp;&nbsp;<b style="color:#60ec72">pipe</b>(int <b style="color:#eb7527">fd&#91;</b><b style="color:#f7401f">2</b><b style="color:#eb7527">&#93;</b>);<br>
+</kfunc>
+<br>
 
 * 이번 프로젝트의 이름이 `pipex`인 만큼 이번 과제에서 **가장 중요한 함수**이지 않을까 생각이 듭니다.
 * `pipe()`함수는 말그대로 `파이프`를 생성해준다고 생각하면 될 것같습니다. 이 `파이프`에 **데이터를 넣고 뺄 수 있습니다.**
@@ -70,6 +75,11 @@ int main(void)
 
 * * *
 <h1>3️⃣ fork() 함수</h1>
+<kfunc>
+<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;unistd.h&gt;</b><br>
+pid_t&nbsp;&nbsp;<b style="color:#60ec72">fork</b>(<b style="color:#eb7527">void</b>);<br>
+</kfunc>
+<br>
 
 * `fork()`함수는 **프로세스를 복사**해주는 함수입니다. 이렇게 복사된 프로세스를 <rd>"자식 프로세스"</rd> 기존의 프로세스를 <rd>"부모 프로세스"</rd>라고 부릅니다.
 * 반환값으로 `자식프로세스의 pid`값을 반환합니다. 여기서 `pid`란 **Process IDentifier**의 약자로, 프로세스의 **고유 ID**입니다. **자료형타입**으로 `pid_t`를 사용하는데 `int`형으로 선언해도 잘 동작합니다. <b style="font-size:85%">(자세한 이유는 모르겠지만 pid_t는 0 ~ 32767의 범위를 갖는다고 합니다. -1 == 32768경우도 포함)</b>
@@ -121,6 +131,11 @@ int main(void)
 * * *
 <h1>4️⃣ wait(), waitpid() 함수</h1>
 <h2 style="color:#0e435c;">(1) wait() 함수</h2>
+<kfunc>
+<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;sys/wait.h&gt;</b><br>
+pid_t&nbsp;&nbsp;<b style="color:#60ec72">wait</b>(int <b style="color:#eb7527">*statloc</b>);<br>
+</kfunc>
+<br>
 
 * 형식은 `pid_t wait(int *status)`로 **감시한 자식 프로세스pid값**을 반환함과 동시에 **인자값**을 통해 **자식 프로세스 종료 상태 정보**를 알려줍니다.
 * **만약 어떠한 자식프로세스도 종료가 되는데 지연이된다면** <rd>무한 대기 상태</rd>에 빠질 수 있습니다.
@@ -196,6 +211,11 @@ wait반환값: 7891<br>
 
 * * *
 <h2 style="color:#0e435c;">(2) waitpid() 함수</h2>
+<kfunc>
+<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;sys/wait.h&gt;</b><br>
+pid_t&nbsp;&nbsp;<b style="color:#60ec72">waitpid</b>(pid_t <b style="color:#eb7527">pid</b>, int <b style="color:#eb7527">*statloc</b>, int <b style="color:#eb7527">options</b>);<br>
+</kfunc>
+<br>
 
 * `waitpid()`함수의 동작은 `wait()`함수의 매커니즘과 비슷합니다.
 * 자세한 **사용법 및 인자**는 <a href="https://codetravel.tistory.com/42" target="blank">waitpid 함수 사용하기 - 개발여행기</a>를 참고하면 될 것같습니다.

@@ -260,6 +260,22 @@ kkr {
   color: #ffffff;
 }
 
+kfunc {
+	border-style: double;
+	border-color: yellow;
+	border-width: thick;
+	display: block;
+	padding: 9px;
+	overflow: auto;
+	font-size: 95%;
+	line-height: 2;
+	word-spacing: 4px;
+	letter-spacing: 1.5px;
+	background-color: #1f2020;
+	color: #ffffff;
+
+}
+
 .guide {
   background-color: #eee;
   border-radius: 20px;
