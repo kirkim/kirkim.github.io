@@ -31,8 +31,8 @@ comments: true
 * * *
 <h1>2️⃣ pipe() 함수</h1>
 <kfunc>
-<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;unistd.h&gt;</b><br>
-int&nbsp;&nbsp;<b style="color:#60ec72">pipe</b>(int <b style="color:#eb7527">fd&#91;</b><b style="color:#f7401f">2</b><b style="color:#eb7527">&#93;</b>);<br>
+	<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;unistd.h&gt;</b><br>
+	int&nbsp;&nbsp;<b style="color:#60ec72">pipe</b>(int <b style="color:#eb7527">fd&#91;</b><b style="color:#f7401f">2</b><b style="color:#eb7527">&#93;</b>);<br>
 </kfunc>
 <br>
 
@@ -57,10 +57,10 @@ int main(void)
 }
 ```
 <kkr>
-<rmk>/* 출력 */</rmk><br>
-3 4<br>
-5 7<br>
-8 9<br>
+	<rmk>/* 출력 */</rmk><br>
+	3 4<br>
+	5 7<br>
+	8 9<br>
 </kkr>
 
 * 위의 예시는 `파이프`를 **3개**만들어준 뒤 각각의 `fd요소`를 확인해 보는 코드입니다.
@@ -76,8 +76,8 @@ int main(void)
 * * *
 <h1>3️⃣ fork() 함수</h1>
 <kfunc>
-<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;unistd.h&gt;</b><br>
-pid_t&nbsp;&nbsp;<b style="color:#60ec72">fork</b>(<b style="color:#eb7527">void</b>);<br>
+	<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;unistd.h&gt;</b><br>
+	pid_t&nbsp;&nbsp;<b style="color:#60ec72">fork</b>(<b style="color:#eb7527">void</b>);<br>
 </kfunc>
 <br>
 
@@ -114,15 +114,15 @@ int main(void)
 }
 ```
 <kkr>
-<rmk>/* 출력 */</rmk><br>
-<br>
-****부모프로세스****<br>
-변수pid값: 6239<br>
-부모피드: 6238<br>
-<br>
-****자식프로세스****<br>
-변수pid값: 0<br>
-자식피드: 6239<br>
+	<rmk>/* 출력 */</rmk><br>
+	<br>
+	****부모프로세스****<br>
+	변수pid값: 6239<br>
+	부모피드: 6238<br>
+	<br>
+	****자식프로세스****<br>
+	변수pid값: 0<br>
+	자식피드: 6239<br>
 </kkr>
 
 * `getpid()`함수를 이용하면 **현재 프로세스의 pid값**을 얻을 수 있습니다.
@@ -132,8 +132,8 @@ int main(void)
 <h1>4️⃣ wait(), waitpid() 함수</h1>
 <h2 style="color:#0e435c;">(1) wait() 함수</h2>
 <kfunc>
-<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;sys/wait.h&gt;</b><br>
-pid_t&nbsp;&nbsp;<b style="color:#60ec72">wait</b>(int <b style="color:#eb7527">*statloc</b>);<br>
+	<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;sys/wait.h&gt;</b><br>
+	pid_t&nbsp;&nbsp;<b style="color:#60ec72">wait</b>(int <b style="color:#eb7527">*statloc</b>);<br>
 </kfunc>
 <br>
 
@@ -160,13 +160,13 @@ else
 ```
 
 <kkr>
-<rmk>/* 출력 */</rmk><br>
-<br>
-****부모프로세스****<br>
-<br>
-****자식프로세스****<br>
-부모프로세스 종료<br>
-$> 자식프로세스 종료<br>
+	<rmk>/* 출력 */</rmk><br>
+	<br>
+	****부모프로세스****<br>
+	<br>
+	****자식프로세스****<br>
+	부모프로세스 종료<br>
+	$> 자식프로세스 종료<br>
 </kkr>
 
 * `sleep()`함수는 인자의 값만큼 딜레이를 가지게합니다. 즉, 위의코드에서 `sleep()`의 인자값이 더 큰 **자식프로세스**가 더 늦게 종료됩니다.
@@ -192,17 +192,17 @@ else
 }
 ```
 <kkr>
-<rmk>/* 출력 */</rmk><br>
-****자식프로세스****<br>
-자식프로세스 종료<br>
-<br>
-****부모프로세스****<br>
-부모프로세스 종료<br>
-<br>
-wait인자값: 0<br>
-wait반환값: 7891<br>
-자식pid: 7891<br>
-<br>
+	<rmk>/* 출력 */</rmk><br>
+	****자식프로세스****<br>
+	자식프로세스 종료<br>
+	<br>
+	****부모프로세스****<br>
+	부모프로세스 종료<br>
+	<br>
+	wait인자값: 0<br>
+	wait반환값: 7891<br>
+	자식pid: 7891<br>
+	<br>
 </kkr>
 
 * `wait()`함수가 호출된 시점에서 **자식프로세스가 종료될떄까지** 기다리고 코드가 진행됨을 알 수 있습니다.
@@ -212,8 +212,8 @@ wait반환값: 7891<br>
 * * *
 <h2 style="color:#0e435c;">(2) waitpid() 함수</h2>
 <kfunc>
-<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;sys/wait.h&gt;</b><br>
-pid_t&nbsp;&nbsp;<b style="color:#60ec72">waitpid</b>(pid_t <b style="color:#eb7527">pid</b>, int <b style="color:#eb7527">*statloc</b>, int <b style="color:#eb7527">options</b>);<br>
+	<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;sys/wait.h&gt;</b><br>
+	pid_t&nbsp;&nbsp;<b style="color:#60ec72">waitpid</b>(pid_t <b style="color:#eb7527">pid</b>, int <b style="color:#eb7527">*statloc</b>, int <b style="color:#eb7527">options</b>);<br>
 </kfunc>
 <br>
 
@@ -240,16 +240,16 @@ else
 return (0);
 ```
 <kkr>
-<rmk>/* 출력값 */</rmk><br>
-<br>
-****자식프로세스****<br>
-자식프로세스 종료<br>
-<br>
-****부모프로세스****<br>
-부모프로세스 종료<br>
-<br>
-waitpid인자값: 0<br>
-waitpid반환값: 2935<br>
+	<rmk>/* 출력값 */</rmk><br>
+	<br>
+	****자식프로세스****<br>
+	자식프로세스 종료<br>
+	<br>
+	****부모프로세스****<br>
+	부모프로세스 종료<br>
+	<br>
+	waitpid인자값: 0<br>
+	waitpid반환값: 2935<br>
 </kkr>
 
 * `waitpid()`의 3번째 인자에 `0`을 넣으면 `wait()`함수와 같이 동작합니다. 하지만 다른점은 **여러개의 자식프로세스**가 있을 때 `wait()`함수는 <rd>자식프로세스중 하나라도 종료</rd>되면 대기상태가 풀립니다. `waitpid()`함수의 첫번째인자로 `-1`을 넣게되면 이 마저도 같게 동작합니다.
@@ -303,12 +303,12 @@ int main(void)
 }
 ```
 <kkr>
-<rmk>/* 출력 */</rmk><br>
-<br>
-자식출력: (부모에서 입력)<br>
-<br>
-부모출력: (자식에서 입력)<br>
-<br>
+	<rmk>/* 출력 */</rmk><br>
+	<br>
+	자식출력: (부모에서 입력)<br>
+	<br>
+	부모출력: (자식에서 입력)<br>
+	<br>
 </kkr>
 
 * 위처럼 `fork()`함수와 `pipe()`함수를 조합해서 간단한 예시를 만들어 봤습니다.
@@ -336,10 +336,10 @@ else
 }
 ```
 <kkr>
-<rmk>/* 출력 */</rmk><br>
-<br>
-부모출력: (자식에서 입력)<br>
-<br>
+	<rmk>/* 출력 */</rmk><br>
+	<br>
+	부모출력: (자식에서 입력)<br>
+	<br>
 </kkr>
 
 * 위와같이 **부모 프로세스**에서 <rd>입력</rd>을 하지 않아봤습니다.
@@ -367,8 +367,8 @@ else
 }
 ```
 <kkr>
-<rmk>/* 출력 */</rmk><br>
-<br>
+	<rmk>/* 출력 */</rmk><br>
+	<br>
 </kkr>
 
 * 이번에는 **부모프로세스**에서 **입력**을 하기전에 `wait()`함수를 이용하여 대기를 시켜줬습니다.
