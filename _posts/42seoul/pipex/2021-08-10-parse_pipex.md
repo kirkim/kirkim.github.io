@@ -52,7 +52,7 @@ int main(int argc, char **envp)
 }
 ```
 <details>
-<summary><b>코드실행 결과</b> <b style="background-color:#FFFF00">출력값 보기 (클릭)</b></summary>
+<summary><b class="lit2" style="background-color:#FFFF00">코드실행 결과 출력값 보기 (클릭)</b></summary>
 	<kkr>
 		<rmk>/* 출력 */</rmk>
 		<0> ./a.out<br>
@@ -255,4 +255,16 @@ int set_cmd(t_god *god, t_ps *ps)
 * <b style="color:blue">유효한 조합</b>을 찾자마자 **변수를 저장**하고 함수를 종료해 줍니다.
 * 만약 **모든 경로**를 탐색했는데도 **유효한 조합**을 찾지 못하면 **에러**값을 반환합니다.
 
+<script>
+	const lit2 = document.querySelector(".lit2");
+	function handleMouse2() {
+		lit2.style.color = "orange";
+	}
 
+	function handleMouseLeave2() {
+		lit2.style.color = "black";
+	}
+
+	lit2.addEventListener("mouseenter", handleMouse2);
+	lit2.addEventListener("mouseleave", handleMouseLeave2);
+</script>

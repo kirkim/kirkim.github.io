@@ -1,12 +1,17 @@
 ---
 layout: post
-title:  "[JavaScript]블로그(jekyll)에 나만의 JavaScript 추가해보기"
+title:  "[JavaScript]블로그에 나만의 JavaScript 추가해보기"
 subtitle:   ""
 date: 2021-08-11 02:45:51 +0900
 categories: javascript
 tags: etc
 comments: true
 ---
+<h2 style="color:#dd1144">🙅🏼‍♀️주🙅🏼‍♂️의🙅</h2>
+
+* 해당 포스트는 <b>블로그(HydeJack테마)</b>의 작동방식을 제대로 알지 못한 상태로 작성한 글이기 때문에 <rd style="font-size:130%">참고</rd>만 해주세요
+* 오직 개인적으로 고찰한 내용을 정리한 글입니다.
+<br><br>
 
 * * *
 <h1>1️⃣ JavaScript코드 위치?</h1>
@@ -28,7 +33,7 @@ comments: true
 </div>
 <br>
 
-* **js코드**가 `id="hi"`를 찾기 못했습니다.
+* **js코드**가 `id="hi"`를 찾지 못했습니다.
 <div class="explain-cover" style="border:solid medium green; padding:3px">
     <div class="explain-left" style="padding-top:1%">
         <h4 align="middle" style="color:#0e435c;">&lt; js코드가 나중에 오도록 작성&gt;</h4>
@@ -69,7 +74,7 @@ comments: true
 <img src="https://kirkim.github.io/assets/img/js/js7.png" alt="my_js_file" width="85%">
 <br><br>
 
-* **포스트**에 **다음**과 같이 **실험용 코드**를 작성해 주었습니다.
+* **포스트**에 **다음**과 같이 **실험용 코드**를 작성해 주었습니다. <b style="font-size:85%">(`my.js`파일에 직접 영향을 받는 코드)</b>
 
 <img src="https://kirkim.github.io/assets/img/js/js9.png" alt="click_code">
 <br><br>
@@ -88,5 +93,16 @@ comments: true
 	function handleTitleClick() {
 		alert("Don't touch me!");
 	}
+
+	function handleMouse() {
+		aaa.style.color = "orange";
+	}
+
+	function handleMouseLeave() {
+		aaa.style.color = "black";
+	}
+
 	aaa.addEventListener("click", handleTitleClick);
+	aaa.addEventListener("mouseenter", handleMouse);
+	aaa.addEventListener("mouseleave", handleMouseLeave);
 </script>
