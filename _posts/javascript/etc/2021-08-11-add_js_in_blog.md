@@ -32,11 +32,11 @@ comments: true
 <div class="explain-cover" style="border:solid medium green; padding:3px">
     <div class="explain-left" style="padding-top:1%">
         <h4 align="middle" style="color:#0e435c;">&lt; js코드가 나중에 오도록 작성&gt;</h4>
-        <img src="https://kirkim.github.io/assets/img/js/js3.png" alt="front_script">
+        <img src="https://kirkim.github.io/assets/img/js/js3.png" alt="front_script" width="90%">
     </div>
     <div class="explain-right" style="padding-top:1%">
         <h4 align="middle" style="color:#0e435c;">&lt; console 출력값&gt;</h4>
-        <img src="https://kirkim.github.io/assets/img/js/js4.png" alt="result_console">
+        <img src="https://kirkim.github.io/assets/img/js/js4.png" alt="result_console" width="80%">
     </div>
 </div>
 <br>
@@ -65,18 +65,21 @@ comments: true
 
 * 이제 잘 적용되는지 확인할 차례입니다.
 * **나만의 자바스크립트파일**인 `my.js`를 **다음**과 같이 작성해 주었습니다.
+
 <img src="https://kirkim.github.io/assets/img/js/js7.png" alt="my_js_file" width="85%">
-<br>
+<br><br>
 
 * **포스트**에 **다음**과 같이 **실험용 코드**를 작성해 주었습니다.
 
 <img src="https://kirkim.github.io/assets/img/js/js9.png" alt="click_code">
-<br>
+<br><br>
+
+* 다음 처럼 정상적으로 **JavaScript코드**가 적용됐음을 확인할 수 있습니다.
 <div style="border:solid medium green; padding:2px">
 	<img src="https://kirkim.github.io/assets/img/js/js8.png" alt="click">
 </div>
+<br><br>
 
-* 위처럼 정상적으로 **JavaScript코드**가 적용됐음을 확인할 수 있습니다.
 <h2 class="kk" align="middle" style="background-color:yellow;">클릭</h2>
 
 <script>
