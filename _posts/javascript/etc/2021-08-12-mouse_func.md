@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[JavaScript]addEventListener(마우스관련 기능) 써보기"
+title:  "[JavaScript] addEventListener 써보기(마우스 이벤트)"
 subtitle:   ""
 date: 2021-08-12 02:45:51 +0900
 categories: javascript
@@ -91,11 +91,14 @@ for(let i = 0; i < aa.length; i++)
 ```
 
 * 위의 코드처럼 **함수**까지도 반복문에 넣었습니다.
-* 이 방법이 올바른 방법인지는 의문이 들었습니다. <b style="font-size:85%">(**포스트**를 열고있는 동안 **반복문**이 계속돌고 있을 것 같은 느낌..)</b> 하지만 <b style="color:blue">정상적으로 동작</b>은 했습니다.
+* 이 방법이 올바른 방법인지는 아직 모르겠습니다. <b style="font-size:85%">(**포스트**를 열고있는 동안 **반복문**이 계속돌고 있을 것 같은 느낌..)</b> 하지만 <b style="color:blue">정상적으로 동작</b>은 했습니다.
 <br><br>
 
 * * *
 <h1>3️⃣ 결과물</h1>
+
+* <b style="color:green">랜덤하게 색을 변하게하는 기능</b>도 추가하여 다음과 같은 **결과물**을 만들었습니다.
+
 <b class="hello">put your mouse here!</b><br>
 <b class="hello">put your mouse here!</b><br>
 <b class="hello">put your mouse here!</b><br>
