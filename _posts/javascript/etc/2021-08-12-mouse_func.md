@@ -91,13 +91,17 @@ for(let i = 0; i < aa.length; i++)
 ```
 
 * 위의 코드처럼 **함수**까지도 반복문에 넣었습니다.
-* 이 방법이 올바른 방법인지는 아직 모르겠습니다. <b style="font-size:85%">(**포스트**를 열고있는 동안 **반복문**이 계속돌고 있을 것 같은 느낌..)</b> 하지만 <b style="color:blue">정상적으로 동작</b>은 했습니다.
+* 이 방법이 올바른 방법인지는 아직 모르겠습니다. ~~<b style="font-size:85%">(**포스트**를 열고있는 동안 **반복문**이 계속돌고 있을 것 같은 느낌..)</b>~~
+* 다행히 `for문`안에서 `console.log()`를 넣어 실험해본결과 <rd>반복문</rd>은 **포스트가 로딩된 최초 한번**만 실행되었고 <b style="color:gree">이벤트가 발생</b>하여도 <rd>반복문</rd>이 다시 돌지않았습니다. **C언어**에서 <rd>전처리기</rd>가 **매크로**나 **헤더파일**을 **전처리단계**에서 확장해주는 방식(?)과 같지않나 생각이듭니다.
 <br><br>
 
 * * *
 <h1>3️⃣ 결과물</h1>
 
 * <b style="color:green">랜덤하게 색을 변하게하는 기능</b>도 추가하여 다음과 같은 **결과물**을 만들었습니다.
+* **아직도** **Javascript**에서 <b style="color:navy">위와 같은 코드가 어떤식으로 작동</b>하는지 **이해가 되지 않습니다.** <b style="font-size:75%">(반복문안의 함수들을 펼쳐놓는다면 함수이름이 모두 같을텐데 어떻게 적절한 변수가 들어있는 함수를 찾아서 호출할까..?)</b>
+* 또한 javascript언어에서 <b style="color:navy">css의 요소들을 다루는 것</b>도 올바른 사용 방법인 것 같지 않습니다.
+* 하지만 <b style="color:green">Javascript</b>가 <b style="color:orange">이러한 놀라운 기능</b>까지도 할 수 있다는 것을 알게되었습니다.
 
 <b class="hello">put your mouse here!</b><br>
 <b class="hello">put your mouse here!</b><br>
@@ -111,6 +115,7 @@ for(let i = 0; i < aa.length; i++)
 	const aa = document.querySelectorAll(".hello");
 	for(let i = 0; i < aa.length; i++)
 	{
+		console.log(i + "!!!");
 		function mouseEnterFunc() {
 			aa[i].style.color = "#"+(parseInt(Math.random()*0xffffff)).toString(16);
 			aa[i].style.fontSize = "300%";
