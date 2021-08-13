@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[JavaScript]자동으로 색이 바뀌는 전광판 마들기"
+title:  "[JavaScript]자동으로 색이 바뀌는 전광판 만들기"
 subtitle:   ""
 date: 2021-08-12 03:45:51 +0900
 categories: javascript
@@ -91,7 +91,7 @@ aa.addEventListener("click", clickMouseFunc);
 <b class="random_A12">RANDOM WORD!</b><br>
 <b> &lt; delay = 400, transition: .2s&gt;</b><br>
 <b class="random_A12 action">RANDOM WORD!</b><br>
-<b> &lt; delay = 400, transition: .7s &gt;</b><br>
+<b> &lt; delay = 1500, transition: .9s &gt;</b><br>
 <b class="random_A12 action2">RANDOM WORD!</b><br>
 <b> &lt; delay = 100, transition: .1s &gt;</b><br>
 <b class="random_A12 action3">RANDOM WORD!</b><br>
@@ -100,7 +100,7 @@ aa.addEventListener("click", clickMouseFunc);
 
 <script>
 	const A12 = document.querySelectorAll(".random_A12");
-	const delay_A12 = [1000, 400, 50, 400, 400, 400, 100, 100];
+	const delay_A12 = [1000, 400, 50, 400, 400, 1500, 100, 100];
 
 	for (let i = 0; i < A12.length; i++) {
 		let key = null;
@@ -129,7 +129,7 @@ aa.addEventListener("click", clickMouseFunc);
 		transition:color .2s ease-in-out;
 	}
 	.action2 {
-		transition:color .7s ease-in-out;
+		transition:color .9s ease-in-out;
 	}
 	.action3 {
 		transition:color .1s ease-in-out;
