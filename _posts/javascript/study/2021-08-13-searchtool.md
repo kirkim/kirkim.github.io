@@ -53,8 +53,8 @@ comments: true
 
 ```html
 <form id="login">
-	<input type="text" />
-	<input type="submit" />
+    <input type="text" />
+    <input type="submit" />
 </form>
 ```
 
@@ -66,8 +66,8 @@ const login = document.querySelector("#login");
 const loginInput = document.querySelector("#login input");
 
 function onLogin() {
-	const text = loginInput.value;
-	console.log(text);
+    const text = loginInput.value;
+    console.log(text);
 }
 
 login.addEventListener("submit", onLogin);
@@ -113,7 +113,7 @@ console.dir(event);
 <br><br>
 
 * * *
-<h1>3️⃣  Local Storage</h1>
+<h1>3️⃣  Local Storage 사용해보기</h1>
 
 * **브라우저**에서 지원하는 일종의 **미니DB**와 같은 기능을 합니다. 동일 **컴퓨터** 동일 **브라우저**를 이용하면 **Local Storage**에 저장된 값이 그대로 유지됩니다.
 * 자세한 설명은 **아래의 사이트**에 잘되어 있습니다.
@@ -135,8 +135,16 @@ localStorage.setItem("username", text);
 <img src="https://kirkim.github.io/assets/img/js/js12.png" width="85%" alt="local storage in">
 <h4 align="middle" style="color:#0e435c;">&lt; Local Storage에 저장된 모습&gt;</h4>
 <img src="https://kirkim.github.io/assets/img/js/js13.png" width="85%" alt="local storage out">
+<br><br>
 
+* * *
+<h1>4️⃣  응용 결과물</h1>
 
+1. <b style="color:orange">Log IN(로그인)</b>시 `localStorage.setItem`으로 <b style="color:green">입력 데이터</b>를 <b style="color:blue">Local Storage에 저장</b>과 동시에 <b style="color:red">출력</b>
+2. <b style="color:orange">Log Out(로그아웃)</b>시 `localStorage.removeItem`으로 <b style="color:blue">Local Storage에 저장</b>된 <b style="color:green">입력 데이터</b>를 제거함과 동시에 <b style="color:red">출력</b>문을 제거
+
+* 이처럼 <rd>저장과 제거</rd>가 독립적으로 이뤄지기 때문에 중간에 `preventDefault();`을 사용하여 동작을 멈춘 상태에서 제거동작을 하면 **에상치못한 결과**가 발생하였습니다.
+* 그렇기 때문에 `preventDefault();`을 사용하지 않고 사용하며 `Log in`시 <b style="blue">새로고침</b>이 한번 발생하여 **서버 전송**과정이 일어납니다.
 <div class="A13_block">
 	<span>KIRKIM</span>
 	<form id="A13_form" class="hidden">
@@ -150,9 +158,7 @@ localStorage.setItem("username", text);
 			<input type="submit" value="Log In" />
 		</span>
 	</form>
-	<form class="aaa">
-		<button id="A13_logout">Log out</button>
-	</form>
+	<button id="A13_logout">Log out</button>
 </div>
 <div class="A13_block2">
 	<b id="A13_out" class="hidden"></b><br>
@@ -212,6 +218,7 @@ localStorage.setItem("username", text);
 			logOut.classList.add("hidden");
 			outA.classList.add("hidden");
 			loginForm.classList.remove("hidden");
+			loginForm.classList.add("aaa");
 		}
 	}
 
