@@ -4,7 +4,7 @@ title:  "[JavaScript]자동으로 색이 바뀌는 전광판 만들기"
 subtitle:   ""
 date: 2021-08-12 03:45:51 +0900
 categories: javascript
-tags: etc
+tags: study
 comments: true
 ---
 

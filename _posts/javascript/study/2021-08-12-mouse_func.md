@@ -4,7 +4,7 @@ title:  "[JavaScript] addEventListener 써보기(마우스 이벤트)"
 subtitle:   ""
 date: 2021-08-12 02:45:51 +0900
 categories: javascript
-tags: etc
+tags: study
 comments: true
 ---
 

@@ -4,7 +4,7 @@ title:  "[JavaScript]블로그에 나만의 JavaScript 추가해보기"
 subtitle:   ""
 date: 2021-08-11 02:45:51 +0900
 categories: javascript
-tags: etc
+tags: study
 comments: true
 ---
 <h2 style="color:#dd1144">🙅🏼‍♀️주🙅🏼‍♂️의🙅</h2>
