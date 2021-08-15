@@ -145,24 +145,8 @@ localStorage.setItem("username", text);
 
 * 이처럼 <rd>저장과 제거</rd>가 독립적으로 이뤄지기 때문에 중간에 `preventDefault();`을 사용하여 동작을 멈춘 상태에서 제거동작을 하면 **에상치못한 결과**가 발생하였습니다.
 * 그렇기 때문에 `preventDefault();`을 사용하지 않고 사용하며 `Log in`시 <b style="blue">새로고침</b>이 한번 발생하여 **서버 전송**과정이 일어납니다.
-<div class="A13_block">
-	<span>KIRKIM</span>
-	<form id="A13_form" class="hidden">
-		<span  >
-			<input
-				required
-				maxlength="15"
-				type="text"
-				placeholder="what is your name?"
-			/>
-			<input type="submit" value="Log In" />
-		</span>
-	</form>
-	<button id="A13_logout">Log out</button>
-</div>
-<div class="A13_block2">
-	<b id="A13_out" class="hidden"></b><br>
-</div>
+
+<iframe width="100%" height="300" src="//jsfiddle.net/kirkim/Lc7ujrs5/6/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
 <style>
 	.A13_block {
@@ -190,6 +174,25 @@ localStorage.setItem("username", text);
 		display: inline;
 	}
 </style>
+
+<div class="A13_block">
+	<span>KIRKIM</span>
+	<form id="A13_form" class="hidden">
+		<span  >
+			<input
+				required
+				maxlength="15"
+				type="text"
+				placeholder="what is your name?"
+			/>
+			<input type="submit" value="Log In" />
+		</span>
+	</form>
+	<button id="A13_logout">Log out</button>
+</div>
+<div class="A13_block2">
+	<b id="A13_out" class="hidden"></b><br>
+</div>
 
 <script>
 	const outA = document.querySelector("#A13_out");
