@@ -147,7 +147,7 @@ localStorage.setItem("username", text);
 * 그렇기 때문에 `preventDefault();`을 사용하지 않고 사용하며 `Log in`시 <b style="blue">새로고침</b>이 한번 발생하여 **서버 전송**과정이 일어납니다.
 <div class="A13_block">
 	<span>KIRKIM</span>
-	<form id="A13_form">
+	<form id="A13_form" class="hidden">
 		<span  >
 			<input
 				required
@@ -179,6 +179,7 @@ localStorage.setItem("username", text);
 		width: 80%;
 		padding: 1% 2%;
 		font-size:40px;
+		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
@@ -212,7 +213,7 @@ localStorage.setItem("username", text);
 	}
 
 	function logOutFunc() {
-		if  usrName !== null) {
+		if  (usrName !== null) {
 			localStorage.removeItem("username");
 			logOut.classList.add("hidden");
 			outA.classList.add("hidden");
@@ -221,7 +222,7 @@ localStorage.setItem("username", text);
 		}
 	}
 
-	if  usrName === null) {
+	if  (usrName === null) {
 		loginForm.classList.remove("hidden");
 		loginForm.classList.add("aaa");
 		logOut.classList.add("hidden");
