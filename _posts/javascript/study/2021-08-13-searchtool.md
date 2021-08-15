@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[JavaScript] "
+title:  "[JavaScript] form태그, Local Storage 사용 해보기"
 subtitle:   ""
 date: 2021-08-13 02:45:51 +0900
 categories: javascript
@@ -196,7 +196,7 @@ localStorage.setItem("username", text);
 	const loginForm = document.querySelector("#A13_form")
 	const loginInput = document.querySelector(".A13_block input");
 	const logOut = document.querySelector("#A13_logout");
-	const storeUser = localStorage.getItem("username");
+	const usrName = localStorage.getItem("username");
 
 	function onLoginSubmit(event) {
 		loginForm.classList.add("hidden");
@@ -213,7 +213,7 @@ localStorage.setItem("username", text);
 	}
 
 	function logOutFunc() {
-		if (storeUser !== null) {
+		if  usrName !== null) {
 			localStorage.removeItem("username");
 			logOut.classList.add("hidden");
 			outA.classList.add("hidden");
@@ -222,14 +222,13 @@ localStorage.setItem("username", text);
 		}
 	}
 
-	if (storeUser === null) {
+	if  usrName === null) {
 		loginForm.classList.remove("hidden");
 		loginForm.classList.add("aaa");
 		logOut.classList.add("hidden");
 		loginForm.addEventListener("submit", onLoginSubmit);
 	} else {
-		paintHello(storeUser);
+		paintHello usrName);
 		logOut.addEventListener("click", logOutFunc);
 	}
 </script>
-
