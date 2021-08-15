@@ -228,7 +228,7 @@ localStorage.setItem("username", text);
 		logOut.classList.add("hidden");
 		loginForm.addEventListener("submit", onLoginSubmit);
 	} else {
-		paintHello usrName);
+		paintHello(usrName);
 		logOut.addEventListener("click", logOutFunc);
 	}
 </script>
