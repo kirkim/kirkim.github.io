@@ -147,3 +147,5 @@ localStorage.setItem("username", text);
 * 그렇기 때문에 `preventDefault();`을 사용하지 않고 사용하며 `Log in`시 <b style="blue">새로고침</b>이 한번 발생하여 **서버 전송**과정이 일어납니다.
 
 <iframe width="100%" height="300" src="//jsfiddle.net/kirkim/Lc7ujrs5/6/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+* 어떤식으로 <b style="color:green">웹상(프론트엔드)</b>에서 <b style="color:purple">백엔드</b>로 데이터를 주는지 궁금했었는데 `<form action="">`태그를 이용해서 데이터를 전송할 수 있다는 것을 알게 되었습니다.
