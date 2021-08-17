@@ -332,3 +332,18 @@ rmk {
   width: 48%;
   float: right;
 }
+
+kline {
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	border-bottom:2px ridge black;
+}
+
+h1.ksubject {
+	margin-top:3em;
+	border-top:6px dashed black;
+	padding-top:1.5em;
+	border-bottom:2px ridge black;
+	padding-bottom:2px;
+}

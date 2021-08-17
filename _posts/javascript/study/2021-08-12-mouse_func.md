@@ -7,9 +7,8 @@ categories: javascript
 tags: study
 comments: true
 ---
-
-* * *
 <h1>1️⃣ addEventListener()</h1>
+<kline></kline>
 
 * 자바스크립트에서 `document`오브젝트를 사용하여 `html`의 요소에 접근을 할 수 있습니다.
 
@@ -35,16 +34,14 @@ aa.addEventListener("mouseenter", mouseEnterFunc);
 ```
 
 * 위의코드의 동작방식은 `mouseenter`(마우스가 안에 있으면) `mouseEnterFunc`을 호출합니다.
-<br><br>
 
-* * *
-<h1>2️⃣ 같은 클래스 동시에 작동시켜보기</h1>
+<h1 class="ksubject">2️⃣ 같은 클래스 동시에 작동시켜보기</h1>
 
 * `quertSelector`메소드를 이용하여 **해당클래스**를 불러올 수 있었습니다. 하지만 같은 **클래스나 아이디**가 존재할 경우 <rd>가장 처음의 것</rd>만 불러올 수 있었습니다.
 * 대신에 `quertSelectorAll`을 이용하면 **해당클래스**를 모두 불러와 배열형식으로 저장할 수 있습니다.
 * 이것을 이용하여 **같은 클래스를 모두 다룰 수 있는 코드**를 구현해보도록 하겠습니다.
 
-* * *
+<kline></kline>
 <h2 style="color:#0e435c;">(1) addEventlistener가 호출하는 함수에 매개변수?[실패]</h2>
 
 * `addEventlistener`가 **동작(event)**을 감지하면 **두번째인자**로 넣어준 함수를 호출하도록 구현했습니다. 하지만 매 변수마다 호출되는 <rd>함수들이 중복</rd>되기 때문에 **매개변수**를 이용하여 재사용할 수 있도록 구현해봤습니다.
@@ -69,7 +66,7 @@ for(let i = 0; i < aa.length; i++)
 * 인터넷에 검색해보면 적절하게 **매개변수**를 사용하는 방법이 있었습니다. 대표적으로 다음의 사이트에서 마지막 경우를 보면될 것같습니다.<br>
 <a href="https://opentutorials.org/course/1375/6761">생활코딩 - ddEventListener()</a>
 
-* * *
+<kline></kline>
 <h2 style="color:#0e435c;">(2) 무식하게 반복문을 돌리기</h2>
 
 ```javascript
@@ -93,10 +90,8 @@ for(let i = 0; i < aa.length; i++)
 * 위의 코드처럼 **함수**까지도 반복문에 넣었습니다.
 * 이 방법이 올바른 방법인지는 아직 모르겠습니다. ~~<b style="font-size:85%">(**포스트**를 열고있는 동안 **반복문**이 계속돌고 있을 것 같은 느낌..)</b>~~
 * 다행히 `for문`안에서 `console.log()`를 넣어 실험해본결과 <rd>반복문</rd>은 **포스트가 로딩된 최초 한번**만 실행되었고 <b style="color:gree">이벤트가 발생</b>하여도 <rd>반복문</rd>이 다시 돌지않았습니다. **C언어**에서 <rd>전처리기</rd>가 **매크로**나 **헤더파일**을 **전처리단계**에서 확장해주는 방식(?)과 같지않나 생각이듭니다.
-<br><br>
 
-* * *
-<h1>3️⃣ 결과물</h1>
+<h1 class="ksubject">3️⃣ 결과물</h1>
 
 * <b style="color:green">랜덤하게 색을 변하게하는 기능</b>도 추가하여 다음과 같은 **결과물**을 만들었습니다.
 * **아직도** **Javascript**에서 <b style="color:navy">위와 같은 코드가 어떤식으로 작동</b>하는지 **이해가 되지 않습니다.** <b style="font-size:75%">(반복문안의 함수들을 펼쳐놓는다면 함수이름이 모두 같을텐데 어떻게 적절한 변수가 들어있는 함수를 찾아서 호출할까..?)</b>

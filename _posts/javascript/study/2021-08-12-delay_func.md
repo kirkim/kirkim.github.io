@@ -7,23 +7,19 @@ categories: javascript
 tags: study
 comments: true
 ---
-
-* * *
 <h1>1️⃣ 목표</h1>
+<kline></kline>
 
 * <b style="color:cornflowerblue">특정글자</b>를 <b style="color:cornflowerblue">마우스</b>로 클릭하면 <b style="color:cornflowerblue">일정시간 마다 랜덤하게 색</b>이 변하는 **기능**구현하기
-<br><br>
 
-* * *
-<h1>2️⃣ 이용할 메소드</h1>
+
+<h1 class="ksubject">2️⃣ 이용할 메소드</h1>
 
 1. `addEventListener()`: **이벤트**를 받아오는 메소드
 2. `setInterval()`: <b style="color:green">일정시간(두번째 인자)</b>마다 <b style="color:blue">함수(첫번째 인자)</b>를 호출하는 함수
 3. `clearInterval()`: <rd>setInterval()</rd>의 **반환값**을 받아 해당 기능을 정지시킴
-<br><br>
 
-* * *
-<h1>3️⃣ 사용1</h1>
+<h1 class="ksubject">3️⃣ 사용1</h1>
 <h2 style="color:#0e435c;">(1) 코드구현</h2>
 
 ```javascript
@@ -48,7 +44,7 @@ aa.addEventListener("click", clickMouseFunc);
 * **특정 글자**를 <b style="color:blue">클릭</b>을 하면 **일정시간동안 글자색이 바뀌는 기능**을 키고 끌 수 있습니다.
 * `setInterval()`의 **두번째 인자**는 `1000`당 **약 1초**의 딜레이가 생깁니다.
 
-* * *
+<kline></kline>
 <h2 style="color:#0e435c;">(2) 결과</h2>
 
 &#91; **전광판** <b style="color:blue">클릭시 "작동"</b> <rd>다시 클릭시 "정지"</rd> &#93;
@@ -59,10 +55,8 @@ aa.addEventListener("click", clickMouseFunc);
 <b class="random_A12">RANDOM WORD!</b><br>
 <b> &lt; delay = 50 &gt;</b><br>
 <b class="random_A12">RANDOM WORD!</b><br>
-<br><br>
 
-* * *
-<h1>3️⃣ 사용2</h1>
+<h1 class="ksubject">3️⃣ 사용2</h1>
 <h2 style="color:#0e435c;">(1) 자연스럽게 색변환시키기(css)</h2>
 
 * 색을 바뀔 때 <b style="color:cornflowerblue">좀 더 자연스럽게</b> 색을 바뀌는 **기능**을 추가해보겠습니다.
@@ -79,8 +73,8 @@ aa.addEventListener("click", clickMouseFunc);
 
 * `transition`은 위와같이 `.2s`와 같이 **애니매이션**의 자동 시간을 조절할 수 있습니다.
 
-* * *
-<h2 style="color:#0e435c;">(2) 결과</h2>
+<kline></kline>
+<h2 style="color:#0e435c;">(2) 최종 결과물</h2>
 
 * <b style="color:green">delay</b>와 <b style="color:green">transition의 작동시간</b>의 벨런스를 잘 맞추지 못하면 **색이 바뀌기 전에 다른색으로 변합**니다.
 * 그렇기 때문에 <rd>두 값의 벨런스를 잘 맞추는 것이 중요합니다.</rd>
