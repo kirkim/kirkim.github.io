@@ -41,7 +41,7 @@ adlink.innerText = "표시해줄 링크문자"
 * 당연히 `createElement()`를 이용하여 <b style="color:blue">링크(a)</b>노드를 생성할 수 있습니다.
 * `.innerText`요소에 **유효한 문자**를 넣으면 정상적으로 링크가 표시됩니다.
 
-<kline2></kline2>
+<kline></kline>
 <h2 style="color:#0e435c;">(3) 최종 결과물(이미지)</h2>
 <div id="A15_slide3"></div>
 
