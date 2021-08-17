@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[JavaScript] "
+title:  "[JavaScript] 이미지로딩 및 시계만들기"
 subtitle:   ""
 date: 2021-08-15 02:45:51 +0900
 categories: javascript
@@ -142,7 +142,7 @@ function getClock1() {
 
 <script>
 	const address = document.querySelector("#A15_slide1");
-	const images = ["0.jpeg", "1.jpeg", "2.jpeg"];
+	const images = ["3.png", "4.png", "5.png", "6.png", "7.png"];
 	const adImage = document.createElement("img");
 	let cnt = 0;
 
@@ -154,6 +154,6 @@ function getClock1() {
 		const chosenImage = images[cnt];
 		adImage.src = `https://kirkim.github.io/assets/img/js/delay_application/${chosenImage}`;
 	}
-	setInterval(randomImg, 3000);
+	setInterval(randomImg, 500);
 	address.appendChild(adImage);
 </script>
