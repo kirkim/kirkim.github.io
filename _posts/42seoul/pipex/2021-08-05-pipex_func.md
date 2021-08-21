@@ -69,8 +69,8 @@ int main(void)
 
 <h1>3️⃣ fork() 함수</h1>
 <kfunc>
-	<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;unistd.h&gt;</b><br>
-	pid_t&nbsp;&nbsp;<b style="color:#60ec72">fork</b>(<b style="color:#eb7527">void</b>);<br>
+	<b class="i">#include</b> <b class="h">&lt;unistd.h&gt;</b><br>
+	pid_t&nbsp;&nbsp;<b class="f">fork</b>(<b class="p">void</b>);<br>
 </kfunc>
 <br>
 
@@ -127,8 +127,8 @@ int main(void)
 <h1>4️⃣ wait(), waitpid() 함수</h1>
 <h2 style="color:#0e435c;">(1) wait() 함수</h2>
 <kfunc>
-	<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;sys/wait.h&gt;</b><br>
-	pid_t&nbsp;&nbsp;<b style="color:#60ec72">wait</b>(int <b style="color:#eb7527">*statloc</b>);<br>
+	<b class="i">#include</b> <b class="h">&lt;sys/wait.h&gt;</b><br>
+	pid_t&nbsp;&nbsp;<b class="f">wait</b>(int <b class="p">*statloc</b>);<br>
 </kfunc>
 <br>
 
@@ -209,8 +209,8 @@ else
 
 <h2 style="color:#0e435c;">(2) waitpid() 함수</h2>
 <kfunc>
-	<b style="color:#f7401f">#include</b> <b style="color:#fce375">&lt;sys/wait.h&gt;</b><br>
-	pid_t&nbsp;&nbsp;<b style="color:#60ec72">waitpid</b>(pid_t <b style="color:#eb7527">pid</b>, int <b style="color:#eb7527">*statloc</b>, int <b style="color:#eb7527">options</b>);<br>
+	<b class="i">#include</b> <b class="h">&lt;sys/wait.h&gt;</b><br>
+	pid_t&nbsp;&nbsp;<b class="f">waitpid</b>(pid_t <b class="p">pid</b>, int <b class="p">*statloc</b>, int <b class="p">options</b>);<br>
 </kfunc>
 <br>
 

@@ -262,6 +262,9 @@ input[type="checkbox"]:checked ~ ul{
 	--color-pink: #fd7f84;
 	--color-red: #dd1144;
 	--color-light-grey: #dfdfdf;
+
+	/* annimation */
+	--annimation-duration: 300ms;
 }
 
 kkr {
@@ -332,6 +335,16 @@ wt {
 	font-weight: bold;
 }
 
+.orange {
+	color: orange;
+	font-weight: bold;
+}
+
+.red {
+	color: red;
+	font-weight: bold;
+}
+
 dec {
   background-color: #0a2835;
   color: #ffffff;
@@ -384,4 +397,15 @@ h1.ksubject {
 	padding-top:1.5em;
 	border-bottom:2px ridge black;
 	padding-bottom:2px;
+}
+
+.lit1 {
+	display:inline-block;
+	cursor: pointer;
+	transition: transform var(--annimation-duration) ease;
+}
+
+.lit1:hover {
+	transform: scale(1.05);
+	color: orange;
 }
