@@ -249,6 +249,21 @@ input[type="checkbox"]:checked ~ ul{
   height: 100%;
 }
 
+/* Custom */
+:root {
+	/* color */
+	--color-black: #000000;
+	--color-white: #ffffff;
+	--color-skyblue: #3f9ee7;
+	--color-blue: #163496;
+	--color-green: #3f9b23;
+	--color-purple: #9431bb;
+	--color-yellow: #fbbe28;
+	--color-pink: #fd7f84;
+	--color-red: #dd1144;
+	--color-light-grey: #dfdfdf;
+}
+
 kkr {
   display: block;
   padding: 9px;
@@ -260,6 +275,7 @@ kkr {
   color: #ffffff;
 }
 
+/* 함수 정의 옵션 */
 kfunc {
 	border-style: double;
 	border-color: yellow;
@@ -275,6 +291,13 @@ kfunc {
 	color: #ffffff;
 
 }
+
+kfunc .i { color: #f7401f; } /* include color */
+kfunc .h { color: #fce375; } /* header color */
+kfunc .f { color: #60ec72; } /* function_name color */
+kfunc .p { color: #eb7527; } /* param color */
+kfunc .pi { color: #f7401f; } /* param_index color */
+
 
 .guide {
   background-color: #eee;
@@ -292,6 +315,21 @@ rd {
 wt {
   color: #ffffff;
   font-weight: bold;
+}
+
+.green {
+	color: var(--color-green);
+	font-weight: bold;
+}
+
+.blue {
+	color: var(--color-blue);
+	font-weight: bold;
+}
+
+.purple {
+	color: var(--color-purple);
+	font-weight: bold;
 }
 
 dec {
