@@ -4,7 +4,8 @@
  * Update the foundational and global aspects of the page.
  */
 
-body, main {
+body,
+main {
   /* Prevent side-scrolling on mobile */
   position: relative;
   overflow-x: hidden;
@@ -15,7 +16,7 @@ body, main {
 
 @media screen {
   body::before {
-    content: '';
+    content: "";
     background: $border-color;
     position: absolute;
     left: 0;
@@ -68,13 +69,15 @@ body, main {
   // border: 0;
 }
 
-.clearfix, .clearafter::after {
+.clearfix,
+.clearafter::after {
   @include clearfix();
 }
 
-a, .a {
+a,
+.a {
   position: relative;
-  padding-bottom: .15rem;
+  padding-bottom: 0.15rem;
   border-style: hidden;
   // transition: color 500ms, border-color 250ms ease;
   //
@@ -115,7 +118,12 @@ a, .a {
   @include aspect-ratio(16, 9);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   & + hr {
     margin-top: 0;
   }
@@ -132,9 +140,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes fade-in {
-  from { transform: translateY(-2rem); opacity: 0; }
-  50%  { transform: translateY(-2rem); opacity: 0; }
-  to   { transform: translateY(0);     opacity: 1; }
+  from {
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .mb6 {

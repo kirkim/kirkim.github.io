@@ -58,7 +58,7 @@
 }
 
 .markdown-body a {
-  background: #FFF9C4;
+  background: #b5b9c1;
 }
 
 .markdown-body code,
@@ -256,11 +256,13 @@ input[type="checkbox"]:checked ~ ul{
 	--color-white: #ffffff;
 	--color-skyblue: #3f9ee7;
 	--color-blue: #163496;
-	--color-green: #3f9b23;
+	--color-green: #185200;
 	--color-purple: #9431bb;
-	--color-yellow: #fbbe28;
+	--color-yellow: #f6fb00;
+	--color-orange: #ffb814;
 	--color-pink: #fd7f84;
 	--color-red: #dd1144;
+	--color-brown: #844d07;;
 	--color-light-grey: #dfdfdf;
 
 	/* annimation */
@@ -281,7 +283,7 @@ kkr {
 /* 함수 정의 옵션 */
 kfunc {
 	border-style: double;
-	border-color: yellow;
+	border-color: #1a71a5;
 	border-width: thick;
 	display: block;
 	padding: 9px;
@@ -336,12 +338,17 @@ wt {
 }
 
 .brown {
-	color: brown
+	color: var(--color-brown);
 	font-weight: bold;
 }
 
 .orange {
-	color: orange;
+	color: var(--color-orange);
+	font-weight: bold;
+}
+
+.yellow {
+	color: var(--color-yellow);
 	font-weight: bold;
 }
 

@@ -11,7 +11,7 @@ comments: true
 <h1>1️⃣ 목표</h1>
 <kline></kline>
 
-- <b style="color:cornflowerblue">특정글자</b>를 <b style="color:cornflowerblue">마우스</b>로 클릭하면 <b style="color:cornflowerblue">일정시간 마다 랜덤하게 색</b>이 변하는 **기능**구현하기
+- <b style="color:#154cb1">특정글자</b>를 <b style="color:#154cb1">마우스</b>로 클릭하면 <b style="color:#154cb1">일정시간 마다 랜덤하게 색</b>이 변하는 **기능**구현하기
 
 <h1 class="ksubject">2️⃣ 이용할 메소드</h1>
 
@@ -60,7 +60,7 @@ aa.addEventListener("click", clickMouseFunc);
 <h1 class="ksubject">3️⃣ 사용2</h1>
 <h2 style="color:#0e435c;">(1) 자연스럽게 색변환시키기(css)</h2>
 
-- 색을 바뀔 때 <b style="color:cornflowerblue">좀 더 자연스럽게</b> 색을 바뀌는 **기능**을 추가해보겠습니다.
+- 색을 바뀔 때 <b style="color:#154cb1">좀 더 자연스럽게</b> 색을 바뀌는 **기능**을 추가해보겠습니다.
 - <b style="color:blue">css</b>에 그러한 역할을 해주는 `transition`이라는 요소가 있습니다.
 - 다음의 사이트에서 `transition`의 **놀라운 기능들**을 확인해볼 수 있습니다.
 
