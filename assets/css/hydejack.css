@@ -414,10 +414,9 @@ h1.ksubject {
 .lit1 {
 	display:inline-block;
 	cursor: pointer;
-	transition: transform var(--annimation-duration) ease;
+	color: var(--color-brown);
 }
 
 .lit1:hover {
-	transform: scale(1.05);
-	color: orange;
+	color: var(--color-orange);
 }

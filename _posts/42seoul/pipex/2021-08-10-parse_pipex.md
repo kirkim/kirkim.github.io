@@ -56,7 +56,7 @@ int main(int argc, char **envp)
 ```
 
 <details>
-<summary><b class="lit2" style="background-color:#FFFF00">코드실행 결과 출력값 보기 (클릭)</b></summary>
+<summary><b class="lit2">코드실행 결과 출력값 보기 (클릭)</b></summary>
 	<kkr>
 		<rmk>/* 출력 */</rmk>
 		<0> ./a.out<br>
