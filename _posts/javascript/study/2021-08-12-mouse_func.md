@@ -132,7 +132,7 @@ for (let i = 0; i < aa.length; i++) {
 	}
 </style>
 
-<h1 class="ksubject">4️⃣ JS방식으로 깔끔하게 작성하기<b style="font-size:85%">(21.08.24추가내용)</b></h1>
+<h1 class="ksubject">4️⃣ JS방식으로 깔끔하게 작성하기<b style="font-size:75%">(21.08.24추가내용)</b></h1>
 
 - <b class="orange">자바스크립트</b>를 공부하다 문득 **for문**으로 무식하게 작성했던때가 생각 났습니다. <b style="font-size:85%">(위의 2번)</b>
 - 그나마 제대로 공부했던 **언어**는 <b class="blue">C언어</b>였기 때문에 <b class="orange">자바스크립트</b>의 함수의 **매개변수**의 개념이 익숙하지가 않은 것이 원인이였습니다.
@@ -167,11 +167,11 @@ aa.forEach((a) => {
 
 - 하지만 <b class="red">주의</b>해야될 부분이 있는데 `aa`변수는 <b class="green">"querySelectorAll()"</b>로 생성한 <b class="yellow">노드배열</b>입니다.
 - <b class="yellow">유사배열</b>이라고도 할 수 있는데, 이처럼 **유사배열**의 경우 <b class="red">배열</b>의 **메소드**를 이용할 수 없을 수도 있습니다.
-- **다행히** `foreach()`메소드는 <b class="yellow">노드배열</b>프로퍼티에도 존재했기때문에 사용이 가능했습니다.
-  <img src="https://kirkim.io/assets/img/js/arrayfunc/4.png" alt="nodelist_func_list">
+- **다행히** `foreach()`메소드는 <b class="yellow">노드배열의 Prototype</b>에도 존재했기때문에 사용이 가능했습니다.
+  <img src="/assets/img/js/arrayfunc/4.png" alt="nodelist_func_list" width="60%">
 
-- **배열과 유사배열**에 관해 자세히 알고 싶으면 다음사이트를 참고하면 될 것 같습니다.
-  👉🏻 👉🏻 👉🏻 <a href="https://www.zerocho.com/category/JavaScript/post/5af6f9e707d77a001bb579d2">배열과 유사배열 - ZeroCho Tv</a>
+- **배열과 유사배열**에 관해 자세히 알고 싶으면 다음사이트를 참고하면 될 것 같습니다.<br>
+  👉🏻 👉🏻 👉🏻 <a href="https://www.zerocho.com/category/JavaScript/post/5af6f9e707d77a001bb579d2">배열과 유사배열 - ZeroCho TV</a>
 - 이러한 **유사배열**도 `Array.from()`을 이용하면 **배열**처럼 만들 수 있습니다.
 
 ```javascript
@@ -182,4 +182,13 @@ console.log(Array.from(aa)); // Array(7)
 
 - 위의 **콘솔**출력결과를 보면 정상적으로 **배열**로 바뀐모습을 알 수 있습니다.
 - `Array.from()`은 단순히 **배열**로 바꿔주는 함수가 아니라 **기존의 배열을 커스텀하여 복사된 배열**을 반환하는 기능을 가지고 있습니다.
-- 어찌됐든 `Array.from()`기능을 사용하면 <b class="red">배열을 복사</b>하는 과정이 일어납니다. **노드배열**에도 `forEach()`메소드가 있다는 것을 안 이상 굳이 사용할 필요가 없습니다. <b style="font>
+- **유사배열**을 안전하게 **배열**로 바꾸어 매소드에 접근하고자 한다면 <b class="green">다음과 같이 사용</b>하면 됩니다.
+
+```javascript
+Array.from(aa).forEach((a) => {
+  a.addEventListener("mouseenter", mouseEnterFunc);
+  a.addEventListener("mouseleave", mouseLeaveFunc);
+});
+```
+
+- 어찌됐든 **노드배열 Prototype**에도 `forEach()`메소드가 있다는 것을 안 이상 굳이 `Array.from`사용할 필요가 없을 것 같습니다. `Array.from()`기능을 사용하면 <b class="red">배열을 복사</b>하는 과정이 일어나기 때문에 조금의 성능저하가 있지않을까 생각이 들기 때문입니다. <b style="font-size:85%">(유사배열에 매소드가 존재하는지 햇갈린다면 사용하는게 좋을 것 같습니다.)</b>
