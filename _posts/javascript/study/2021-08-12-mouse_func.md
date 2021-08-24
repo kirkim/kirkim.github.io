@@ -95,7 +95,7 @@ for (let i = 0; i < aa.length; i++) {
 <h1 class="ksubject">3️⃣ 결과물</h1>
 
 - <b style="color:green">랜덤하게 색을 변하게하는 기능</b>도 추가하여 다음과 같은 **결과물**을 만들었습니다.
-- **아직도** **Javascript**에서 <b style="color:navy">위와 같은 코드가 어떤식으로 작동</b>하는지 **이해가 되지 않습니다.** <b style="font-size:75%">(반복문안의 함수들을 펼쳐놓는다면 함수이름이 모두 같을텐데 어떻게 적절한 변수가 들어있는 함수를 찾아서 호출할까..?)</b>
+- ~~**아직도** **Javascript**에서 <b style="color:navy">위와 같은 코드가 어떤식으로 작동</b>하는지 **이해가 되지 않습니다.** <b style="font-size:75%">(반복문안의 함수들을 펼쳐놓는다면 함수이름이 모두 같을텐데 어떻게 적절한 변수가 들어있는 함수를 찾아서 호출할까..?)</b>~~
 - 또한 javascript언어에서 <b style="color:navy">css의 요소들을 다루는 것</b>도 올바른 사용 방법인 것 같지 않습니다.
 - 하지만 <b style="color:green">Javascript</b>가 <b style="color:orange">이러한 놀라운 기능</b>까지도 할 수 있다는 것을 알게되었습니다.
 
@@ -111,7 +111,6 @@ for (let i = 0; i < aa.length; i++) {
 	const aa = document.querySelectorAll(".hello");
 	for(let i = 0; i < aa.length; i++)
 	{
-		console.log(i + "!!!");
 		function mouseEnterFunc() {
 			aa[i].style.color = "#"+(parseInt(Math.random()*0xffffff)).toString(16);
 			aa[i].style.fontSize = "300%";
@@ -132,3 +131,55 @@ for (let i = 0; i < aa.length; i++) {
 		line-height: 60px;
 	}
 </style>
+
+<h1 class="ksubject">4️⃣ JS방식으로 깔끔하게 작성하기<b style="font-size:85%">(21.08.24추가내용)</b></h1>
+
+- <b class="orange">자바스크립트</b>를 공부하다 문득 **for문**으로 무식하게 작성했던때가 생각 났습니다. <b style="font-size:85%">(위의 2번)</b>
+- 그나마 제대로 공부했던 **언어**는 <b class="blue">C언어</b>였기 때문에 <b class="orange">자바스크립트</b>의 함수의 **매개변수**의 개념이 익숙하지가 않은 것이 원인이였습니다.
+- 그 중하나로 **이벤트함수**는 **event**요소를 받을 수 있으며 `.target`을 이용하여 이벤트가 일어난곳의 **부모노드**에 접근할 수 있습니다.
+- 아직도 **이벤트 위임** 등과 같은 **이벤트**와 관련된 것들을 더 공부해야겠지만, 일단은 위의 `(2)`의 <b class="red">for문</b>안에 위치한 <b class="green">이벤트 함수들을</b> 다음과 같이 밖으로 끄집어낼 수 있습니다.
+
+```javascript
+const aa = document.querySelectorAll(".hello");
+
+function mouseEnterFunc(event) {
+  event.target.innerText = "Hello!";
+}
+
+function mouseLeaveFunc(event) {
+  event.target.innerText = "Bye!";
+}
+
+for (let i = 0; i < aa.length; i++) {
+  aa[i].addEventListener("mouseenter", mouseEnterFunc);
+  aa[i].addEventListener("mouseleave", mouseLeaveFunc);
+}
+```
+
+- 더 나아가 `foreach()`메소드를 이용하면 <b class="green">이벤트함수</b>들도 <b class="orange">자바스크립트</b>스럽게(?) 작성할 수 있습니다.
+
+```javascript
+aa.forEach((a) => {
+  a.addEventListener("mouseenter", mouseEnterFunc);
+  a.addEventListener("mouseleave", mouseLeaveFunc);
+});
+```
+
+- 하지만 <b class="red">주의</b>해야될 부분이 있는데 `aa`변수는 <b class="green">"querySelectorAll()"</b>로 생성한 <b class="yellow">노드배열</b>입니다.
+- <b class="yellow">유사배열</b>이라고도 할 수 있는데, 이처럼 **유사배열**의 경우 <b class="red">배열</b>의 **메소드**를 이용할 수 없을 수도 있습니다.
+- **다행히** `foreach()`메소드는 <b class="yellow">노드배열</b>프로퍼티에도 존재했기때문에 사용이 가능했습니다.
+  <img src="https://kirkim.io/assets/img/js/arrayfunc/4.png" alt="nodelist_func_list">
+
+- **배열과 유사배열**에 관해 자세히 알고 싶으면 다음사이트를 참고하면 될 것 같습니다.
+  👉🏻 👉🏻 👉🏻 <a href="https://www.zerocho.com/category/JavaScript/post/5af6f9e707d77a001bb579d2">배열과 유사배열 - ZeroCho Tv</a>
+- 이러한 **유사배열**도 `Array.from()`을 이용하면 **배열**처럼 만들 수 있습니다.
+
+```javascript
+const aa = document.querySelectorAll(".hello");
+console.log(aa); // NodeList(7)
+console.log(Array.from(aa)); // Array(7)
+```
+
+- 위의 **콘솔**출력결과를 보면 정상적으로 **배열**로 바뀐모습을 알 수 있습니다.
+- `Array.from()`은 단순히 **배열**로 바꿔주는 함수가 아니라 **기존의 배열을 커스텀하여 복사된 배열**을 반환하는 기능을 가지고 있습니다.
+- 어찌됐든 `Array.from()`기능을 사용하면 <b class="red">배열을 복사</b>하는 과정이 일어납니다. **노드배열**에도 `forEach()`메소드가 있다는 것을 안 이상 굳이 사용할 필요가 없습니다. <b style="font>

@@ -97,7 +97,9 @@ comments: true
 		aaa.style.color = "black";
 	}
 
-	aaa.addEventListener("click", handleTitleClick);
-	aaa.addEventListener("mouseenter", handleMouse);
-	aaa.addEventListener("mouseleave", handleMouseLeave);
+	if (aaa) {
+		aaa.addEventListener("click", handleTitleClick);
+		aaa.addEventListener("mouseenter", handleMouse);
+		aaa.addEventListener("mouseleave", handleMouseLeave);
+	}
 </script>
