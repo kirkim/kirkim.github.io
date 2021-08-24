@@ -400,14 +400,14 @@ kline {
 	display: block;
 	margin-top: 1em;
 	margin-bottom: 1em;
-	border-bottom:2px ridge black;
+	border-bottom:2px ridge white;
 }
 
 h1.ksubject {
 	margin-top:3em;
-	border-top:6px dashed black;
+	border-top:6px double #052e4b;
 	padding-top:1.5em;
-	border-bottom:2px ridge black;
+	border-bottom:3px solid #2a2d2b;
 	padding-bottom:2px;
 }
 
