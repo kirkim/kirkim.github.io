@@ -1,0 +1,125 @@
+.paintBrush {
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.kcanvas {
+  width: 70vw;
+  height: 50vh;
+  background-color: white;
+  margin: 3vh 0;
+  border-radius: 5%;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.klabel {
+  display: block;
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.krange {
+  width: 50vw;
+  margin-bottom: 2vh;
+}
+
+.displayColor {
+  height: 7vw;
+  width: 7vw;
+  border-radius: 50%;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.kslot {
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+}
+
+.kslot2 {
+  width: 70vw;
+  display: flex;
+}
+
+.kslot2-1 {
+  flex-basis: 70%;
+}
+
+.kslot2-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 30%;
+}
+
+.color1 {
+  flex-basis: 70%;
+  background-color: rgb(155, 152, 148);
+  border-radius: 20%;
+  padding: 1vw 1vw;
+  border: 4px double rgb(81, 92, 97);
+}
+
+.color2 {
+  display: flex;
+}
+
+.color3 {
+  flex-basis: 20%;
+  height: 8vw;
+  margin: 0.5vw 0.5vw;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.slot1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  flex-basis: 15%;
+}
+
+.slot2 {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  flex-basis: 15%;
+  text-align: center;
+  font-size: 7vw;
+}
+
+.kcolor {
+  height: 8vw;
+  width: 8vw;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.ksave {
+  height: 8vw;
+  width: 8vw;
+  cursor: pointer;
+  font-size: 2vw;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.kpaint {
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+
+.kpaint:hover {
+  transform: scale(1.2);
+}
+
+.kpen {
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+
+.kpen:hover {
+  transform: scale(1.2);
+}
