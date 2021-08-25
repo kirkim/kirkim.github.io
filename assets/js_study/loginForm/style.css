@@ -9,17 +9,25 @@ body {
   align-items: baseline;
   flex-direction: column;
 }
-
-@media (min-width: 400px) {
-  .ttt {
-    font-size: 200%;
+.ttt {
+  font-size: 200%;
+}
+@media (max-width: 400px) {
+  .siteTitle {
+    font-size: 60%;
   }
+}
+
+.mainSite {
+  width: 50vw;
+  height: 50vh;
 }
 
 .siteTitle {
   display: flex;
   flex-direction: row;
   margin-bottom: 1%;
+  height: 10%;
 }
 
 .siteImg {
@@ -27,8 +35,8 @@ body {
   background-repeat: no-repeat;
   background-position: initial;
   background-size: 100%;
-  width: 60vw;
-  height: 60vh;
+  width: 100%;
+  height: 60%;
 }
 
 .BTN {
