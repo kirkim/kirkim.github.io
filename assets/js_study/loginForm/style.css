@@ -6,7 +6,6 @@ body {
   margin: 0;
   background-color: palegoldenrod;
   display: flex;
-  align-items: baseline;
   flex-direction: column;
 }
 .ttt {
@@ -19,23 +18,23 @@ body {
 }
 
 .mainSite {
-  width: 50vw;
-  height: 50vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 .siteTitle {
   display: flex;
   flex-direction: row;
   margin-bottom: 1%;
-  height: 10%;
+  height: 5%;
+  min-height: 30px;
 }
 
 .siteImg {
   background-image: url("./sample.jpeg");
   background-repeat: no-repeat;
   background-position: initial;
-  background-size: 100%;
-  width: 100%;
+  background-size: contain;
   height: 60%;
 }
 
