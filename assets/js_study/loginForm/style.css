@@ -10,16 +10,16 @@ body {
   flex-direction: column;
 }
 
-.ttt {
-  font-size: 200%;
+@media (min-width: 400px) {
+  .ttt {
+    font-size: 200%;
+  }
 }
 
 .siteTitle {
   display: flex;
   flex-direction: row;
   margin-bottom: 1%;
-  width: 60vw;
-  height: 43px;
 }
 
 .siteImg {
