@@ -3,9 +3,15 @@
 }
 
 body {
-  width: 60vw;
-  height: 60vh;
+  margin: 0;
   background-color: palegoldenrod;
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+}
+
+.ttt {
+  font-size: 200%;
 }
 
 .siteTitle {
@@ -17,10 +23,12 @@ body {
 }
 
 .siteImg {
+  background-image: url("./sample.jpeg");
+  background-repeat: no-repeat;
+  background-position: initial;
+  background-size: 100%;
   width: 60vw;
-}
-.siteImg img {
-  width: 80%;
+  height: 60vh;
 }
 
 .BTN {
