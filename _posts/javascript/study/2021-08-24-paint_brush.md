@@ -11,53 +11,32 @@ comments: true
 <h1>1️⃣ 목표</h1>
 <kline></kline>
 
--
+- <b class="orange">Canvas API</b>를 이용해 <b class="blue">그림판</b>을 만들어볼 계획인데 **기본 베이스**는 <b class="purple">노마드코더</b> 강의를 보고 만들었습니다.<br>
+  👉🏻👉🏻👉🏻<a href="https://nomadcoders.co/javascript-for-beginners-2" target="blank">바닐라 JS로 그림판 만들기 - <b style="font-size:90%">노마드코더(니콜라스)</b></a>
 
-<h1 class="ksubject">2️⃣ String 다루기</h1>
+- 이렇게 만들어진 **기본 그림판**에 <b class="purple">추가적인 기능</b>을 구현할 예정입니다.
+  <kline></kline>
+
+- 이전에 <b class="red">&lt;p5.js&gt;</b>를 이용하여 <b class="blue">"raycasting"</b>을 구현하는 법을 배운적이 있습니다. <b class="red">&lt;p5.js&gt;</b>는 <b class="orange">Canvas API</b>를 **포함**하고 있는 <rd>라이브러리</rd>입니다. 여기서 **Canvas**의 강력한 기능을 경험한적이 있습니다.
+- 이처럼 <b class="orange">Canvas API</b>관련 **라이브러리**가 많기 때문에 **강력하지만 다소 어려울 수 있는 Canvas**사용을 쉽게 다룰 수 있게 해줍니다.
+- 하지만 이번에는 **라이브러리** 사용없이 기본적인 **Canvas**를 이용할 것입니다.
+<kline></kline>
+<h3>🎨 <b>Canvas API</b> 설명사이트</h3>
+👉🏻 <a href="https://developer.mozilla.org/ko/docs/Web/API/Canvas_API" target="blank">Canvas API - MDN</a>
+<h3>🎨 <b>p5.js</b> 공식사이트</h3>
+👉🏻 <a href="https://p5js.org/ko/" target="blank">https://p5js.org/ko</a>
+<h3>🍌 <b>p5.js</b>를 이용하여 raycasting을 구현한 내용의 포스트</h3>
+👉🏻 <a href="https://kirkim.github.io/42seoul/2021/04/23/cub3d3.html" target="blank">자바스크립트로 raycasting 구현하기</a><br>
+
+<h1 class="ksubject">2️⃣ </h1>
 <h2 style="color:#0e435c;">(1) split()</h2>
 
-<iframe src="/assets/js_study/html/paintbrush.html" width="80%" height="600vh" scrolling="no"></iframe>
+<style>
+	iframe {
+		display: block;
+		width:100%;
+		height:80vh;
+	}
+</style>
 
-<!--
-<link rel="stylesheet" href="/assets/js_study/css/paintbrush.css">
-<script src="/assets/js_study/js/paintbrush.js"></script>
-
-<div class="paintBrush">
-	<canvas class="kcanvas"></canvas>
-	<div class="kslot2">
-		<div class="kslot2-1">
-			<label for="kr" class="klabel">thickness</label>
-			<input type="range" class="krange" id="kr" min="0.1" max="5" value="2.5" step="0.1" />
-		</div>
-		<div class="kslot2-2">
-			<div class="displayColor" style="background-color: #111111"></div>
-		</div>
-	</div>
-	<div class="kslot">
-		<div class="color1">
-			<div class="color2">
-				<div class="color3" style="background-color: #eb1c1c"></div>
-				<div class="color3" style="background-color: #d68213"></div>
-				<div class="color3" style="background-color: #e6d11a"></div>
-				<div class="color3" style="background-color: #20a10f"></div>
-				<div class="color3" style="background-color: #3356c9"></div>
-			</div>
-			<div class="color2">
-				<div class="color3" style="background-color: #9a44e0"></div>
-				<div class="color3" style="background-color: #ffffff"></div>
-				<div class="color3" style="background-color: #111111"></div>
-				<div class="color3" style="background-color: #96285b"></div>
-				<div class="color3" style="background-color: #44e6d8"></div>
-			</div>
-		</div>
-		<div class="slot1">
-			<input type="color" class="kcolor" />
-			<button class="ksave">save</button>
-		</div>
-		<div class="slot2">
-			<div class="kpaint">🎨</div>
-			<div class="kpen">🖌</div>
-		</div>
-	</div>
-</div>
--->
+<iframe src="/assets/js_study/paintbrush/paintbrush.html" scrolling="no"></iframe>

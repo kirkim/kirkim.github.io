@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css" />
+	<script src="app.js" defer></script>
+	<title>login</title>
+</head>
+<body>
+	<div id="loginTool">
+		<div>
+			<label for="id">ID: </label>
+			<input type="text" id="id" required />
+		</div>
+		<div>
+			<label for="pw">PW: </label>
+			<input type="text" id="pw" required />
+		</div>
+		<button id="login">login</button>
+	</div>
+	<div class="mainSite hidden">
+		<div class="siteTitle">
+			<div style="font-size:30px">Hello Site!</div>
+			<div class="BTN">
+				<button id="logout" class="hidden">logout</button>
+				<button id="data" class="hidden">정보보기</button>
+			</div>
+		</div>
+		<div class="siteImg">
+			<img src="./sample.jpeg" />
+		</div>
+	</div>
+	<div id="out"></div>
+</body>
+</html>
