@@ -254,11 +254,12 @@ input[type="checkbox"]:checked ~ ul{
 	/* color */
 	--color-black: #000000;
 	--color-white: #ffffff;
-	--color-skyblue: #3f9ee7;
+	--color-skyblue: #5fc4ff;
 	--color-blue: #163496;
 	--color-green: #185200;
 	--color-purple: #9431bb;
 	--color-yellow: #f6fb00;
+	--color-yellowgreen: #56f512;
 	--color-orange: #ffb814;
 	--color-pink: #fd7f84;
 	--color-red: #dd1144;
@@ -324,37 +325,38 @@ wt {
 
 .green {
 	color: var(--color-green);
-	font-weight: bold;
 }
 
 .blue {
 	color: var(--color-blue);
-	font-weight: bold;
 }
 
 .purple {
 	color: var(--color-purple);
-	font-weight: bold;
 }
 
 .brown {
 	color: var(--color-brown);
-	font-weight: bold;
 }
 
 .orange {
 	color: var(--color-orange);
-	font-weight: bold;
 }
 
 .yellow {
 	color: var(--color-yellow);
-	font-weight: bold;
+}
+
+.yellowgreen {
+	color: var(--color-yellowgreen);
 }
 
 .red {
 	color: red;
-	font-weight: bold;
+}
+
+.skyblue {
+	color: var(--color-skyblue);
 }
 
 dec {
@@ -409,6 +411,10 @@ h1.ksubject {
 	padding-top:1.5em;
 	border-bottom:3px solid #2a2d2b;
 	padding-bottom:2px;
+}
+
+h2.ksubsubject {
+	color:#0e435c;
 }
 
 .lit1 {

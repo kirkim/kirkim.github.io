@@ -9,21 +9,28 @@ const bigColor = document.querySelector(".kcolor");
 const body = document.querySelector("body");
 const save = document.querySelector(".ksave");
 
-let isDraw = false;
-let isPaint = false;
-let isCbC = false;
+const PEN = 1;
+const PAINT = 2;
+const CIRCLE = 3;
+let tool;
+let isDraw;
 
-canvas.width = canvas.offsetWidth;
-canvas.height = canvas.offsetHeight;
+initFunc();
+addEvent(tool);
 
+function initFunc() {
+	canvas.width = canvas.offsetWidth;
+	canvas.height = canvas.offsetHeight;
+	ctx.fillStyle = "white";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	ctx.strokeStyle = "black";
+	ctx.fillStyle = "black";
+	ctx.lineWidth = 2.5;
+	tool = PEN;
+	isDraw = false;
+}
 
-ctx.fillStyle = "white";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-ctx.strokeStyle = "black";
-ctx.fillStyle = "black";
-ctx.lineWidth = 2.5;
-
-function mousemoveFunc(event) {
+function movePen(event) {
 	const x = event.offsetX;
 	const y = event.offsetY;
 
@@ -36,55 +43,79 @@ function mousemoveFunc(event) {
 	}
 }
 
-function drawFunc() {
+function drawPen() {
 	isDraw = true;
 }
 
-function noDrawFunc() {
+function stopDrawPen() {
 	isDraw = false;
 }
 
-function changeColorFunc(event) {
-	const color = event.target.style.backgroundColor;
+function changeColorFunc(kcolor) {
+	const color = kcolor;
 	ctx.strokeStyle = color;
 	ctx.fillStyle = color;
 	displayColor.style.backgroundColor = color;
 }
 
 function doPaintFunc() {
-	if (isPaint === true) {
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-	}
+	console.log(tool);
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function setLineThickness(event) {
 	ctx.lineWidth = event.target.value;
 }
 
-function saveImgFunc(event) {
-	const image = canvas.toDateURL("image/png");
+function saveImgFunc() {
+	const image = canvas.toDataURL("image/png");
 	const link = document.createElement("a");
+	link.href = image;
+	link.download = "🏞paint!";
+	link.click();
 }
 
-if (canvas) {
-	canvas.addEventListener("mousemove", mousemoveFunc);
-	canvas.addEventListener("mousedown", drawFunc);
-	canvas.addEventListener("mouseup", noDrawFunc);
-	canvas.addEventListener("mouseleave", noDrawFunc);
-	canvas.addEventListener("click", doPaintFunc);
+function deleteEvent(ktool) {
+	switch (ktool) {
+		case PEN:
+			canvas.removeEventListener("mousemove", movePen);
+			canvas.removeEventListener("mousedown", drawPen);
+			canvas.removeEventListener("mouseup", stopDrawPen);
+			canvas.removeEventListener("mouseleave", stopDrawPen);
+			break;
+		case PAINT:
+			canvas.removeEventListener("click", doPaintFunc);
+			break;
+	}
+}
+function addEvent(ktool) {
+	switch (ktool) {
+		case PEN:
+			canvas.addEventListener("mousemove", movePen);
+			canvas.addEventListener("mousedown", drawPen);
+			canvas.addEventListener("mouseup", stopDrawPen);
+			canvas.addEventListener("mouseleave", stopDrawPen);
+			break;
+		case PAINT:
+			canvas.addEventListener("click", doPaintFunc);
+			break;
+	}
+}
+
+function master(ktool) {
+	deleteEvent(tool);
+	tool = ktool;
+	addEvent(ktool);
 }
 
 color.forEach((event) => {
-	event.addEventListener("click", changeColorFunc);
+	event.addEventListener("click", (event) =>
+		changeColorFunc(event.target.style.backgroundColor));
 })
 
 if (bigColor) {
-	bigColor.addEventListener("input", (event) => {
-		const color = event.target.value;
-		ctx.strokeStyle = color;
-		ctx.fillStyle = color;
-		displayColor.style.backgroundColor = color;
-	});
+	bigColor.addEventListener("input", (event) =>
+		changeColorFunc(event.target.value));
 }
 
 if (range) {
@@ -92,11 +123,11 @@ if (range) {
 }
 
 if (paint) {
-	paint.addEventListener("click", () => isPaint = true);
+	paint.addEventListener("click", () => master(PAINT));
 }
 
 if (pen) {
-	pen.addEventListener("click", () => isPaint = false);
+	pen.addEventListener("click", () => master(PEN));
 }
 
 if (save) {
