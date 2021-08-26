@@ -15,8 +15,33 @@ const CIRCLE = 3;
 let tool;
 let isDraw;
 
-initFunc();
-addEvent(tool);
+const penEvent = {
+	move: function (event) {
+		const x = event.offsetX;
+		const y = event.offsetY;
+
+		if (isDraw === false) {
+			ctx.beginPath();
+			ctx.moveTo(x, y);
+		} else {
+			ctx.lineTo(x, y);
+			ctx.stroke();
+		}
+	},
+	draw: function () {
+		isDraw = true;
+	},
+	stopDraw: function () {
+		isDraw = false;
+	},
+};
+
+const paintEvent = {
+	draw: function () {
+		console.log(tool);
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+	}
+};
 
 function initFunc() {
 	canvas.width = canvas.offsetWidth;
@@ -28,27 +53,41 @@ function initFunc() {
 	ctx.lineWidth = 2.5;
 	tool = PEN;
 	isDraw = false;
+	addToolEvent(tool);
 }
 
-function movePen(event) {
-	const x = event.offsetX;
-	const y = event.offsetY;
-
-	if (isDraw === false) {
-		ctx.beginPath();
-		ctx.moveTo(x, y);
-	} else {
-		ctx.lineTo(x, y);
-		ctx.stroke();
+function deleteToolEvent(ktool) {
+	switch (ktool) {
+		case PEN:
+			canvas.removeEventListener("mousemove", penEvent.move);
+			canvas.removeEventListener("mousedown", penEvent.draw);
+			canvas.removeEventListener("mouseup", penEvent.stopDraw);
+			canvas.removeEventListener("mouseleave", penEvent.stopDraw);
+			break;
+		case PAINT:
+			canvas.removeEventListener("click", paintEvent.draw);
+			break;
 	}
 }
 
-function drawPen() {
-	isDraw = true;
+function addToolEvent(ktool) {
+	switch (ktool) {
+		case PEN:
+			canvas.addEventListener("mousemove", penEvent.move);
+			canvas.addEventListener("mousedown", penEvent.draw);
+			canvas.addEventListener("mouseup", penEvent.stopDraw);
+			canvas.addEventListener("mouseleave", penEvent.stopDraw);
+			break;
+		case PAINT:
+			canvas.addEventListener("click", paintEvent.draw);
+			break;
+	}
 }
 
-function stopDrawPen() {
-	isDraw = false;
+function master(ktool) {
+	deleteToolEvent(tool);
+	tool = ktool;
+	addToolEvent(ktool);
 }
 
 function changeColorFunc(kcolor) {
@@ -56,11 +95,6 @@ function changeColorFunc(kcolor) {
 	ctx.strokeStyle = color;
 	ctx.fillStyle = color;
 	displayColor.style.backgroundColor = color;
-}
-
-function doPaintFunc() {
-	console.log(tool);
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function setLineThickness(event) {
@@ -73,39 +107,6 @@ function saveImgFunc() {
 	link.href = image;
 	link.download = "🏞paint!";
 	link.click();
-}
-
-function deleteEvent(ktool) {
-	switch (ktool) {
-		case PEN:
-			canvas.removeEventListener("mousemove", movePen);
-			canvas.removeEventListener("mousedown", drawPen);
-			canvas.removeEventListener("mouseup", stopDrawPen);
-			canvas.removeEventListener("mouseleave", stopDrawPen);
-			break;
-		case PAINT:
-			canvas.removeEventListener("click", doPaintFunc);
-			break;
-	}
-}
-function addEvent(ktool) {
-	switch (ktool) {
-		case PEN:
-			canvas.addEventListener("mousemove", movePen);
-			canvas.addEventListener("mousedown", drawPen);
-			canvas.addEventListener("mouseup", stopDrawPen);
-			canvas.addEventListener("mouseleave", stopDrawPen);
-			break;
-		case PAINT:
-			canvas.addEventListener("click", doPaintFunc);
-			break;
-	}
-}
-
-function master(ktool) {
-	deleteEvent(tool);
-	tool = ktool;
-	addEvent(ktool);
 }
 
 color.forEach((event) => {
@@ -138,3 +139,5 @@ window.addEventListener("resize", () => {
 	canvas.width = canvas.offsetWidth;
 	canvas.height = canvas.offsetHeight;
 });
+
+initFunc();
