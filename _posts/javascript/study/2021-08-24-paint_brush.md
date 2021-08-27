@@ -11,7 +11,7 @@ comments: true
 <h1>1️⃣ 목표</h1>
 <kline></kline>
 
-- <b class="orange">Canvas API</b>를 이용해 <b class="blue">그림판</b>을 만들어볼 계획인데 **기본 베이스**는 <b class="purple">노마드코더</b> 강의를 보고 만들었습니다.<br>
+- <b class="orange">Canvas API</b>를 이용해 <b class="blue">그림판</b>을 만들어볼 계획인데 **기본 베이스**는 <b class="purple">노마드코더</b> 강의를 보고 만들었습니다. <b style="font-size:90%">(그렇기 때문에 해당내용은 작성하지 않았지만 <b class="purple">노마드코더</b> 사이트에서 무료로 배우실 수 있습니다.)</b><br>
   👉🏻👉🏻👉🏻<a href="https://nomadcoders.co/javascript-for-beginners-2" target="blank">바닐라 JS로 그림판 만들기 - <b style="font-size:90%">노마드코더(니콜라스)</b></a>
 
 - 이렇게 만들어진 **기본 그림판**에 <b class="purple">추가적인 기능</b>을 구현할 예정입니다.
@@ -140,7 +140,8 @@ if (pen) {
 
 - 또한 **이것**을 <b class="brown">정적 클래스</b>처럼 사용할 수 있었습니다.
 - **주의**할점은 **함수**가 <b class="blue">const 변수</b>안에 담기므로 <rd>호이스팅(hoisting)</rd>이 되지않습니다. <b style="font-size:90%">(hoisting이란 js에서 <b class="green">var변수, 함수</b>선언이 자동으로 위쪽으로 배치되는 것)</b>
-- 하지만 어디까지나 **나만의 방법**으로 작성한 코드입니다. 좋은습관을 잡기위해서는 **하루빨리** <b class="blue">"js 클린코드 작성하는 법"</b>을 공부해야될 것 같습니다.
+
+> 하지만 이것은 어디까지나 **나만의 방법**으로 작성한 코드입니다. 좋은습관을 잡기위해서는 **하루빨리** <b class="blue">"js 클린코드 작성하는 법"</b>을 공부해야될 것 같습니다.
 
 <h1 class="ksubject">4️⃣ 새로운 기능 추가</h1>
 <h2 class="ksubsubject">(1) 디테일 색상툴 이용하기</h2>

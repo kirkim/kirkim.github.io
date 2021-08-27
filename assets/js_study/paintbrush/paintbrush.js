@@ -44,8 +44,8 @@ const paintEvent = {
 };
 
 function initFunc() {
-	canvas.width = canvas.offsetWidth;
-	canvas.height = canvas.offsetHeight;
+	canvas.width = window.screen.width / 2;;
+	canvas.height = window.screen.width / 2;;
 	ctx.fillStyle = "white";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	ctx.strokeStyle = "black";
@@ -134,10 +134,10 @@ if (pen) {
 if (save) {
 	save.addEventListener("click", saveImgFunc);
 }
-
+/*
 window.addEventListener("resize", () => {
 	canvas.width = canvas.offsetWidth;
 	canvas.height = canvas.offsetHeight;
-});
+});*/
 
 initFunc();
