@@ -44,8 +44,8 @@ const paintEvent = {
 };
 
 function initFunc() {
-	canvas.width = window.screen.width / 2;;
-	canvas.height = window.screen.width / 2;;
+	canvas.width = 300;
+	canvas.height = 300;
 	ctx.fillStyle = "white";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	ctx.strokeStyle = "black";
