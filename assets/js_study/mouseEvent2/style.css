@@ -1,0 +1,19 @@
+body {
+  background-color: blanchedalmond;
+  height: 420px;
+}
+
+.a {
+  height: 320px;
+  background-color: rgb(194, 132, 40);
+}
+
+.b {
+  height: 220px;
+  background-color: rgb(194, 132, 40);
+}
+
+.c {
+  height: 120px;
+  background-color: rgb(194, 132, 40);
+}
