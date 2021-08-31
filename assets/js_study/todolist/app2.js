@@ -9,7 +9,7 @@ function saveToDos() {
 }
 
 function deleteToDo(event) {
-  const target = event.target.parentElement;
+  const target = toDoList.querySelector(`li[id="${event.target.id}"]`);
   target.remove();
   toDos = toDos.filter((toDos) => toDos.id !== parseInt(target.id));
   saveToDos();
@@ -30,7 +30,7 @@ function doneFunc(event) {
   }
   saveToDos();
 }
-
+/*
 function paintToDo(newObj) {
   const newToDoSet = document.createElement("li");
   newToDoSet.id = newObj.id;
@@ -38,12 +38,32 @@ function paintToDo(newObj) {
   if (newObj.is_done === true) {
     newToDo.classList.add("A17-del");
   }
-  newToDo.innerText = newObj.text;
-  newToDo.addEventListener("click", doneFunc);
+  newToDo.textContent = newObj.text;
   const deleteButton = document.createElement("button");
-  deleteButton.innerText = "X";
-  deleteButton.addEventListener("click", deleteToDo);
+  deleteButton.textContent = "X";
+  deleteButton.id = newObj.id;
   newToDoSet.append(newToDo, " ", deleteButton);
+  toDoList.appendChild(newToDoSet);
+}*/
+
+
+function paintToDo(newObj) {
+  let isDone = "";
+  if (newObj.is_done === true) {
+    isDone = "A17-del";
+  }
+  const temp = document.createElement("b");
+  temp.textContent = newObj.text;
+  console.dir(`temp.textContent: ${temp.textContent}`);
+  console.dir(`temp.innerHTML: ${temp.innerHTML}`);
+  const newToDoSet = document.createElement("li");
+  newToDoSet.id = newObj.id;
+  newToDoSet.innerHTML = `
+    <span class=${isDone}>
+      ${temp.innerHTML}
+    </span>
+    <button id=${newObj.id}>X</button>
+  `
   toDoList.appendChild(newToDoSet);
 }
 
@@ -62,6 +82,14 @@ function submitFunc(event) {
 }
 
 toDoForm.addEventListener("submit", submitFunc);
+toDoList.addEventListener("click", (event) => {
+	if (event.target.tagName === "SPAN") {
+		doneFunc(event);
+	} else if (event.target.tagName === "BUTTON") {
+		deleteToDo(event);
+	}
+})
+
 
 const savedToDos = localStorage.getItem(TODO_KEY);
 
