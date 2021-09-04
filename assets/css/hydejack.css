@@ -260,7 +260,9 @@ input[type="checkbox"]:checked ~ ul{
 	--color-purple: #9431bb;
 	--color-yellow: #f6fb00;
 	--color-yellowgreen: #56f512;
+	--color-fgreen: #8bd35b;
 	--color-orange: #ffb814;
+	--color-org: #c96b00;
 	--color-pink: #fd7f84;
 	--color-red: #dd1144;
 	--color-brown: #844d07;;
@@ -280,6 +282,16 @@ kkr {
   border-radius: 3px;
   color: #ffffff;
 }
+
+kkr2 {
+	display: inline;
+	padding: 4px;
+	overflow: auto;
+	font-size: 85%;
+	line-height: 1.45;
+	background-color: #1f2020cc;
+	color: #ffffffcc;
+  }
 
 /* 함수 정의 옵션 */
 kfunc {
@@ -343,6 +355,10 @@ wt {
 	color: var(--color-orange);
 }
 
+.org {
+	color: var(--color-org);
+}
+
 .yellow {
 	color: var(--color-yellow);
 }
@@ -357,6 +373,10 @@ wt {
 
 .skyblue {
 	color: var(--color-skyblue);
+}
+
+.fgreen {
+	color: var(--color-fgreen);
 }
 
 dec {
