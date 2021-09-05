@@ -13,7 +13,7 @@ comments: true
 
 - 이전에 구현한 <b class="green">todo리스트</b>를 <b class="blue">class(클래스)</b>로 **리펙토링**할 예정입니다.
 - 기존에 **자바스크립트**에서는 <b class="blue">function(함수)</b>를 선언해주는 방식으로 <b class="brown">개체지향</b>의 형식으로 만들어 줄 수 있습니다.
-- 뿐만아니라 <b class="purple">Java</b>언어와 비슷하게 <b class="blue">class</b>를 이용해서 구현할 수 있습니다. 기능은 <b class="purple">Java</b>보다 못하지만 나름 유용하게 사용이 가능합니다. <b style="font-size:85%">(추상화, private캡슐화 등등..의 기능이 JS에서는 사용불가)</b>
+- 뿐만아니라 <b class="purple">Java</b>언어와 비슷하게 <b class="blue">class</b>를 이용해서 구현할 수 있습니다. 기능은 <b class="purple">Java</b>보다 못하지만 나름 유용하게 사용이 가능합니다. <b style="font-size:85%">(추상화, private캡슐화 등등..의 기능이 JS에서는 완벽히 구현이 어려움)</b>
 - 아래의 영상을 참고하면 객체지향을 **function** vs **class**로 비교해서 알아볼 수 있습니다.
 
 👉🏻👉🏻👉🏻<a href="https://www.youtube.com/watch?v=OpvtD7ELMQo" target="blank">자바스크립트 클래스(Class)강의 - <b style="font-size:90%">코딩앙마</b></a>
@@ -97,13 +97,13 @@ comments: true
 - **또다른 방법**도 있는데 <b class="green">이벤트함수</b>는 기존과 같이 작성하고 함수 선언부분만 다음과 같이 바꾸는 것 입니다.
 
 <img src="/assets/img/js/todo_class/12.png" width="70%" alt="correct3" />
-
-- 위와같은 방법은 **유튜버** <b class="purple">엘리(드림코딩)</b>님께서 **현업에서 만든 방법**으로 유용하게 사용했다고 합니다.
-
+<!--
+- 위와같은 방법은 **유튜버** <b class="purple">엘리(드림코딩)</b>님께서 **현업에서 사용한 방법**이라고 합니다.
 🍄 <a href="https://www.youtube.com/channel/UC_4u-bXaba7yrRz_6x6kb_w" target="blank"> 드림코딩 by 엘리 <b style="font-size:85%">유튜브 채널</b></a> 🍄<br>
 🍄 <a href="https://academy.dream-coding.com/" target="blank"> 드림코딩 사이트</a> 🍄<br>
+-->
 
-<h1 class="ksubject">4️⃣ javascript파일 분류하기</h1>
+  <h1 class="ksubject">4️⃣ javascript파일 분류하기</h1>
 
 <div class="explain-cover">
     <div class="explain-left" style="padding-top:1%">
