@@ -1,0 +1,45 @@
+:root {
+  --toggle-scale: 2.5;
+  --toggle-width: calc(var(--toggle-scale) * 20px);
+  --toggle-height: calc(var(--toggle-scale) * 40px);
+  --toggle-radius: 100px;
+}
+
+.clock__button input[type="checkbox"] {
+  display: none;
+}
+
+.clock__button label {
+  cursor: pointer;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  background: #764981;
+  display: block;
+  border-radius: var(--toggle-radius);
+  position: relative;
+}
+
+.clock__button label:after {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: calc(var(--toggle-width) * 0.9);
+  height: calc(var(--toggle-width) * 0.8);
+  background: rgb(44, 5, 48);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.clock__button input:checked + label {
+  background: #a85eaa;
+}
+
+.clock__button input:checked + label:after {
+  top: 95%;
+  transform: translateY(-100%);
+}
+
+.clock__button label:active:after {
+  height: calc(var(--toggle-width) * 1.3);
+}

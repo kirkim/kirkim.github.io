@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css" />
+	<script type="module" src="src/page.js"></script>
+	<title>Final assignment</title>
+</head>
+<body>
+	<form class="login">
+		<header class="login__header"> NOMAD </header>
+		<input class="login__id" required maxlength="15" type="text" placeholder="ID: 1111" />
+		<input class="login__pw" required maxlength="15" type="password" autocomplete="off" placeholder="PW: 1111" />
+		<input class="login__Btn" type="submit" value="Log In" />
+	</form>
+	<section class="main hidden">
+		<button class="logout">logout</button>
+		<article class="clock">
+			<span class="clock__text"></span>
+			<div class="clock__button">
+				<input type="checkbox" id="toggle" />
+				<label for="toggle"></label>
+			</div>
+		</article>
+
+		<article id="weather">
+			<header class="weather__header">Whether  🌈</header>
+			<span id="wt"></span>
+			<span id="city"></span>
+			<span id="temp"></span>
+		</article>
+		<article class="todo">
+			<header class="todo__header">ToDo List</header>
+			<nav class="todo__nav">
+				<div class="Btn_zone"></div>
+				<button class="plus__Btn">+</button>
+			</nav>
+			<section class="todo__form">
+			</section>
+		</article>
+	</section>
+</body>
+</html>

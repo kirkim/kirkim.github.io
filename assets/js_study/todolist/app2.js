@@ -54,8 +54,6 @@ function paintToDo(newObj) {
   }
   const temp = document.createElement("b");
   temp.textContent = newObj.text;
-  console.dir(`temp.textContent: ${temp.textContent}`);
-  console.dir(`temp.innerHTML: ${temp.innerHTML}`);
   const newToDoSet = document.createElement("li");
   newToDoSet.id = newObj.id;
   newToDoSet.innerHTML = `

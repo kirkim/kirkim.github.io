@@ -1,0 +1,87 @@
+@import url("toggle.css");
+@import url("todo.css");
+@import url("weather.css");
+
+:root {
+  --left-size: 35%;
+  --clock-width: 400px;
+  --clock-height: 100px;
+  --login-height: 30px;
+  --login-width: 250px;
+  --login-left: 42%;
+}
+
+.main {
+  transform: translate(34%, 0%);
+}
+.logout {
+  position: relative;
+  top: 30px;
+  width: 200px;
+  left: 200px;
+  height: 40px;
+  margin-bottom: 100px;
+  color: white;
+  font-size: 30px;
+  background-color: rgb(37, 30, 49);
+}
+
+.clock {
+  position: relative;
+  left: 100px;
+  width: var(--clock-width);
+  height: var(--clock-height);
+  font-size: calc(var(--clock-height) / 1.7);
+  border-radius: 20px;
+  background-color: hsl(290, 81%, 17%);
+}
+
+.clock__text {
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.login {
+  top: 200px;
+  position: relative;
+}
+
+.login__header {
+  position: relative;
+  left: 35%;
+  color: white;
+  font-size: 150px;
+  margin-bottom: 100px;
+}
+
+.login__id {
+  position: relative;
+  left: var(--login-left);
+  display: block;
+  height: var(--login-height);
+  width: var(--login-width);
+  margin-bottom: 10px;
+}
+
+.login__pw {
+  position: relative;
+  left: var(--login-left);
+  display: block;
+  height: var(--login-height);
+  width: var(--login-width);
+  margin-bottom: 8px;
+}
+
+.login__Btn {
+  position: relative;
+  left: var(--login-left);
+  width: var(--login-width);
+  height: var(--login-height);
+  background-color: rgb(237, 238, 186);
+}
