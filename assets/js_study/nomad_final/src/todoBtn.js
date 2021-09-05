@@ -3,7 +3,7 @@ import Todo from './todo.js';
 const todoMaster = document.querySelector(".todo__form");
 const todoNav = document.querySelector(".todo__nav");
 const BtnZone = document.querySelector(".Btn_zone");
-const COLOR_COUNT = 13;
+const COLOR_COUNT = 23;
 const HIDDEN_CLASS = "hide__page";
 let page = [];
 let savedPage = [];
