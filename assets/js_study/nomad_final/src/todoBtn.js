@@ -1,119 +1,123 @@
 import Todo from './todo.js';
 
-const todoMaster = document.querySelector(".todo__form");
-const todoNav = document.querySelector(".todo__nav");
-const BtnZone = document.querySelector(".Btn_zone");
-const PlusBtn = document.querySelector(".plus__Btn");
-const MAX_BUTTON = 8;
-const COLOR_COUNT = 23;
-const HIDDEN_CLASS = "hide__page";
-let page = [];
-let savedPage = [];
+export const BtnUI = Object.freeze({
+	color_count: 23,
+	max_button: 8,
+	page_key: "page",
+	hidden_class: "hide__page",
+});
 
-const PAGE_KEY = "page";
-
-
-function saveData() {
-	localStorage.setItem(PAGE_KEY, JSON.stringify(savedPage));
-}
-
-function deletePage(event) {
-	const target = todoMaster.querySelector(`form[id="${event.target.id}"]`);
-	const targetBtn = todoNav.querySelector(`span[id="${event.target.id}"]`);
-	PlusBtn.classList.remove(HIDDEN_CLASS);
-	target.remove();
-	targetBtn.remove();
-	savedPage = savedPage.filter((toDos) => toDos.id !== target.id);
-	localStorage.removeItem(`${event.target.id}`);
-  	saveData();
-}
-
-function makePage(num) {
-	setHide();
-	const nb = `${num % COLOR_COUNT}`;
-	const newForm = document.createElement("form");
-	newForm.setAttribute('class', `todo__page color${nb}`);
-	newForm.setAttribute('id', `todo${num}`);
-	todoMaster.appendChild(newForm);
-	const tempForm = document.querySelector(`form[id="todo${num}"]`);
-	const newTodo = new Todo(tempForm, num, nb);
-	const newPage = {
-		fm: tempForm,
-		nb: num,
+export class TodoBtn {
+	constructor() {
+		this.todoMaster = document.querySelector(".todo__form");
+		this.todoNav = document.querySelector(".todo__nav");
+		this.BtnZone = document.querySelector(".Btn_zone");
+		this.PlusBtn = document.querySelector(".plus__Btn");
+		this.todoNav.addEventListener("click", this.eventMaster);
+		this.page = [];
+		this.savedPage = [];
 	}
-	page.push(newPage);
-	makeBtn(num);
-	checkPlusBtn();
-}
 
-function makeBtn(num) {
-	const newBtn = document.createElement("span");
-	const nb = `${num % COLOR_COUNT}`;
-	const colorClass = `color${nb}`;
-	newBtn.setAttribute('id', `todo${num}`);
-	newBtn.innerHTML = `
-		<button class="todo__Btn ${colorClass}" id="todo${num}">
-		</button>
-		<button class="delete__page" id="todo${num}">
-			X
-		</button>
-	`;
-	BtnZone.append(newBtn);
-}
-
-function addPage() {
-	if(savedPage.length > MAX_BUTTON) {
-		return ;
+	saveData() {
+		localStorage.setItem(BtnUI.page_key, JSON.stringify(this.savedPage));
 	}
-	checkPlusBtn();
-	const num = Date.now();
-	makePage(num);
-	const todoNode = {
-		id: `todo${num}`,
-		nb: num,
+
+	deletePage(event) {
+		const target = this.todoMaster.querySelector(`form[id="${event.target.id}"]`);
+		const targetBtn = this.todoNav.querySelector(`span[id="${event.target.id}"]`);
+		this.PlusBtn.classList.remove(BtnUI.hidden_class);
+		target.remove();
+		targetBtn.remove();
+		this.savedPage = this.savedPage.filter((toDos) => toDos.id !== target.id);
+		localStorage.removeItem(`${event.target.id}`);
+		this.saveData();
 	}
-	savedPage.push(todoNode);
-	saveData();
+
+	makePage(num) {
+		this.setHide();
+		const nb = `${num % BtnUI.color_count}`;
+		const newForm = document.createElement("form");
+		newForm.setAttribute('class', `todo__page color${nb}`);
+		newForm.setAttribute('id', `todo${num}`);
+		this.todoMaster.appendChild(newForm);
+		const tempForm = document.querySelector(`form[id="todo${num}"]`);
+		const newTodo = new Todo(tempForm, num, nb);
+		const newPage = {
+			fm: tempForm,
+			nb: num,
+		}
+		this.page.push(newPage);
+		this.makeBtn(num);
+		this.checkPlusBtn();
 }
 
-function setHide() {
-	page.forEach((form) => {
-		form.fm.classList.add(HIDDEN_CLASS);
-	})
-}
+	makeBtn(num) {
+		const newBtn = document.createElement("span");
+		const nb = `${num % BtnUI.color_count}`;
+		const colorClass = `color${nb}`;
+		newBtn.setAttribute('id', `todo${num}`);
+		newBtn.innerHTML = `
+			<button class="todo__Btn ${colorClass}" id="todo${num}">
+			</button>
+			<button class="delete__page" id="todo${num}">
+				X
+			</button>
+		`;
+		this.BtnZone.append(newBtn);
+	}
 
-function checkPlusBtn() {
-	if (savedPage.length >= MAX_BUTTON) {
-		PlusBtn.classList.add(HIDDEN_CLASS);
+	checkPlusBtn() {
+		if (this.savedPage.length >= BtnUI.max_button) {
+			this.PlusBtn.classList.add(BtnUI.hidden_class);
+		} else {
+			this.PlusBtn.classList.remove(BtnUI.hidden_class);
+		}
+	}
+
+	addPage() {
+		this.checkPlusBtn();
+		if(this.savedPage.length > BtnUI.max_button) {
+			return ;
+		}
+		const num = Date.now();
+		const todoNode = {
+			id: `todo${num}`,
+			nb: num,
+		}
+		this.makePage(num);
+		this.savedPage.push(todoNode);
+		this.saveData();
+	}
+
+	setHide() {
+		this.page.forEach((form) => {
+			form.fm.classList.add(BtnUI.hidden_class);
+		})
+	}
+
+	viewPage(id) {
+		const tempForm = this.todoMaster.querySelector(`form[id="${id}"]`);
+		this.setHide();
+
+		tempForm.classList.remove(BtnUI.hidden_class);
+	}
+
+	eventMaster = (event) => {
+		if (event.target.className === "plus__Btn") {
+			this.addPage(event);
+		} else if (event.target.className === "delete__page") {
+			this.deletePage(event);
+		} else if (event.target.classList.contains("todo__Btn")) {
+			this.viewPage(event.target.id);
+		}
+	}
+
+	loadData() {
+		const savedData = localStorage.getItem(BtnUI.page_key);
+		if (savedData !== null) {
+			const parseData = JSON.parse(savedData);
+			this.savedPage = parseData;
+			parseData.forEach((obj) => this.makePage(obj.nb));
+		}
 	}
 }
-
-function viewPage(id) {
-	const tempForm = todoMaster.querySelector(`form[id="${id}"]`);
-	setHide();
-
-	tempForm.classList.remove(HIDDEN_CLASS);
-}
-
-function eventMaster(event) {
-	if (event.target.className === "plus__Btn") {
-		addPage(event);
-	} else if (event.target.className === "delete__page") {
-		deletePage(event);
-	} else if (event.target.classList.contains("todo__Btn")) {
-		viewPage(event.target.id);
-	}
-}
-
-todoNav.addEventListener("click", eventMaster);
-
-function loadData() {
-	const savedData = localStorage.getItem(PAGE_KEY);
-	if (savedData !== null) {
-		const parseData = JSON.parse(savedData);
-		savedPage = parseData;
-		parseData.forEach((obj) => makePage(obj.nb));
-	}
-}
-
-loadData();

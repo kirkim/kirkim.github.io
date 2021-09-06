@@ -1,11 +1,13 @@
 import Background from './background.js';
 import Hide from './hide.js';
 
-const ID = "1111";
-const PW = "1111";
-const USER_KEY = "user";
+export const loginUI = Object.freeze({
+	id: "1111",
+	pw: "1111",
+	user_key: "user",
+});
 
-export default class Login extends Hide {
+export class Login extends Hide {
 	constructor(loginForm, mainForm) {
 		super();
 		this.loginForm = loginForm;
@@ -17,7 +19,7 @@ export default class Login extends Hide {
 	}
 
 	loadUser() {
-		const savedUser = localStorage.getItem(USER_KEY);
+		const savedUser = localStorage.getItem(loginUI.user_key);
 		if(savedUser !== null) {
 			super.addHide(this.loginForm);
 			super.deleteHide(this.mainForm);
@@ -26,7 +28,7 @@ export default class Login extends Hide {
 
 	in(event) {
 		event.preventDefault();
-		if (this.inputId.value !== ID, this.inputPw.value !== PW) {
+		if (this.inputId.value !== loginUI.id, this.inputPw.value !== loginUI.pw) {
 			alert("login fail!");
 			return ;
 		}
@@ -34,7 +36,7 @@ export default class Login extends Hide {
 			id: this.inputId.value,
 			pw: this.inputPw.value,
 		};
-		localStorage.setItem(USER_KEY, JSON.stringify(user));
+		localStorage.setItem(loginUI.user_key, JSON.stringify(user));
 		this.inputId.value = "";
 		this.inputPw.value = "";
 		super.addHide(this.loginForm);
@@ -43,7 +45,7 @@ export default class Login extends Hide {
 	}
 
 	out() {
-		localStorage.removeItem(USER_KEY);
+		localStorage.removeItem(loginUI.user_key);
 		super.addHide(this.mainForm);
 		super.deleteHide(this.loginForm);
 		this.inputId.focus();
