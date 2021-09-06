@@ -43,6 +43,7 @@ function makePage(num) {
 	}
 	page.push(newPage);
 	makeBtn(num);
+	checkPlusBtn();
 }
 
 function makeBtn(num) {
