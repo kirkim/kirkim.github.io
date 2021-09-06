@@ -25,8 +25,6 @@ clockBtn.addEventListener("click", (event) => {
 	clock.handle(event.target.checked);
 });
 
-console.log(localStorage.getItem("user"));
-
 if (!localStorage.getItem("user")) {
 	bgg.loginImg();
 } else {

@@ -3,6 +3,8 @@ import Todo from './todo.js';
 const todoMaster = document.querySelector(".todo__form");
 const todoNav = document.querySelector(".todo__nav");
 const BtnZone = document.querySelector(".Btn_zone");
+const PlusBtn = document.querySelector(".plus__Btn");
+const MAX_BUTTON = 8;
 const COLOR_COUNT = 23;
 const HIDDEN_CLASS = "hide__page";
 let page = [];
@@ -18,6 +20,7 @@ function saveData() {
 function deletePage(event) {
 	const target = todoMaster.querySelector(`form[id="${event.target.id}"]`);
 	const targetBtn = todoNav.querySelector(`span[id="${event.target.id}"]`);
+	PlusBtn.classList.remove(HIDDEN_CLASS);
 	target.remove();
 	targetBtn.remove();
 	savedPage = savedPage.filter((toDos) => toDos.id !== target.id);
@@ -58,9 +61,10 @@ function makeBtn(num) {
 }
 
 function addPage() {
-	if(savedPage.length > 7) {
+	if(savedPage.length > MAX_BUTTON) {
 		return ;
 	}
+	checkPlusBtn();
 	const num = Date.now();
 	makePage(num);
 	const todoNode = {
@@ -75,6 +79,12 @@ function setHide() {
 	page.forEach((form) => {
 		form.fm.classList.add(HIDDEN_CLASS);
 	})
+}
+
+function checkPlusBtn() {
+	if (savedPage.length >= MAX_BUTTON) {
+		PlusBtn.classList.add(HIDDEN_CLASS);
+	}
 }
 
 function viewPage(id) {
