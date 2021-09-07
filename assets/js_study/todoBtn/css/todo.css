@@ -1,7 +1,6 @@
 @import url("todoColor.css");
 
 .todo {
-  top: 100px;
   position: relative;
   width: 630px;
   height: 300px;
