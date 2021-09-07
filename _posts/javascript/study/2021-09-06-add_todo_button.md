@@ -195,8 +195,8 @@ iframe.todoBtn123 {
 }
 @media only screen and (max-width: 500px) {
 	iframe.todoBtn123 {
-  		width: 400px;
-  		height: 280px;
+  		width: 350px;
+  		height: 340px;
 	}
 }
 </style>
