@@ -193,6 +193,12 @@ iframe.todoBtn123 {
   width: 650px;
   height: 340px;
 }
+@media only screen and (max-width: 500px) {
+	iframe.todoBtn123 {
+  		width: 400px;
+  		height: 280px;
+	}
+}
 </style>
 
 <iframe class="todoBtn123" src="/assets/js_study/todoBtn/todoBtn.html"></iframe>
