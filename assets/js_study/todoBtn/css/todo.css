@@ -104,3 +104,47 @@
   height: 20px;
   background-color: rgb(255, 255, 255);
 }
+
+@media only screen and (max-width: 500px) {
+  .todo {
+    top: 100px;
+    position: relative;
+    width: 330px;
+    height: 300px;
+  }
+  .todo__title {
+    position: absolute;
+    font-size: 20px;
+    top: 8px;
+    left: 100px;
+  }
+  .todo__input {
+    width: 70px;
+    font-size: 15px;
+  }
+  .todo__Btn {
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+  }
+  .todo__nav {
+    height: 45px;
+  }
+  .plus__Btn {
+    margin-left: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 17px;
+  }
+  .delete__page {
+    display: block;
+    font-size: 3px;
+    margin-left: 17px;
+    width: 10px;
+    height: 10px;
+  }
+  .Btn_zone {
+    display: flex;
+    align-items: center;
+  }
+}
