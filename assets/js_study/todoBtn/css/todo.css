@@ -108,7 +108,7 @@
 @media only screen and (max-width: 500px) {
   .todo {
     position: relative;
-    width: 330px;
+    width: 300px;
     height: 300px;
   }
   .todo__title {
@@ -122,7 +122,7 @@
     font-size: 15px;
   }
   .todo__Btn {
-    margin-left: 10px;
+    margin-left: 7px;
     width: 25px;
     height: 25px;
   }
@@ -138,7 +138,7 @@
   .delete__page {
     display: block;
     font-size: 3px;
-    margin-left: 17px;
+    margin-left: 14px;
     width: 10px;
     height: 10px;
   }
