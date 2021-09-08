@@ -169,7 +169,7 @@ loadData() {
 <img src="/assets/img/js/todobtn_class/3.png" alt="todo title" width="70%" />
 
 - <b class="brown">todo클래스</b>에 <b class="green">title</b>을 입력받는 기능이 있는데도 불구하고 귄찮아서.. **위의 이미지**와 같이 단순히 숫자만 나오게 구현을 했었습니다. <b style="font-size:85%">(**이 숫자**는 단순히 랜덤한 버튼색에 배정된 숫자)</b>
-- 현재구현한 <b class="blue">버튼색</b>은 <b class="green">23가지</b>인데 언제가는 중복되는 숫자가 나오게 되므로 <b class="brown">todo클래스</b> **title**입력 기능도 이용하기로 했습니다. <b style="font-size: 85%">(현재 23가지 색조합(배경색, 글씨색)을 일리리 구현했는데 이러한 것도 효율적으로 랜덤한 조합으로 만들어준다면 중복을 피할 수 있을 것 같다는 생각(?)이 들었습니다.)</b>
+- 현재구현한 <b class="blue">버튼색</b>은 <b class="green">23가지</b>인데 언제가는 중복되는 숫자가 나오게 되므로 <b class="brown">todo클래스</b> **title**입력 기능도 이용하기로 했습니다. <b style="font-size: 85%">(현재 23가지 색조합(배경색, 글씨색)을 일리리 구현했는데 이러한 것도 자동적으로 랜덤한 조합으로 만들어준다면 좋을 것 같다는 생각(?)이 들었습니다.)</b>
 
 <img src="/assets/img/js/todobtn_class/4.png" alt="handle title value" width="80%" />
 
