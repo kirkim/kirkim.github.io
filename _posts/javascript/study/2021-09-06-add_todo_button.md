@@ -89,40 +89,40 @@ eventMaster = (event) => {
 
 ```javascript
 addPage() {
-	this.checkPlusBtn();
-	if(this.savedPage.length > BtnUI.max_button) {
-		return ;
-	}
-	const num = Date.now();
-	const todoNode = {
-		id: `todo${num}`,
-		nb: num,
-	}
-	this.makePage(num);
-	this.savedPage.push(todoNode);
-	this.saveData();
-	}
+  this.checkPlusBtn();
+  if(this.savedPage.length > BtnUI.max_button) {
+    return ;
+  }
+  const num = Date.now();
+  const todoNode = {
+    id: `todo${num}`,
+    nb: num,
+  }
+  this.makePage(num);
+  this.savedPage.push(todoNode);
+  this.saveData();
+  }
 ```
 
 <h3 class="ksubsubject">&#91;2&#93; makePage()</h3>
 
 ```javascript
 makePage(num) {
-	this.setHide();
-	const nb = `${num % BtnUI.color_count}`;
-	const newForm = document.createElement("form");
-	newForm.setAttribute('class', `todo__page color${nb}`);
-	newForm.setAttribute('id', `todo${num}`);
-	this.todoMaster.appendChild(newForm);
-	const tempForm = document.querySelector(`form[id="todo${num}"]`);
-	const newTodo = new Todo(tempForm, num, nb);
-	const newPage = {
-		fm: tempForm,
-		nb: num,
-	}
-	this.page.push(newPage);
-	this.makeBtn(num);
-	this.checkPlusBtn();
+  this.setHide();
+  const nb = `${num % BtnUI.color_count}`;
+  const newForm = document.createElement("form");
+  newForm.setAttribute('class', `todo__page color${nb}`);
+  newForm.setAttribute('id', `todo${num}`);
+  this.todoMaster.appendChild(newForm);
+  const tempForm = document.querySelector(`form[id="todo${num}"]`);
+  const newTodo = new Todo(tempForm, num, nb);
+  const newPage = {
+    fm: tempForm,
+    nb: num,
+  }
+  this.page.push(newPage);
+  this.makeBtn(num);
+  this.checkPlusBtn();
 }
 ```
 
@@ -130,18 +130,18 @@ makePage(num) {
 
 ```javascript
 makeBtn(num) {
-	const newBtn = document.createElement("span");
-	const nb = `${num % BtnUI.color_count}`;
-	const colorClass = `color${nb}`;
-	newBtn.setAttribute('id', `todo${num}`);
-	newBtn.innerHTML = `
-		<button class="todo__Btn ${colorClass}" id="todo${num}">
-		</button>
-		<button class="delete__page" id="todo${num}">
-			X
-		</button>
-	`;
-	this.BtnZone.append(newBtn);
+  const newBtn = document.createElement("span");
+  const nb = `${num % BtnUI.color_count}`;
+  const colorClass = `color${nb}`;
+  newBtn.setAttribute('id', `todo${num}`);
+  newBtn.innerHTML = `
+    <button class="todo__Btn ${colorClass}" id="todo${num}">
+    </button>
+    <button class="delete__page" id="todo${num}">
+      X
+    </button>
+  `;
+  this.BtnZone.append(newBtn);
 }
 ```
 
@@ -154,12 +154,12 @@ makeBtn(num) {
 
 ```javascript
 loadData() {
-	const savedData = localStorage.getItem(BtnUI.page_key);
-	if (savedData !== null) {
-		const parseData = JSON.parse(savedData);
-		this.savedPage = parseData;
-		parseData.forEach((obj) => this.makePage(obj.nb));
-	}
+  const savedData = localStorage.getItem(BtnUI.page_key);
+  if (savedData !== null) {
+    const parseData = JSON.parse(savedData);
+    this.savedPage = parseData;
+    parseData.forEach((obj) => this.makePage(obj.nb));
+  }
 }
 ```
 
@@ -168,11 +168,12 @@ loadData() {
 <h2 class="ksubsubject">(5) 타이틀입력(prompt이용)</h2>
 <img src="/assets/img/js/todobtn_class/3.png" alt="todo title" width="70%" />
 
-- <b class="brown">todo클래스</b>에 <b class="green">title</b>을 입력받는 기능이 있는데 **위의 이미지**와 같이 단순히 숫자만 나오게 구현을 했었습니다. <b style="font-size:85%">(**이 숫자**는 단순히 랜덤한 버튼색에 배정된 숫자)</b>
+- <b class="brown">todo클래스</b>에 <b class="green">title</b>을 입력받는 기능이 있는데도 불구하고 귄찮아서.. **위의 이미지**와 같이 단순히 숫자만 나오게 구현을 했었습니다. <b style="font-size:85%">(**이 숫자**는 단순히 랜덤한 버튼색에 배정된 숫자)</b>
+- 현재구현한 <b class="blue">버튼색</b>은 <b class="green">23가지</b>인데 언제가는 중복되는 숫자가 나오게 되므로 <b class="brown">todo클래스</b> **title**입력 기능도 이용하기로 했습니다. <b style="font-size: 85%">(현재 23가지 색조합(배경색, 글씨색)을 일리리 구현했는데 이러한 것도 효율적으로 랜덤한 조합으로 만들어준다면 중복을 피할 수 있을 것 같다는 생각(?)이 들었습니다.)</b>
 
 <img src="/assets/img/js/todobtn_class/4.png" alt="handle title value" width="80%" />
 
-- <b class="brown">todo클래스</b>에서는 받아온 <b class="blue">title</b>인자를 위와 같이 처리하기 때문에 `innerHTML`사용으로 생길 수 있는 <b class="red">보안문제</b>로 부터 안전합니다.
+- <b class="brown">todo클래스</b>에서는 받아온 <b class="blue">title</b>인자를 위와 같이 처리하기 때문에 `innerHTML`사용으로 생길 수 있는 <b class="red">보안문제</b>로 부터 안전합니다. <b style="font-size:85%">(textContent로 한번 파싱한 후 사용, 효율적인 방법인지는 모르겠음..)</b>
 - 그렇기 때문에 <b class="blue">title</b>를 <b class="green">prompt()</b>를 이용하여 **유저로 부터 직접 입력**을 받아도 될 것 같습니다.
 
 <img src="/assets/img/js/todobtn_class/5.png" alt="handle title value2" width="70%" />
@@ -197,10 +198,10 @@ iframe.todoBtn123 {
   height: 340px;
 }
 @media only screen and (max-width: 500px) {
-	iframe.todoBtn123 {
-  		width: 350px;
-  		height: 340px;
-	}
+  iframe.todoBtn123 {
+    width: 350px;
+    height: 340px;
+  }
 }
 </style>
 
