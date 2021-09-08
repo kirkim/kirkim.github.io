@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[JavaScript] "
+title: "[JavaScript] todo리스트 생성버튼 만들기"
 subtitle: ""
 date: 2021-09-06 02:45:51 +0900
 categories: javascript
@@ -12,7 +12,7 @@ comments: true
 <kline></kline>
 
 - 이전에 <b class="brown">todo리스트</b>를 <b class="purple">class(클래스)</b>로 **리펙토링**하였습니다.
-- 이제 이 <b class="purple">todo리스트 클래스</b>가 정상적으로 동작하는지 확인할겸 <b class="button">todo리스트</b>를 <b class="green">생성하고 지울 수 있는 버튼</b>을 만들어볼 계획입니다.
+- 이제 이 <b class="purple">todo리스트 클래스</b>가 정상적으로 동작하는지 확인할겸 <b class="button">todo리스트</b>를 **여러개** <b class="green">생성하고 지울 수 있는 버튼</b>을 만들어볼 계획입니다.
 
 <h1 class="ksubject">2️⃣ 상수 선언</h1>
 <h2 class="ksubsubject">(1) 기본적인 방법으로 상수 선언</h2>
@@ -80,7 +80,10 @@ eventMaster = (event) => {
 
 <h2 class="ksubsubject">(3) todoBtn 주요기능함수 구현</h2>
 
-- <b class="purple">plus 버튼</b>을 누르면 다음의 **순서**로 함수가 호출됩니다. 1. <b class="green">addPage()</b>: **todo리스트**의 `id`생성 밑 <b class="blue">local storage</b>에 데이터를 저장하는 역할 2. <b class="green">makePage()</b>: 새로운 **todo리스트**인스턴스 생성 및 <b class="borwn">page배열</b>에 각todo리스트정보 저장 <b style="font-size:85%">(<b class="brown">page배열</b>은 **특정todo리스트를 노출**시키고자 할때 이용할 배열)</b> 3. <b class="green">makeBtn()</b>: **각 todo리스트**와 매칭되는 버튼을 생성해주는 역할
+- <b class="purple">plus 버튼</b>을 누르면 다음의 **순서**로 함수가 호출됩니다.
+  1.  <b class="green">addPage()</b>: **todo리스트**의 `id`생성 밑 <b class="blue">local storage</b>에 데이터를 저장하는 역할
+  2.  <b class="green">makePage()</b>: 새로운 **todo리스트**인스턴스 생성 및 <b class="borwn">page배열</b>에 각todo리스트정보 저장 <b style="font-size:85%">(<b class="brown">page배열</b>은 **특정todo리스트를 노출**시키고자 할때 이용할 배열)</b>
+  3.  <b class="green">makeBtn()</b>: **각 todo리스트**와 매칭되는 버튼을 생성해주는 역할
 
 <h3 class="ksubsubject">&#91;1&#93; addPage()</h3>
 
@@ -174,7 +177,7 @@ loadData() {
 
 <img src="/assets/img/js/todobtn_class/5.png" alt="handle title value2" width="70%" />
 
-- <b class="blue">plus버튼</b>을 누르면 호출되는 <b class="green">addPage()</b>에 위와 같이 **유저입력**을 받는 코드를 넣었습니다. 이 데이터는 **새로고침**할 때 필요하기 때문에 <b class="blue">"local storage"</b>에도 저장해 주었습니다.
+- <b class="blue">plus버튼</b>을 누르면 호출되는 <b class="green">addPage()</b>에 위와 같이 **유저입력**을 받는 코드를 넣었습니다. 이 데이터는 **새로고침**할 때도 문제없이 출력되어야하기 때문에 <b class="blue">"local storage"</b>에도 저장해 주었습니다.
 
 <img src="/assets/img/js/todobtn_class/6.png" alt="input title" width="50%" />
 <img src="/assets/img/js/todobtn_class/7.png" alt="result title" width="80%" />
