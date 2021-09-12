@@ -4,5 +4,5 @@ title: Study
 slug: study
 category: javascript
 menu: false
-order: 3
+order: 2
 ---
