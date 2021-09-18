@@ -46,7 +46,6 @@ function paintToDo(newObj) {
   toDoList.appendChild(newToDoSet);
 }*/
 
-
 function paintToDo(newObj) {
   let isDone = "";
   if (newObj.is_done === true) {
@@ -61,7 +60,7 @@ function paintToDo(newObj) {
       ${temp.innerHTML}
     </span>
     <button id=${newObj.id}>X</button>
-  `
+  `;
   toDoList.appendChild(newToDoSet);
 }
 
@@ -72,7 +71,7 @@ function submitFunc(event) {
     text: newInput,
     id: Date.now(),
     is_done: false,
-  }
+  };
   toDoInput.value = "";
   toDos.push(newObj);
   saveToDos();
@@ -81,13 +80,12 @@ function submitFunc(event) {
 
 toDoForm.addEventListener("submit", submitFunc);
 toDoList.addEventListener("click", (event) => {
-	if (event.target.tagName === "SPAN") {
-		doneFunc(event);
-	} else if (event.target.tagName === "BUTTON") {
-		deleteToDo(event);
-	}
-})
-
+  if (event.target.tagName === "SPAN") {
+    doneFunc(event);
+  } else if (event.target.tagName === "BUTTON") {
+    deleteToDo(event);
+  }
+});
 
 const savedToDos = localStorage.getItem(TODO_KEY);
 
