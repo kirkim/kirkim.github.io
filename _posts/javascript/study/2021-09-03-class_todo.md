@@ -97,11 +97,6 @@ comments: true
 - **또다른 방법**도 있는데 <b class="green">이벤트함수</b>는 기존과 같이 작성하고 함수 선언부분만 다음과 같이 바꾸는 것 입니다.
 
 <img src="/assets/img/js/todo_class/12.png" width="70%" alt="correct3" />
-<!--
-- 위와같은 방법은 **유튜버** <b class="purple">엘리(드림코딩)</b>님께서 **현업에서 사용한 방법**이라고 합니다.
-🍄 <a href="https://www.youtube.com/channel/UC_4u-bXaba7yrRz_6x6kb_w" target="blank"> 드림코딩 by 엘리 <b style="font-size:85%">유튜브 채널</b></a> 🍄<br>
-🍄 <a href="https://academy.dream-coding.com/" target="blank"> 드림코딩 사이트</a> 🍄<br>
--->
 
   <h1 class="ksubject">4️⃣ javascript파일 분류하기</h1>
 
