@@ -1,10 +1,10 @@
 ---
 layout: list
-title: etc
-slug: etc
+title: Swift
+slug: swift
 menu: true
 submenu: false
-order: 10
+order: 9
 description: >
-  기타, 이것저것
+  swift
 ---
