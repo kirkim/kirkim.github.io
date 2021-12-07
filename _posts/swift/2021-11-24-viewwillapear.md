@@ -13,7 +13,7 @@ comments: true
 - <details>
     <summary style="cursor:pointer;"><b>[펼치기]</b> 왜 viewWillAppear메서드를 썼을까</summary>
     <div style="padding-left:30px; background-color:gray; font-size:90%;">
-      ✹ 먼저 <b class="blue">페이지1</b>에서 <b class="purple">페이지2</b>를 열 수있으며 <b class="purple">페이지2</b>에서 입력한 값을 <b class="blue">페이지1</b>에 전달하는 상황입니다.<br>
+      ✹ 먼저 <b class="blue">페이지1</b>에서 <b class="purple">페이지2</b>를 열 수있으며 <b class="purple">페이지2</b>에서 입력한 값을 <b class="blue">페이지1</b>에 전달하는 상황이라고 칩시다.<br>
       ✹ <b class="purple">페이지2</b>에서 <b>입력값</b>을 받고 <b class="blue">페이지1</b>에 전달해줄때, 입력 후 <b class="blue">페이지1</b>의 새로운 인스턴트를 생성해서 여는 것은 매우 비효율적입니다. 대신에 <b class="purple">페이지2</b>를 없애고(메모리 해제) <b class="blue">페이지1</b>를 다시 노출하는 방법을 이용합니다.<br>
       ✹ 이 때 <b class="purple">페이지2</b>에서 새로 입력해준 값으로 <b class="blue">페이지1</b>의 프로퍼티를 업데이트 시켜주고 싶지만 <b>viewdidload메서드</b>는 처음에 로드될 때만 호출이 되기 때문에 <b class="blue">페이지1</b>에 되돌아가는 상황에서는 호출이 되지않습니다.<br>
       ✹ 그 대신에 <b class="green">viewWillAppear메서드</b>는 <b>페이지가 노출</b>이 될때마다 호출이 되기 때문에 잘 이용하면 <b class="blue">페이지1</b>의 <b>프로퍼티</b>를 업데이트 시켜줄 수 있습니다.
