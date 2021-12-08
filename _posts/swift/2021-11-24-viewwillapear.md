@@ -42,6 +42,7 @@ comments: true
 <h2 class="ksubsubject">(1) fullscreen 이용</h2>
 
 - 21년 기준 `present`메소드는 기본적으로 **페이지**를 <b class="blue">팝업</b>의 형태로 열립니다.
+- iOS 13부터 <b class="green">modalPresentationStyle</b>의 기본값이 fullScreen에서 automatic으로 바꼈다고 합니다.<b style="90%">(레이어링(Layering)디자인을 둥근 상단 모양을 통해 구분되도록하여 뷰가 INteractively Dismissed 될 수 있게 하는 목적이라고 합니다.)</b>
 - 다음과 같이 스타일을 바꿔주면 <b class="blue">풀스크린(fullscreen)</b>으로 페이지가 열립니다.
 
 <img src="/assets/img/swift/viewwillapear/4.png" width="90%" alt="modify code for fullscreen">
@@ -64,4 +65,3 @@ comments: true
 <img src="/assets/img/swift/viewwillapear/5.png" width="90%" alt="modify code for fullscreen using Segue">
 
 - 여기까지 **풀스크린**으로 만드는 방법으로 viewWillAppear메서드 호출문제를 해결해 봤습니다.
-- 언젠가 사용하는 날이 올지 모르겠지만 **팝업된 페이지**에서 입력값을 전달하는 방법도 연구해봐야 겠습니다.
