@@ -110,8 +110,8 @@ isBackSpace:&nbsp;&nbsp;-92<br>
 👉🏻👉🏻👉🏻 <a href="https://stackoverflow.com/questions/51577566/swift-why-strcmp-of-backspace-returns-92" target="blank">스택오버플우 참고글 (Swift why strcmp of backspace returns -92?)</a><br>
 
 - 위의 스택오버플로우에서도 `\\b`와 비교하는 알고리즘을 왜 쓰는지 잘 모르겠다고 하는데, 아마 가독성을 위한 것이 아닐까 생각이 듭니다.
-- 그렇다고 `strint == ""`이 꼭 **backspace**를 나타내는 것이 아니라고 말합니다. 실제로 입력값을 <rd>잘라내기</rd>하였을 때도 공백값으로 출력됐습니다. 하지만 아스키코드로도 동일하게 0이 출력됐기 때문에 잘라내기와 backspace와 비교할 방법이 없습니다.
-- 하지만 이번에 구현할 **버튼**같은 경우 굳이 backspace임을 확인할 필요없기 때문에 다음과 같이 작성해줘도 될 것 같습니다.
+- 그렇다고 `strint == ""`이 꼭 **backspace**를 나타내는 것이 아니라고 말합니다. 실제로 입력값을 <rd>잘라내기</rd>하였을 때도 **string**값이 **공백**으로 출력됐습니다. 하지만 **아스키코드**도 동일하게 0이 출력됐기 때문에 **잘라내기**와 **backspace**를 비교할 방법이 없습니다.
+- 하지만 굳이 비교할 필요가 없는 것이 이번에 구현할 **버튼**같은 경우 굳이 backspace임을 확인할 필요없기 때문에 **utf-8**로 인코딩할 필요없이, 다음과 같이`strint == ""`임을 확인하는 코드로 작성해도 될 것 같습니다.
 
 ```swift
 extension ViewController: UITextFieldDelegate {
