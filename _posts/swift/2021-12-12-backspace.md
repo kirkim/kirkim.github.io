@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[swift] '
+title: '[swift] textField를 감지하는 버튼 만들기'
 subtitle: ''
 date: 2021-12-12 02:45:51 +0900
 categories: swift
@@ -14,12 +14,13 @@ comments: true
 
 <img src="/assets/img/swift/enabledbutton/enabledButton.gif" width="40%" alt="enabled button">
 
-- 이번에 <b class="green">delegate패턴</b>, <b class="blue">이벤트감지 메서드</b> **두가지 방법**으로 구현해볼 예정입니다.
-- 두가지 방법모두 다음과 같은 **outlet**변수를 만들어서 진행했습니다.
+- 크게 <b class="green">delegate패턴</b>, <b class="blue">이벤트감지 메서드</b> **두가지 방법**으로 나누어서 살펴보고,
+- <b class="blue">이벤트감지 메서드</b>를 <b class="purple">addTarget</b>, <b class="purple">addAction</b> **두가지**방법으로 구현해볼 예정입니다.
+- 두가지 방법 모두 다음과 같은 **outlet**변수를 만들어서 진행했습니다.
 
 <img src="/assets/img/swift/enabledbutton/1.png" width="80%" alt="base code">
 
-- button의 경우 프로퍼티 옵저버중 하나인 `didSet`을 이용하여 비활성화로 만들어줬습니다.
+- button의 경우 프로퍼티 옵저버중 하나인 `didSet`을 이용하여 초기에 비활성화가 되도록 만들어 줬습니다.
 
 <h1 class="ksubject">2️⃣ delegate패턴으로 처리하기</h1>
 
@@ -38,7 +39,7 @@ extension ViewController: UIViewController, UITextFieldDelegate {
 ```
 
 - **textField**관련 delegate를 사용하기 위해서는 <b class="blue">UITextFieldDelegate</b>프로토콜을 채택해야 합니다.
-- 그중에서도 `textField`메서드를 사용했는데, 키를 입력하는 순간 동작하며 텍스트가 입력되기 직전에 작업을 처리해줍니다. 우리가 직접 키를감지하는 코드를 작성할 필요가 없고 **UITextFieldDelget**가 대신 그 일들을 해주는데 이것이 **delegate패턴**을 이용하는 이유중 하나입니다.
+- 그중에서도 `textField`메서드를 사용했는데, 키를 입력하는 순간 동작하며 텍스트가 입력되기 직전에 작업을 처리해줍니다. 우리가 직접 키를감지하는 코드를 작성할 필요가 없고 **UITextFieldDelegate**가 대신 그 일들을 해주는데 이것이 **delegate패턴**을 이용하는 이유중 하나입니다.
 
 ```swift
 self.textField.delegate = self
@@ -55,7 +56,7 @@ self.textField.delegate = self
 - 첫번째 방법으로 <b class="blue">textField</b>의 길이가 **1**인 상태에서 <b class="blue">string</b>값이 <b class="brown">backspace</b>이면 버튼이 비활성화 되는 방법을 생각했습니다.
 - **swift**에서 <b class="brown">backspace</b>를 찾아봤는데 다음의 스택오버글을 찾았습니다.
 
-👉🏻👉🏻👉🏻 <a href="https://stackoverflow.com/questions/29504304/detect-backspace-event-in-uitextfield">stackoverflow 참고글 1</a><br>
+👉🏻👉🏻👉🏻 <a href="https://stackoverflow.com/questions/29504304/detect-backspace-event-in-uitextfield" target="blank">stackoverflow 참고글 (Detect backspace Event in UITextField)</a><br>
 
 ```swift
 func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -106,7 +107,7 @@ isBackSpace:&nbsp;&nbsp;-92<br>
 - 그렇다면 굳이 `\b`와 비교할 필요가 있을까라는 생각이 들었습니다. 추가로 **utf8**로 변환할 필요없이 **string**값이 공백인지만 확인하면 될 것같습니다.
 - 이와 비슷한 생각을하는 다음의 스택오버플로우글을 찾았습니다.
 
-👉🏻👉🏻👉🏻 <a href="https://stackoverflow.com/questions/51577566/swift-why-strcmp-of-backspace-returns-92" target="blank">스택오버플우 참고글2</a><br>
+👉🏻👉🏻👉🏻 <a href="https://stackoverflow.com/questions/51577566/swift-why-strcmp-of-backspace-returns-92" target="blank">스택오버플우 참고글 (Swift why strcmp of backspace returns -92?)</a><br>
 
 - 위의 스택오버플로우에서도 `\\b`와 비교하는 알고리즘을 왜 쓰는지 잘 모르겠다고 하는데, 아마 가독성을 위한 것이 아닐까 생각이 듭니다.
 - 그렇다고 **string**이 공백이 꼭 **backspace**를 나타내는 것이 아니라고 말합니다. 실제로 입력값을 **잘라내기**하였을 때도 공백값으로 출력됐습니다. 하지만 아스키코드로도 동일하게 0이 출력됐기 때문에 잘라내기와 backspace와 비교할 방법이 없습니다.
@@ -178,6 +179,8 @@ func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange
 
 <h1 class="ksubject">3️⃣ 이벤트감지함수로 처리하기</h1>
 
+<h2 class="ksubsubject">(1)addTarget() 사용</h2>
+
 - 다음으로 **delegate패턴**을 사용하지않고 **이벤트감지함수**로 처리해보겠습니다.
 
 ```swift
@@ -201,6 +204,52 @@ class NoDelegateVC: UIViewController {
 ```
 
 - <b class="purple">UITextField</b>는 다음과 같이 <b class="purple">UIControl</b>를 상속하고 있습니다. 그렇기 때문에 각종 이벤트감지함수를 사용할 수 있습니다.
-  <img src="/assets/img/swift/enabledbutton/3.png" width="80%" alt="UITextField">
 
-- 그 중에서 <b class="brown">.editingChanged</b>는 **UIControl.Event**의 타입중 하나로 그중에서도 <b class="purple">UITextField</b>에서만 사용이 가능한 이벤트입니다. 위에서 delegate패턴에서 사용한 `textField()`메소드와 같이 문자단위로 이벤트를 감지하지만 이번에는 <rd>입력된 후</rd>에 처리합니다.
+<img src="/assets/img/swift/enabledbutton/3.png" width="70%" alt="UITextField">
+
+- 자바스크립트의 **이벤트리스너함수**와 비슷한 느낌의 함수 같습니다.
+- **objective-c**의 런타임 환경에서도 **swift**함수를 사용할 수 있게 하기 위해 `@objc`키워드를 붙여줍니다.
+- 그 중에서 <b class="brown">.editingChanged</b>는 **UIControl.Event**의 타입중 하나로 그중에서도 <b class="purple">UITextField</b>에서만 사용이 가능한 이벤트입니다. 위에서 delegate패턴에서 사용한 `textField()`메소드와 같이 문자단위로 이벤트를 감지하지만 이번에는 <rd>입력된 후</rd>에 처리합니다. 그렇기 때문에 생각보다 로직을 생각하기가 쉽습니다.
+
+<h2 class="ksubsubject">(2) addAction(_:for:) 사용 (iOS14 이상)</h2>
+
+- 다음의 **스텍오버플로우글**을 참고하면 **iOS14이상**부터는 <b class="green">addTarget()</b>메서드의 기능을 하는 <b class="green">addAction()</b>메서드를 사용할 수 있다고 합니다.
+
+👉🏻👉🏻👉🏻 <a href="https://stackoverflow.com/questions/67218273/what-is-the-difference-between-addaction-and-addtarget" target="blank">stackoverflow 참고글 (what is the difference between addAction and addTarget)</a><br>
+
+- <b class="green">addAction(\_:for:)</b>을 사용해서 **텍스트필드**의 입력값에 반응하여 **활성화 / 비활성화**되는 버튼을 만들어 보겠습니다.
+- <b class="brown">addTarget()</b>메서드와 다른점은 **클로저**를 사용할 수 있습니다.
+
+```swift
+override func viewDidLoad() {
+    /* 중략 */
+    self.textField.addAction(UIAction(handler: { _ in
+        if self.textField.text?.isEmpty == true {
+            self.submitBtn.isEnabled = false
+        } else {
+            self.submitBtn.isEnabled = true
+        }
+    }), for: .editingChanged)
+}
+```
+
+- 아래와 같이 따로 **핸들러함수**를 만들어서 사용할 수도 있습니다. (클로져함수의 응용)
+
+```swift
+override func viewDidLoad() {
+    /* 중략 */
+    self.textField.addAction(UIAction(handler: self.textHandler), for: .editingChanged)
+}
+
+func textHandler(_ a: UIAction) -> Void {
+    if self.textField.text?.isEmpty == true {
+        self.submitBtn.isEnabled = false
+    } else {
+        self.submitBtn.isEnabled = true
+    }
+}
+```
+
+- 이번에 **텍스트필드**의 입력값에 반응하여 **활성화 / 비활성화**되는 버튼을 구현해 보았습니다.
+- 제가 아는 지식선에서도 여러가지 방법이 있었습니다. 개인적인 생각으로는 **delegate패턴**이 가독성면에서 좀 더 좋다고 생각했습니다. 그 이유로 **delegate**패턴으로는 입력이전에 처리할 수 있기 때문에 텍스트관련 기능(유효성 검사등등..)도 같이 해줄 수 있는데, 기능적으로 통일성이 있을 것 같기 때문입니다.
+- 하지만 지금 구현한 코드는 매우 단순한 코드기 때문에 어떤 방법이 더 효율적인지 판단하기는 이른 것 같습니다.
