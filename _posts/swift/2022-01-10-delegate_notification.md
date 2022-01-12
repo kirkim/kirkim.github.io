@@ -210,7 +210,7 @@ class WebButtonBundlerView: UIViewController {
     <div class="explain-left" style="padding-top:2%">
 		<span>
 			<li>물론 오른쪽의 짤을 보면 알듯이 <b class="blue">옵저버를 생성해주는 뷰자체를 나가버린다면</b><b style="font-size:90%">(뷰는 <b>스택</b>의 형태로 쌓이고 해제됨)</b> 옵저버가 <rd>자동으로 해제</rd>됩니다.</li>
-			<li>그래도 습관적으로 메모리를 해제해 주어 옵저버를 필요할때만 사용하도록 하는 것이 좋을 것 같습니다.</li>
+			<li>그래도 <b class="green">습관적으로 메모리를 해제해서 옵저버를 필요할때만 사용하도록 하는 것</b>이 좋을 것 같습니다.</li>
 		</span>
 	</div>
     <div class="explain-right">
