@@ -18,7 +18,7 @@ comments: true
 		</span>
 	</div>
     <div class="explain-right">
-        <img src="/assets/img/swift/delegate_notification/finished_version.gif" width="50%" alt="finished version">
+        <img src="/assets/img/swift/delegate_notification/finished_version.gif" width="100%" style="max-width:200px" alt="finished version">
     </div>
 </div>
 
@@ -202,7 +202,7 @@ class WebButtonBundlerView: UIViewController {
 		</span>
 	</div>
     <div class="explain-right">
-        <img src="/assets/img/swift/delegate_notification/no_remove_observer.gif" width="50%" alt="finished version">
+        <img src="/assets/img/swift/delegate_notification/no_remove_observer.gif" width="100%" style="max-width:200px" alt="finished version">
     </div>
 </div>
 <br>
@@ -214,7 +214,7 @@ class WebButtonBundlerView: UIViewController {
 		</span>
 	</div>
     <div class="explain-right">
-        <img src="/assets/img/swift/delegate_notification/auto_remove_observer.gif" width="50%" alt="finished version">
+        <img src="/assets/img/swift/delegate_notification/auto_remove_observer.gif" width="100%" style="max-width:200px" alt="finished version">
     </div>
 </div>
 
