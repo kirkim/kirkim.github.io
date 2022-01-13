@@ -196,7 +196,7 @@ class WebButtonBundlerView: UIViewController {
 <div class="explain-cover">
     <div class="explain-left" style="padding-top:2%">
 		<span>
-			<li>정상적이라면 <b class="brown">임시버튼</b>이 동작하지 않아야 합니다.</li>
+			<li>정상적으로 옵저버가 해제됐다면 <b class="brown">임시버튼</b>이 동작하지 않아야 합니다.</li>
 			<li>처음에는 <b class="brown">임시버튼</b>을 눌러도 동작하지 않다가 <b class="green">왭번들러 버튼</b>을 누른 순간<span style="font-size:90%">(옵저버생성시점)</span>부터 계속 동작하게 됩니다.</li>
 			<li>즉, 옵저버는 계속해서 <rd>감시상태</rd>에 있게 되고 이는 성능적으로 좋지않을 것 같습니다.</li>
 		</span>
