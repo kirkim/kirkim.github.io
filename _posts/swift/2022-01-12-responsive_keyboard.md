@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[swift] '
+title: '[swift] 좀 더 자연스럽게 키보드에 반응해서 화면올리기'
 subtitle: ''
 date: 2022-01-12 02:45:51 +0900
 categories: swift
@@ -22,7 +22,7 @@ comments: true
         <img src="/assets/img/swift/responsive_keyboard/preview_responsive_keyboard.gif" width="100%" style="max-width:200px" alt="finished version">
     </div>
 </div>
-- 이렇게 키보드에 반응하여 <rd>입력버튼</rd>을 보이게 하는 것은 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/user-interaction/keyboards/">Apple-human-interface-guidelines</a>에도 나와 있듯이 **애플공식사이트**에서도 권장하고 있습니다.
+- 이렇게 키보드에 반응하여 <rd>입력창</rd>과 <rd>확인버튼</rd>을 보이게 하는 것은 <a href="https://developer.apple.com/design/human-interface-guidelines/ios/user-interaction/keyboards/">Apple-human-interface-guidelines</a>에도 나와 있듯이 **애플공식사이트**에서도 권장하고 있습니다.
 
 <h1 class="ksubject">2️⃣ 문제발생</h1>
 <h2 class="ksubsubject">(1) 문제점</h2>
@@ -103,11 +103,11 @@ if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserIn
 
 <div class="explain-cover" style="padding: 0 20%">
     <div class="explain-left">
-		<h4 align="middle">&lt; 임시 뷰사용 X &gt;</h4>
+		<h4 align="middle">&lt; 스택 사용 X &gt;</h4>
 		<img src="/assets/img/swift/responsive_keyboard/bad_example_in_scrollView.gif" width="100%" style="max-width:200px" alt="bad_example_in_scrollView">
 	</div>
     <div class="explain-right">
-		<h4 align="middle">&lt; 임시 뷰사용 O &gt;</h4>
+		<h4 align="middle">&lt; 스택 사용 O &gt;</h4>
         <img src="/assets/img/swift/responsive_keyboard/good_example_in_scrollView.gif" width="100%" style="max-width:200px" alt="good_example_in_scrollView">
     </div>
 </div>
