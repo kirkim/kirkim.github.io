@@ -108,7 +108,7 @@ class MainVC: UIViewController {
     <div class="explain-left" style="padding-top:2%">
 		<span>
 			<li><b>유저정보가 10개</b>이기 때문에 문제없이 돌아가는 것 같습니다.</li>
-			<li>하지만 유저 데이터를 <b class="purple">1000000개</b>로 늘려서 다시 한번 실행해 봤습니다.</li>
+			<li>그래서 이번엔 유저 데이터를 <b class="purple">1000000개</b>로 늘려서 다시 한번 실행해 봤습니다.</li>
 			<li>오른쪽과 같이 <rd>모든 데이터</rd>를 불러올때까지 <b class="blue">메인 뷰</b>가 열리지 않습니다.</li>
 			<li>그 이유는 <b class="green">Data(contentsOf:)</b>는 <rd>동기적</rd>으로 데이터를 받아오기 때문입니다.</li>
 		</span>
