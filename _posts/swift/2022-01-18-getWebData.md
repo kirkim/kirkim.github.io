@@ -81,7 +81,7 @@ struct Result: Codable {
 - 다음과 같이 간단하게 <b class="green">Data(contentsOf:)</b>를 이용하여 데이터를 불러올 수있습니다.
 
 ```swift
-class MainVC: UIViewController {
+class MainVC: UIViewController, UITableViewDataSource {
   private var myData: DataModel?
   @IBOutlet weak var mainTableView: UITableView!
 
@@ -100,7 +100,7 @@ class MainVC: UIViewController {
       print(error)
     }
   }
-  /* 테이블 뷰 델리게이트 메서드 생략 */
+  /* 테이블 뷰 데이터소스설정 메서드 생략 */
 }
 ```
 
@@ -125,7 +125,7 @@ class MainVC: UIViewController {
 - 결과적으로 아래와 같이 작성하면 <rd>런타임 오류</rd>가 발생합니다. <span style="font-size:90%">(이유는 아래 설명)</span>
 
 ```swift
-class MainVC: UIViewController {
+class MainVC: UIViewController, UITableViewDataSource {
   /* 생략 */
 
   private func getDataSimple() {
@@ -140,7 +140,7 @@ class MainVC: UIViewController {
       }
 	}
   }
-  /* 테이블 뷰 델리게이트 메서드 생략 */
+  /* 테이블 뷰 데이터소스설정 메서드 생략 */
 }
 ```
 
@@ -226,7 +226,7 @@ second<br>
 - 일단 **다른 블로그글**들을 참고하여 다음과 같이 <b class="blue">URLSession</b>을 활용하여 데이터를 받아오는 코드를 구현했습니다.
 
 ```swift
-class MainVC: UIViewController {
+class MainVC: UIViewController, UITableViewDataSource {
   /* 생략 */
 
   private func getDataUseSession() {
@@ -250,6 +250,6 @@ class MainVC: UIViewController {
     }.resume()
     session.finishTasksAndInvalidate()
   }
-  /* 테이블 뷰 델리게이트 메서드 생략 */
+  /* 테이블 뷰 데이터소스설정 메서드 생략 */
 }
 ```
