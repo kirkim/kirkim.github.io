@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[swift] JSON데이터 받아오기'
+title: '[swift] JSON데이터 받아오기1'
 subtitle: ''
 date: 2022-01-18 02:45:51 +0900
 categories: swift
