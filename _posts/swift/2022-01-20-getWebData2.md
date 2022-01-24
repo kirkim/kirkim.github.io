@@ -107,7 +107,17 @@ class HttpBase {
 
 - <b class="brown">베이스코드</b>를 <rd>싱글턴(singleton)</rd>을 사용해서 구현했는데 <b class="purple">Java</b>에서 싱글톤 사용시 **멀티쓰레드**에서 싱글턴의 인스턴스가 중복선언되는 문제가 있어서 클래스 안쪽에 <rd>lazy</rd>클래스를 만들어 의도적으로 **Thread-Safe**하도록 만들어줄 필요가 있습니다.
 - 하지만 <b class="blue">swift</b>에서는 사용시점에 초기화되는 성질이 있기 때문에 의도적으로 **Thread-Safe**하도록 만들 필요가 없습니다. <br><b style="font-size:90%">(참고링크: <a href="https://babbab2.tistory.com/66">https://babbab2.tistory.com/66</a>)</b>
-- 하지만 <b class="green">델리게이트, 노티피케이션</b>을 이용한 클래스는 <b class="blue">일반적인 클래스</b>로 만들어 줬습니다. 그 이유는 특정 delegate 혹은 notification키와 <b class="purple">결합도(coupling)</b>가 생기기 때문입니다.
+- 못믿겠다면 다음과 같이 생성시점에 호출되는 `init()`에 간단한 **print문**을 넣어 확인할 수 있습니다.
+
+  ```swift
+  class HttpUseCustomObserver {
+    static let shared = HttpUseCustomObserver()
+
+    private init() { print("싱글턴인스턴스 생성")}
+  }
+  ```
+
+- <b class="green">델리게이트, 노티피케이션</b>을 이용한 클래스는 <b class="blue">일반적인 클래스</b>로 만들어 줬습니다. 그 이유는 특정 delegate 혹은 notification키와 <b class="purple">결합도(coupling)</b>가 생기기 때문입니다.
 
 <h1 class="ksubject">2️⃣ 나만의 옵저버클래스를 이용한 방법(추천x)</h1>
 
@@ -178,6 +188,7 @@ class HttpUseCustomObserver {
 - 어떻게 보면 다시 데이터를 불러올 필요가 없기 때문에 좋아보입니다. 하지만 **데이터가 사라지지 않기 때문**에 오히려 메모리가 무거워지는 단점이 생길 수 있습니다.
 - 그렇기 때문에 개인적인 생각으로는 <b class="green">싱글턴</b>으로 구현한 클래스 <rd>내부</rd>에 **직접적으로 데이터를 저장하지 않는 것**이 좋을 것 같습니다.
 - 또한 위처럼 구현한 클래스는 **0.1초**간격으로 함수가 재호출되는 과정이 필요하며, <rd>처리가 완료되는 시점을 정확히 아는데 한계</rd>가 있습니다.
+- 결과적으로 **비동기함수**를 다룰때 <b class="green">completion handler</b>(처리 후에 실행되는 클로져)가 왜 중요한지 알게 되었습니다.
 
 <h1 class="ksubject">3️⃣ 클로져(closure)를 이용한 방법</h1>
 
@@ -345,3 +356,103 @@ override func viewDidLoad() {
 ```
 
 <h1 class="ksubject">6️⃣ async/await를 이용한 방법</h1>
+
+- <b class="blue">data(for:)</b>메서드를 이용하면 <b class="purple">async/await</b>의 비동기적인 방법으로 데이터를 받아올 수 있습니다.
+- 약간의 성능향상(?)을 위해서 <b class="blue">data(for:)</b>를 <b class="purple">async let</b>키워드를 사용해서 비동기적으로 선언해 줬으며 **변수**를 사용하는 시점에서 <b class="purple">await</b>키워드를 사용하여 동기적으로 처리하도록 했습니다.
+- <b class="brown">싱글턴</b>으로 작성된 클래스이기 때문에 데이터를 저장하는 변수 <b class="green">resultData</b>는 **함수 내부**에 선언해주어 사용후에 메모리가 해제되도록 했습니다.
+- 이런식으로 코드가 복잡한 곳에서 <b class="purple">async/await</b>을 사용하면 <rd>콜백 지옥(클로저 지옥)</rd>에서 벗어나 코드를 좀 더 깔끔하게 사용할 수 있습니다.
+
+```swift
+class HttpUseAsyncAwait {
+  static let shared = HttpUseAsyncAwait()
+
+  private init() { }
+
+  public func getData() async -> DataModel? {
+      /* 생략 */
+
+      let request = urlRequest
+      async let (data, response) = session.data(for: request)
+
+      var resultData: DataModel?
+      do {
+          sleep(2)
+          guard let httpResponse = try await response as? HTTPURLResponse,
+                httpResponse.statusCode == 200 else { return nil }
+          resultData = try await JSONDecoder().decode(DataModel.self, from: data)
+      } catch {
+          print(error)
+      }
+      return resultData
+  }
+}
+```
+
+- 이렇게 만들어준 <b class="brown">async/await를 이용한 클래스</b>를 다음과 같이 사용합니다.
+
+```swift
+let httpUseAsyncAwait = HttpUseAsyncAwait.shared
+Task {
+  self.myData = await httpUseAsyncAwait.getData()
+  DispatchQueue.main.async {
+    self.myTableView?.reloadData()
+  }
+}
+```
+
+- 여기서 <b class="purple">Task</b>의 클로저 안에 작업을 작성해줍니다. <b class="purple">Task</b>는 <b class="green">async</b>를 대체할 것이라고 합니다.
+
+<img src="/assets/img/swift/async_getdata/2.png" width="100%" style="max-width:600px" alt="soon dispatch async">
+
+- <b class="purple">Task</b>대신에 <b class="green">디스패치큐(dispatchQueue)</b>를 만들어 처리해보려했지만 다음과 같은 에러가 발생하였습니다. **asyn/await**를 최종적으로 처리할 때는 <b class="purple">Task</b>로 감싸야하는데 그 이유에 대해서는 좀더 공부해봐야할 것 같습니다.
+
+<img src="/assets/img/swift/async_getdata/3.png" width="100%" style="max-width:600px" alt="error use dispatchqueue at asyn/await">
+
+- 그리고 <rd>주의할 점</rd>이 있는데 <b class="purple">Task</b>클로저 안쪽에서 변수를 선언해주면 앱이 멈추는 현상이 발생했습니다.
+
+```swift
+let httpUseAsyncAwait = HttpUseAsyncAwait.shared
+Task {
+  let a = "apple" // Task안쪽에 변수 선언
+  self.myData = await httpUseAsyncAwait.getData()
+  DispatchQueue.main.async {
+    self.myTableView?.reloadData()
+  }
+}
+```
+
+- 같은 이유로 <b class="blue">싱글턴클래스</b>를 **Task**밖에서 초기화를 해주었습니다.
+- 만약 <rd>초기화</rd>를 **Task**안쪽에서 하면 다음과 같이 <rd>Task안쪽의 업무가 끝날때까지 앱이 멈춰 있게 됩니다.</rd>
+- <b class="blue">싱글턴</b>이 아닌 일반클래스 또한 같은 문제가 발생했습니다.
+- `print()`과 `sleep()` 같은 단순한 코드도 **앱을 멈추게 했습니다.** 아마 <b class="bronw">Task</b> 안쪽에 <rd>동기적인 처리를 하면 멈추게 되는 것</rd> 같습니다.
+
+```swift
+Task {
+  let httpUseAsyncAwait = HttpUseAsyncAwait.shared
+  /* 생략 */
+}
+```
+
+<div class="explain-cover" style="padding: 0 20%">
+    <div class="explain-left">
+		<h4 align="middle">&lt; viewDidLoad()에서 사용 &gt;</h4>
+		<img src="/assets/img/swift/async_getdata/didload_await.gif" width="100%" style="max-width:200px" alt="bad_example_in_scrollView">
+	</div>
+    <div class="explain-right">
+		<h4 align="middle">&lt; viewDidAppear()에서 사용 &gt;</h4>
+        <img src="/assets/img/swift/async_getdata/appear_await.gif" width="100%" style="max-width:200px" alt="good_example_in_scrollView">
+    </div>
+</div>
+
+- <b class="blue">viewDidLoad()</b>에서 위와같이 사용시 **Task**업무가 끝날때까지 <rd>화면이 나타나지 않습니다.</rd>
+- <b class="brown">viewDidAppear()</b>에서 사용시 화면은 나타나지만 그 후의 동작들이 멈춰있게 됩니다.
+- 당연한 결과이지만 <b class="green">라이프사이클</b>로 해결할 수 있는 문제가 아닙니다. 그렇기 때문에 <b class="green">Task안쪽에는 비동기처리코드만 작성하는 것이 좋을 것</b> 같습니다.
+- 또한 <b class="brown">Task</b>의 옵션을 주어 <b class="blue">비동기 처리의 우선순위</b>를 지정해줄 수 있습니다.
+
+<img src="/assets/img/swift/async_getdata/4.png" width="100%" style="max-width:400px" alt="Task option">
+
+- 여기까지 봤을때 <b class="brown">Task</b>는 <b class="blue">DispatchGroup(디스패치그룹)</b>과 같은 기능을 하는데 좀 더 **가시적으로 보여주는 역할**을 하는 것이 아닌가 생각이 듭니다.
+
+<h3 class="ksubsubject">포스트를 마치며</h3>
+
+- 비동기 관련 내용은 <b class="org">Javascript</b>에서도 공부해본적이 있지만 <b class="red">swift</b>에서의 **비동기**는 색다르게 다가오는 것 같습니다. 이번 포스트에서도 아직 완벽하게 파악하지 못한부분도 있고 **구글링**을 통해봤을 때 아직 접해보지 못한 비동기관련 수많은 기능들과 개념들이 있습니다. **iOS개발자**는 결국에 자연스러운 UI구현이 목표이기 때문에 꾸준히 **비동기처리**관련해서 생각할 필요가 있을 것 같습니다.
