@@ -31,17 +31,42 @@ comments: true
 
 <kline></kline>
 
-<h2 class="ksubsubject">기본베이스 Http GET 클래스</h2>
+<h2 class="ksubsubject">기본베이스가될 Http응답 클래스</h2>
 
 - 이번에 다음과 같이 **다섯가지**방법을 알아볼 것입니다.
 
-  1.  나만의 옵저버클래스(추천x)
-  2.  클로져
-  3.  델리게이트
-  4.  노티피케이션
-  5.  async/await
+  <ol style="color:#081f56;font-weight:bold;font-size:90%;margin-left:5px">
+    <li>  나만의 옵저버클래스(추천x)</li>
+    <li>  클로져</li>
+    <li>  델리게이트</li>
+    <li>  노티피케이션</li>
+    <li>  async/await</li>
+  </ol>
 
 - 위에서 <b class="green">async/await</b>를 제외한 모든 방법이 다음의 <b class="brown">베이스코드</b>를 확장하는 식으로 구현할 예정입니다.
+- <b class="brown">베이스코드</b>는 <b class="green">URLSession</b>을 만들어 session의 **Task**안에서 데이터를 받아오는 식으로 구현됩니다.
+- <b class="green">URLSession</b>은 다음 과 같이 <b class="blue">싱글턴</b> 혹은 <b class="purple">configuration</b>을 직접 지정해주는 식으로 생성할 수 있습니다.
+
+  ```swift
+  // 직접생성
+  let session = URLSession(configuration:)
+
+  // 싱글턴 사용
+  let session = URLSession.shared
+  ```
+
+- 당연히 <b class="blue">싱글턴</b>을 사용하면 <rd>한계(limitations)</rd>가 있는데, 다음과 같습니다. <br><b style="font-size:75%">(출처: <a href="https://developer.apple.com/documentation/foundation/nsurlsession/1409000-sharedsession?language=objc" target="blank">sharedSession - Apple developer</a>)</b>
+
+  1. You can't obtain data incrementally as it arrives from the server.
+     <br><b style="color:#405a58;">서버에서 데이터가 들어오는 대로 점진적으로 데이터를 얻을 수 없다.</b>
+  2. You can't significantly customize the default connection behavior.
+     <br><b style="color:#405a58;">기본 연결동작의 커스터마이징에 제한이 있다.</b>
+  3. Your ability to perform authentication is limited.
+     <br><b style="color:#405a58;">인증 수행 능력이 제한된다.</b>
+  4. You can't perform background downloads or uploads when your app isn't running.
+     <br><b style="color:#405a58;">백그라운드에서 다운로드 또는 업로드를 수행할 수 없다.</b>
+
+- 이번 포스트에서는 **기본 configuration**을 이용해서 **Session**을 만들어 줬습니다. 둘의 자세한 비교는 나중에 다루도록 하겠습니다.
 
 <h3 align="middle" class="ksubsubject">&lt; 베이스 코드 &gt;</h3>
 
@@ -52,7 +77,8 @@ class HttpBase {
   private init() { }
 
   public func readyData() {
-    let session = URLSession.shared
+    let sessionConfiguration = URLSessionConfiguration.default
+    let session = URLSession(configuration: sessionConfiguration)
 
     let components = URLComponents(string: "http://localhost:8080")
     guard let url = components?.url else { return }
@@ -62,8 +88,11 @@ class HttpBase {
 
     session.dataTask(with: request) { data, response, error in
       guard let httpResponse = response as? HTTPURLResponse,
-            httpResponse.statusCode == 200 else { return } // 응답검증
-      guard let data = data else { return }
+            httpResponse.statusCode == 200,
+            let data = data else {
+              print(error.debugDescription)
+              return
+            } // 응답검증
       do {
         sleep(2) // 이곳에서 지연시간을 줌
         /* 데이터를 JSON형태로 받아오는 곳 */
@@ -80,7 +109,7 @@ class HttpBase {
 - 하지만 <b class="blue">swift</b>에서는 사용시점에 초기화되는 성질이 있기 때문에 의도적으로 **Thread-Safe**하도록 만들 필요가 없습니다. <br><b style="font-size:90%">(참고링크: <a href="https://babbab2.tistory.com/66">https://babbab2.tistory.com/66</a>)</b>
 - 하지만 <b class="green">델리게이트, 노티피케이션</b>을 이용한 클래스는 <b class="blue">일반적인 클래스</b>로 만들어 줬습니다. 그 이유는 특정 delegate 혹은 notification키와 <b class="purple">결합도(coupling)</b>가 생기기 때문입니다.
 
-<h1 class="ksubject">2️⃣ 나만의 옵저버클래스(추천x)</h1>
+<h1 class="ksubject">2️⃣ 나만의 옵저버클래스를 이용한 방법(추천x)</h1>
 
 - <b class="green">session.dataTask()</b>메서드의 **클로져 부분**이 비동기적으로 처리가 되다보니 <rd>데이터</rd>를 직접 **return하는 함수**를 만들더라도 `nil`값만을 반환했습니다.
 - 그래서 데이터를 저장해둘 **클래스 변수(dataModel)**을 만들어 줬고 **변수(dataModel)**에 비동기적으로 데이터를 저장하는 함수 <b class="blue">readyData()</b>를 만들어 줬습니다.
@@ -136,10 +165,10 @@ class HttpUseCustomObserver {
 ```
 
 - 다음과 같이 동작합니다.
-  1.  <b class="blue">readyData()</b>함수를 호출하여 비동기적으로 데이터를 받아옴
+  1.  <b class="blue">readyData()</b>함수를 호출하여 비동기적으로 데이터를 받기를 시작
   2.  완료시 <b class="green">isReady</b>클래스변수를 <b class="purple">true</b>로 변경
-  3.  <b class="purple">getData()</b>함수를 호출하면 **0.1초**의 간격으로 재호출
-  4.  <b class="green">isReady</b>가 **true**가 되면 <rd>데이터를 반환</rd>
+  3.  <b class="brown">getData()</b>함수를 호출하면 **0.1초**의 간격으로 재귀적으로 <b class="brown">getData()</b>함수를 재호출
+  4.  <b class="green">isReady</b>가 <b class="purple">true</b>가 되면 <b class="brown">getData()</b>함수에서 <rd>데이터를 반환</rd>
   5.  <b class="green">isReady</b>가 <b class="purple">true</b>인 상태라면 <b class="blue">readyData()</b>를 호출하더라도 데이터를 또다시 받아오지 않음
 
 <img src="/assets/img/swift/async_getdata/result_customobserver.gif" width="100%" style="max-width:400px" alt="result custom observer">
@@ -150,10 +179,10 @@ class HttpUseCustomObserver {
 - 그렇기 때문에 개인적인 생각으로는 <b class="green">싱글턴</b>으로 구현한 클래스 <rd>내부</rd>에 **직접적으로 데이터를 저장하지 않는 것**이 좋을 것 같습니다.
 - 또한 위처럼 구현한 클래스는 **0.1초**간격으로 함수가 재호출되는 과정이 필요하며, <rd>처리가 완료되는 시점을 정확히 아는데 한계</rd>가 있습니다.
 
-<h1 class="ksubject">3️⃣ 클로져(closure)</h1>
+<h1 class="ksubject">3️⃣ 클로져(closure)를 이용한 방법</h1>
 
-- 이번 포스트의 목표를 다시한번 말하자면 <b class="green">데이터받아오기가 끝난 시점에 다른곳에서 데이터를 처리하는 방법</b>을 찾는 것입니다.
-- 사실 **클로져함수**의 사용법에 대해 잘 알고 있었더라면 위에서 "2️⃣"처럼 **호출함수**를 만들어줄 필요없가 없습니다. <b class="blue">클로져 파라미터를 만들어주는 방법</b>을 사용하면 쉽게 해결할 수 있습니다.
+- 이번 포스트의 목표를 다시한번 말하자면 <b class="green">"데이터받아오기가 끝난 시점에 다른곳에서 데이터를 처리하는 방법"</b>을 찾는 것입니다.
+- 사실 **클로져함수**의 사용법에 대해 잘 알고 있었더라면 위에서 2️⃣처럼 **호출함수**를 만들어줄 필요없가 없습니다. <b class="blue">클로져 파라미터를 만들어주는 방법</b>을 사용하면 쉽게 해결할 수 있습니다.
 
 ```swift
 class HttpUseClosure {
@@ -192,7 +221,7 @@ getData(completion: @escaping (DataModel?) -> Void)
 ```
 
 - 일반적으로 **클로져**는 변수를 반환하지 않으므로 반환값을 **Void**로 적어 줍니다.
-- 이렇게 만들어준 **클로져를 이용한 클래스**를 다음과 같이 사용합니다.
+- 이렇게 만들어준 <b class="brown">클로져를 이용한 클래스</b>를 다음과 같이 사용합니다.
 
 ```swift
 HttpUseClosure.shared.getData { data in
@@ -203,4 +232,116 @@ HttpUseClosure.shared.getData { data in
 }
 ```
 
-- <b class="green">session.dataTask</b>의 클로져의 처리가 자동으로 <b class="brown">외부 스레드</b>에서 처리합니다. 그렇기 때문에 **UI**에 영향을 주는 테이블뷰의 **reloadData()**는 **메인스레드**에서 처리하도록 `DispatchQueue.main.async`로 감싸 주었습니다.
+- <b class="green">session.dataTask</b>의 클로져의 처리가 자동으로 <b class="brown">외부 스레드</b>에서 처리되는듯 합니다. 그렇기 때문에 **UI**에 영향을 주는 테이블뷰의 **reloadData()**는 **메인스레드**에서 처리하도록 `DispatchQueue.main.async`로 감싸 주었습니다.
+
+<h1 class="ksubject">4️⃣ 델리게이트(delegate)를 이용한 방법</h1>
+
+- 지금부터 다룰 <b class="green">델리게이트, 노티피케이션</b>을 이용한 방법은 이전 포스트에서 정리한 <a href="https://kirkim.github.io/swift/2022/01/09/delegate_notification.html" target="blank">&lt;delegate와 notificationCenter을 이용해서 이벤트 전달하기&gt;</a>의 방법을 이용했습니다.
+
+- 다음과 같이 <b class="purple">DataModel</b>의 타입을 따르는 변수를 받아 처리하는 <b class="green">델리게이트 프로토콜(delegate protocol)</b>을 만들어 줬습니다.
+
+```swift
+protocol MyHttpDelegate {
+  func getDataUseCustomDelgate(data: DataModel)
+}
+```
+
+- **http**응답을 **delegate**를 이용하여 전달하는 클래스를 다음과 같이 구현했습니다.
+- 클래스에 내장된 **delegate**는 각각의 사용하는 곳에서 <rd>독립적으로 존재</rd>해야 되야되기 때문에 <b class="purple">싱글턴</b>으로 구현하지 않았습니다.
+
+```swift
+class HttpUseCustomDelegate {
+    var myHttpDelegate: MyHttpDelegate?
+
+    func getData() {
+        /* 생략 */
+
+        session.dataTask(with: urlRequest) { data, res, error in
+            /* 생략 */
+            do {
+                sleep(2) // 지연시간을 줌
+                let resultData = try JSONDecoder().decode(DataModel.self, from: data)
+                self.myHttpDelegate?.getDataUseCustomDelgate(data: resultData) // JSON으로 파싱한 데이터를 넘겨줌
+            } catch {
+                print(error)
+            }
+        }.resume()
+        session.finishTasksAndInvalidate()
+    }
+}
+```
+
+- 이렇게 만들어준 <b class="brown">delegate를 이용한 클래스</b>를 다음과 같이 사용합니다.
+
+```swift
+override func viewDidLoad() {
+  /* 생략 *//
+  let httpUseDelegate = HttpUseCustomDelegate()
+  httpUseDelegate.myHttpDelegate = self
+  DispatchQueue.global().async {
+    httpUseDelegate.getData()
+  }
+}
+
+func getDataUseCustomDelgate(data: DataModel) {
+  self.myData = data
+  DispatchQueue.main.async {
+    self.myTableView?.reloadData()
+  }
+}
+```
+
+<h1 class="ksubject">5️⃣ 노티피케이션(notification)을 이용한 방법</h1>
+
+- **delegate**를 이용한 방법과 마찬가지로 <b class="green">노티피케이션(notification)</b>을 이용한 클래스를 <b class="purple">싱글턴</b>으로 만들어주지 않았습니다.
+- **생성시점**에서 <b class="brown">Notification이름</b>을 지정해줄 수 있도록 만들어 줬습니다.
+
+```swift
+class HttpUseNotification {
+  private var notificationName: NSNotification.Name
+
+  init(_ notificationName: NSNotification.Name) {
+    self.notificationName = notificationName
+  }
+
+  func getData() {
+    /* 생략 */
+
+    session.dataTask(with: urlRequest) { data, res, error in
+      /* 생략 */
+      do {
+        sleep(2)
+        let resultData = try JSONDecoder().decode(DataModel.self, from: data)
+        NotificationCenter.default.post(name: self.notificationName, object: resultData)
+      } catch {
+          print(error)
+      }
+    }.resume()
+    session.finishTasksAndInvalidate()
+  }
+}
+```
+
+- 이렇게 만들어준 <b class="brown">notification을 이용한 클래스</b>를 다음과 같이 사용합니다.
+- **notifiaction의 observer를 사용한 후**에 반드시 <rd>메모리해제</rd>를 해야한다는 것을 잊으면 안됩니다.
+
+```swift
+override func viewDidLoad() {
+  /* 생략 */
+  let notificationName = NSNotification.Name("getDataNotification")
+  NotificationCenter.default.addObserver(self, selector: #selector(getDataUseNotification), name: notificationName, object: nil)
+  let httpUseNotification = HttpUseNotification(notificationName)
+  httpUseNotification.getData()
+}
+
+@objc func getDataUseNotification(_ notification: Notification) {
+  guard let data = notification.object as? DataModel else { return }
+  self.myData = data
+  DispatchQueue.main.async {
+    self.myTableView?.reloadData()
+  }
+  NotificationCenter.default.removeObserver(self, name: NSNotification.Name("getDataNotification"), object: nil)
+}
+```
+
+<h1 class="ksubject">6️⃣ async/await를 이용한 방법</h1>
