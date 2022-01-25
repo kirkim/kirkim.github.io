@@ -12,14 +12,14 @@ comments: true
 
 - 이전 포스트에서 <b>swift</b>에서 <b class="blue">Json</b> 데이터를 받아오는 방법에 대해 알아 봤습니다.
 - 이번에는 더 나아가 <b class="orange">비동기</b>적으로 데이터를 받아오는 다양한 방법에 대해 알아보도록 하겠습니다.
-- 이전 포스트인 <a href="https://kirkim.github.io/swift/2022/01/17/getWebData.html">JSON데이터 받아오기1</a>에서 구현한 코드를 **베이스**로 구현해 나갈 예정입니다.
+- 이전 포스트인 <a href="https://kirkim.github.io/swift/2022/01/17/getWebData.html">JSON데이터 받아오기1</a>에서 구현한 코드를 **베이스**로 코드를 구현해 나갈 예정입니다.
 
 <div class="explain-cover">
     <div class="explain-left" style="padding-top:2%">
 		<span>
 			<ol>
 				<li>각각의 데이터를 불러오는과정은 <rd>"sleep()"</rd>메서드를 이용하여 의도적으로 시간이 걸리도록 했습니다.</li>
-				<li><b class="orange">비동기</b>적으로 데이터를 불러오는 것이 핵심 목표이기 때문에 오른쪽 짤과같이 데이터를 불러오는 과정에서도 화면의 다른 기능들이 정상적으로 동작하도록 구현하도록 했습니다.</li>
+				<li><b class="orange">비동기</b>적으로 데이터를 불러오는 것이 핵심 목표이기 때문에 오른쪽 짤과같이 데이터를 불러오는 과정에서도 화면의 다른 기능들이 정상적으로 동작하도록 구현 했습니다.</li>
 				<li>또한 데이터를 받아오는 기능은 <rd>독립적인 클래스</rd>로 만들었습니다. <b style="font-size:90%">(같은 클래스에 만들면 해당 클래스변수를 직접 대입하면 끝이기 때문, 하지만 이렇게 만들면 클래스의 크기가 너무 커지고 가독성이 떨어짐)</b></li>
 			</ol>
 		</span>
@@ -107,7 +107,7 @@ class HttpBase {
 
 - <b class="brown">베이스코드</b>를 <rd>싱글턴(singleton)</rd>을 사용해서 구현했는데 <b class="purple">Java</b>에서 싱글톤 사용시 **멀티쓰레드**에서 싱글턴의 인스턴스가 중복선언되는 문제가 있어서 클래스 안쪽에 <rd>lazy</rd>클래스를 만들어 의도적으로 **Thread-Safe**하도록 만들어줄 필요가 있습니다.
 - 하지만 <b class="blue">swift</b>에서는 사용시점에 초기화되는 성질이 있기 때문에 의도적으로 **Thread-Safe**하도록 만들 필요가 없습니다. <br><b style="font-size:90%">(참고링크: <a href="https://babbab2.tistory.com/66">https://babbab2.tistory.com/66</a>)</b>
-- 못믿겠다면 다음과 같이 생성시점에 호출되는 `init()`에 간단한 **print문**을 넣어 확인할 수 있습니다.
+- 다음과 같이 생성시점에 호출되는 `init()`에 간단한 **print문**을 넣어 확인할 수 있습니다.
 
   ```swift
   class HttpUseCustomObserver {
@@ -400,7 +400,7 @@ Task {
 }
 ```
 
-- 여기서 <b class="purple">Task</b>의 클로저 안에 작업을 작성해줍니다. <b class="purple">Task</b>는 <b class="green">async</b>를 대체할 것이라고 합니다.
+- 여기서 <b class="purple">Task</b>의 클로저 안에 작업을 작성해줍니다. 아래의 **경고메시지**를 보면 <b class="purple">Task.init</b>는 기존의 <b class="green">async(priority:operation:)</b>를 대체한다고 말하고 있습니다.
 
 <img src="/assets/img/swift/async_getdata/2.png" width="100%" style="max-width:600px" alt="soon dispatch async">
 
@@ -408,7 +408,7 @@ Task {
 
 <img src="/assets/img/swift/async_getdata/3.png" width="100%" style="max-width:600px" alt="error use dispatchqueue at asyn/await">
 
-- 그리고 <rd>주의할 점</rd>이 있는데 <b class="purple">Task</b>클로저 안쪽에서 변수를 선언해주면 앱이 멈추는 현상이 발생했습니다.
+- 그리고 <rd>주의할 점</rd>이 있는데 <b class="purple">Task</b>클로저 안쪽에서 변수를 선언해주면 앱이 멈추는 현상이 발생합니다.
 
 ```swift
 let httpUseAsyncAwait = HttpUseAsyncAwait.shared
@@ -421,10 +421,9 @@ Task {
 }
 ```
 
-- 같은 이유로 <b class="blue">싱글턴클래스</b>를 **Task**밖에서 초기화를 해주었습니다.
-- 만약 <rd>초기화</rd>를 **Task**안쪽에서 하면 다음과 같이 <rd>Task안쪽의 업무가 끝날때까지 앱이 멈춰 있게 됩니다.</rd>
-- <b class="blue">싱글턴</b>이 아닌 일반클래스 또한 같은 문제가 발생했습니다.
-- `print()`과 `sleep()` 같은 단순한 코드도 **앱을 멈추게 했습니다.** 아마 <b class="bronw">Task</b> 안쪽에 <rd>동기적인 처리를 하면 멈추게 되는 것</rd> 같습니다.
+- 그렇기 때문에 앱이 멈추지 않도록 <b class="blue">클래스</b>를 **Task**밖에서 **초기화** 해주었습니다.
+- 만약 <rd>초기화</rd>를 **Task**안쪽에서 하면 다음과 같이 <rd>Task안쪽의 업무가 끝날때까지 앱이 멈춰 있게 됩니다.</rd> <b class="font-size:90%">(<b class="blue">싱글턴</b>클래스 뿐만아니라 일반클래스 또한 같은 문제가 발생)</b>
+- `print()`과 `sleep()` 같은 단순한 코드도 **앱을 멈추게 했는데** 아마 <b class="bronw">Task클로저</b> 안에 <rd>동기적인 처리를 하면 멈추게 되는 것</rd> 같습니다.
 
 ```swift
 Task {
@@ -447,7 +446,7 @@ Task {
 - <b class="blue">viewDidLoad()</b>에서 위와같이 사용시 **Task**업무가 끝날때까지 <rd>화면이 나타나지 않습니다.</rd>
 - <b class="brown">viewDidAppear()</b>에서 사용시 화면은 나타나지만 그 후의 동작들이 멈춰있게 됩니다.
 - 당연한 결과이지만 <b class="green">라이프사이클</b>로 해결할 수 있는 문제가 아닙니다. 그렇기 때문에 <b class="green">Task안쪽에는 비동기처리코드만 작성하는 것이 좋을 것</b> 같습니다.
-- 또한 <b class="brown">Task</b>의 옵션을 주어 <b class="blue">비동기 처리의 우선순위</b>를 지정해줄 수 있습니다.
+- <b class="brown">Task</b>의 <b class="purple">priority</b>옵션을 주어 <b class="blue">비동기 처리의 우선순위</b>를 지정해줄 수 있습니다.
 
 <img src="/assets/img/swift/async_getdata/4.png" width="100%" style="max-width:400px" alt="Task option">
 
