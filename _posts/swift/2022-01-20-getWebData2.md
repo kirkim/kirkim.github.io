@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[swift] JSON데이터 받아오기2'
+title: '[swift] 비동기데이터를 처리하는 클래스(or 함수) 만들기 '
 subtitle: ''
 date: 2022-01-20 02:45:51 +0900
 categories: swift
@@ -12,7 +12,7 @@ comments: true
 
 - 이전 포스트에서 <b>swift</b>에서 <b class="blue">Json</b> 데이터를 받아오는 방법에 대해 알아 봤습니다.
 - 이번에는 더 나아가 <b class="orange">비동기</b>적으로 데이터를 받아오는 다양한 방법에 대해 알아보도록 하겠습니다.
-- 이전 포스트인 <a href="https://kirkim.github.io/swift/2022/01/17/getWebData.html">JSON데이터 받아오기1</a>에서 구현한 코드를 **베이스**로 코드를 구현해 나갈 예정입니다.
+- 이전 포스트인 <a href="https://kirkim.github.io/swift/2022/01/17/getWebData.html">JSON데이터 받아오기</a>에서 구현한 코드를 **베이스**로 코드를 구현해 나갈 예정입니다.
 
 <div class="explain-cover">
     <div class="explain-left" style="padding-top:2%">

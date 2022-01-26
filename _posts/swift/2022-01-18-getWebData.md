@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[swift] JSON데이터 받아오기1'
+title: '[swift] JSON데이터 받아오기'
 subtitle: ''
 date: 2022-01-18 02:45:51 +0900
 categories: swift
@@ -253,3 +253,6 @@ class MainVC: UIViewController, UITableViewDataSource {
   /* 테이블 뷰 데이터소스설정 메서드 생략 */
 }
 ```
+
+<br><br>
+👉🏻👉🏻👉🏻 위의 코드를 바탕으로 만든 포스트 <a href="https://kirkim.github.io/swift/2022/01/19/getWebData2.html" target="blank">&#91;swift&#93; 비동기데이터를 처리하는 클래스(or 함수) 만들기<b style="font-size:70%">(새창)</b></a> 보러가기

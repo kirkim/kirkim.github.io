@@ -1,46 +1,51 @@
 <div id="_yDrawer">
   <div id="_sidebar" class="sidebar">
-    <div class="sidebar-bg" style="background-color:{{ color }};background-image:url({{ image }})"></div>
+    <div
+      class="sidebar-bg"
+      style="background-color:{{ color }};background-image:url({{ image }})"
+    ></div>
     <header class="sidebar-sticky" role="banner">
-      <br/>
+      <br />
       <div class="sidebar-box">
-        {% if author.picture %}
-          {% include srcset-img.html class="avatar" img=author.picture_sidebar alt=author.name %}
-        {% endif %}
+        {% if author.picture %} {% include srcset-img.html class="avatar" img=author.picture_sidebar
+        alt=author.name %} {% endif %}
       </div>
       <div class="sidebar-about">
-        
         <h1><a id="_title" href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
         {{ site.tagline | truncatewords:50 | markdownify }}
       </div>
-      {{ site.description | truncatewords:50 | markdownify }}
-      {% assign author = site.data.authors.first[1] %}
-      {% if author.social %}
+      {{ site.description | truncatewords:50 | markdownify }} {% assign author =
+      site.data.authors.first[1] %} {% if author.social %}
 
-      <br/>
-      <br/>
-      <nav class="sidebar-nav heading" role="navigation">
-        {% include nav.html %}
-      </nav>
-      
-    <br/>
+      <br />
+      <br />
+      <nav class="sidebar-nav heading" role="navigation">{% include nav.html %}</nav>
+
+      <br />
       <form action="/search">
         <div class="tipue_search_left">
-          <img src="/assets/tipuesearch/search.png" class="tipue_search_icon">
+          <img src="/assets/tipuesearch/search.png" class="tipue_search_icon" />
         </div>
         <div class="tipue_search_right">
-          <input type="text" name="q" id="tipue_search_input" pattern=".{1,}" title="At least 1 characters" required></div>
-        <div style="clear: both;"></div>
+          <input
+            type="text"
+            name="q"
+            id="tipue_search_input"
+            pattern=".{1,}"
+            title="At least 1 characters"
+            required
+          />
+        </div>
+        <div style="clear: both"></div>
       </form>
-    <br/>
-    <div style="text-align: center;">
+      <br />
+      <!-- 조회수기능 나중에 추가 (2022.01.26 임시 주석처리)-->
+      <!-- <div style="text-align: center;">
       <a href="https://hits.seeyoufarm.com">
         <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fkirkim.github.io&count_bg=%231EA024&title_bg=%23000000&icon=azurepipelines.svg&icon_color=%2300BE1A&title=%EC%A1%B0%ED%9A%8C%EC%88%98&edge_flat=false"/>
       </a>
-    </div>
-        <div class="sidebar-social">
-          {% include social.html social=author.social %}
-        </div>
+    </div> -->
+      <div class="sidebar-social">{% include social.html social=author.social %}</div>
       {% endif %}
     </header>
   </div>
