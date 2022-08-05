@@ -33,7 +33,7 @@ comments: true
 - 무조건 함수를 구현해야하는 <b class="brown">interface(인터페이스)</b>와 달리 다음과 같이 **옵셔널(optional)**을 이용하여 선택적으로 구현할 수 있도록할 수 있습니다.
 
 ```swift
-protocol TempProtocol {
+protocol TempProtocol: AnyObject {
     optional func sumNumber(a: Int, b: Int) -> Int {
         return a + b
     }
@@ -52,7 +52,7 @@ protocol TempProtocol {
   1.  이벤트를 전달해줄 뷰컨트롤러에서
 
       ```swift
-      var myOpenWebDelegate: OpenWebDelegate?
+      weak var myOpenWebDelegate: OpenWebDelegate?
       ```
 
       와 같이 delegate변수를 선언해준 뒤 **내장함수**를 사용하기
