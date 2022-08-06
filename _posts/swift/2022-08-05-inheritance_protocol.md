@@ -11,7 +11,7 @@ comments: true
 ⛔️ Swift에서 상속과 프로토콜의 활용에 대한 개인적인 생각을 적은 글입니다. 그렇기 때문에 가볍게 읽어주셨으면 좋겠습니다.<br />
 틀린내용에 대한 피드백은 메일로 보내주시면 감사하겠습니다🙏🏻
 
-<br><br>
+<br>
 
 <h1>1️⃣ Swift에서 상속</h1>
 - 상속은 OOP(객체지향프로그래밍)의 4대요소중 하나로 코드중복을 줄여주는데 큰역할을 합니다.
@@ -40,15 +40,14 @@ comments: true
 
 <h1 class="ksubject">2️⃣ Swift에서 상속의 단점</h1>
 <h2 class="ksubsubject">(1) 상속을 위해 캡슐화(Encapsulation)가 깨질 수 밖에 없다</h2>
-
 상속의 장점은 <b class="brown">오버라이딩(overriding)</b>을 통해 <b class="green">다형성(Polymorphism)</b>을 구현할 수 있다는 것 입니다.<br />
-하지만 상위클래스에서 오버라이딩을 하는 메서드의 경우 <br />
-**Java언어**에서는 **protected** 키워드가 있어 자식클래스만 접근할 수 있어 그나마 외부클래스에서의 접근에서는 **캡슐화**를 유지할 수 있습니다.<br />
+하지만 상위클래스에서 오버라이딩을 하는 메서드의 경우 **Java언어**에서는 **protected** 키워드가 있어 자식클래스만 접근할 수 있어 그나마 외부클래스에서의 접근에서는 **캡슐화**를 유지할 수 있습니다.<br />
 반면 **Swift언어**에는 **protected**키워드가 없습니다. 즉, <rd>오버라이딩을 할 메서드의 캡슐화가 전체적으로 깨질 수 밖에 없습니다.</rd>
+<br />
 
 <h2 class="ksubsubject">(2) 리스코프 치환 원칙을 위반할 가능성이 있다</h2>
 상위클래스의 메서드를 잘못 오버라이딩을 하게 되면 SOLID의 5대원칙중 하나인 <b class="brown">리스코프 치환 원칙(Liskov Subsitution Principle)</b>을 위반할 가능성이 큽니다. <br />
-자신이 직접 부모클래스를 구현하지 않은 이상 상속받을 부모클래스의 내부구현을 알기 힘듭니다. <br />
+자신이 직접 부모클래스를 구현하지 않은 이상 상속받을 부모클래스의 내부구현을 알기 힘듭니다. <br /><br />
 다음의 코드예시는 **storage**에 새로운string값을 부모클래스에서 이미 담았지만 자식클래스에서 추가로 한번 더담아 총 두번 담도록 구현이 되었습니다. 극단적인 예시이기는 하나 이처럼 <rd>상위클래스에서 메서드를 구현목적과 다르게 동작하도록 오버라이딩할 가능성이 있습니다.</rd>
 
 ```swift
@@ -79,16 +78,16 @@ private func test() {
 }
 ```
 
+<br />
 <h2 class="ksubsubject">(3) 상위클래스의 구현에 따라 하위클래스의 동작이 달라질 수 있다</h2>
-
 당연한 이야기이지만 상위클래스가 변경되면 하위클래스는 직접적으로 영향을 받게 됩니다.
 
+<br />
 <h2 class="ksubsubject">(4) 결합도증가로 유연성과 확장성이 떨어진다</h2>
-
 위의 **2,3번** 문제점을 생각한다면 <b class="green">클래스간 결합도</b>가 높아진다는 것을 느낄 수 있을 것입니다. 이로인해 유연성과 확장성을 증가시키기위해 사용한 **상속**이지만, **상속**의 깊이가 깊어질수록 오히려 코드의 유연성과 확장성이 떨어지게 됩니다.
 
+<br />
 <h2 class="ksubsubject">(5) 코드를 중복해서 사용할 가능성이 있다</h2>
-
 상속의 깊이가 깊어질수록 상위클래스의 **추상화**의 정도가 커지게 됩니다. 다음의 코드예시는 <b class="purple">setImage()</b>메서드를 상속하는 과정에서 **최하위클래스에서 네트워크요청코드를 중복해서 사용**해버린 상황입니다. 극단적인 예시이지만 네트워크요청과 같은 코드가 중복된다면 비용적인 측면에서 치명적일 것 입니다.
 
 ```swift
@@ -138,8 +137,8 @@ class ChildChildClass: ChildClass {
 }
 ```
 
+<br />
 <h2 class="ksubsubject">(6) SOLID원칙중 ISP를 위반할 가능성이 있다</h2>
-
 상속의 깊이가 깊어져 상위클래스의 **추상화**가 커지면 SOLID원칙중 ISP(인터페이스 분리의 원칙)을 위반할 가능성이 커집니다. 상위클래스들을 자신이 모두 구현하고 관리하지 않는 이상 어떠한 메서드가 있는지 정확히 알기 힘듭니다. 상속의 깊이가 깊어질수록 더 힘들어질 것입니다. 이는 상속을 하는과정에서 하위클래스가 필요없는 기능을 가지고 있게될 수도 있습니다.
 
 <h1 class="ksubject">3️⃣ 상속은 이럴때만 사용하자</h1>
@@ -149,7 +148,6 @@ class ChildChildClass: ChildClass {
 
 <h1 class="ksubject">4️⃣ 상속대신 Protocol 사용하기(with 컴포지션패턴)</h1>
 <h2 class="ksubsubject">(1) 프로토콜의 확장기능 이용하기</h2>
-
 프로토콜의 확장기능 이용하면 미리 코드를 구현하여 사용할 수 있습니다. 또한 해당프로토콜을 준수한 클래스에서 재정의도 가능합니다. **Java언어**에서 **추상클래스(abstract)**와 비슷해보이지만 다중상속이 가능하다는 점에서 다릅니다.
 
 ```swift
@@ -204,6 +202,7 @@ class SampleCell: UITableViewCell, ReuseIdentifying {
 }
 ```
 
+<br />
 <h2 class="ksubsubject">(2) SOLID원칙중 ISP를 준수하기가 용이하다</h2>
 클래스가 프로토콜을 채택하는 방식이고 다중상속이 가능하기 때문에 SOLID원칙중 ISP(인터페이스분리원칙)를 준수하기가 용이합니다. 대신에 프로그래머가 신경을 써서 설계할 필요가 있습니다.
 
@@ -231,8 +230,8 @@ protocol Flydable {
 }
 ```
 
+<br />
 <h2 class="ksubsubject">(3) 클래스간 결합도를 낮춰줘 유연성이 높아진다</h2>
-
 다음처럼 프로토콜만 준수한다면 어떤 클래스든지 유연하게 받아 사용할 수 있습니다. 이러한 특성을 이용하여 상속대신에 <b class="brown">컴포지션 패턴</b>으로 구현하여 사용할 수 있습니다.
 
 ```swift
@@ -266,8 +265,8 @@ let car1 = Car(engine: SpecialEngine())
 let car2 = Car(engine: DragonEngine())
 ```
 
+<br />
 <h2 class="ksubsubject">(4) UI요소에도 컴포지션패턴을 적용하여 사용이 가능하다</h2>
-
 위의 3번에서 UIKit의 클래스를 상속받지않는 클래스들을 손쉽게 컴포지션패턴으로 구현이 가능했습니다.
 하지만 다음과 같은 상황이 있을 수 있습니다.
 
@@ -325,9 +324,10 @@ class YellowSearchBar: UISearchBar, SearchBar {
 이런식으로 프로토콜을 사용하면 **UI요소**에도 유연성을 가진 컴포지션패턴으로 구현할 수 있게 됩니다.<br />
 이제 <b class="purple">상속</b>의 대부분을 프로토콜로 대체가 가능할 것 같습니다.
 
-<h2 class="ksubsubject">(5) delegate패턴에서 사용</h2>
+<br />
+<h2 class="ksubsubject">(5) weak(unknown)키워드 사용가능<b style="font-size:80%">(delegate패턴에서 사용)</b></h2>
 프로토콜자체에서 채택가능한 타입을 지정하는 기능은 꽤 유용합니다.<br />
-먼저 다음처럼 delegate패턴을 **AnyObject**(참조타입)에서만 채택이 가능하도록 구현합니다.
+먼저 다음처럼 delegate패턴을 <b class="green">AnyObject(클래스타입)</b>에서만 채택이 가능하도록 구현합니다.
 
 ```swift
 protocol SampleDelegate: AnyObject {
@@ -336,7 +336,7 @@ protocol SampleDelegate: AnyObject {
 ```
 
 그러면 다음과 같이 <b class="blue">weak 키워드</b>를 프로퍼티에 적용시킬 수 있습니다.<br />
-**delegate패턴**에서 delegate에 상위클래스를 할당하기 때문에 자칫하면 메모리누수(memory leak)를 발생시킬 수 있습니다.<br />
+**delegate패턴**에서 delegate에 상위클래스를 할당하기 때문에 자칫하면 <rd>메모리누수(memory leak)</rd>를 발생시킬 수 있습니다.<br />
 그렇기 때문에 **delegate패턴**에서 다음과 같이 <b class="blue">weak 키워드</b>는 거의 필수입니다.
 
 ```swift
