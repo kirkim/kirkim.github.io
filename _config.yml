@@ -10,10 +10,10 @@ url: https://kirkim.github.io
 
 # Set to '' when hosting a blog on GitHub Pages, ie on `//<username>.github.io`
 # Set to '/<reponame>' when using the `gh-pages` branch of a repository
-baseurl: ""
+baseurl: ''
 
 # A very short description of your page
-tagline: "42Seoul Cadet"
+tagline: 'iOS'
 
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
@@ -27,7 +27,7 @@ author:
 
 # Fallback image and color
 image: /assets/img/main_left.JPG
-color: "#0d435c"
+color: '#0d435c'
 
 # The font used for headings. Expects a string that is a valid CSS font-family value.
 font_heading: "'Merriweather-Light','Lato','-apple-system','Verdana','PingFang SC','Helvetica Neue','Arial','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei','sans-serif'"
@@ -51,14 +51,14 @@ disqus: True
 disqus_shortname: xxxx
 
 # This text will appear in the footer of every page. Markdown enabled.
-copyright: "&copy; 2021.02. by kirim"
+copyright: '&copy; 2021.02. by kirim'
 
 # Format of the permalinks
 permalink:
 
 # Pagination configuration (used by the `blog` layout)
 paginate: 10
-paginate_path: "/page-:num/"
+paginate_path: '/page-:num/'
 
 # If you are upgrading form a v5 verison of Hydejack, uncomment the two lines below,
 # so that the location of the feed XML stays the same.
@@ -114,14 +114,14 @@ exclude:
   - _posts/study/2020-12-26-making-blog04.md
 
 kramdown:
-  footnote_backlink: "&#x21a9;&#xfe0e;"
+  footnote_backlink: '&#x21a9;&#xfe0e;'
   math_engine: mathjax
   math_engine_opts:
     preview: true
     preview_as_code: true
 
 compress_html:
-  comments: ["<!-- ", " -->"]
+  comments: ['<!-- ', ' -->']
   clippings: all
   endings: all
   ignore:
