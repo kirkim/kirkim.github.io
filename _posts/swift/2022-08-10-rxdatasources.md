@@ -11,6 +11,8 @@ comments: true
 ⛔️ RxDataSources에 대해 개인적으로 공부한 것을 정리한 글입니다. 최대한 올바른 내용만 적기위해 노력하고 있지만 틀린내용이 있을 수 있습니다. 그렇기 때문에 글을 읽으실때 비판적으로 읽어주세요.<br />
 틀린내용에 대한 피드백은 메일로 보내주시면 감사하겠습니다🙏🏻
 
+<kline></kline>
+
 <h1>1️⃣ RxDataSources 기본사용방법</h1>
 RxDataSources깃허브사이트: 👉🏻 <a href="https://github.com/RxSwiftCommunity/RxDataSources" target="blank">RxDataSources - github</a>
 
@@ -41,6 +43,8 @@ extension SectionOfCustomData: SectionModelType {
 }
 ```
 
+<kline></kline>
+
 <h2 class="ksubsubject">(2) 옵저버형식의 셀데이터 만들어주기</h2>
 위에 만들었던 **섹션모델타입**에 맞춰서 다음과 같이 <b class="purple">옵저버형식의 셀데이터</b>를 만들어줍니다.
 이번 포스트에서는 미리 초기데이터를 지정해 주었습니다.<br />
@@ -64,6 +68,8 @@ private let datas = BehaviorRelay<[SectionOfCustomData]>(value: [
         ])
 ])
 ```
+
+<kline></kline>
 
 <h2 class="ksubsubject">(3) RxTableViewSectionedReloadDataSource 만들어주기</h2>
 <b class="blue">RxTableViewSectionedReloadDataSource</b>는 기존에 **UITableViewDataSource**에서 재사용셀을 관리해주는 메서드와 동일한 역할을, <b class="purple">RxCocoa</b>를 이용해 사용할 수 있게 만들어줍니다.<br />
@@ -94,6 +100,8 @@ func dataSource() -> RxTableViewSectionedReloadDataSource<SectionOfCustomData> {
 }
 ```
 
+<kline></kline>
+
 <h2 class="ksubsubject">(4) 테이블뷰와 바인딩해주기</h2>
 지금까지만든 <b class="green">dataSource</b>, <b class="green">옵저버셀데이터변수</b>를 **RxCocoa**를 이용해서 <b class="purple">테이블뷰</b>와 연결해주면 됩니다.
 
@@ -106,7 +114,9 @@ viewModel.dataDriver
 
 <img src="/assets/img/swift/rxdatasources/1.png" width="100%" style="max-width:200px">
 
-<h2 class="ksubsubject">(4)[번외] 끌어당기면 첫번째섹션에 데이터추가하기</h2>
+<kline></kline>
+
+<h2 class="ksubsubject">(5)[번외] 끌어당기면 첫번째섹션에 데이터추가하기</h2>
 만들어준 <b class="purple">옵저버셀데이터변수</b>만을 변경하는 것만으로 테이블뷰가 업데이트 되는지 확인해보도록하겠습니다.
 다음과 같이 <b class="brown">첫번째섹션</b>데이터에 셀데이터를 하나추가해주는 메서드를 만들었습니다.
 
@@ -155,6 +165,8 @@ private func attribute() {
 
 위의 기본적인 사용방법으로 **섹션모델**을 구현한다면 <rd>한가지 종류의 셀데이터</rd>만 사용할 수 있습니다.<b style="font-size:90%">(셀종류나 UI는 다르게 구현이 가능)</b><br />
 다음과 같이 <b class="purple">enum타입</b>을 이용하면 <b class="purple">섹션마다 다른 셀데이터를 지정하도록 만들 수 있습니다</b>
+
+<kline></kline>
 
 <h2 class="ksubsubject">(1) 섹션모델 만들어주기</h2>
 
@@ -214,6 +226,8 @@ extension PresentMenuSectionModel: SectionModelType {
 
 <b class="green">headers</b>와 <b class="green">selectType</b>은 따로 규칙이 있는 변수가 아니며 **섹션모델타입**의 각각의 케이스에서 받게 되는 요소들입니다. 이러한 요소들은 유연하게 구성하시면 될 것 같습니다. 중요한 부분은 <b class="blue">Item</b>의 타입을 위에 만들어준 프로토콜타입으로 지정해주며 <rd>items변수</rd>는 제대로 지정해줘야 셀데이터를 잘 전달해줄 수 있습니다.
 
+<kline></kline>
+
 <h2 class="ksubsubject">(2) 셀데이터 주입방법</h2>
 
 원하는 섹션을 선택해서 아래의 코드와 같은 원리로 **섹션데이터배열**을 구성해 주면 됩니다.
@@ -230,6 +244,8 @@ self.data.append(.SectionMenu(header: section.title, selectType: sectionType, it
 self.data.append(.SectionSelectCount(items: [PresentSelectCountItem(count: 1)]))
 
 ```
+
+<kline></kline>
 
 <h2 class="ksubsubject">(3) RxCollectionViewSectionedReloadDataSource 구현 </h2>
 이번에는 <b class="purple">콜렉션뷰</b>를 이용했습니다. 테이블뷰에 RxTableViewSectionedReloadDataSource가 있는 것 처럼 콜렉션뷰에도 <b class="purple">RxCollectionViewSectionedReloadDataSource</b>타입이 있습니다.
@@ -260,8 +276,8 @@ func dataSource() -> RxCollectionViewSectionedReloadDataSource<PresentMenuSectio
 }
 ```
 
-<b class="blue">콜렉션뷰의 RxCollectionViewSectionedReloadDataSource</b>는 아래의 코드와 같이 <b class="blue">header(헤더)</b> 또한 <rd>커스텀셀을 만들어 지정해줄 수 있습니다.</rd><br />
-반면, **테이블뷰(UITableView)**는 이런 기능이 없는 것 같습니다. <b style="font-size:90%">(이유는 모르겠습니다..)</b>
+<b class="blue">콜렉션뷰의 RxCollectionViewSectionedReloadDataSource</b>는 아래의 코드와 같이 <b class="blue">header(헤더)</b> 또한 <rd>커스텀헤더뷰를 만들어 지정해줄 수 있습니다.</rd><br />
+반면, **테이블뷰(UITableView)**는 커스텀헤더뷰를 만들어줄 수 있는 기능이 없는 것 같습니다. <b style="font-size:90%">(이유는 모르겠습니다..)</b>
 
 ```swift
 func dataSource() -> RxCollectionViewSectionedReloadDataSource<PresentMenuSectionModel> {
