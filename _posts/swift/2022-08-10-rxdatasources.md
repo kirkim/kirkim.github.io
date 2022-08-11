@@ -73,7 +73,8 @@ private let datas = BehaviorRelay<[SectionOfCustomData]>(value: [
 
 <h2 class="ksubsubject">(3) RxTableViewSectionedReloadDataSource 만들어주기</h2>
 <b class="blue">RxTableViewSectionedReloadDataSource</b>는 기존에 **UITableViewDataSource**에서 재사용셀을 관리해주는 메서드와 동일한 역할을, <b class="purple">RxCocoa</b>를 이용해 사용할 수 있게 만들어줍니다.<br />
-필요에 따라 <b class="green">.titleForHeaderInSection</b>와 <b class="green">.titleForFooterInSection</b>를 정의하여 header와 footer를 만들어줄 수 있습니다. 옵셔널타입도 지정이 가능하기 때문에 섹션모델타입에 header, footer 요소만 있다면 에러걱정없이 자유롭게 만들어줘도 됩니다.
+필요에 따라 <b class="green">.titleForHeaderInSection</b>와 <b class="green">.titleForFooterInSection</b>를 정의하여 header와 footer를 만들어줄 수 있습니다. 옵셔널타입도 지정이 가능하기 때문에 섹션모델타입에 header, footer 요소만 있다면 에러걱정없이 자유롭게 만들어줘도 됩니다.<br />
+셀데이터는 <b class="brown">item</b>을 이용하면 됩니다.<b style="90%">(테이블뷰와 바인딩할때 셀데이터, 테이블뷰, datasource가 연결됩니다.)</b>
 
 ```swift
 func dataSource() -> RxTableViewSectionedReloadDataSource<SectionOfCustomData> {
@@ -145,8 +146,8 @@ private func attribute() {
 }
 
 @objc private func didPullToRefresh() {
-    DispatchQueue.global().async {
-        self.viewModel.addCellAtFirstSection() { [weak self] in
+    DispatchQueue.global().async { [weak self] in
+        self?.viewModel.addCellAtFirstSection() {
             usleep(500000) // 임시로 지연시간 0.5초 주기
             DispatchQueue.main.async {
                 self?.tableView.refreshControl?.endRefreshing()
@@ -163,7 +164,7 @@ private func attribute() {
 
 <h1 class="ksubject">2️⃣ RxDataSources 응용 (여러종류의 섹션)</h1>
 
-위의 기본적인 사용방법으로 **섹션모델**을 구현한다면 <rd>한가지 종류의 셀데이터</rd>만 사용할 수 있습니다.<b style="font-size:90%">(셀종류나 UI는 다르게 구현이 가능)</b><br />
+위의 기본적인 사용방법으로 **섹션모델**을 구현한다면 <rd>한가지 종류의 셀데이터</rd>만 사용할 수 있습니다. <span style="font-size:90%">(프로토콜을 이용하면 여러종류가 가능하지만 데이터를 사용하는 곳에서 **타입을 확인하는 과정**이 필요합니다. **셀종류나 UI는 다르게 구현이 가능합니다**)</span><br />
 다음과 같이 <b class="purple">enum타입</b>을 이용하면 <b class="purple">섹션마다 다른 셀데이터를 지정하도록 만들 수 있습니다</b>
 
 <kline></kline>
@@ -213,18 +214,18 @@ extension PresentMenuSectionModel: SectionModelType {
 
   var items: [Item] {
       switch self {
-      case .SectionMainTitle(let items):
+      case let .SectionMainTitle(items):
           return items
-      case .SectionMenu(_, _, let items):
+      case let .SectionMenu(_, _, items):
           return items
-      case.SectionSelectCount(let items):
+      case let .SectionSelectCount(items):
           return items
       }
   }
 }
 ```
 
-<b class="green">headers</b>와 <b class="green">selectType</b>은 따로 규칙이 있는 변수가 아니며 **섹션모델타입**의 각각의 케이스에서 받게 되는 요소들입니다. 이러한 요소들은 유연하게 구성하시면 될 것 같습니다. 중요한 부분은 <b class="blue">Item</b>의 타입을 위에 만들어준 프로토콜타입으로 지정해주며 <rd>items변수</rd>는 제대로 지정해줘야 셀데이터를 잘 전달해줄 수 있습니다.
+<b class="green">headers</b>와 <b class="green">selectType</b>은 따로 규칙이 있는 변수가 아니며 **섹션모델타입**의 각각의 케이스에서 받게 되는 요소들입니다. 이러한 요소들은 유연하게 구성하시면 될 것 같습니다. 중요한 부분은 <b class="blue">Item</b>의 타입을 위에 만들어준 프로토콜타입으로 지정해주며 <rd>items변수</rd>는 셀데이터이기 때문에 각각의 섹션종류에 맞게 만들어줘야 합니다.
 
 <kline></kline>
 
@@ -277,7 +278,7 @@ func dataSource() -> RxCollectionViewSectionedReloadDataSource<PresentMenuSectio
 ```
 
 <b class="blue">콜렉션뷰의 RxCollectionViewSectionedReloadDataSource</b>는 아래의 코드와 같이 <b class="blue">header(헤더)</b> 또한 <rd>커스텀헤더뷰를 만들어 지정해줄 수 있습니다.</rd><br />
-반면, **테이블뷰(UITableView)**는 커스텀헤더뷰를 만들어줄 수 있는 기능이 없는 것 같습니다. <b style="font-size:90%">(이유는 모르겠습니다..)</b>
+반면, **테이블뷰(RxTableViewSectionedReloadDataSource)**는 커스텀헤더뷰를 만들어줄 수 있는 기능이 없는 것 같습니다. <b style="font-size:90%">(이유는 모르겠습니다..)</b>
 
 ```swift
 func dataSource() -> RxCollectionViewSectionedReloadDataSource<PresentMenuSectionModel> {
@@ -286,7 +287,7 @@ func dataSource() -> RxCollectionViewSectionedReloadDataSource<PresentMenuSectio
 
     dataSource.configureSupplementaryView = {(dataSource, collectionView, kind, indexPath) -> UICollectionReusableView in
         switch dataSource[indexPath.section] {
-        case .SectionMenu(header: let headerString, selectType: let type, items: let items):
+        case let .SectionMenu(header: headerString, selectType: type, items: items):
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath, viewType: MagnetPresentMenuHeaderView.self)
             header.setData(header: headerString, type: type, itemCount: items.count)
             return header
@@ -308,14 +309,14 @@ func dataSource() -> RxCollectionViewSectionedReloadDataSource<PresentMenuSectio
 	</div>
     <div class="explain-right">
 		<br /><br />
-        <b class="blue">사진섹션(케이스1)</b><br />
+        <b class="blue">사진,타이틀섹션(케이스1)</b><br />
 		<br />
 		<b class="green">메뉴섹션(케이스2)</b><br />
 		<b class="green">메뉴섹션(케이스2)</b><br />
 		<b class="green">메뉴섹션(케이스2)</b><br />
 		<b class="green">메뉴섹션(케이스2)</b><br />
 		<br />
-		<b class="purple">가격섹션(케이스3)</b><br />
+		<b class="purple">총가격섹션(케이스3)</b><br />
     </div>
 </div>
 
