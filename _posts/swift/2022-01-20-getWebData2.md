@@ -252,17 +252,18 @@ HttpUseClosure.shared.getData { data in
 - 다음과 같이 <b class="purple">DataModel</b>의 타입을 따르는 변수를 받아 처리하는 <b class="green">델리게이트 프로토콜(delegate protocol)</b>을 만들어 줬습니다.
 
 ```swift
-protocol MyHttpDelegate {
+protocol MyHttpDelegate: AnyObject {
   func getDataUseCustomDelgate(data: DataModel)
 }
 ```
 
 - **http**응답을 **delegate**를 이용하여 전달하는 클래스를 다음과 같이 구현했습니다.
 - 클래스에 내장된 **delegate**는 각각의 사용하는 곳에서 <rd>독립적으로 존재</rd>해야 되야되기 때문에 <b class="purple">싱글턴</b>으로 구현하지 않았습니다.
+- 또한 <rd>순환참조</rd>를 방지하기 위해 <b class="purple">weak키워드</b>를 이용해 약한참조로 사용할 수 있도록 만들어야 합니다. <b class="purple">AnyObject(클래스타입)</b>의 프로토콜로 만들어주어 <b class="purple">weak키워드</b>를 사용할 수 있도록 만들어 줍니다.
 
 ```swift
 class HttpUseCustomDelegate {
-    var myHttpDelegate: MyHttpDelegate?
+    weak var myHttpDelegate: MyHttpDelegate?
 
     func getData() {
         /* 생략 */

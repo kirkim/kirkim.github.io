@@ -150,7 +150,7 @@ class ChildChildClass: ChildClass {
 <h2 class="ksubsubject">(1) 프로토콜의 확장기능 이용하기</h2>
 프로토콜의 확장기능 이용하면 미리 코드를 구현하여 사용할 수 있습니다. 또한 해당프로토콜을 준수한 클래스에서 재정의도 가능합니다. **Java언어**에서 **추상클래스(abstract)**와 비슷해보이지만 다중상속이 가능하다는 점에서 다릅니다.<br />
 이것을 Mixin, Traits패턴이라고 한다는데 다음의 블로그글을 참고하시면 될 것 같습니다.<br />
-👉🏻 <a href="https://ios-development.tistory.com/806">[iOS - 김종권] Mixin 패턴(mix-in), Traits 패턴 </a>
+👉🏻 <a href="https://ios-development.tistory.com/806">[김종권의 iOS 앱 개발 알아가기] Mixin 패턴(mix-in), Traits 패턴 </a>
 
 ```swift
 protocol Animal {
