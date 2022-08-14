@@ -30,7 +30,7 @@ let instance = FileManager() // 기본생성
 <img src="/assets/img/swift/filemanager/2.png" width="100%">
 일단은 delegate를 사용하지 않을 것이기 때문에 <b class="purple">싱글턴 인스턴스</b>로 생성할 예정입니다. 그리고 앞으로 구현할 파일의 <b class="purple">CRUD</b>메서드를 담고있는 클래스 또한 싱글턴으로 만들어주는 것이 좋습니다. 그 이유는 <rd>Create 메서드</rd>의 경우 다른타입(ex: Data타입)의 저장 메서드를 이용할 수도 있기 때문입니다.
 
-<h1 class="ksubject">2️⃣ 저장위치 지정해주기</h1>
+<h1 class="ksubject">2️⃣ FileManager를 이용해서 파일을 저장할 위치 정하기</h1>
 
 파일을 관리할 폴더의주소를 지정해줄 수 있습니다. 애플이 지정해준 폴더를 사용하기 위해 <b class="blue">FileManager</b>클래스 내부에 구현된 <b class="purple">.url(for:,in:)</b>메서드를 이용해 폴더의 주소를 URL형태로 얻어오겠습니다.
 
@@ -38,10 +38,10 @@ let instance = FileManager() // 기본생성
 let documentPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 ```
 
-첫번째 인자로 <b class="purple">FileManager.SearchPathDirectory</b>를 받아오는데, enum타입으로 <a href="https://developer.apple.com/documentation/foundation/filemanager/searchpathdirectory">(FileManager.SearchPathDirectory - Apple문서)</a>의 Topic 항목을 확인해보면 됩니다.<br />
+첫번째 인자로 <b class="purple">FileManager.SearchPathDirectory</b>를 받아오는데, enum타입으로 여러종류의 폴더경로가 있습니다.<br />
 두번째 인자로 <b class="purple">FileManager.SearchPathDomainMask</b>을 받아오는데, 이것 역시 enum타입으로 user, local, network, system 도메인을 보안상 가려주는(?)마스크 역할을 하는 것 같습니다. <b style="font-size:90%">(이부분은 좀 더 알아봐야할 것 같습니다.)</b>
 
-<b class="blue">FileManager</b>의 내부구현을 살펴보면 <rd>적절한 도메인마스크를 지정</rd>해야 해당 폴더의 주소를 배열형태로 반환해줍니다.
+아래의 <b class="blue">FileManager</b>의 내부구현을 살펴보면 <rd>적절한 도메인마스크를 지정</rd>해야 해당 폴더의 주소를 배열형태로 반환해줍니다. 실제로는 아래의 케이스보다 훨씬 많은데 ( <a href="https://developer.apple.com/documentation/foundation/filemanager/searchpathdirectory">FileManager.SearchPathDirectory - Apple문서</a> )의 Topic 항목을 확인해보면 됩니다.
 
 <img src="/assets/img/swift/filemanager/3.png" width="100%">
 
