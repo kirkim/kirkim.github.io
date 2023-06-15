@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: Linux
-slug: linux
+title: Life
+slug: life
 category: etc
 menu: false
-order: 1
+order: 2
 ---

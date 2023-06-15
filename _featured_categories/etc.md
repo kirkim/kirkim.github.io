@@ -1,9 +1,9 @@
 ---
 layout: list
-title: etc
+title: ETC
 slug: etc
 menu: true
-submenu: false
+submenu: true
 order: 10
 description: >
   기타, 이것저것

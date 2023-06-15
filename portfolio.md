@@ -5,7 +5,8 @@ menu: true
 order: 1
 ---
 
-* * *
+---
+
 <center>
 <span style=
 "font-size:170%;
@@ -21,28 +22,34 @@ font-weight:bold">
 <center>92, Arirang-ro, Seongbuk-gu, Seoul, Republic of Korea</center>
 
 ## Personal Data
+
 ---
+
 > 대한민국,서울특별시
 
 > 연락처: kirim6317@gmail.com
 
 > Github : <a href="https://github.com/kirkim" target="blank">https://github.com/kirkim</a>
 
-
 ## Education
+
 ---
-> Mar.2012 ~ Feb.2018 국민대학교
+
+> Oct.2022 ~ 현재
 >
-> 신소재공학과 (Materials Science and Engineering)
+> Anipen AI iOS 파트 주니어 개발자
+
+> Jan.2021 ~ May.2022
+>
+> 42 SEOUL Innovation Academy 카뎃
 
 > Feb.2018 ~ Oct.2020
 >
-> 전기관련 공기업 준비(전기기사, 전기공사기사)
+> 전기관련 공부(전기기사, 전기공사기사)
 
-> Jan.2021 ~ 현재 : 42 SEOUL Innovation Academy
+> Mar.2012 ~ Feb.2018
 >
-> 카뎃
-
+> 국민대학교 신소재공학과
 
 <!--
 ## Research Interest
@@ -102,7 +109,7 @@ mobileNet을 이용한 classification으로 버섯을 구별해주는 인공지�
 
 ## Work Experiences
 ---
--2020. 07 – 2020. 11 Visual Object Tracking Using Plenoptic Image Sequences, 
+-2020. 07 – 2020. 11 Visual Object Tracking Using Plenoptic Image Sequences,
 
 Hansung Univ – ETRI
 
@@ -125,6 +132,3 @@ Hansung Univ – ETRI
 
 【출원인】: 김현우, 김태현, 제진명
 -->
-
-
-
