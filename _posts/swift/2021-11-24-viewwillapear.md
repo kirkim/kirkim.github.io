@@ -3,8 +3,8 @@ layout: post
 title: '[swift] present, dismiss를 이용한 페이지 전환에서 viewWillAppear메서드가 호출이 안되는 문제 해결하기'
 subtitle: ''
 date: 2021-11-16 02:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

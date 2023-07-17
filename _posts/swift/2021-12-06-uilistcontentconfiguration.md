@@ -3,8 +3,8 @@ layout: post
 title: '[swift] textLabel, imageView 대신 UIListContentConfiguration을 써서 cell을 커스텀하기'
 subtitle: ''
 date: 2021-12-06 02:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

@@ -3,8 +3,8 @@ layout: post
 title: '[swift] delegate와 notificationCenter을 이용해서 이벤트 전달하기'
 subtitle: ''
 date: 2022-01-10 02:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

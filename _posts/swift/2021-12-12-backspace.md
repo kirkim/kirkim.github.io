@@ -3,8 +3,8 @@ layout: post
 title: '[swift] textField를 감지하는 버튼 만들기'
 subtitle: ''
 date: 2021-12-12 02:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

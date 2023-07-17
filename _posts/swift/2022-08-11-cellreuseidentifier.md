@@ -3,8 +3,8 @@ layout: post
 title: '[Swift] 셀의 재사용식별자(reuseIdentifier) 관리하기 + Reusable믹스인'
 subtitle: ''
 date: 2022-08-11 12:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

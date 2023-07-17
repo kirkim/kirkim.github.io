@@ -3,8 +3,8 @@ layout: post
 title: '[Rxswift] RxCocoa를 이용해서 textfield 글자수 제한하기'
 subtitle: ''
 date: 2022-03-30 02:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

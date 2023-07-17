@@ -3,8 +3,8 @@ layout: post
 title: '[swift] 비동기데이터를 처리하는 클래스(or 함수) 만들기 '
 subtitle: ''
 date: 2022-01-20 02:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

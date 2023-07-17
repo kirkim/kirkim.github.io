@@ -3,8 +3,8 @@ layout: post
 title: '[Swift] Swift에서 상속(Inheritance)과 프로토콜(Protocol)에 대한 고찰'
 subtitle: ''
 date: 2022-08-05 20:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

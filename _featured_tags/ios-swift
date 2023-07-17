@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: etc
-slug: etc
-category: swift
+title: Swift
+slug: swift
+category: ios
 menu: false
 order: 1
 ---

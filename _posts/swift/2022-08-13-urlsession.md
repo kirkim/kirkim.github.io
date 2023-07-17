@@ -3,8 +3,8 @@ layout: post
 title: '[Swift] UrlSession사용하기'
 subtitle: ''
 date: 2022-08-13 12:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

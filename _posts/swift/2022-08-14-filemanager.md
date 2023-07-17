@@ -3,8 +3,8 @@ layout: post
 title: '[Swift] FileManager 사용해보기'
 subtitle: ''
 date: 2022-08-14 02:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

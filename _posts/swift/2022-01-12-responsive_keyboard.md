@@ -3,8 +3,8 @@ layout: post
 title: '[swift] 좀 더 자연스럽게 키보드에 반응해서 화면올리기'
 subtitle: ''
 date: 2022-01-12 02:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 

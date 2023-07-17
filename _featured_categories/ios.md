@@ -1,10 +1,10 @@
 ---
 layout: list
-title: ETC
-slug: etc
+title: iOS
+slug: ios
 menu: true
 submenu: true
-order: 8
+order: 7
 description: >
-  기타, 이것저것
+  ios
 ---

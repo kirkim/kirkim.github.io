@@ -3,8 +3,8 @@ layout: post
 title: '[Swift] 에러 핸들링하기'
 subtitle: ''
 date: 2022-08-09 20:45:51 +0900
-categories: swift
-tags: etc
+categories: ios
+tags: swift
 comments: true
 ---
 
