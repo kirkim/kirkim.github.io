@@ -8,6 +8,8 @@ tags: ios
 comments: true
 ---
 
+<img src="/assets/img/ios/neural_engine/4.png" width="60%">
+
 <h2 style="color:#0e435c;">NPU(Neural engine)가 주목받는 이유</h2>
 
 AI기술이 빠르게 발전하면서 점점 우리 생활속에 빠르게 녹아들고 있습니다.<br>
