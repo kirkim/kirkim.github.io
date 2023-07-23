@@ -316,6 +316,19 @@ kfunc .f { color: #60ec72; } /* function_name color */
 kfunc .p { color: #eb7527; } /* param color */
 kfunc .pi { color: #f7401f; } /* param_index color */
 
+/* 커스텀 SWift 코드 블럭 */
+swift_block {
+	display: block;
+	padding: 9px;
+	overflow: auto;
+	font-size: 95%;
+	line-height: 2;
+	word-spacing: 4px;
+	letter-spacing: 1.5px;
+	background-color: #1f2020;
+	color: #ffffff;
+}
+swift_block .import { color: #ed599c }
 
 .guide {
   background-color: #eee;
