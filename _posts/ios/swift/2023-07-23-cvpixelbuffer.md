@@ -123,7 +123,7 @@ func convertToPixelBuffer(from ciImage: CIImage) -> CVPixelBuffer? {
     CVPixelBufferCreate(kCFAllocatorDefault,
                     width,
                     height,
-                    kCVPixelFormatType_32BGRA,
+                    kCVPixelFormatType_32ARGB,
                     nil,
                     &pixelBuffer)
 
