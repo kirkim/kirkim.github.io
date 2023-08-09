@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[Swift, MLModel] PersonSegmentation'
+title: '[Swift, MLModel] Segmentation을 통해 알아보는 Vision 및 CoreML 프레임워크'
 subtitle: ''
 date: 2023-08-09 02:45:51 +0900
 categories: ios
