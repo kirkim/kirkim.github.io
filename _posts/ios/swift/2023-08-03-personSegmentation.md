@@ -8,7 +8,7 @@ tags: swift
 comments: true
 ---
 
-이번 포스트에서 iOS의 ML기능중 하나인 Person Segmentation에 대해 알아볼 계획입니다.
+이번 포스트에서는 iOS에 있는 Vision기술중 하나인 Segmentation기술을 알아봄과 동시에, Vision API 및 CoreML프레임워크에 관해서 알아볼 예정입니다.
 
 <h2 style="color:#0e435c;">WWDC2023 살펴보기</h2>
 
@@ -20,7 +20,7 @@ comments: true
 <h4 align="middle">iOS17 누끼기능 (테두리에 이펙트 생김..)</h4>
 <img src="/assets/img/swift/person_segmentation/1.png" width="80%">
 
-다음의 WWDC2023 영상을 보면 VisionKit과 Vision API를 이용해서 누끼기능을 이용할 수 있다고 함.<br>
+다음의 WWDC2023 영상을 보면 VisionKit과 Vision API를 이용해서 누끼기능을 구현할 수 있다고 합니다.<br>
 <b style="font-size:90%">(VisionKit은 Vision의 맛보기 API?, Vision API를 사용하면 좀 더 고급기능 사용가능)</b><br>
 <a href="https://developer.apple.com/videos/play/wwdc2023/10176/">Lift subjects from images in your app | WWDC2023</a><br>
 
@@ -36,7 +36,7 @@ comments: true
     </div>
 </div>
 
-iOS17의 누끼를 자세히 살펴보면 'Look up', 'Add Sticker'가 옵션이 추가되어 있음을 알 수 있습니다.
+iOS17의 새로운 누끼를 자세히 살펴보면 'Look up', 'Add Sticker'가 옵션이 추가되어 있음을 알 수 있습니다.
 
 <img src="/assets/img/swift/person_segmentation/5.png" width="40%">
 
@@ -52,52 +52,59 @@ iOS17의 누끼를 자세히 살펴보면 'Look up', 'Add Sticker'가 옵션이 
     </div>
 </div>
 
-'Add Sticker'옵션의 경우 누끼를 딴이미지를 반짝임, 푹신함 등과 같은 재미있는 효과가 있는 스티커를 만들어주는 기능이라고 한다.
+'Add Sticker'옵션의 경우 누끼를 딴이미지를 반짝임, 푹신함 등과 같은 재미있는 효과가 있는 스티커를 만들어주는 기능이라고 합니다.
 
 <img src="/assets/img/swift/person_segmentation/2.png" width="40%">
 
 <h3 style="color:#0e435c;">Person Segmentation</h3>
 
-WWDC2023에 Segmentation관련 추가된 기능이 또 있는데, Person Segmentation기능입니다.<br>
+WWDC2023에 Segmentation관련 추가된 기능이 또 있는데, Person instance Segmentation기능입니다.<br>
 
 <img src="/assets/img/swift/person_segmentation/8.png" width="80%">
 
 사실, <a href="https://developer.apple.com/kr/machine-learning/api">Vision API | Apple Developer</a>를 살펴 보면 Vision에서 이미 iOS15부터 이미 해당 Person Segmentation 기능을 제공해 주고 있었습니다.<br>
-하지만 차이점이 있다면, 기존 Person Segmentation의 경우 각각의 인스턴스(사람)을 구별하지 못했다면, 이번에는 각각의 인스턴스를 구분하여 다룰 수 있다는 점인 것 같습니다.<br>
+하지만 차이점이 있다면, 기존 Person Segmentation의 경우는 <b style="color:green">시맨틱 세그멘테이션(Semantic Segmentation)</b>으로 각각의 인스턴스(사람)을 구별하지 못했다면, 이번에는 <b style="color:navy">인스턴스 세그멘테이션(Instance Segmentation)</b>으로 객체단위를 넘어서 각각의 인스턴스를 구분하여 다룰 수 있다는 점입니다.<br>
 
 <img src="/assets/img/swift/person_segmentation/10.png" width="80%">
 
-추가로, <a href="https://developer.apple.com/videos/play/wwdc2023/10176/">Lift subjects from images in your app | WWDC2023</a>영상을 참고해 보면 사람뿐만 아니라 다른 라벨(물체)의 경우에도 각각의 인스턴스를 구분하여 Segmentation을 할 수 있을 것 같습니다.<br>
+추가로, <a href="https://developer.apple.com/videos/play/wwdc2023/10176/">Lift subjects from images in your app | WWDC2023</a>영상을 참고해 보면 사람뿐만 아니라 다른 라벨(물체)의 경우에도 instance Segmentation을 할 수 있을 것 같습니다.<br>
 
 <img src="/assets/img/swift/person_segmentation/9.png" width="80%">
 
 <h2 style="color:#0e435c;">DeeplabV3</h2>
 
-지금까지 Apple Segmentation의 변천사를 살펴보면<br>
-iOS15 Person Segmentaion(Vision API) -> iOS16 누끼기능 탑제 -> iOS17 인스턴스구분 Segmentation, 누끼확장기능 입니다.<br>
+지금까지 Apple에 내장된 Segmentation기술의 변천사를 살펴보면 다음과 같습니다.<br>
 
-<a href="https://developer.apple.com/kr/machine-learning/models/">ML Models | Apple Developer</a>를 살펴보면 Segmentation 모델로 공식적으로 'DeeplabV3'가 공개되어 있음을 알 수 있습니다. 정확히 어느시점인지 알 수 없지만 iOS15 Person Segmentation API가 생기기 이전에 Apple Developer에서는 'DeeplabV3' CoreML모델을 공개했었습니다.<br>
+<div align="middle">
+<b style="color:brown">[iOS15]</b> <b style="color: rgb(117, 45, 45)">Person Semantic Segmentaion(Vision API)</b><br>
+↓<br>
+<b style="color:brown">[iOS16]</b> <b style="color: rgb(117, 45, 45)">누끼기능 탑제</b><br>
+↓<br>
+<b style="color:brown">[iOS17]</b> <b style="color: rgb(117, 45, 45)">Instance Segmentation, 누끼확장기능</b><br>
+</div>
+<br>
+사실 iOS15 Person Segmentation API가 생기기 이전에 Apple Developer에서는 이미 'DeeplabV3' CoreML모델을 공개했었습니다.<br>
+<a href="https://developer.apple.com/kr/machine-learning/models/">ML Models | Apple Developer</a>를 살펴보면 Segmentation 모델로 공식적으로 등록되어 있는 'DeeplabV3'모델을 확인해볼 수 있습니다.<br>
 
 <img src="/assets/img/swift/person_segmentation/12.png" width="80%">
 
-정확한 시기는 알 수 없지만, CoreML이 처음 생긴 iOS11(A11칩셋), DeeplabV3가 구글에서 공개된 날짜가 2017년인 것을 보면, DeepLabV3 MLModel은 Vision API의 Person Segmentation보다 먼저 Apple에서 공개하지 않았나 추측하고 있습니다. <br>
+정확히 어느시점인지 알 수 없지만, CoreML이 iOS11(A11칩셋)때 나온 점과, DeeplabV3가 구글에서 공개된 날짜가 2017년인 것을 보면, Apple의 DeepLabV3 MLModel도 이맘때 쯤 공개되지 않았나 추측하고 있습니다.<br>
 
 <img src="/assets/img/swift/person_segmentation/11.png" width="80%">
 
-Vision API가 AI모델 기능을 제공할 수 있는 것도 내부적으로 `CoreML`위에서 동작하기 때문인데,<br>
-DeeplabV3모델의 기능을 좀 더 최적화하고 Person(사람)의 Segmentation기능만 분리해서 경량화한 모델이 Vision API 내부로 내장된 것이 아닐까 추측하고 있습니다.
+Vision API가 AI모델 기능을 제공할 수 있는 것도 내부적으로 <rd>CoreML 프레임워크</rd>위에서 동작하기 때문인데,<br>
+DeeplabV3모델의 기능을 좀 더 최적화하고 Person(사람)의 Segmentation기능만 분리해서 경량화한 모델이 Vision API 내부로 내장된 것이 아닐까 추측하고 있습니다. <span style="font-size:95%">(독자적인 모델 일지라도 분명히 영향을 받았을 것 입니다. 하지만 이 부분에 대해서는 중요하지 않을 뿐더러 추측일 뿐이니 가볍게 넘어가주세요..ㅎㅎ)</span>
 
 ---
 
 <h2 style="color:#0e435c;">DeepLabV3 사용해서 PersonSegmentation 기능 구현하기</h2>
 
-위에서 말했듯이 VisionAPI에 내장된 Person Segmentation기능은 시기적으로나, Apple에서 공식적으로 공개한 Model들을 살펴봤을 때, 구글에서 만든 DeepLabV3모델에 영감을 받아 만든 기능이지 않을까 추측하고 있습니다.<br>
 VisionAPI에서 제공하는 경우 Person Segmentation기능을 사용하면, 굳이 DeepLabV3모델을 사용할 필요가 없을 정도로 사용성이 정말로 좋습니다.<b style="font-size:90%">(Person[사람] 라벨링 한정)</b><br>
-VisionAPI의 Person Segmentation기능을 사용하기 이전에, DeepLabV3모델을 사용하는 방법에 대해 알아보도록 하겠습니다.<br>
+하지만 VisionAPI의 Person Segmentation기능을 사용하기 이전에, DeepLabV3모델을 사용하는 방법에 대해 알아보도록 하겠습니다.<br>
 
 <h3 style="color:#0e435c;">DeepLabV3?</h3>
-왜 굳이 VisionAPI에서 제공되는 기능을 어렵게 MLModel을 사용하는 기술을 알아보냐고 할 수 있지만, 사실 Vison API에 내장되는 MLModel의 경우 한정적입니다. <b style="font-size:90%">(Apple에서 iOS 혹은 VisionOS, 더나아가 애플카..에 쓸예정인 AI모델에 대한 기능들만 내장되는 느낌입니다. 그중에서도 비교적 경량화된 모델)</b><br>
-때문에, 커스텀된 모델 혹은 다양한 모델들을 사용하기 위해서는 MLModel파일들을 직접 다뤄서 구현할 수 밖에 없습니다. DeepLabV3모델을 다루는 방법을 알아두면, 추후에 Vision관련 모델을 다룰때 도움이될 것 이라고 생각합니다.<br>
+왜 굳이 VisionAPI에서 제공되는 기능을 어렵게 MLModel을 사용하냐고 할 수 있지만, 사실 Vison API에 내장되는 MLModel의 경우 한정적입니다. <b style="font-size:90%">(Apple에서 iOS 혹은 VisionOS, 더나아가 애플카..에 쓸예정인 AI모델에 대한 기능들만 내장되는 느낌입니다. 그중에서도 비교적 경량화된 모델)</b><br>
+때문에, 커스텀된 모델 혹은 다양한 모델들을 사용하기 위해서는 MLModel파일들을 직접 다뤄서 구현할 수 밖에 없습니다. <b class="green">CoreML프레임워크를 이용해서 DeepLabV3모델을 다루는 방법을 알아두면, 추후에 Vision관련 모델을 다룰 때 도움이 될 것 이라고 생각합니다.</b><br>
 
 <h3 style="color:#0e435c;">.mlmodel파일 살펴보기</h3>
 
@@ -112,17 +119,17 @@ Metadata의 경우 'Edit'기능을 이용하여, 모델개발자가 직접 커�
 
 <img src="/assets/img/swift/person_segmentation/15.png" width="80%">
 
-Metadata의 아래쪽에 보면 DeepLabV3가 라벨링할 수 있는 종류들이 나열되어 있습니다.<br>
+Metadata의 아래쪽을 보면 DeepLabV3가 라벨링할 수 있는 종류들이 나열되어 있습니다.<br>
 Person Segmentation기능을 만들기 위해서는 Person라벨만 알면 됩니다.<br>
 직접 모델을 사용하면 알 수 있지만, 해당 인덱스 순번과 일치하여 Person(사람)의 영역은 구분자로 15을 출력하게 됩니다.
 
 <img src="/assets/img/swift/person_segmentation/17.png" width="80%">
 
 Predictions탭이 사실상 가장 중요한데, Input, Output에 대한 정보가 적혀 있습니다.<br>
-Input, Output의 경우 개발자가 모델을 사용할 때 해당정보를 이용해서 전처리, 후처리를 해야되기 때문에 반드시 파악해야되는 정보입니다.<br>
+Input, Output의 경우 개발자가 모델을 사용할 때 해당정보를 이용해서 전처리, 후처리를 해야되기 때문에 반드시 파악 해야 되는 정보입니다.<br>
 DeepLabV3의 경우 Input, Output 이미지의 크기가 513x513으로 고정되어 있음을 알 수 있습니다.<br>
 <br>
-Layer Distribution도 나와있는데, AI모델을 추론하기 위해 거치게 되는 각각의 Layer에 대한 요약입니다.<br>
+Layer Distribution에 대해서도 적혀 있는데, AI모델을 추론하기 위해 거치게 되는 각각의 Layer에 대한 요약입니다.<br>
 보통 Layer의 수가 적을 수록 계산량이 줄어, 추론의 속도가 증가하게 됩니다.<br>
 너무 적으면 성능이 저하되고, 너무 많으면 과적합이 될 수 있기 때문에 쓰임에따라 적절한 Layer의 수의 모델을 만드는 것이 중요합니다.
 
@@ -136,7 +143,7 @@ Layer Distribution도 나와있는데, AI모델을 추론하기 위해 거치게
 </div>
 
 현재 Apple에서 제공하는 DeepLabV3모델의 경우 32bit-Float, 16bit-Float, 8bit-Int 모델이 있는데, 16bit-Float의 모델의 경우 32bit-Float모델 대비 용량은 1/2로 감소했지만, 단순히 가중치(정밀도)만 줄어들었을뿐 Layer가 줄어들지 않았습니다.<br>
-때문에 두 모델을 직접사용하여 비교해보면 추론 속도면에서 별 차이가 없습니다.<br>
+때문에 두 모델을 직접사용하여 비교해보면 **추론 속도의 차이가 없습니다.**<br>
 
 <img src="/assets/img/swift/person_segmentation/18.png" width="100%">
 
@@ -150,35 +157,35 @@ Layer Distribution도 나와있는데, AI모델을 추론하기 위해 거치게
 
 <img src="/assets/img/swift/person_segmentation/20.png" width="100%">
 
-다양한 오버로드된 생성자 및 추론메서드들이 존재하며, 심지어 iOS15부터는 async-await로 모델을 로드할 수 있는 메서드도 있습니다.
+오버로드된 다양한 생성자 및 추론메서드들이 존재하며, 심지어 iOS15부터는 async-await로 모델을 로드할 수 있는 메서드도 있습니다.
 
 <h4 align="middle">async-await 비동기 로드 메서드</h4>
 <img src="/assets/img/swift/person_segmentation/21.png" width="100%">
 
 CPU 및 GPU를 사용하면 모델 생성 및 로드의 이점을 얻을 수 없지만,
-Neural Engine을 사용하면 모델을 한번 로드(생성)을 하면 해당 모델을 재사용하여 추론하는 능력이 압도적으로 빨라집니다.<br>
+Neural Engine을 사용하면 **모델을 한번 로드(생성)을 하면 해당 모델을 재사용하여 추론하는 능력이 압도적**으로 빨라집니다.<br>
 반면 경험상 아직 모델을 한번에 한개씩 밖에 로드를 할 수 없다는 점에서 살짝 아쉬운점이 있습니다.
 
 <h4 align="middle">다양한 종류의 추론(prediction)메서드</h4>
 <img src="/assets/img/swift/person_segmentation/23.png" width="100%">
 
-다양한 생성자 및 로드 메서드 뿐만 아니라 추론(prediction)메서드도 다양하게 제공합니다.<br>
-되도록이면 CVPixelBuffer대신 DeepLabV3Input타입을 이용해서 추론 하는 방법을 추천드립니다.<br>
-DeepLabV3Input타입을 생성할때도 역시 CVPixelBuffer를 이용해서 생성하는 방식보다 convenience 생성자를 이용해서 생성하는 방식을 추천합니다.<br>
+생성자 및 로드 메서드 뿐만 아니라 추론(prediction)메서드도 다양하게 제공합니다.<br>
+**되도록이면 CVPixelBuffer대신 DeepLabV3Input타입을 이용해서 추론** 하는 방법을 추천드립니다.<br>
+DeepLabV3Input타입을 생성할때도 역시 **CVPixelBuffer를 이용해서 생성하는 방식보다 convenience 생성자를 이용해서 생성하는 방식을 추천**합니다.<br>
 
 <h4 align="middle">다양한 종류의 DeepLabV3Input 생성자</h4>
 <img src="/assets/img/swift/person_segmentation/24.png" width="100%">
 
-CVPixelBuffer에 대한 내용은 <a href="https://kirkim.github.io/ios/2023/07/22/cvpixelbuffer.html">[Swift] CVPixelBuffer | kirkim</a> 포스트에서 다뤘던 적이 있는데, 결론적으로 CVPixelBuffer를 만드는데 관리해야할 요소들이 많기 때문에, 되도록이면 Swift에서 제공해주는 CVPixelBuffer만 사용하자였습니다.<br>
+CVPixelBuffer에 대한 내용은 <a href="https://kirkim.github.io/ios/2023/07/22/cvpixelbuffer.html">[Swift] CVPixelBuffer | kirkim</a> 포스트에서 다뤘던 적이 있는데, **결론적으로** <b style="color:navy">"CVPixelBuffer를 만드는데 관리해야할 요소들이 많기 때문에, 되도록이면 Swift에서 제공해주는 CVPixelBuffer만 사용하자"</b>였습니다.<br>
 심지어 DeepLabV3에 사용할 수 있는 Input이미지의 크기가 513x513으로, CVPixelBuffer를 해당 크기로 직접 만들어 주어야 합니다.<br>
-하지만 DeepLabV3Input의 convenience 생성자들을 사용하면 이러한 불필요한 이미지 설정들을 알아서 해줍니다!<br>
+하지만 **DeepLabV3Input의 convenience 생성자들을 사용하면 이러한 불필요한 이미지 설정들을 알아서 처리 해줍니다.**<br>
 
 <h4 align="middle">batch 추론(prediction) 메서드</h4>
 <img src="/assets/img/swift/person_segmentation/22.png" width="100%">
 
 MLModel을 직접최적화하는 방법과 별개로 앱쪽에서 모델을 사용함에 있어서 빠르게 추론할 수 있는 방법으로 batch 추론을 하는 방법이 있는데,
-이러한 메서드들도 CoreML프레임워크가 자동으로 만들어서 제공해줍니다.<br>
-이러한 최적화된 메서드를 잘 활용하면 여러모델을 동시에 추론하는데 도움이 될 것 같습니다.<br>
+이러한 batch 메서드도 CoreML프레임워크가 자동으로 만들어서 제공해줍니다.<br>
+**이러한 최적화된 메서드를 잘 활용하면 여러모델을 동시에 추론하는데 도움이 될 것 같습니다.**<br>
 
 <h4 align="middle">DeepLabV3Output 클래스</h4>
 <img src="/assets/img/swift/person_segmentation/25.png" width="100%">
@@ -195,9 +202,10 @@ MultiArray는 다양한 형태로 만들어질 수 있는데, DeepLabV3처럼 (I
 <h4 align="middle">어느 facemesh.mlmodel MultiArray shape</h4>
 <img src="/assets/img/swift/person_segmentation/27.png" width="70%">
 
-어느 facemesh.mlmodel MultiArray shape는 위와 같이 (1x1405)모양인데, 1차원배열인척하는 3차원배열입니다.<br>
-파이썬에서 numpy라는 패키지를 사용하면 쉽게 3차원배열로 만들어 사용할 수 있지만, 경험상 Swift에서는 해당 메서드를 직접 만들어서 사용했었던 것 같습니다.<br>
-3차원배열을 1차원형태로 나열하면 기계학습에 효율이 좋다 등등 이유가 있는 것 같은데, iOS개발자인 저는 여기까지만 알아보도록 하겠습니다...<br>
+위의 이미지의 모델을 보면 MultiArray shape가 (1x1405)인데, 1차원 배열인척하는 3차원 배열입니다. MultiArray의 구조가 이 처럼 기괴할 수 있습니다. 어쩌면 AI개발자들은 이미 익숙한 약속된 구조일 수도 있습니다. 때문에 앱개발자로써 ML모델을 사용하기 이전에 모델에 대해서 제대로 파악할 필요가 있습니다.<br>
+모델의 Output타입에 대해 파악한 뒤에, 앱에서 사용할 수 있게 후처리가 필요합니다.<br>
+이 부분에 대해서도 약간의 어려움이 따를 수 있는데, 파이썬에서 numpy라는 패키지를 사용하면 쉽게 3차원배열로 만들어 사용할 수 있지만, Swift에서는 해당 메서드를 직접 만들어서 사용해야하는 일이 생길 수도 있습니다. <b style="font-size:90%">(Accelerate패키지와 같이 Swift내장 패키지에서 제공해줄 수도 있는데, 제가 못찾은 것 일 수도..)</b><br>
+이런 기괴한 구조(3차원배열을 1차원형태로 나열된 구조)는 기계학습에 효율이 좋다 등등 이유가 있는 것 같은데, iOS개발자인 저는 여기까지만 알아보도록 하겠습니다...<br>
 <br>
 
 <img src="/assets/img/swift/person_segmentation/28.png" width="80%"><br>
@@ -207,13 +215,13 @@ MultiArray는 다양한 형태로 만들어질 수 있는데, DeepLabV3처럼 (I
 MLShapedArray타입이 비교적 최근인 iOS15부터 지원되는 타입입니다.<br>
 MLMultiArray 혹은 MLShapedArray<Int32>타입에 대해 좀 더 알아보고 싶다면 다음의 WWDC영상을 참고하면 좋을 것 같습니다. <a href="https://developer.apple.com/videos/play/wwdc2021/10038/">Tune your Core ML models | Apple Developer</a><br>
 아직 이 두타입을 구분하고 쓸정도로 사용한 경험이 없기 때문에, MLMultiArray타입을 이용하도록 하겠습니다.
-확실한 것은 이 두타입 모두 앱에 이미지(UIImage, CIImage, CGImage등등..)로 사용하기에는 그닥 좋지 못한 타입인 것 같습니다.
+<b>확실한 것은 이 두타입 모두 앱에 이미지(UIImage, CIImage, CGImage등등..)로 사용하기에는 그닥 좋지 못한 타입인 것 같습니다.</b>
 
 ---
 
 <h3 style="color:#0e435c;">맥도날드에 간 하성킴 만들기(DeepLabV3를 이용한 누끼)</h3>
 지금까지 .mlmodel과 CoreML프레임워크에서 지원해주는 메서드들에 대해 알아봤습니다.<br>
-이제 이러한 기능들을 이용해서 "맥도날드에 간 김하성"을 만들어 보겠습니다.<br>
+이제 이러한 기능들을 이용해서 <b>"맥도날드에 간 하성킴"</b>을 만들어 보겠습니다.<br>
 기본 원리는 김하성(사람)의 누끼를 딴 뒤 맥도날드배경(background)사진에 붙이면 됩니다.<br>
 
 <h4 align="middle">DeepLabV3모델을 사용하여 배경을 바꾸는 코드</h4>
@@ -246,8 +254,8 @@ func process(from image: UIImage, to background: UIImage) -> UIImage? {
 }
 ```
 
-CoreImage.CIFilterBuiltins 프레임워크의 CIFilter.blendWithMask() 필터기능을 사용하면 누끼마스크, 이미지, 배경이미지를 이용하여 이미지를 합칠 수 있습니다.
-DeepLabV3추론으로 얻은 MLMultiArray를 누끼마스크(CIImage)로 만들어 주는 메서드(createCIImage)는 Chat-GPT를 이용해서 만들었습니다.<br>
+**CoreImage.CIFilterBuiltins** 프레임워크의 **CIFilter.blendWithMask() 필터기능**을 사용하면 누끼마스크, 이미지, 배경이미지를 이용하여 이미지를 합칠 수 있습니다.
+DeepLabV3추론으로 얻은 MLMultiArray를 누끼마스크(CIImage)로 만들어 주는 메서드(createCIImage)는 <b class="green">Chat-GPT</b>를 이용해서 만들었습니다.<br>
 이럴때 쓰라고 있는게 Chat-GPT이지 아닌가 싶습니다..
 
 <h4 align="middle">Chat-GPT에게 도움 요청</h4>
@@ -256,7 +264,7 @@ DeepLabV3추론으로 얻은 MLMultiArray를 누끼마스크(CIImage)로 만들�
 <h4 align="middle">DeepLabV3모델을 이용한 맥도날드에 간 하성킴 만들기</h4>
 <img src="/assets/img/swift/person_segmentation/31.png" width="60%"><br>
 
-<h3 style="color:#0e435c;">VisionAPI + DeepLabV3 사용해서 구현하기</h3>
+<h3 style="color:#0e435c;">VisionAPI + DeepLabV3모델 사용해서 구현하기</h3>
 VisionAPI는 Vision관련 AI기능 뿐만아니라, Vision관련모델을 다루는데 도움을 주는 메서드들도 제공해줍니다.<br>
 우선 이런한 VisionAPI제공 메서드를 사용하지 않고 CoreML 프레임워크만을 사용하여 PersonSegmentaion을 구현해보겠습니다.<br>
 
@@ -333,9 +341,14 @@ Vision에 내장된 PersonSegmentation모델을 사용하면 해당 모델에 �
 예를들면 퀄리티 vs 속도 의 trade-off사항을 조절하여 사용할 수 있습니다.<br>
 
 <h4 align="middle">qualityLevel(.fast, .balanced, .accurate</h4>
-<img src="/assets/img/swift/person_segmentation/32.png" width="100%"><br>
+<img src="/assets/img/swift/person_segmentation/32.png" width="90%"><br>
 
 또한 VisionAPI에 내장된 모델을 사용하는데 있어서 가장 좋은 점은 iOS앱에서 UI적으로 사용하기에 까다로웠던 MLMultiArray, MLShapedArray 타입 대신 CVPixelBuffer타입으로 결과를 반환해 준다는 것 입니다. 때문에 별도의 후처리 없이 CIImage로 만들어서 사용할 수 있습니다.
+
+---
+
+<a href="https://developer.apple.com/kr/machine-learning/api">Vision API | Apple Developer</a>를 살펴보면 Person Segmentation API 외에도 Vision API에 내장된 AI기능들이 많이 있습니다.<br>
+Vision API에 내장된 모델들은 Apple에서 경량화 및 최적화가 되어 있으며, 앱개발자 입장에서 사용하기가 쉽도록 처리가 되어 있기 때문에, MLModel을 사용하기 이전에 Vision API 사용을 먼저 고려하는 것도 좋은 방법인 것 같습니다.<br>
 
 ---
 
