@@ -169,7 +169,7 @@ func cancelAllOperation() {
 <h2 style="color:#0e435c;">그래서 OperationQueue vs TaskGroup ?</h2>
 OperationQueue는 iOS 2.0부터 지원되는 오랜 역사를 가진 기능으로, 안정성과 신뢰성이 높습니다.<br>
 <br>
-반면, TaskGroup은 최신 비동기 프로그래밍 모델인 async/await과 함께 발전하고 있으며, 계속해서 기능 개선과 업데이트가 이루어지고 있습니다. 이러한 발전 덕분에 언젠가는 OperationQueue를 완전히 대체할 수 있지 않을까 생각합니다.<br>
+TaskGroup은 최신 비동기 프로그래밍 모델인 async/await과 함께 발전하고 있으며, 계속해서 기능 개선과 업데이트가 이루어지고 있습니다. 이러한 발전 덕분에 언젠가는 OperationQueue를 완전히 대체할 수 있지 않을까 생각합니다.<br>
 <br>
 하지만 현재로서는 앱의 iOS 지원 버전 혹은 Swift버전에 따라 TaskGroup을 사용하는게 비효율적일 수 있습니다. 따라서, 앱이 지원하는 iOS 버전과 프로젝트의 요구 사항에 따라 적절한 도구를 선택하는 것이 중요하다고 생각합니다.<br>
 <br>
